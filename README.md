@@ -1,93 +1,57 @@
-# zwilling
+# ZWILLING UI Library (Lit 3 Web Components) & Wix CMS Integration
 
+Bộ 5 Web Components (Custom Elements) độc lập, tái sử dụng được xây dựng bằng **Lit 3** và đóng gói bằng **Vite 5** thành file standalone **`dist/my-wix-ui-lib.bundle.js`** phục vụ nhúng trực tiếp vào **Wix Studio**, **Wix Editor** và kết nối qua **Wix Velo**.
 
+> 📖 **Xem tài liệu chi tiết đầy đủ tại:** [`PROJECT-SUMMARY.md`](./PROJECT-SUMMARY.md) và [`wix-velo-setup.md`](./wix-velo-setup.md).
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 1. Danh Sách 5 Components
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+| # | Tag Name | Class | Mô tả & Tính Năng Nổi Bật |
+| :--- | :--- | :--- | :--- |
+| **1** | `<wx-breadcrumb>` | `WxBreadcrumb` | Thanh điều hướng breadcrumb đa cấp động (`HOME › PRODUCTS › DAO BẾP › DAO SANTOKU`). |
+| **2** | `<wx-category-carousel>` | `WxCategoryCarousel` | Carousel danh mục sản phẩm trượt ngang kèm thanh tiến trình và 2 nút mũi tên tròn. Tự động chuyển dạng grid khi < 6 mục. **Tự động ẩn hoàn toàn (0px) khi danh mục rỗng**. |
+| **3** | `<wx-product-carousel>` | `WxProductCarousel` | Carousel danh sách card sản phẩm nổi bật (tính % giảm giá, wishlist heart, rating CMS, giá VND). |
+| **4** | `<wx-product-listing>` | `WxProductListing` | Danh sách sản phẩm dạng lưới 4 cột kèm Toolbar bộ lọc drawer (Category, Brand, Price) và sắp xếp. **Phân trang 32 sản phẩm: thanh tiến trình đỏ `#d40026` + nút `LOAD MORE`**. |
+| **5** | `<wx-product-detail>` | `WxProductDetail` | Trang chi tiết sản phẩm (PDP): Gallery ảnh kèm thumbnails, giá, % giảm giá, đặc điểm nổi bật, nút Shopee/TikTok Shop, và Accordions thông số kỹ thuật. |
 
-## Add your files
+---
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## 2. Các Luồng Trang Trên Wix Studio
 
+- **Trang Home (`/`):** `#homeCategoryCarousel` + `#homeProductCarousel`. Click danh mục chuyển đến `/products/{slug}`.
+- **Trang Categories List (`/products`):** `#categoryBreadcrumb` + `#categoryCarousel` + `#productListing`.
+- **Trang Categories Item (`/products/{slug}`):** `#categoryBreadcrumb` + `#subCategorySection` (`#subCategoryCarousel`) + `#categoryProductListing`. Tự động thu gọn Section khi vào danh mục lá.
+- **Trang Product Detail (`/products-item/{slug}`):** `#productBreadcrumb` + `#productDetail`.
+
+---
+
+## 3. Lệnh Phát Triển & Đóng Gói
+
+```bash
+# Cài đặt thư viện
+npm install
+
+# Khởi chạy server kiểm thử trực quan tại local
+npm run dev
+
+# Đóng gói bundle standalone cho Wix Studio (tự chèn header Wix ESLint)
+npm run build
 ```
-cd existing_repo
-git remote add origin https://git.danishsoftware.com/website/zwilling.git
-git branch -M main
-git push -uf origin main
-```
+File bundle hoàn thiện được lưu tại: `dist/my-wix-ui-lib.bundle.js` (~74 KB).
 
-## Integrate with your tools
+---
 
-* [Set up project integrations](https://git.danishsoftware.com/website/zwilling/-/settings/integrations)
+## 4. Tài Liệu & File Mã Nguồn Velo Trong Dự Án
+- 📂 **[`wix-pages/`](./wix-pages/)**: Thư mục chứa toàn bộ file mã nguồn Velo riêng biệt của từng trang:
+  - [`wix-pages/home.js`](./wix-pages/home.js): Mã trang Home (`/`).
+  - [`wix-pages/categories-list.js`](./wix-pages/categories-list.js): Mã trang tổng quan sản phẩm (`/products`).
+  - [`wix-pages/categories-item.js`](./wix-pages/categories-item.js): Mã trang danh mục động (`/products/{slug}`).
+  - [`wix-pages/products-item.js`](./wix-pages/products-item.js): Mã trang chi tiết sản phẩm PDP (`/products-item/{slug}`).
+  - [`wix-pages/brands-item.js`](./wix-pages/brands-item.js): Mã trang thương hiệu (`/brands/{slug}`).
+- [`PROJECT-SUMMARY.md`](./PROJECT-SUMMARY.md): Báo cáo tổng kết toàn bộ kiến trúc, các lỗi kỹ thuật đã giải quyết và hướng dẫn vận hành.
+- [`wix-velo-setup.md`](./wix-velo-setup.md): Hướng dẫn thiết lập Wix Studio tổng thể.
+- [`website-flows.md`](./website-flows.md): Đặc tả luồng điều hướng website theo ngôn ngữ Việt - Anh.
+- [`wix-csv/HUONG-DAN-IMPORT.md`](./wix-csv/HUONG-DAN-IMPORT.md): Hướng dẫn import CMS Collections vào Wix.
 
-## Collaborate with your team
-
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZWILLING UI Components (Lit 3) - Reusable Components Showcase</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f7f7f9;
+      color: #111111;
+      line-height: 1.5;
+      padding-bottom: 120px;
+    }
+
+    .top-header {
+      background: #111111;
+      color: #ffffff;
+      padding: 18px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .top-header h1 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-header .tag {
+      background: #d40026;
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .nav-links a {
+      color: #aaaaaa;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+
+    .component-section {
+      background: #ffffff;
+      border: 1px solid #e2e2e8;
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 48px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #f0f0f2;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111111;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag-name {
+      background: #f0f0f4;
+      color: #555555;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid #e0e0e4;
+      color: #d40026;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <header class="top-header">
+    <h1>
+      <span>5 Reusable Components</span>
+      <span class="tag">LIT 3 + WIX STUDIO</span>
+    </h1>
+    <nav class="nav-links">
+      <a href="#sec-breadcrumb">1. Breadcrumb</a>
+      <a href="#sec-category">2. Product Cate</a>
+      <a href="#sec-product-carousel">3. Product Carousel</a>
+      <a href="#sec-product-listing">4. List & Filter</a>
+      <a href="#sec-product-detail">5. Product Detail</a>
+      <a href="#sec-bestseller">6. Best Seller Page</a>
+      <a href="#sec-sale">7. Sale Page</a>
+      <a href="/tools/hotspot-tool.html" target="_blank"
+        style="background: #d40026; color: #ffffff; padding: 4px 10px; border-radius: 4px; font-weight: 700;">🎯 HOTSPOT
+        TOOL</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- 1. Component Breadcrumb (Ảnh 1) -->
+    <section class="component-section" id="sec-breadcrumb">
+      <div class="section-header">
+        <h2 class="section-title">1. Component Breadcrumb (Ảnh 1)</h2>
+        <span class="tag-name">&lt;wx-breadcrumb&gt;</span>
+      </div>
+      <wx-breadcrumb id="comp-breadcrumb"></wx-breadcrumb>
+    </section>
+
+    <!-- 2. Component Product Cate (Ảnh 2) -->
+    <section class="component-section" id="sec-category">
+      <div class="section-header">
+        <h2 class="section-title">2. Component Product Categories (Ảnh 2)</h2>
+        <span class="tag-name">&lt;wx-category-carousel&gt;</span>
+      </div>
+      <wx-category-carousel id="comp-categories"></wx-category-carousel>
+    </section>
+
+    <!-- 3. Component Product Carousel (Ảnh 3) -->
+    <section class="component-section" id="sec-product-carousel">
+      <div class="section-header">
+        <h2 class="section-title">3. Component Product Carousel (Ảnh 3)</h2>
+        <span class="tag-name">&lt;wx-product-carousel&gt;</span>
+      </div>
+      <wx-product-carousel id="comp-product-carousel" title="BESTSELLERS"></wx-product-carousel>
+    </section>
+
+    <!-- 4. Component List Product kèm Filter (Ảnh 4) -->
+    <section class="component-section" id="sec-product-listing">
+      <div class="section-header">
+        <h2 class="section-title">4. Component List Product Kèm Filter (Ảnh 4)</h2>
+        <span class="tag-name">&lt;wx-product-listing&gt;</span>
+      </div>
+      <wx-product-listing id="comp-product-listing"></wx-product-listing>
+    </section>
+
+    <!-- 5. Component Product Detail (Ảnh 5 - bỏ add to card, shipping...) -->
+    <section class="component-section" id="sec-product-detail">
+      <div class="section-header">
+        <h2 class="section-title">5. Component Product Detail (Ảnh 5 - Bỏ Add to Cart, Shipping)</h2>
+        <span class="tag-name">&lt;wx-product-detail&gt;</span>
+      </div>
+      <wx-product-detail id="comp-product-detail"></wx-product-detail>
+    </section>
+
+    <!-- 6. Trang Tĩnh: Best Seller (List Product Kèm Filter) -->
+    <section class="component-section" id="sec-bestseller">
+      <div class="section-header">
+        <h2 class="section-title">6. Trang Tĩnh: Best Seller (List Product Kèm Filter)</h2>
+        <span class="tag-name">URL: /bestseller</span>
+      </div>
+      <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #eeeeee;">
+        <h1
+          style="font-size: 24px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; color: #111;">
+          SẢN PHẨM BÁN CHẠY</h1>
+        <p style="color: #666666; font-size: 14px;">Tuyển tập các sản phẩm dao kéo, nồi chảo và phụ kiện nhà bếp
+          Zwilling & Staub được ưa chuộng nhất.</p>
+      </div>
+      <wx-product-listing id="comp-bestseller-listing"></wx-product-listing>
+    </section>
+
+    <!-- 7. Trang Tĩnh: Khuyến Mãi / Sale (List Product Kèm Filter) -->
+    <section class="component-section" id="sec-sale">
+      <div class="section-header">
+        <h2 class="section-title">7. Trang Tĩnh: Khuyến Mãi / Sale (List Product Kèm Filter)</h2>
+        <span class="tag-name">URL: /sale</span>
+      </div>
+      <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #eeeeee;">
+        <h1
+          style="font-size: 24px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; color: #d40026;">
+          CHƯƠNG TRÌNH KHUYẾN MÃI (SALE)</h1>
+        <p style="color: #666666; font-size: 14px;">Tổng hợp các sản phẩm đang có giá ưu đãi đặc biệt (% giảm giá đỏ,
+          mức giá gốc gạch ngang và bộ lọc linh hoạt).</p>
+      </div>
+      <wx-product-listing id="comp-sale-listing"></wx-product-listing>
+    </section>
+
+    <!-- 8.1. Component Story Section (Ảnh 1: Story Banner 50/50 + 3-col Cards) -->
+    <section class="component-section" id="sec-story-section">
+      <div class="section-header">
+        <h2 class="section-title">7.1. Component Story Section (Ảnh 1: Story 50/50 + 3 Card tính năng)</h2>
+        <span class="tag-name">&lt;wx-story-section&gt;</span>
+      </div>
+      <p style="color: #666; font-size: 14px; margin-bottom: 24px;">
+        Component độc lập chuyên hiển thị Banner Story 50/50 trên cùng và lưới 3 Card tính năng bên dưới.
+      </p>
+      <wx-story-section id="comp-story-section"></wx-story-section>
+    </section>
+
+    <!-- 7.2. Component Hotspot Section (Ảnh 2: Sơ đồ Hotspot + Accordion) -->
+    <section class="component-section" id="sec-hotspot-section">
+      <div class="section-header">
+        <h2 class="section-title">7.2. Component Hotspot Section (Ảnh 2: Sơ đồ chi tiết + Accordion)</h2>
+        <span class="tag-name">&lt;wx-hotspot-section&gt;</span>
+      </div>
+      <p style="color: #666; font-size: 14px; margin-bottom: 24px;">
+        Component độc lập chuyên hiển thị sơ đồ ảnh sản phẩm bên trái và danh sách Accordion tương tác tính năng bên
+        phải.
+      </p>
+      <wx-hotspot-section id="comp-hotspot-section"></wx-hotspot-section>
+    </section>
+
+  </div>
+
+  <!-- Nạp module thư viện và dữ liệu thực nghiệm -->
+  <script type="module">
+    import './src/index.js';
+    import {
+      MOCK_BRANDS,
+      MOCK_CATEGORIES,
+      MOCK_SERIES,
+      MOCK_PRODUCTS,
+      MOCK_VARIANTS
+    } from './src/data/mock-data.js';
+
+    // 1. Gán dữ liệu cho Component Breadcrumb
+    const bc = document.getElementById('comp-breadcrumb');
+    bc.items = [
+      { label: 'HOME', url: '/' },
+      { label: 'KNIVES', url: '/knives' },
+      { label: "CHEF'S KNIFE 7 INCH", url: '#' }
+    ];
+
+    // 2. Gán dữ liệu cho Component Product Categories (Ảnh 2)
+    const cateComp = document.getElementById('comp-categories');
+    cateComp.items = [
+      {
+        id: 'knives',
+        title: 'KNIVES',
+        description: 'Dao bếp chuyên nghiệp Đức & Nhật',
+        image: 'https://images.unsplash.com/photo-1593618998160-e34014e67546?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        id: 'cookware',
+        title: 'COOKWARE',
+        description: 'Nồi chảo gang & inox cao cấp',
+        image: 'https://images.unsplash.com/photo-1584990347449-399a6c9d0b84?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        id: 'storage',
+        title: 'STORAGE',
+        description: 'Hộp bảo quản hút chân không',
+        image: 'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        id: 'tableware',
+        title: 'TABLEWARE',
+        description: 'Bộ dao nĩa & đồ dùng bàn ăn',
+        image: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        id: 'bbq',
+        title: 'BBQ',
+        description: 'Dụng cụ nướng & tiệc ngoài trời',
+        image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        id: 'tools',
+        title: 'TOOLS',
+        description: 'Kéo, mài dao & phụ kiện bếp',
+        image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        id: 'ceramics',
+        title: 'CERAMICS',
+        description: 'Thố & khay gốm sứ Pháp',
+        image: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=240&auto=format&fit=crop&q=80'
+      }
+    ];
+
+    // Chuẩn hóa sản phẩm demo với đầy đủ % giảm giá, labels, mainImage và gallery
+    const sampleBadges = ['NEW TO SALE', 'BESTSELLER', 'BÁN CHẠY', 'MỚI'];
+    const sampleGalleries = [
+      [
+        'https://images.unsplash.com/photo-1593618998160-e34014e67546?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1584990347449-399a6c9d0b84?w=600&auto=format&fit=crop&q=80'
+      ],
+      [
+        'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80'
+      ]
+    ];
+
+    const enrichedProducts = MOCK_PRODUCTS.map((p, idx) => {
+      const price = p.minPrice || p.price || 2000000;
+      // Tạo giá cũ cao hơn để tính ra % giảm giá (ví dụ: -26%, -40%, -57%, -58%)
+      const discountRates = [0.57, 0.58, 0.40, 0.26, 0.35, 0.50];
+      const rate = discountRates[idx % discountRates.length];
+      const comparePrice = Math.round(price / (1 - rate));
+
+      let labels = p.labels;
+      if (!labels || labels === '[]') {
+        labels = [sampleBadges[idx % sampleBadges.length]];
+      }
+
+      const gSet = sampleGalleries[idx % sampleGalleries.length];
+      const mainImg = p.mainImage || gSet[0];
+      const galleryStr = p.gallery || gSet.slice(1).join(';');
+
+      return {
+        ...p,
+        mainImage: mainImg,
+        gallery: galleryStr,
+        minPrice: price,
+        compareAtPrice: comparePrice,
+        labels: labels
+      };
+    });
+
+    // 3. Gán dữ liệu cho Component Product Carousel (Ảnh 3)
+    const carouselComp = document.getElementById('comp-product-carousel');
+    carouselComp.products = enrichedProducts.slice(0, 8);
+
+    // 4. Gán dữ liệu cho Component List Product kèm Filter (Ảnh 4)
+    const listComp = document.getElementById('comp-product-listing');
+    listComp.brands = MOCK_BRANDS;
+    listComp.categories = MOCK_CATEGORIES.filter(c => c.depth === 0);
+    listComp.products = enrichedProducts;
+
+    // 5. Gán dữ liệu cho Component Product Detail (Ảnh 5)
+    const detailComp = document.getElementById('comp-product-detail');
+    const sampleProduct = MOCK_PRODUCTS.find(p => p.ID === 'prod-1002144') || MOCK_PRODUCTS[0];
+    const sampleVariant = MOCK_VARIANTS.find(v => v.product === sampleProduct.ID) || MOCK_VARIANTS[0];
+
+    // Tạo bộ ảnh thumbnail phong phú cho PDP
+    const pdpData = {
+      ...sampleProduct,
+      ...sampleVariant,
+      title: 'Bread knife 8 inch, serrated edge',
+      brand: 'brand-zwilling',
+      series: 'FOUR STAR',
+      minPrice: 1250000,
+      compareAtPrice: 2950000,
+      gallery: [
+        sampleProduct.mainImage || 'https://images.unsplash.com/photo-1593618998160-e34014e67546?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1584990347449-399a6c9d0b84?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&auto=format&fit=crop&q=80'
+      ].join(';'),
+      specs: JSON.stringify([
+        { section: 'Thông số kỹ thuật', name: 'Xuất xứ', value: 'Đức (Solingen, Germany)' },
+        { section: 'Thông số kỹ thuật', name: 'Chiều dài lưỡi dao', value: '20 cm / 8 inch' },
+        { section: 'Thông số kỹ thuật', name: 'Chất liệu thép', value: 'Thép không gỉ công thức đặc biệt (Special Formula Steel)' },
+        { section: 'Thông số kỹ thuật', name: 'Độ cứng Rockwell', value: '57 HRC' },
+        { section: 'Thông số kỹ thuật', name: 'Chất liệu cán', value: 'Nhựa cao cấp đúc liền khối công thái học' }
+      ]),
+      shopeeUrl: 'https://shopee.vn',
+      tiktokUrl: 'https://tiktok.com'
+    };
+    detailComp.product = pdpData;
+
+    // 6. Gán dữ liệu cho Trang tĩnh Best Seller (Chỉ lấy sản phẩm Bán chạy / Bestseller)
+    const bestsellerListingComp = document.getElementById('comp-bestseller-listing');
+    if (bestsellerListingComp) {
+      bestsellerListingComp.brands = MOCK_BRANDS;
+      bestsellerListingComp.categories = MOCK_CATEGORIES.filter(c => c.depth === 0);
+      // Lọc các sản phẩm bán chạy hoặc soldCount cao
+      const bestsellerList = enrichedProducts.filter(p =>
+        (p.labels && (p.labels.includes('BÁN CHẠY') || p.labels.includes('BESTSELLER') || p.labels.includes('Bán chạy'))) ||
+        p.soldCount > 70
+      ).map(p => ({
+        ...p,
+        isBestseller: true,
+        labels: p.labels && (p.labels.includes('BÁN CHẠY') || p.labels.includes('Bán chạy')) ? p.labels : ['BÁN CHẠY', ...(p.labels || [])]
+      }));
+      bestsellerListingComp.products = bestsellerList.length > 0 ? bestsellerList : enrichedProducts.slice(0, 10);
+    }
+
+    // 7. Gán dữ liệu cho Trang tĩnh Sale / Khuyến Mãi (Chỉ lấy sản phẩm có Sale / Giảm giá / chênh lệch giá)
+    const saleListingComp = document.getElementById('comp-sale-listing');
+    if (saleListingComp) {
+      saleListingComp.brands = MOCK_BRANDS;
+      saleListingComp.categories = MOCK_CATEGORIES.filter(c => c.depth === 0);
+
+      const saleList = enrichedProducts.filter(p => {
+        const labelsStr = (Array.isArray(p.labels) ? p.labels.join(' ') : String(p.labels || '')).toLowerCase();
+        const hasSaleLabel = labelsStr.includes('sale') || labelsStr.includes('giảm giá') || labelsStr.includes('mới mở bán');
+        const hasDiscountPrice = p.maxPrice && p.minPrice && Number(p.maxPrice) > Number(p.minPrice);
+        return hasSaleLabel || hasDiscountPrice;
+      }).map(p => {
+        const currentPrice = Number(p.minPrice || p.price || 0);
+        let comparePrice = Number(p.compareAtPrice || 0);
+        if (!comparePrice && p.maxPrice && Number(p.maxPrice) > currentPrice) {
+          comparePrice = Number(p.maxPrice);
+        }
+        if (!comparePrice && currentPrice > 0) {
+          comparePrice = Math.round((currentPrice * 1.2) / 10000) * 10000;
+        }
+        const discountPercent = Math.round(((comparePrice - currentPrice) / comparePrice) * 100);
+
+        let labels = Array.isArray(p.labels) ? [...p.labels] : ['Giảm giá'];
+        if (!labels.includes('Giảm giá') && !labels.includes('Sale')) {
+          labels.unshift('Giảm giá');
+        }
+        return {
+          ...p,
+          labels,
+          compareAtPrice: comparePrice,
+          discountPercent: discountPercent,
+          isSale: true
+        };
+      });
+
+      saleListingComp.products = saleList.length > 0 ? saleList : enrichedProducts.slice(0, 10);
+    }
+
+    // 8. Gán dữ liệu cho 2 Component Tách Riêng (Ảnh 1 & Ảnh 2)
+    const mockBlocks = [
+      {
+        _id: 'block-zwilling-pro-1',
+        ID: 'block-zwilling-pro-1',
+        title: 'ZWILLING PRO · story 1',
+        component: 'story',
+        heading: 'ZWILLING PRO: TÁI ĐỊNH NGHĨA KỸ NGHỆ CHẾ TÁC DAO',
+        body: 'Trong gian bếp, độ chính xác tạo nên khác biệt. ZWILLING PRO kết hợp thiết kế cổ điển với hiệu suất hiện đại, cân bằng hài hòa giữa thẩm mỹ và độ sắc bén. Được tạo ra cho những người đầu bếp luôn muốn nâng cao giới hạn của mình, dòng dao mang đến khả năng kiểm soát vượt trội và sự chính xác trong từng thao tác.',
+        ctaLabel: 'DISCOVER ALL ZWILLING PRO KNIVES',
+        image: '', // Để trống để test hiển thị "Chưa có ảnh"
+        sourceTitle: 'ZWILLING PRO'
+      },
+      {
+        _id: 'block-zwilling-pro-2',
+        ID: 'block-zwilling-pro-2',
+        title: 'ZWILLING PRO · highlights 2',
+        component: 'highlights',
+        image: '/images/block-zwilling-pro-2.png',
+        sourceTitle: 'ZWILLING PRO'
+      }
+    ];
+
+    const mockItems = [
+      // Items cho block 1 (Story Banner & 3-column highlights)
+      {
+        ID: 'block-zwilling-pro-1-item-1',
+        title: 'ZWILLING PRO: TÁI ĐỊNH NGHĨA KỸ NGHỆ CHẾ TÁC DAO',
+        block: 'block-zwilling-pro-1',
+        position: 1,
+        body: 'Trong gian bếp, độ chính xác tạo nên khác biệt. ZWILLING PRO kết hợp thiết kế cổ điển với hiệu suất hiện đại, cân bằng hài hòa giữa thẩm mỹ và độ sắc bén.',
+        image: ''
+      },
+      {
+        ID: 'block-zwilling-pro-1-item-2',
+        title: 'GÙ DAO CONG ĐỘC QUYỀN',
+        block: 'block-zwilling-pro-1',
+        position: 2,
+        body: 'Thiết kế gù dao cong ôm theo tay cầm, mang lại cảm giác chắc chắn và linh hoạt, giúp kiểm soát đường cắt chính xác.',
+        image: ''
+      },
+      {
+        ID: 'block-zwilling-pro-1-item-3',
+        title: 'CHẤT THÉP CHUẨN ĐỨC DANH TIẾNG',
+        block: 'block-zwilling-pro-1',
+        position: 3,
+        body: 'Được sản xuất tại Đức từ công thức thép không gỉ chuyên biệt, mỗi lưỡi dao là kết tinh của gần 300 năm kinh nghiệm.',
+        image: ''
+      },
+      {
+        ID: 'block-zwilling-pro-1-item-4',
+        title: 'KIỂM SOÁT CHẤT LƯỢNG TOÀN DIỆN',
+        block: 'block-zwilling-pro-1',
+        position: 4,
+        body: 'Là nhà sản xuất dao lớn nhất thế giới, ZWILLING sở hữu hệ thống nhà máy riêng để kiểm soát chất lượng ở mọi khâu.',
+        image: ''
+      },
+      // Items cho block 2 (Hotspot accordion với tọa độ phần trăm coordX, coordY)
+      {
+        ID: 'block-zwilling-pro-2-item-1',
+        title: 'MŨI DAO ĐA NĂNG',
+        block: 'block-zwilling-pro-2',
+        position: 1,
+        body: 'Thiết kế mũi dao nhọn cong lý tưởng cho các thao tác thái lát, cắt hạt lựu và cắt lướt linh hoạt với độ chuẩn xác cao.',
+        coordX: 6.0,
+        coordY: 68.0
+      },
+      {
+        ID: 'block-zwilling-pro-2-item-2',
+        title: 'CHẤT THÉP VƯỢT TRỘI',
+        block: 'block-zwilling-pro-2',
+        position: 2,
+        body: 'Lưỡi dao được rèn nguyên khối từ thép không gỉ carbon cao với công thức chuyên biệt, mang lại độ bền và hiệu suất cắt vượt trội.',
+        coordX: 22.5,
+        coordY: 57.0
+      },
+      {
+        ID: 'block-zwilling-pro-2-item-3',
+        title: 'LƯỠI DAO SẮC BÉN TỐI ƯU',
+        block: 'block-zwilling-pro-2',
+        position: 3,
+        body: 'Lưỡi dao được mài chính xác, kết hợp công nghệ laser kiểm soát góc cắt để đạt độ sắc bén vượt trội.',
+        coordX: 39.0,
+        coordY: 45.7
+      },
+      {
+        ID: 'block-zwilling-pro-2-item-4',
+        title: 'GÙ DAO CONG ĐẶC TRƯNG',
+        block: 'block-zwilling-pro-2',
+        position: 4,
+        body: 'Phần gù dao cong nối liền mạch với cán, giúp thao tác chính xác, nâng đỡ ngón tay an toàn và thoải mái hơn.',
+        coordX: 55.0,
+        coordY: 50.0
+      },
+      {
+        ID: 'block-zwilling-pro-2-item-5',
+        title: 'CÁN DAO CHẮC CHẮN, THOẢI MÁI',
+        block: 'block-zwilling-pro-2',
+        position: 5,
+        body: 'Kết cấu thép nguyên khối xuyên suốt từ lưỡi đến cán, được cố định bằng ba đinh tán, mang lại độ cân bằng vững chắc và cảm giác cầm thoải mái.',
+        coordX: 75.7,
+        coordY: 47.8
+      }
+    ];
+
+    // Gán dữ liệu cho Component 1: Story Section
+    const storyComp = document.getElementById('comp-story-section');
+    if (storyComp) {
+      storyComp.blocks = mockBlocks;
+      storyComp.items = mockItems;
+    }
+
+    // Gán dữ liệu cho Component 2: Hotspot Section
+    const hotspotComp = document.getElementById('comp-hotspot-section');
+    if (hotspotComp) {
+      hotspotComp.blocks = mockBlocks;
+      hotspotComp.items = mockItems;
+    }
+
+    // Lắng nghe tương tác nếu cần
+    document.addEventListener('product-select', (e) => {
+      console.log('Chọn xem sản phẩm:', e.detail.product);
+      detailComp.product = e.detail.product;
+      document.getElementById('sec-product-detail').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>

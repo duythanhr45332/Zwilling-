@@ -1,0 +1,14 @@
+{
+  "name": "zwilling-hotspot-studio",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/tools/hotspot-tool", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/hotspot-tool", "destination": "/tools/hotspot-tool.html" },
+    { "source": "/tools/hotspot-tool", "destination": "/tools/hotspot-tool.html" },
+    { "source": "/demo", "destination": "/index.html" }
+  ]
+}

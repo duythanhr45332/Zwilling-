@@ -1,0 +1,98 @@
+Số dòng mỗi file:
+  Brands.csv: 3
+  Categories.csv: 91
+  Series.csv: 31
+  Products.csv: 236
+  ProductVariants.csv: 236
+  FeatureBlocks.csv: 68
+  FeatureItems.csv: 236
+  ProductFeatureBlocks.csv: 0
+  ExcelImportRows.csv: 236
+  _page-blocks.csv: 43
+  _images-manifest.csv: 67
+
+Cảnh báo (84):
+  - [1. DAO dòng 3]: series 'KAIZEN II FCD 5000FCD' -> 'MIYABI KAIZEN II 5000FCD'
+  - [1. DAO dòng 4]: series 'KAIZEN II FCD 5000FCD' -> 'MIYABI KAIZEN II 5000FCD'
+  - [1. DAO dòng 5]: series 'KAIZEN II FCD 5000FCD' -> 'MIYABI KAIZEN II 5000FCD'
+  - [1. DAO dòng 6]: series 'KAIZEN II FCD 5000FCD' -> 'MIYABI KAIZEN II 5000FCD'
+  - [1. DAO dòng 6]: nhãn 'Set savings' chưa có bản VN -> bỏ qua
+  - [1. DAO dòng 22]: series 'ZWILLING Goumet' -> 'ZWILLING Gourmet'
+  - [1. DAO dòng 23]: series 'ZWILLING Goumet' -> 'ZWILLING Gourmet'
+  - [1. DAO dòng 24]: series 'ZWILLING Goumet' -> 'ZWILLING Gourmet'
+  - [1. DAO dòng 25]: series 'ZWILLING Goumet' -> 'ZWILLING Gourmet'
+  - [1. DAO dòng 26]: series 'ZWILLING Goumet' -> 'ZWILLING Gourmet'
+  - [1. DAO dòng 27]: series 'Zwilling Pro HB' -> 'ZWILLING Pro HB'
+  - [1. DAO dòng 28]: series 'Zwilling Pro HB' -> 'ZWILLING Pro HB'
+  - [1. DAO dòng 29]: series 'Zwilling Pro HB' -> 'ZWILLING Pro HB'
+  - [1. DAO dòng 35]: series 'ZWILLING Goumet' -> 'ZWILLING Gourmet'
+  - [2. NỒI GANG dòng 58]: series 'STAUB Round cocotte' -> 'STAUB Round Cocotte'
+  - [5. Ceramics dòng 3]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 4]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 5]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 6]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 7]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 8]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 9]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 10]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 11]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 12]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 13]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 14]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 15]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 16]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 17]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 18]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 19]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 20]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 21]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 22]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 23]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 24]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 25]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 26]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 27]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 28]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 29]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 30]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 31]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 32]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [5. Ceramics dòng 33]: series 'Sản phẩm sứ tráng men thủ công' không phải tên dòng thật -> để trống
+  - [6. FS dòng 3]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 4]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 5]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 6]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 7]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 8]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 9]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 10]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 11]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 12]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 13]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 14]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 15]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 16]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [6. FS dòng 17]: series 'Bảo quản thực phẩm' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 3]: series 'ZWILLING TWIN Prof' -> 'ZWILLING Prof'
+  - [7. Dụng cụ đồ bếp dòng 4]: series 'ZWILLING TWIN Prof' -> 'ZWILLING Prof'
+  - [7. Dụng cụ đồ bếp dòng 6]: series 'ZWILLING Twin Prof' -> 'ZWILLING Prof'
+  - [7. Dụng cụ đồ bếp dòng 7]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 8]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 9]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 10]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 11]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 12]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 13]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 14]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 15]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 16]: series 'STAUB' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 19]: series 'ZWILLING NOW' -> 'ZWILLING Now'
+  - [7. Dụng cụ đồ bếp dòng 20]: series 'ZWILLING NOW' -> 'ZWILLING Now'
+  - [7. Dụng cụ đồ bếp dòng 21]: series 'ZWILLING NOW S' -> 'ZWILLING Now S'
+  - [7. Dụng cụ đồ bếp dòng 24]: series 'ZWILLING NOW' -> 'ZWILLING Now'
+  - [7. Dụng cụ đồ bếp dòng 25]: series 'ZWILLING NOW' -> 'ZWILLING Now'
+  - [7. Dụng cụ đồ bếp dòng 26]: series 'ZWILLING' không phải tên dòng thật -> để trống
+  - [7. Dụng cụ đồ bếp dòng 26] SKU 1029952 LINK SHOPEE: không phải link hợp lệ -> để trống: 'Không thấy'
+  - [7. Dụng cụ đồ bếp dòng 27]: series 'ZWILLING' không phải tên dòng thật -> để trống
+  - [E. FS · BỘ SẢN PHẨM HÚT CHÂN KHÔNG 27 / 40 MÓN] khối 2 trùng nội dung với block-may-hut-chan-khong-2 -> dùng chung
+  - [E. FS · BỘ SẢN PHẨM HÚT CHÂN KHÔNG 27 / 40 MÓN] khối 3 trùng nội dung với block-may-hut-chan-khong-3 -> dùng chung

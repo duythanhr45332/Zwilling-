@@ -1,0 +1,2888 @@
+{
+  "blocks": [
+    {
+      "ID": "block-zwilling-pro-1",
+      "title": "ZWILLING PRO · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING PRO"
+    },
+    {
+      "ID": "block-zwilling-pro-2",
+      "title": "ZWILLING PRO · highlights 2",
+      "component": "highlights",
+      "image": "images/block-zwilling-pro-2.png",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING PRO"
+    },
+    {
+      "ID": "block-zwilling-fourstar-1",
+      "title": "ZWILLING FOURSTAR · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING FOURSTAR"
+    },
+    {
+      "ID": "block-zwilling-fourstar-2",
+      "title": "ZWILLING FOURSTAR · highlights 2",
+      "component": "highlights",
+      "image": "images/block-zwilling-fourstar-2.png",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING FOURSTAR"
+    },
+    {
+      "ID": "block-zwilling-tanrei-1",
+      "title": "ZWILLING TANREI · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING TANREI"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3",
+      "title": "ZWILLING TANREI · highlights 3",
+      "component": "highlights",
+      "image": "images/block-zwilling-tanrei-3.png",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING TANREI"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-1",
+      "title": "MIYABI KAIZEN II 5000FCD · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "MIYABI KAIZEN II 5000FCD"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-3",
+      "title": "MIYABI KAIZEN II 5000FCD · highlights 3",
+      "component": "highlights",
+      "image": "images/block-miyabi-kaizen-ii-5000fcd-3.png",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "MIYABI KAIZEN II 5000FCD"
+    },
+    {
+      "ID": "block-zwilling-gourmet-1",
+      "title": "ZWILLING GOURMET · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING GOURMET"
+    },
+    {
+      "ID": "block-zwilling-gourmet-3",
+      "title": "ZWILLING GOURMET · highlights 3",
+      "component": "highlights",
+      "image": "images/block-zwilling-gourmet-3.png",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING GOURMET"
+    },
+    {
+      "ID": "block-zwilling-now-s-block-dao-keo-1",
+      "title": "ZWILLING NOW S (BLOCK DAO / KÉO) · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING NOW S (BLOCK DAO / KÉO)"
+    },
+    {
+      "ID": "block-zwilling-twin-pollux-1",
+      "title": "ZWILLING TWIN POLLUX · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING TWIN POLLUX"
+    },
+    {
+      "ID": "block-staub-dang-tron-1",
+      "title": "STAUB DÁNG TRÒN · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "STAUB DÁNG TRÒN"
+    },
+    {
+      "ID": "block-staub-dang-tron-2",
+      "title": "STAUB DÁNG TRÒN · highlights 2",
+      "component": "highlights",
+      "image": "images/block-staub-dang-tron-2.png",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "STAUB DÁNG TRÒN"
+    },
+    {
+      "ID": "block-staub-pumpkin-1",
+      "title": "STAUB PUMPKIN · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "STAUB PUMPKIN"
+    },
+    {
+      "ID": "block-staub-pumpkin-2",
+      "title": "STAUB PUMPKIN · highlights 2",
+      "component": "highlights",
+      "image": "images/block-staub-pumpkin-2.png",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "STAUB PUMPKIN"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-1",
+      "title": "CHẢO GANG CÓ MIỆNG RÓT · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "CHẢO GANG CÓ MIỆNG RÓT"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-2",
+      "title": "CHẢO GANG CÓ MIỆNG RÓT · highlights 2",
+      "component": "highlights",
+      "image": "images/block-chao-gang-co-mieng-rot-2.png",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "CHẢO GANG CÓ MIỆNG RÓT"
+    },
+    {
+      "ID": "block-chao-gang-staub-american-grill-1",
+      "title": "Chảo gang STAUB American Grill · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "Chảo gang STAUB American Grill"
+    },
+    {
+      "ID": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1",
+      "title": "STAUB Oven dish cast iron 15 x 11 cm (Black) · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "STAUB Oven dish cast iron 15 x 11 cm (Black)"
+    },
+    {
+      "ID": "block-num-noi-gang-staub-1",
+      "title": "NÚM NỒI GANG STAUB · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "NÚM NỒI GANG STAUB"
+    },
+    {
+      "ID": "block-milano-1",
+      "title": "MILANO · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MILANO"
+    },
+    {
+      "ID": "block-milano-3",
+      "title": "MILANO · highlights 3",
+      "component": "highlights",
+      "image": "images/block-milano-3.png",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MILANO"
+    },
+    {
+      "ID": "block-madura-1",
+      "title": "MADURA · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MADURA"
+    },
+    {
+      "ID": "block-madura-3",
+      "title": "MADURA · highlights 3",
+      "component": "highlights",
+      "image": "images/block-madura-3.png",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MADURA"
+    },
+    {
+      "ID": "block-zwilling-pro-ii-1",
+      "title": "ZWILLING PRO II · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "ZWILLING PRO II"
+    },
+    {
+      "ID": "block-zwilling-spirit-1",
+      "title": "ZWILLING SPIRIT · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "ZWILLING SPIRIT"
+    },
+    {
+      "ID": "block-dinnerware-1",
+      "title": "DINNERWARE · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "DINNERWARE"
+    },
+    {
+      "ID": "block-au-su-staub-ca-chua-1",
+      "title": "ÂU SỨ STAUB CÀ CHUA · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "ÂU SỨ STAUB CÀ CHUA"
+    },
+    {
+      "ID": "block-au-su-staub-bi-ngo-1",
+      "title": "ÂU SỨ STAUB BÍ NGÔ · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "ÂU SỨ STAUB BÍ NGÔ"
+    },
+    {
+      "ID": "block-au-su-staub-ot-chuong-1",
+      "title": "ÂU SỨ STAUB ỚT CHUÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "ÂU SỨ STAUB ỚT CHUÔNG"
+    },
+    {
+      "ID": "block-khay-nuong-su-staub-1",
+      "title": "KHAY NƯỚNG SỨ STAUB · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "KHAY NƯỚNG SỨ STAUB"
+    },
+    {
+      "ID": "block-bo-dung-gia-vi-storage-1",
+      "title": "BỘ ĐỰNG GIA VỊ / STORAGE · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "BỘ ĐỰNG GIA VỊ / STORAGE"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-1",
+      "title": "MÁY HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "MÁY HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-3",
+      "title": "MÁY HÚT CHÂN KHÔNG · highlights 3",
+      "component": "highlights",
+      "image": "images/block-may-hut-chan-khong-3.png",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "MÁY HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-1",
+      "title": "TÚI HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "TÚI HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-2",
+      "title": "TÚI HÚT CHÂN KHÔNG · highlights 2",
+      "component": "highlights",
+      "image": "images/block-tui-hut-chan-khong-2.png",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "TÚI HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-hop-nhua-hut-chan-khong-1",
+      "title": "HỘP NHỰA HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "HỘP NHỰA HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-1",
+      "title": "HỘP THỦY TINH HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "HỘP THỦY TINH HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-2",
+      "title": "HỘP THỦY TINH HÚT CHÂN KHÔNG · highlights 2",
+      "component": "highlights",
+      "image": "images/block-hop-thuy-tinh-hut-chan-khong-2.png",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "HỘP THỦY TINH HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-bo-san-pham-hut-chan-khong-27-40-mon-1",
+      "title": "BỘ SẢN PHẨM HÚT CHÂN KHÔNG 27 / 40 MÓN · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "BỘ SẢN PHẨM HÚT CHÂN KHÔNG 27 / 40 MÓN"
+    },
+    {
+      "ID": "block-bo-nap-hut-chan-khong-1",
+      "title": "BỘ NẮP HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "BỘ NẮP HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-1",
+      "title": "BỘ TÔ HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "BỘ TÔ HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-2",
+      "title": "BỘ TÔ HÚT CHÂN KHÔNG · highlights 2",
+      "component": "highlights",
+      "image": "images/block-bo-to-hut-chan-khong-2.png",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "BỘ TÔ HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-bo-hop-cube-hut-chan-khong-1",
+      "title": "BỘ HỘP CUBE HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "BỘ HỘP CUBE HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-dung-cu-nau-an-thep-zwilling-prof-1",
+      "title": "DỤNG CỤ NẤU ĂN THÉP ZWILLING PROF · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "DỤNG CỤ NẤU ĂN THÉP ZWILLING PROF"
+    },
+    {
+      "ID": "block-dung-cu-nau-an-staub-silicone-1",
+      "title": "DỤNG CỤ NẤU ĂN STAUB SILICONE · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "DỤNG CỤ NẤU ĂN STAUB SILICONE"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-1",
+      "title": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-3",
+      "title": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG · highlights 3",
+      "component": "highlights",
+      "image": "images/block-keo-zwilling-twin-select-keo-da-nang-3.png",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1",
+      "title": "KÉO ZWILLING TWIN SELECT - KÉO CẮT GIA CẦM · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO CẮT GIA CẦM"
+    },
+    {
+      "ID": "block-thot-ebony-1",
+      "title": "THỚT EBONY · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "THỚT EBONY"
+    },
+    {
+      "ID": "block-thot-zwilling-now-1",
+      "title": "THỚT ZWILLING NOW · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "THỚT ZWILLING NOW"
+    },
+    {
+      "ID": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1",
+      "title": "ZWILLING MINIMALE MÀU BẠC NHÁM (SILVER) & VÀNG HỒNG NHÀM (ROSE GOLD) · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
+      "sourceTitle": "ZWILLING MINIMALE MÀU BẠC NHÁM (SILVER) & VÀNG HỒNG NHÀM (ROSE GOLD)"
+    },
+    {
+      "ID": "block-zwilling-minimale-satin-polishing-1",
+      "title": "ZWILLING MINIMALE, SATIN POLISHING · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
+      "sourceTitle": "ZWILLING MINIMALE, SATIN POLISHING"
+    },
+    {
+      "ID": "block-zwilling-nova-1",
+      "title": "ZWILLING NOVA · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
+      "sourceTitle": "ZWILLING NOVA"
+    },
+    {
+      "ID": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1",
+      "title": "ĐŨA ZWILLING NOW (SET 6 MÀU, SET HỒNG & SET MACARON) · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
+      "sourceTitle": "ĐŨA ZWILLING NOW (SET 6 MÀU, SET HỒNG & SET MACARON)"
+    },
+    {
+      "ID": "block-ly-zwilling-sorrento-1",
+      "title": "LY ZWILLING SORRENTO · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
+      "sourceTitle": "LY ZWILLING SORRENTO"
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1",
+      "title": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút) · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "H. BÌNH NƯỚC",
+      "sourceTitle": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút)"
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2",
+      "title": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút) · highlights 2",
+      "component": "highlights",
+      "image": "images/block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2.png",
+      "sourceSheet": "H. BÌNH NƯỚC",
+      "sourceTitle": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút)"
+    }
+  ],
+  "items": [
+    {
+      "ID": "block-zwilling-pro-1-item-1",
+      "title": "ZWILLING PRO: TÁI ĐỊNH NGHĨA KỸ NGHỆ CHẾ TÁC DAO",
+      "block": "block-zwilling-pro-1",
+      "position": 1,
+      "body": "Trong gian bếp, độ chính xác tạo nên khác biệt. ZWILLING PRO kết hợp thiết kế cổ điển với hiệu suất hiện đại, cân bằng hài hòa giữa thẩm mỹ và độ sắc bén. Được tạo ra cho những người đầu bếp luôn muốn nâng cao giới hạn của mình, dòng dao mang đến khả năng kiểm soát vượt trội và sự chính xác trong từng thao tác.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-pro-1-item-2",
+      "title": "GÙ DAO CONG ĐỘC QUYỀN",
+      "block": "block-zwilling-pro-1",
+      "position": 2,
+      "body": "Thiết kế gù dao cong ôm theo tay cầm, mang lại cảm giác chắc chắn và linh hoạt, đồng thời giúp kiểm soát đường cắt chính xác, an toàn và thoải mái hơn. Đây là thiết kế được phát triển riêng cho ZWILLING, với sự hợp tác của hai nhà thiết kế Matteo Thun và Antonio Rodriguez, đáp ứng những tiêu chuẩn khắt khe nhất.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-pro-1-item-3",
+      "title": "CHẤT THÉP CHUẨN ĐỨC DANH TIẾNG",
+      "block": "block-zwilling-pro-1",
+      "position": 3,
+      "body": "Được sản xuất tại Đức từ công thức thép không gỉ chuyên biệt, mỗi lưỡi dao là kết tinh của gần 300 năm kinh nghiệm chế tác và hoàn thiện chất lượng của ZWILLING.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-pro-1-item-4",
+      "title": "KIỂM SOÁT CHẤT LƯỢNG TOÀN DIỆN",
+      "block": "block-zwilling-pro-1",
+      "position": 4,
+      "body": "Là nhà sản xuất dao lớn nhất thế giới, ZWILLING sở hữu hệ thống nhà máy riêng, nhờ đó có thể kiểm soát chặt chẽ chất lượng trong toàn bộ quy trình, từ nguyên liệu đầu vào đến sản phẩm hoàn thiện.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-fourstar-1-item-1",
+      "title": "ZWILLING FOUR STAR: SẮC BÉN VÀ CHÍNH XÁC VƯỢT THỜI GIAN",
+      "block": "block-zwilling-fourstar-1",
+      "position": 1,
+      "body": "Từ năm 1976, ZWILLING FOUR STAR đã khẳng định tên tuổi bằng độ sắc bén vượt trội, khả năng kiểm soát linh hoạt và thiết kế không lỗi thời. Đến nay, dòng dao vẫn được rèn và sản xuất tại Solingen, Đức, đồng hành cùng những sáng tạo ẩm thực trong các gian bếp trên khắp thế giới.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-fourstar-1-item-2",
+      "title": "CHẾ TÁC TẠI ĐỨC",
+      "block": "block-zwilling-fourstar-1",
+      "position": 2,
+      "body": "Mỗi sản phẩm dao được rèn nguyên khối từ một phôi thép tại Đức, sau đó trải qua quy trình tôi lạnh bốn công đoạn ở nhiệt độ đặc biệt thấp để tăng độ bền và khả năng giữ độ sắc.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-fourstar-1-item-3",
+      "title": "DẤU ẤN CỦA KỸ NGHỆ RÈN DAO",
+      "block": "block-zwilling-fourstar-1",
+      "position": 3,
+      "body": "Phần gù dao nổi rõ là đặc trưng của kỹ thuật rèn nguyên khối, đồng thời tạo độ cân bằng và giúp thao tác cắt an toàn hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-fourstar-1-item-4",
+      "title": "THOẢI MÁI VÀ AN TOÀN KHI SỬ DỤNG",
+      "block": "block-zwilling-fourstar-1",
+      "position": 4,
+      "body": "Cán dao bằng nhựa cao cấp được thiết kế theo công thái học. Điểm tiếp giáp giữa cán và lưỡi được hoàn thiện liền mạch với độ chính xác đến từng milimet, mang lại cảm giác cầm nắm chắc chắn và thoải mái.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-fourstar-2-item-1",
+      "title": "CHẤT THÉP CAO CẤP",
+      "block": "block-zwilling-fourstar-2",
+      "position": 1,
+      "body": "Được chế tác từ thép không gỉ carbon cao với công thức chuyên biệt, mang lại độ bền và hiệu suất cắt vượt trội.",
+      "image": "",
+      "coordX": "28.0",
+      "coordY": "52.0"
+    },
+    {
+      "ID": "block-zwilling-fourstar-2-item-2",
+      "title": "RÈN NGUYÊN KHỐI",
+      "block": "block-zwilling-fourstar-2",
+      "position": 2,
+      "body": "Công nghệ SIGMAFORGE tạo nên thân dao liền khối từ một phôi thép duy nhất, mang lại kết cấu chắc chắn và độ cân bằng tối ưu.",
+      "image": "",
+      "coordX": "53.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-zwilling-fourstar-2-item-3",
+      "title": "LƯỠI DAO SẮC BÉN TỐI ƯU",
+      "block": "block-zwilling-fourstar-2",
+      "position": 3,
+      "body": "Lưỡi dao được mài tinh chính xác, kết hợp công nghệ laser kiểm soát góc cắt để đạt độ sắc bén vượt trội.",
+      "image": "",
+      "coordX": "12.0",
+      "coordY": "56.0"
+    },
+    {
+      "ID": "block-zwilling-fourstar-2-item-4",
+      "title": "CÁN DAO CÔNG THÁI HỌC",
+      "block": "block-zwilling-fourstar-2",
+      "position": 4,
+      "body": "Cán dao mang lại cảm giác cầm nắm thoải mái, được sản xuất với tối thiểu 75% nhựa tái chế.",
+      "image": "",
+      "coordX": "78.0",
+      "coordY": "46.0"
+    },
+    {
+      "ID": "block-zwilling-fourstar-2-item-5",
+      "title": "THIẾT KẾ KẾT HỢP NHỎ GỌN, LINH HOẠT",
+      "block": "block-zwilling-fourstar-2",
+      "position": 5,
+      "body": "Nhẹ hơn, mỏng hơn và ngắn hơn, lưỡi dao kết hợp sự đa năng của dao đầu bếp cổ điển với độ chính xác đặc trưng của dao Santoku.",
+      "image": "",
+      "coordX": "40.0",
+      "coordY": "44.0"
+    },
+    {
+      "ID": "block-zwilling-tanrei-1-item-1",
+      "title": "ZWILLING TANREI: TẦM CAO MỚI CỦA THÉP DAMASCUS",
+      "block": "block-zwilling-tanrei-1",
+      "position": 1,
+      "body": "ZWILLING TANREI kết hợp độ chính xác của nghệ thuật chế tác dao Nhật Bản cùng chất lượng kỹ thuật chuẩn Đức. Sự giao thoa này tạo nên một tuyệt tác vừa đạt độ sắc bén vượt trội, vừa sở hữu thiết kế Damascus đầy ấn tượng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-tanrei-1-item-2",
+      "title": "CHẾ TÁC TẠI SEKI",
+      "block": "block-zwilling-tanrei-1",
+      "position": 2,
+      "body": "Dao ZWILLING TANREI được chế tác tại Seki – cái nôi danh tiếng của nghề làm dao Nhật Bản – và hoàn thiện thủ công bởi những nghệ nhân bậc thầy.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-tanrei-1-item-3",
+      "title": "VÂN DAMASCUS ĐỘC BẢN",
+      "block": "block-zwilling-tanrei-1",
+      "position": 3,
+      "body": "Hơn 100 lớp thép cao cấp tạo nên hệ vân Damascus tinh xảo, mang đến diện mạo độc bản cho từng chiếc dao ZWILLING TANREI.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-tanrei-1-item-4",
+      "title": "ĐỘ CỨNG VƯỢT TRỘI, SẮC BÉN ẤN TƯỢNG",
+      "block": "block-zwilling-tanrei-1",
+      "position": 4,
+      "body": "Lõi dao ZWILLING TANREI được chế tác từ thép cao cấp với công thức đặc biệt, đạt độ cứng ấn tượng 63 HRC, cho khả năng cắt sắc bén và duy trì độ sắc bền lâu.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-1",
+      "title": "CÁN DAO BA ĐINH TÁN",
+      "block": "block-zwilling-tanrei-3",
+      "position": 1,
+      "body": "Thiết kế cán ba đinh tán thanh lịch mang phong cách truyền thống, được chế tác từ vật liệu Micarta cao cấp.",
+      "image": "",
+      "coordX": "79.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-2",
+      "title": "CẤU TRÚC 101 LỚP THÉP",
+      "block": "block-zwilling-tanrei-3",
+      "position": 2,
+      "body": "Lưỡi dao gồm 101 lớp thép cao cấp, được chế tác tại Seki, Nhật Bản.",
+      "image": "",
+      "coordX": "25.0",
+      "coordY": "55.0"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-3",
+      "title": "GỐI DAO THANH MẢNH",
+      "block": "block-zwilling-tanrei-3",
+      "position": 3,
+      "body": "Gối dao thanh mảnh với đường cong nhẹ cho phép cầm sát lưỡi, mang lại khả năng kiểm soát linh hoạt, đặc biệt phù hợp với các kỹ thuật cắt kiểu Á Đông.",
+      "image": "",
+      "coordX": "55.0",
+      "coordY": "51.0"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-4",
+      "title": "VÂN DAMASCUS ĐỘC BẢN",
+      "block": "block-zwilling-tanrei-3",
+      "position": 4,
+      "body": "Dưới bàn tay của những nghệ nhân bậc thầy, mỗi lưỡi dao hình thành một hệ vân Damascus riêng biệt, không chiếc nào hoàn toàn giống chiếc nào.",
+      "image": "",
+      "coordX": "38.0",
+      "coordY": "46.0"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-5",
+      "title": "LƯỠI DAO CÓ ĐỘ CỨNG VƯỢT TRỘI",
+      "block": "block-zwilling-tanrei-3",
+      "position": 5,
+      "body": "Độ cứng 63 HRC mang lại cho lưỡi dao khả năng cắt sắc bén ấn tượng và duy trì độ sắc bền lâu.",
+      "image": "",
+      "coordX": "32.0",
+      "coordY": "62.0"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-6",
+      "title": "LƯỠI DAO TÔI LẠNH",
+      "block": "block-zwilling-tanrei-3",
+      "position": 6,
+      "body": "Quy trình tôi lạnh độc quyền của ZWILLING giúp lưỡi dao đạt độ linh hoạt tối ưu, đồng thời tăng cường khả năng chống ăn mòn.",
+      "image": "",
+      "coordX": "20.0",
+      "coordY": "42.0"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-7",
+      "title": "ĐỘ SẮC TỐI ƯU",
+      "block": "block-zwilling-tanrei-3",
+      "position": 7,
+      "body": "Lưỡi cắt Razor Edge được hoàn thiện với độ chính xác cao, mang lại khả năng cắt đặc biệt sắc bén và tinh gọn.",
+      "image": "",
+      "coordX": "8.0",
+      "coordY": "65.0"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-1-item-1",
+      "title": "DÒNG DAO MIYABI 5000FCD",
+      "block": "block-miyabi-kaizen-ii-5000fcd-1",
+      "position": 1,
+      "body": "Tinh hoa chế tác dao Nhật Bản, dành cho mọi gian bếp. MIYABI 5000FCD hội tụ những dấu ấn đặc trưng của một lưỡi dao Nhật: hệ vân Damascus cuốn hút, cán dao hoàn thiện tinh tế và độ sắc bén vượt trội. Một lựa chọn lý tưởng cho cả người yêu dao Nhật lâu năm lẫn những ai lần đầu khám phá nghệ thuật chế tác dao đến từ xứ sở mặt trời mọc.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-1-item-2",
+      "title": "VẺ ĐẸP VƯỢT THỜI GIAN",
+      "block": "block-miyabi-kaizen-ii-5000fcd-1",
+      "position": 2,
+      "body": "Mỗi chiếc dao là một tuyệt tác riêng biệt. Hệ vân Damascus tinh xảo thể hiện độ chính xác cùng kỹ nghệ điêu luyện của nghệ thuật chế tác dao truyền thống Nhật Bản.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-1-item-3",
+      "title": "ĐỘ SẮC BÉN VƯỢT TRỘI",
+      "block": "block-miyabi-kaizen-ii-5000fcd-1",
+      "position": 3,
+      "body": "Lưỡi dao được chế tác từ thép FC61 bền chắc, trải qua quy trình tôi lạnh và được mài thủ công tỉ mỉ, mang lại khả năng cắt chính xác cùng độ sắc bén ấn tượng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-1-item-4",
+      "title": "CÁN DAO ĐẦY DẤU ẤN",
+      "block": "block-miyabi-kaizen-ii-5000fcd-1",
+      "position": 4,
+      "body": "Cán dao bằng gỗ Pakka đen tuyền, nổi bật với các vòng trang trí màu đỏ ở hai đầu, tạo nên thiết kế mạnh mẽ và giàu cá tính.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-3-item-1",
+      "title": "LƯỠI DAO TÔI LẠNH",
+      "block": "block-miyabi-kaizen-ii-5000fcd-3",
+      "position": 1,
+      "body": "Quy trình tôi lạnh chuyên biệt giúp tăng cường độ sắc bén, đồng thời mang lại khả năng chống ăn mòn vượt trội.",
+      "image": "",
+      "coordX": "25.0",
+      "coordY": "45.0"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-3-item-2",
+      "title": "CÁN DAO CÔNG THÁI HỌC",
+      "block": "block-miyabi-kaizen-ii-5000fcd-3",
+      "position": 2,
+      "body": "Cán dao bằng gỗ Pakka mang lại cảm giác cầm nắm thoải mái, giúp dao đạt độ cân bằng tối ưu và cho phép kiểm soát chính xác trong từng thao tác.",
+      "image": "",
+      "coordX": "76.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-3-item-3",
+      "title": "CHẤT THÉP BỀN BỈ",
+      "block": "block-miyabi-kaizen-ii-5000fcd-3",
+      "position": 3,
+      "body": "Được chế tác từ thép FC61 có độ cứng 60–62 HRC, lưỡi dao duy trì độ sắc bền lâu và sở hữu độ bền vượt trội.",
+      "image": "",
+      "coordX": "40.0",
+      "coordY": "50.0"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-3-item-4",
+      "title": "LƯỠI MÀI HONBAZUKE",
+      "block": "block-miyabi-kaizen-ii-5000fcd-3",
+      "position": 4,
+      "body": "Lưỡi dao được các nghệ nhân lành nghề tại Seki, Nhật Bản mài và đánh bóng theo kỹ thuật Honbazuke, mang lại độ chính xác cao trong từng đường cắt.",
+      "image": "",
+      "coordX": "10.0",
+      "coordY": "58.0"
+    },
+    {
+      "ID": "block-zwilling-gourmet-1-item-1",
+      "title": "ZWILLING GOURMET: LỰA CHỌN TIN CẬY CHO GIAN BẾP HẰNG NGÀY",
+      "block": "block-zwilling-gourmet-1",
+      "position": 1,
+      "body": "Sẵn sàng đồng hành trong mọi công việc bếp núc, dao ZWILLING GOURMET kết hợp độ sắc bén bền bỉ cùng trọng lượng nhẹ linh hoạt. Lưỡi dao được tối ưu hóa cho việc cắt thái nhẹ nhàng, chính xác và thoải mái, lý tưởng cho những người yêu thích nấu nướng mỗi ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-gourmet-1-item-2",
+      "title": "THIẾT KẾ VƯỢT THỜI GIAN",
+      "block": "block-zwilling-gourmet-1",
+      "position": 2,
+      "body": "Cán dao ba đinh tán cổ điển kết hợp hài hòa nét đẹp truyền thống với cảm giác cầm nắm thoải mái, phù hợp với gian bếp hiện đại.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-gourmet-1-item-3",
+      "title": "LƯỠI DAO TÔI LẠNH",
+      "block": "block-zwilling-gourmet-1",
+      "position": 3,
+      "body": "Lưỡi dao FRIODUR trải qua quy trình tôi lạnh chuyên biệt, vừa đạt độ cứng cao vừa duy trì độ linh hoạt và khả năng chống ăn mòn vượt trội.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-gourmet-1-item-4",
+      "title": "CÔNG THỨC THÉP ĐỘC QUYỀN",
+      "block": "block-zwilling-gourmet-1",
+      "position": 4,
+      "body": "Công thức thép chuyên biệt được sản xuất độc quyền cho ZWILLING, tạo nên nền tảng lý tưởng cho những lưỡi dao chắc chắn, bền bỉ và có hiệu suất ổn định theo thời gian.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-gourmet-3-item-1",
+      "title": "CÁN DAO BA ĐINH TÁN",
+      "block": "block-zwilling-gourmet-3",
+      "position": 1,
+      "body": "Thiết kế cán ba đinh tán thanh lịch vượt thời gian, mang lại cảm giác cầm nắm thoải mái và chắc chắn.",
+      "image": "",
+      "coordX": "78.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-zwilling-gourmet-3-item-2",
+      "title": "CÔNG THỨC THÉP ĐỘC QUYỀN",
+      "block": "block-zwilling-gourmet-3",
+      "position": 2,
+      "body": "Công thức thép chuyên biệt được sản xuất độc quyền cho ZWILLING.",
+      "image": "",
+      "coordX": "38.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-zwilling-gourmet-3-item-3",
+      "title": "LƯỠI DAO ĐƯỢC TÔI LẠNH",
+      "block": "block-zwilling-gourmet-3",
+      "position": 3,
+      "body": "Quy trình tôi lạnh giúp lưỡi dao đạt độ linh hoạt tối ưu, đồng thời tăng cường khả năng chống ăn mòn.",
+      "image": "",
+      "coordX": "22.0",
+      "coordY": "44.0"
+    },
+    {
+      "ID": "block-zwilling-gourmet-3-item-4",
+      "title": "ĐỘ SẮC TỐI ƯU",
+      "block": "block-zwilling-gourmet-3",
+      "position": 4,
+      "body": "Lưỡi cắt dạng chữ V được hoàn thiện với độ chính xác cao, mang lại khả năng cắt sắc bén và hiệu suất ổn định.",
+      "image": "",
+      "coordX": "9.0",
+      "coordY": "62.0"
+    },
+    {
+      "ID": "block-zwilling-now-s-block-dao-keo-1-item-1",
+      "title": "BỘ SƯU TẬP DAO ĐA SẮC MÀU NHẤT CỦA ZWILLING",
+      "block": "block-zwilling-now-s-block-dao-keo-1",
+      "position": 1,
+      "body": "ZWILLING NOW S nổi bật với thiết kế đồng điệu giữa lưỡi và cán dao. Từ sắc đỏ rực rỡ đến xanh lá trầm và xanh dương sâu, mỗi phối màu đều lấy cảm hứng từ vẻ tươi mới của rau củ quả.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-now-s-block-dao-keo-1-item-2",
+      "title": "LƯỠI DAO BỀN BỈ",
+      "block": "block-zwilling-now-s-block-dao-keo-1",
+      "position": 2,
+      "body": "Lưỡi dao duy trì độ sắc bền lâu, chống ăn mòn hiệu quả và có độ đàn hồi tốt, đáp ứng linh hoạt các thao tác trong gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-now-s-block-dao-keo-1-item-3",
+      "title": "CÁN DAO NỔI BẬT SẮC MÀU",
+      "block": "block-zwilling-now-s-block-dao-keo-1",
+      "position": 3,
+      "body": "Thiết kế cán hai tông màu tạo điểm nhấn hiện đại, đồng thời mang lại cảm giác cầm nắm thoải mái và khả năng điều khiển linh hoạt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-now-s-block-dao-keo-1-item-4",
+      "title": "NHẸ VÀ CÂN BẰNG",
+      "block": "block-zwilling-now-s-block-dao-keo-1",
+      "position": 4,
+      "body": "Lưỡi dao được dập chính xác để giảm trọng lượng nhưng vẫn bảo đảm độ chắc chắn và hiệu suất cần thiết trong quá trình sử dụng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-twin-pollux-1-item-1",
+      "title": "ZWILLING TWIN POLLUX",
+      "block": "block-zwilling-twin-pollux-1",
+      "position": 1,
+      "body": "Dòng dao TWIN Pollux là lựa chọn lý tưởng cho những ai yêu thích thiết kế ba đinh tán cổ điển cùng hiệu suất đáng tin cậy trong gian bếp hằng ngày. Lưỡi dao FRIODUR® trải qua quy trình tôi lạnh độc quyền, giúp tăng độ bền, khả năng chống ăn mòn và duy trì độ sắc lâu dài. Kết hợp cùng công thức thép đặc biệt của ZWILLING, mỗi sản phẩm mang đến sự cứng cáp, linh hoạt và chất lượng vượt trội.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-twin-pollux-1-item-2",
+      "title": "NHỎ GỌN, LINH HOẠT",
+      "block": "block-zwilling-twin-pollux-1",
+      "position": 2,
+      "body": "Lưỡi dao FRIODUR® tôi lạnh mang lại đường cắt chính xác, đồng thời thiết kế nhỏ gọn giúp thao tác nhẹ nhàng và thoải mái.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-twin-pollux-1-item-3",
+      "title": "SẮC BÉN TRONG TỪNG THAO TÁC",
+      "block": "block-zwilling-twin-pollux-1",
+      "position": 3,
+      "body": "Từ rau củ, trái cây đến các loại thảo mộc, lưỡi dao nhỏ gọn này mang lại độ sắc bén và khả năng kiểm soát cần thiết cho từng đường cắt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-twin-pollux-1-item-4",
+      "title": "CẦM NẮM THOẢI MÁI",
+      "block": "block-zwilling-twin-pollux-1",
+      "position": 4,
+      "body": "Thiết kế nhỏ gọn và cân bằng tối ưu giúp dao nằm chắc chắn, vừa vặn trong tay, mang lại cảm giác thoải mái và an toàn khi sử dụng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-dang-tron-1-item-1",
+      "title": "NỒI GANG STAUB LA COCOTTE",
+      "block": "block-staub-dang-tron-1",
+      "position": 1,
+      "body": "Nồi gang đã được tin dùng qua nhiều thế kỷ nhờ khả năng giữ và phân bổ nhiệt vượt trội. STAUB phát huy ưu điểm tự nhiên của chất liệu gang với thiết kế gai trên nắp giúp hơi ẩm tuần hoàn liên tục bên trong nồi, mang đến món ăn mềm mọng và đậm vị. Khả năng giữ nhiệt hiệu quả còn giúp món ăn duy trì độ nóng hoặc lạnh trong nhiều giờ, phù hợp để nấu và phục vụ trực tiếp trên bàn ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-dang-tron-1-item-2",
+      "title": "NẤU CHẬM, GANG TRÁNG MEN GIỮ NHIỆT VƯỢT TRỘI",
+      "block": "block-staub-dang-tron-1",
+      "position": 2,
+      "body": "Được sản xuất tại Pháp, nồi gang STAUB với lớp men đen mờ hỗ trợ giữ và phân bổ nhiệt hiệu quả, lý tưởng cho các món kho, om, hầm, quay và nướng, giúp món ăn chín mềm và đậm đà.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-dang-tron-1-item-3",
+      "title": "THIẾT KẾ THÔNG MINH, TRỌN VỊ TỰ NHIÊN",
+      "block": "block-staub-dang-tron-1",
+      "position": 3,
+      "body": "Nắp nồi kín khít với hệ thống gai trên nắp giúp hơi nước ngưng tụ và phân bổ đều trở lại thực phẩm, duy trì độ ẩm để món ăn thêm mềm mọng. Tay cầm rộng, chắc chắn giúp dễ dàng cầm nắm và di chuyển, kể cả khi đeo găng tay.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-dang-tron-1-item-4",
+      "title": "NẤU NƯỚNG LINH HOẠT, DỄ DÀNG CHĂM SÓC",
+      "block": "block-staub-dang-tron-1",
+      "position": 4,
+      "body": "Tương thích với mọi loại bếp, bao gồm bếp từ, đồng thời có thể sử dụng trong lò nướng và trên vỉ nướng ở nhiệt độ lên đến 260°C. Thiết kế tinh tế cho phép phục vụ món ăn trực tiếp từ nồi lên bàn ăn. Lớp men không cần tôi dầu trước khi sử dụng và dễ dàng vệ sinh bằng tay hoặc máy rửa chén.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-dang-tron-2-item-1",
+      "title": "NẮP NỒI CÔNG NGHỆ AROMA RAIN",
+      "block": "block-staub-dang-tron-2",
+      "position": 1,
+      "body": "Các gai nhỏ phân bố đều dưới nắp liên tục đưa hơi ẩm ngưng tụ trở lại thực phẩm, giúp món ăn chín mềm, mọng nước và tròn vị.",
+      "image": "",
+      "coordX": "49.0",
+      "coordY": "28.0"
+    },
+    {
+      "ID": "block-staub-dang-tron-2-item-2",
+      "title": "GANG TRÁNG MEN",
+      "block": "block-staub-dang-tron-2",
+      "position": 2,
+      "body": "Khả năng giữ và phân bổ nhiệt vượt trội, hỗ trợ tạo màu áp chảo đẹp mắt. Không cần tôi dầu trước khi sử dụng.",
+      "image": "",
+      "coordX": "45.0",
+      "coordY": "60.0"
+    },
+    {
+      "ID": "block-staub-dang-tron-2-item-3",
+      "title": "HAI TAY CẦM CHẮC CHẮN",
+      "block": "block-staub-dang-tron-2",
+      "position": 3,
+      "body": "Thiết kế tay cầm thoải mái giúp nâng nhấc và di chuyển nồi thuận tiện, an toàn hơn trong quá trình sử dụng.",
+      "image": "",
+      "coordX": "82.0",
+      "coordY": "45.0"
+    },
+    {
+      "ID": "block-staub-dang-tron-2-item-4",
+      "title": "TƯƠNG THÍCH BẾP TỪ",
+      "block": "block-staub-dang-tron-2",
+      "position": 4,
+      "body": "Đáy nồi tráng men phẳng, nhẵn, sử dụng được trên mọi loại bếp, bao gồm cả bếp từ.",
+      "image": "",
+      "coordX": "50.0",
+      "coordY": "86.0"
+    },
+    {
+      "ID": "block-staub-pumpkin-1-item-1",
+      "title": "THIẾT KẾ LẤY CẢM HỨNG TỪ CỔ TÍCH",
+      "block": "block-staub-pumpkin-1",
+      "position": 1,
+      "body": "Nồi gang STAUB hình bí ngô mang nét duyên dáng đầy cuốn hút lên bàn ăn. Từ những món thịt nấu chậm, món hầm đậm vị đến bánh mì nướng thơm lừng, thiết kế được tạo tác tinh xảo này biến mỗi bữa ăn thành một trải nghiệm đặc biệt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-pumpkin-1-item-2",
+      "title": "GANG TRÁNG MEN",
+      "block": "block-staub-pumpkin-1",
+      "position": 2,
+      "body": "Lớp men đen mờ có kết cấu đặc trưng không cần tôi dầu, hỗ trợ tạo màu áp chảo đẹp mắt. Chất liệu gang giữ nhiệt vượt trội và phân bổ nhiệt đồng đều trong suốt quá trình nấu.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-pumpkin-1-item-3",
+      "title": "TỪ BẾP NẤU ĐẾN BÀN ĂN",
+      "block": "block-staub-pumpkin-1",
+      "position": 3,
+      "body": "Hai tay cầm chắc chắn giúp thao tác và di chuyển nồi thuận tiện, kể cả khi sử dụng găng tay cách nhiệt—dễ dàng đưa món ăn từ lò nướng lên bàn tiệc.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-pumpkin-1-item-4",
+      "title": "DỄ DÀNG VỆ SINH",
+      "block": "block-staub-pumpkin-1",
+      "position": 4,
+      "body": "Khác với sản phẩm gang truyền thống, nồi gang tráng men STAUB không cần tôi dầu trước khi sử dụng và có thể vệ sinh bằng máy rửa chén.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-pumpkin-2-item-1",
+      "title": "MỘT THIẾT KẾ, MUÔN VÀN MÓN NGON",
+      "block": "block-staub-pumpkin-2",
+      "position": 1,
+      "body": "Không gian nấu rộng rãi, linh hoạt cho nhiều phương pháp chế biến—từ nướng, ninh, om đến phục vụ món ăn trực tiếp trên bàn.",
+      "image": "",
+      "coordX": "50.0",
+      "coordY": "25.0"
+    },
+    {
+      "ID": "block-staub-pumpkin-2-item-2",
+      "title": "GANG TRÁNG MEN",
+      "block": "block-staub-pumpkin-2",
+      "position": 2,
+      "body": "Khả năng giữ và phân bổ nhiệt vượt trội, hỗ trợ tạo màu áp chảo đẹp mắt. Không cần tôi dầu trước khi sử dụng.",
+      "image": "",
+      "coordX": "46.0",
+      "coordY": "62.0"
+    },
+    {
+      "ID": "block-staub-pumpkin-2-item-3",
+      "title": "TỪ BẾP NẤU ĐẾN BÀN ĂN",
+      "block": "block-staub-pumpkin-2",
+      "position": 3,
+      "body": "Tương thích với mọi loại bếp, bao gồm bếp từ; sử dụng an toàn trong lò nướng ở nhiệt độ lên đến 260°C.",
+      "image": "",
+      "coordX": "84.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-1-item-1",
+      "title": "MỘT CHIẾC CHẢO, VẠN CÁCH NẤU",
+      "block": "block-chao-gang-co-mieng-rot-1",
+      "position": 1,
+      "body": "Nâng tầm những bữa ăn hằng ngày với chảo gang tráng men STAUB. Được tối ưu cho các kỹ thuật nấu ở nhiệt độ cao, chiếc chảo đa năng này vừa bền bỉ, dễ sử dụng, vừa thuận tiện khi vệ sinh—một lựa chọn thiết thực cho mọi gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-1-item-2",
+      "title": "GANG TRÁNG MEN",
+      "block": "block-chao-gang-co-mieng-rot-1",
+      "position": 2,
+      "body": "Bề mặt men đen mờ có kết cấu đặc trưng không cần tôi dầu, hỗ trợ tạo màu áp chảo đẹp mắt. Chất liệu gang giữ nhiệt vượt trội và phân bổ nhiệt đồng đều trong suốt quá trình nấu.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-1-item-3",
+      "title": "NẤU NƯỚNG THẬT DỄ DÀNG",
+      "block": "block-chao-gang-co-mieng-rot-1",
+      "position": 3,
+      "body": "Tay cầm dài kết hợp cùng tay cầm phụ giúp nâng nhấc và di chuyển chảo thuận tiện. Hai miệng rót bên hông cho phép rót nước xốt hoặc chất lỏng gọn gàng, hạn chế nhỏ giọt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-1-item-4",
+      "title": "DỄ DÀNG VỆ SINH",
+      "block": "block-chao-gang-co-mieng-rot-1",
+      "position": 4,
+      "body": "Khác với gang truyền thống, gang tráng men STAUB không cần tôi dầu. Có thể vệ sinh bằng tay với xà phòng và nước hoặc làm sạch trong máy rửa chén.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-2-item-1",
+      "title": "KẾT HỢP ƯU ĐIỂM CỦA CHẢO XÀO VÀ CHẢO RÁN",
+      "block": "block-chao-gang-co-mieng-rot-2",
+      "position": 1,
+      "body": "Thiết kế đa năng đáp ứng linh hoạt nhiều phương pháp chế biến trong cùng một chiếc chảo.",
+      "image": "",
+      "coordX": "28.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-2-item-2",
+      "title": "DUNG TÍCH RỘNG RÃI",
+      "block": "block-chao-gang-co-mieng-rot-2",
+      "position": 2,
+      "body": "Phù hợp để áp chảo, xào, nướng trong lò, nướng lửa trên và chiên rán.",
+      "image": "",
+      "coordX": "50.0",
+      "coordY": "55.0"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-2-item-3",
+      "title": "GANG TRÁNG MEN",
+      "block": "block-chao-gang-co-mieng-rot-2",
+      "position": 3,
+      "body": "Khả năng giữ và phân bổ nhiệt vượt trội giúp thực phẩm tạo màu đẹp mắt. Không cần tôi dầu trước khi sử dụng.",
+      "image": "",
+      "coordX": "60.0",
+      "coordY": "68.0"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-2-item-4",
+      "title": "THÀNH CHẢO CAO, THẲNG",
+      "block": "block-chao-gang-co-mieng-rot-2",
+      "position": 4,
+      "body": "Giúp hạn chế dầu mỡ và thực phẩm bắn ra ngoài trong quá trình nấu trên bếp.",
+      "image": "",
+      "coordX": "40.0",
+      "coordY": "35.0"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-2-item-5",
+      "title": "TƯƠNG THÍCH BẾP TỪ",
+      "block": "block-chao-gang-co-mieng-rot-2",
+      "position": 5,
+      "body": "Đáy tráng men phẳng, nhẵn, sử dụng được trên mọi loại bếp, bao gồm cả bếp từ.",
+      "image": "",
+      "coordX": "85.0",
+      "coordY": "42.0"
+    },
+    {
+      "ID": "block-chao-gang-staub-american-grill-1-item-1",
+      "title": "MỘT CHIẾC CHẢO, VẠN CÁCH NẤU",
+      "block": "block-chao-gang-staub-american-grill-1",
+      "position": 1,
+      "body": "Nâng tầm những bữa ăn hằng ngày với chảo gang tráng men STAUB. Được tối ưu cho các kỹ thuật nấu ở nhiệt độ cao, chiếc chảo đa năng này vừa bền bỉ, dễ sử dụng, vừa thuận tiện khi vệ sinh—một lựa chọn thiết thực cho mọi gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-chao-gang-staub-american-grill-1-item-2",
+      "title": "Có thể sử dụng ở mọi loại bếp",
+      "block": "block-chao-gang-staub-american-grill-1",
+      "position": 2,
+      "body": "Chảo nướng chắc chắn của STAUB phù hợp với mọi loại bếp, bao gồm cả bếp từ, và có thể sử dụng trong lò nướng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-chao-gang-staub-american-grill-1-item-3",
+      "title": "Bền bỉ vượt thời gian",
+      "block": "block-chao-gang-staub-american-grill-1",
+      "position": 3,
+      "body": "Chảo gang STAUB cũng giống như một chai vang rượu vang ngon – càng sử dụng lâu, sản phẩm càng trở nên tốt hơn theo thời gian.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-chao-gang-staub-american-grill-1-item-4",
+      "title": "Vân nướng đặc trưng",
+      "block": "block-chao-gang-staub-american-grill-1",
+      "position": 4,
+      "body": "Các đường vân trên bề mặt chảo nướng tạo nên thiết kế đặc trưng, mang lại hiệu ứng nướng BBQ đẹp mắt cho món ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1-item-1",
+      "title": "LÝ TƯỞNG CHO KHẨU PHẦN CÁ NHÂN",
+      "block": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1",
+      "position": 1,
+      "body": "Thiết kế nhỏ gọn, lý tưởng để chế biến và phục vụ các khẩu phần cá nhân, đến món ăn kèm cho một hoặc hai người.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1-item-2",
+      "title": "LINH HOẠT TỪ BẾP ĐẾN LÒ NƯỚNG",
+      "block": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1",
+      "position": 2,
+      "body": "Khay gang có thể dùng để áp chảo, làm vàng thực phẩm trực tiếp trên bếp trước khi chuyển thẳng vào lò nướng, giúp hạn chế việc phải chuyển món ăn sang dụng cụ khác.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1-item-3",
+      "title": "PHÂN BỔ NHIỆT ĐỀU, MÓN ĂN TRỌN VỊ",
+      "block": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1",
+      "position": 3,
+      "body": "Gang bền chắc giúp phân bổ nhiệt đều và nhẹ nhàng trong suốt quá trình nấu, lý tưởng cho các món gratin và nhiều món ăn khác, đồng thời góp phần giữ lại dưỡng chất tự nhiên từ nguyên liệu.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1-item-4",
+      "title": "ĐA DỤNG, DỄ CHĂM SÓC",
+      "block": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1",
+      "position": 4,
+      "body": "Phù hợp với mọi loại bếp, bao gồm bếp từ, đồng thời có thể sử dụng trong lò nướng và trên vỉ nướng. Bề mặt dễ chăm sóc, thuận tiện vệ sinh, trong khi thiết kế có thể xếp chồng giúp tiết kiệm không gian lưu trữ.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-num-noi-gang-staub-1-item-1",
+      "title": "CÁ NHÂN HÓA CHIẾC NỒI CỦA BẠN",
+      "block": "block-num-noi-gang-staub-1",
+      "position": 1,
+      "body": "Các núm trang trí với kiểu dáng điêu khắc độc đáo mang đến nét cá tính cho nồi STAUB, giúp bạn tạo nên diện mạo riêng phù hợp với phong cách của mình.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-num-noi-gang-staub-1-item-2",
+      "title": "THIẾT KẾ ĐỘC ĐÁO",
+      "block": "block-num-noi-gang-staub-1",
+      "position": 2,
+      "body": "Từ những hình dáng động vật đáng yêu đến các thiết kế thanh lịch, mỗi chiếc núm mang đến một điểm nhấn tinh tế, làm nổi bật vẻ đẹp riêng của Cocotte.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-num-noi-gang-staub-1-item-3",
+      "title": "THÉP KHÔNG GỈ BỀN BỈ",
+      "block": "block-num-noi-gang-staub-1",
+      "position": 3,
+      "body": "Được chế tác từ thép không gỉ, núm nồi vừa tạo điểm nhấn cho nồi gang STAUB vừa đáp ứng nhu cầu sử dụng hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-num-noi-gang-staub-1-item-4",
+      "title": "AN TOÀN TRONG LÒ NƯỚNG, DỄ DÀNG VỆ SINH",
+      "block": "block-num-noi-gang-staub-1",
+      "position": 4,
+      "body": "Chịu nhiệt đến 260°C và an toàn với máy rửa chén, núm nồi mang đến sự tiện lợi trong quá trình nấu nướng và vệ sinh hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-milano-1-item-1",
+      "title": "ZWILLING MILANO: ĐỈNH CAO THIẾT KẾ Ý",
+      "block": "block-milano-1",
+      "position": 1,
+      "body": "Nước Ý không chỉ nổi tiếng với phong cách sống “la dolce vita” mà còn là cái nôi của thiết kế hiện đại. Sự giao thoa độc đáo giữa tinh thần tối giản, vẻ thanh lịch và công năng vượt trội đã định hình những thiết kế Ý được yêu thích trên toàn thế giới.\n\nTinh thần ấy được thể hiện trọn vẹn trong ZWILLING Milano—dòng nồi chảo do Matteo Thun & Antonio Rodriguez thiết kế. Từ nồi đến chảo, mỗi sản phẩm đều mang phong cách sống Ý đầy tinh tế, góp phần truyền cảm hứng và nâng tầm không gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-milano-1-item-2",
+      "title": "THIẾT KẾ TẠI Ý",
+      "block": "block-milano-1",
+      "position": 2,
+      "body": "Được sản xuất tại Ý và tạo hình bởi bộ đôi nhà thiết kế danh tiếng Matteo Thun & Antonio Rodriguez, dòng nồi chảo ZWILLING Milano mang tinh thần thiết kế Milan thanh lịch vào không gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-milano-1-item-3",
+      "title": "HIỆU SUẤT NẤU NƯỚNG VƯỢT TRỘI",
+      "block": "block-milano-1",
+      "position": 3,
+      "body": "Thân nhôm cao cấp truyền nhiệt nhanh và đồng đều đến tận thành nồi, chảo, mang lại hiệu quả nấu ổn định trong mỗi lần sử dụng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-milano-1-item-4",
+      "title": "LỚP PHỦ THẾ HỆ MỚI",
+      "block": "block-milano-1",
+      "position": 4,
+      "body": "Lớp chống dính ceramic CERAFORCE TITANIUM được sản xuất tại Ý, không chứa PFAS, có độ bền cao và khả năng chống trầy xước vượt trội.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-milano-3-item-1",
+      "title": "NẮP KÍNH CAO CẤP",
+      "block": "block-milano-3",
+      "position": 1,
+      "body": "Nắp kính vừa khít giúp dễ dàng quan sát món ăn trong quá trình nấu, đồng thời giữ nhiệt hiệu quả bên trong nồi.",
+      "image": "",
+      "coordX": "50.0",
+      "coordY": "26.0"
+    },
+    {
+      "ID": "block-milano-3-item-2",
+      "title": "SẮC MÀU VƯỢT THỜI GIAN",
+      "block": "block-milano-3",
+      "position": 2,
+      "body": "ZWILLING Milano có nhiều lựa chọn màu sắc nổi bật, đưa nét thanh lịch đặc trưng của thiết kế Milan vào gian bếp. Lớp phủ màu bền chắc và an toàn khi vệ sinh bằng máy rửa chén.",
+      "image": "",
+      "coordX": "36.0",
+      "coordY": "62.0"
+    },
+    {
+      "ID": "block-milano-3-item-3",
+      "title": "TAY CẦM TÁN ĐINH CHẮC CHẮN",
+      "block": "block-milano-3",
+      "position": 3,
+      "body": "Tay cầm với sắc màu nổi bật hoàn thiện thiết kế hiện đại của Matteo Thun & Antonio Rodriguez. Kết cấu tán đinh chắc chắn vào thân nồi, chảo mang lại độ ổn định và bền bỉ khi sử dụng.",
+      "image": "",
+      "coordX": "82.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-milano-3-item-4",
+      "title": "LỚP CHỐNG DÍNH CERAMIC CERAFORCE TITANIUM",
+      "block": "block-milano-3",
+      "position": 4,
+      "body": "Tất cả nồi và chảo trong dòng sản phẩm đều được phủ lớp chống dính ceramic bền bỉ, không chứa PFAS, mang lại hiệu suất nấu nướng vượt trội.",
+      "image": "",
+      "coordX": "55.0",
+      "coordY": "54.0"
+    },
+    {
+      "ID": "block-madura-1-item-1",
+      "title": "ZWILLING MADURA PLUS",
+      "block": "block-madura-1",
+      "position": 1,
+      "body": "Dòng chảo ZWILLING Madura Plus nâng tầm trải nghiệm chiên rán với lớp chống dính gốm CERAFORCE TITANIUM thế hệ mới. Không chứa PFAS, lớp phủ mang lại hiệu quả chống dính vượt trội và độ bền cao nhờ được gia cường bằng titanium. Thân chảo nhôm nguyên khối giúp truyền nhiệt nhanh và phân bổ nhiệt đồng đều trên toàn bộ bề mặt, mang đến kết quả chế biến tối ưu một cách dễ dàng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-madura-1-item-2",
+      "title": "LỚP CHỐNG DÍNH BỀN BỈ",
+      "block": "block-madura-1",
+      "position": 2,
+      "body": "Lớp chống dính gốm CERAFORCE TITANIUM không chứa PFAS. Được gia cường bằng lớp lót titanium, bề mặt có độ bền cao, khả năng chống dính vượt trội và hạn chế trầy xước hiệu quả.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-madura-1-item-3",
+      "title": "TAY CẦM CÁCH NHIỆT",
+      "block": "block-madura-1",
+      "position": 3,
+      "body": "Tay cầm công thái học hạn chế truyền nhiệt khi chiên rán, cho cảm giác cầm nắm thoải mái, chắc chắn và an toàn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-madura-1-item-4",
+      "title": "VÀNH RÓT TIỆN DỤNG",
+      "block": "block-madura-1",
+      "position": 4,
+      "body": "Vành rót được thiết kế để rót nước xốt và các chất lỏng gọn gàng, chính xác, hạn chế nhỏ giọt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-madura-3-item-1",
+      "title": "LỚP CHỐNG DÍNH CERAFORCE TITANIUM",
+      "block": "block-madura-3",
+      "position": 1,
+      "body": "Lớp chống dính gốm siêu bền có tuổi thọ cao gấp 5 lần so với thế hệ lớp phủ gốm trước đây.",
+      "image": "",
+      "coordX": "45.0",
+      "coordY": "55.0"
+    },
+    {
+      "ID": "block-madura-3-item-2",
+      "title": "THÂN NHÔM NGUYÊN KHỐI",
+      "block": "block-madura-3",
+      "position": 2,
+      "body": "Thân chảo bằng nhôm nguyên khối dẫn nhiệt nhanh, hiệu quả và phân bổ nhiệt đồng đều, giúp thực phẩm chín đẹp.",
+      "image": "",
+      "coordX": "32.0",
+      "coordY": "65.0"
+    },
+    {
+      "ID": "block-madura-3-item-3",
+      "title": "TAY CẦM CÁCH NHIỆT",
+      "block": "block-madura-3",
+      "position": 3,
+      "body": "Tay cầm bằng nhựa hạn chế nóng lên trong quá trình chiên rán, duy trì cảm giác mát và thoải mái khi cầm.",
+      "image": "",
+      "coordX": "82.0",
+      "coordY": "44.0"
+    },
+    {
+      "ID": "block-madura-3-item-4",
+      "title": "VÀNH RÓT CHỐNG NHỎ GIỌT",
+      "block": "block-madura-3",
+      "position": 4,
+      "body": "Thiết kế chuyên biệt giúp rót nước xốt và các chất lỏng gọn gàng, hạn chế dây đổ.",
+      "image": "",
+      "coordX": "24.0",
+      "coordY": "40.0"
+    },
+    {
+      "ID": "block-madura-3-item-5",
+      "title": "SẢN XUẤT TẠI Ý",
+      "block": "block-madura-3",
+      "position": 5,
+      "body": "Được sản xuất tại Ý theo những tiêu chuẩn chất lượng khắt khe.",
+      "image": "",
+      "coordX": "52.0",
+      "coordY": "75.0"
+    },
+    {
+      "ID": "block-zwilling-pro-ii-1-item-1",
+      "title": "HIỆU SUẤT CHUYÊN NGHIỆP. LINH HOẠT MỖI NGÀY.",
+      "block": "block-zwilling-pro-ii-1",
+      "position": 1,
+      "body": "Dòng sản phẩm ZWILLING PRO II kết hợp chất liệu cao cấp cùng thiết kế được chăm chút kỹ lưỡng, mang lại sự chủ động và tự tin trong gian bếp. Vật liệu bền bỉ, khả năng phân bổ nhiệt đồng đều và kiểm soát chính xác giúp bạn dễ dàng chuẩn bị mọi món ăn—từ bữa cơm gia đình hằng ngày đến những thực đơn dành cho dịp đặc biệt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-pro-ii-1-item-2",
+      "title": "THÉP KHÔNG GỈ 18/10 CAO CẤP",
+      "block": "block-zwilling-pro-ii-1",
+      "position": 2,
+      "body": "Được chế tác từ thép không gỉ 18/10 bền bỉ, ZWILLING Pro II có khả năng chống ăn mòn hoàn hảo, duy trì vẻ đẹp sáng bóng và độ bền lâu dài.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-pro-ii-1-item-3",
+      "title": "ĐÁY SIGMA CLASSIC+ PHÂN BỔ NHIỆT ĐỀU",
+      "block": "block-zwilling-pro-ii-1",
+      "position": 3,
+      "body": "Đáy đa lớp SIGMA Classic+ với lõi nhôm giúp làm nóng nhanh và phân bổ nhiệt đồng đều, mang đến hiệu quả nấu ổn định và nhất quán.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-pro-ii-1-item-4",
+      "title": "THIẾT KẾ TIỆN DỤNG CHO MỖI NGÀY",
+      "block": "block-zwilling-pro-ii-1",
+      "position": 4,
+      "body": "Tương thích với mọi loại bếp, bao gồm bếp từ, và có thể sử dụng trong lò nướng. Thiết kế tích hợp vạch chia dung tích và viền rót hạn chế nhỏ giọt giúp thao tác nấu nướng thuận tiện và chính xác hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-spirit-1-item-1",
+      "title": "THẨM MỸ TINH TẾ, HIỆU SUẤT CHUYÊN NGHIỆP",
+      "block": "block-zwilling-spirit-1",
+      "position": 1,
+      "body": "Dòng nồi chảo ZWILLING Spirit sở hữu kết cấu thép không gỉ ba lớp toàn thân, đáp ứng trọn vẹn những yêu cầu thiết yếu trong gian bếp: làm nóng nhanh và đồng đều, tay cầm hạn chế hấp thụ nhiệt, vành rót hạn chế nhỏ giọt cùng bề mặt dễ dàng vệ sinh.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-spirit-1-item-2",
+      "title": "BỘ 10 MÓN ĐA DỤNG",
+      "block": "block-zwilling-spirit-1",
+      "position": 2,
+      "body": "Bộ 10 món được lựa chọn toàn diện, đáp ứng đa dạng công thức và nhu cầu nấu nướng hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-spirit-1-item-3",
+      "title": "THÉP KHÔNG GỈ NGUYÊN BẢN, KẾT CẤU BA LỚP TOÀN THÂN",
+      "block": "block-zwilling-spirit-1",
+      "position": 3,
+      "body": "Bề mặt thép không gỉ bền bỉ, không phủ lớp chống dính, được thiết kế để sử dụng lâu dài và mang lại trải nghiệm nấu nướng sạch, an toàn. Kết cấu ba lớp toàn thân với lõi nhôm giúp làm nóng nhanh và phân bổ nhiệt đồng đều trên toàn bộ dụng cụ nấu.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-spirit-1-item-4",
+      "title": "TIỆN DỤNG MỖI NGÀY",
+      "block": "block-zwilling-spirit-1",
+      "position": 4,
+      "body": "Tay cầm chữ V hạn chế hấp thụ nhiệt, tích hợp lỗ treo giúp cầm nắm thuận tiện và bảo quản gọn gàng. Sản phẩm tương thích với mọi loại bếp, kể cả bếp từ, an toàn trong lò nướng đến 260°C và có thể vệ sinh bằng máy rửa chén.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dinnerware-1-item-1",
+      "title": "THIẾT KẾ STAUB VƯỢT THỜI GIAN",
+      "block": "block-dinnerware-1",
+      "position": 1,
+      "body": "Lấy cảm hứng từ phong cách đặc trưng của STAUB, mỗi sản phẩm kết hợp kiểu dáng tinh tế cùng những gam màu vượt thời gian, mang đến vẻ thanh lịch cho mọi bàn ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dinnerware-1-item-2",
+      "title": "GỐM SỨ BỀN BỈ",
+      "block": "block-dinnerware-1",
+      "position": 2,
+      "body": "Được chế tác từ gốm sứ chất lượng cao, đồ bàn ăn STAUB bền bỉ theo thời gian, đồng thời duy trì vẻ đẹp tinh tế trong quá trình sử dụng hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dinnerware-1-item-3",
+      "title": "LINH HOẠT CHO MỌI BỮA ĂN",
+      "block": "block-dinnerware-1",
+      "position": 3,
+      "body": "Từ những bữa ăn thường ngày đến những dịp đặc biệt, bộ sưu tập đa dạng đáp ứng nhiều nhu cầu phục vụ, từ món khai vị, món chính đến tráng miệng và đồ uống.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dinnerware-1-item-4",
+      "title": "DỄ DÀNG VỆ SINH MỖI NGÀY",
+      "block": "block-dinnerware-1",
+      "position": 4,
+      "body": "Được thiết kế cho sự tiện dụng hằng ngày, dụng cụ bàn ăn gốm sứ STAUB dễ dàng vệ sinh, phù hợp với nhịp sống và nhu cầu sử dụng hiện đại.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ca-chua-1-item-1",
+      "title": "CẢM HỨNG TỪ VẺ ĐẸP THIÊN NHIÊN",
+      "block": "block-au-su-staub-ca-chua-1",
+      "position": 1,
+      "body": "Lấy cảm hứng từ hình dáng quả cà chua chín mọng, STAUB Tomato mang đến nét duyên dáng và độc đáo cho căn bếp. Thiết kế đặc trưng này lý tưởng để chế biến và phục vụ nhiều món ăn quen thuộc, từ các món sốt cà chua đến các món canh và hầm. Thiết kế độc đáo này mang nét duyên dáng của khu vườn mùa hè vào mỗi trải nghiệm nấu nướng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ca-chua-1-item-2",
+      "title": "GỐM SỨ ĐA DỤNG",
+      "block": "block-au-su-staub-ca-chua-1",
+      "position": 2,
+      "body": "Gốm sứ chống trầy xước với lớp men sứ tinh tế giúp phân bổ nhiệt nhẹ nhàng và giữ nhiệt vượt trội.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ca-chua-1-item-3",
+      "title": "TỪ LÒ NƯỚNG ĐẾN BÀN ĂN",
+      "block": "block-au-su-staub-ca-chua-1",
+      "position": 3,
+      "body": "An toàn trong lò nướng và dưới lửa trên đến 300°C, gốm sứ STAUB lý tưởng để chế biến và phục vụ súp, các món nướng, sốt chấm, món ăn kèm và nhiều món ăn khác.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ca-chua-1-item-4",
+      "title": "ĐẸP MẮT TRÊN BÀN ĂN",
+      "block": "block-au-su-staub-ca-chua-1",
+      "position": 4,
+      "body": "Có thể sơ chế, nướng, quay hoặc cấp đông trực tiếp trong đồ gốm sứ STAUB, sau đó phục vụ ngay trên bàn ăn - trình bày đẹp mắt và tinh tế.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-bi-ngo-1-item-1",
+      "title": "CẢM HỨNG TỪ THIÊN NHIÊN",
+      "block": "block-au-su-staub-bi-ngo-1",
+      "position": 1,
+      "body": "Lấy cảm hứng từ hình dáng đặc trưng của những loại rau củ theo mùa, âu sứ Bí Ngô STAUB mang đến nét duyên dáng đầy tinh tế cho bàn ăn. Lý tưởng để chế biến và phục vụ các món sốt, món ăn kèm, khai vị và nhiều món ăn khác. Thiết kế độc đáo giúp mỗi bữa ăn trở nên ấn tượng hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-bi-ngo-1-item-2",
+      "title": "GỐM SỨ ĐA DỤNG",
+      "block": "block-au-su-staub-bi-ngo-1",
+      "position": 2,
+      "body": "Gốm sứ chống trầy xước với lớp men sứ tinh tế giúp phân bổ nhiệt nhẹ nhàng và giữ nhiệt vượt trội.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-bi-ngo-1-item-3",
+      "title": "TỪ LÒ NƯỚNG ĐẾN BÀN ĂN",
+      "block": "block-au-su-staub-bi-ngo-1",
+      "position": 3,
+      "body": "An toàn trong lò nướng và dưới lửa trên đến 300°C, gốm sứ STAUB lý tưởng để chế biến và phục vụ súp, các món nướng, sốt chấm, món ăn kèm và nhiều món ăn khác.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-bi-ngo-1-item-4",
+      "title": "ĐẸP MẮT TRÊN BÀN ĂN",
+      "block": "block-au-su-staub-bi-ngo-1",
+      "position": 4,
+      "body": "Có thể sơ chế, nướng, quay hoặc cấp đông trực tiếp trong đồ gốm sứ STAUB, sau đó phục vụ ngay trên bàn ăn - trình bày đẹp mắt và tinh tế.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ot-chuong-1-item-1",
+      "title": "CẢM HỨNG TỪ THIÊN NHIÊN",
+      "block": "block-au-su-staub-ot-chuong-1",
+      "position": 1,
+      "body": "Lấy cảm hứng từ hình dáng đặc trưng của những loại rau củ theo mùa, âu sứ STAUB ớt chuông mang đến nét duyên dáng đầy tinh tế cho bàn ăn. Lý tưởng để chế biến và phục vụ các món sốt, món ăn kèm, khai vị và nhiều món ăn khác. Thiết kế độc đáo giúp mỗi bữa ăn trở nên ấn tượng hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ot-chuong-1-item-2",
+      "title": "GỐM SỨ ĐA DỤNG",
+      "block": "block-au-su-staub-ot-chuong-1",
+      "position": 2,
+      "body": "Gốm sứ chống trầy xước với lớp men sứ tinh tế giúp phân bổ nhiệt nhẹ nhàng và giữ nhiệt vượt trội.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ot-chuong-1-item-3",
+      "title": "TỪ LÒ NƯỚNG ĐẾN BÀN ĂN",
+      "block": "block-au-su-staub-ot-chuong-1",
+      "position": 3,
+      "body": "An toàn trong lò nướng và dưới lửa trên đến 300°C, gốm sứ STAUB lý tưởng để chế biến và phục vụ súp, các món nướng, sốt chấm, món ăn kèm và nhiều món ăn khác.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-au-su-staub-ot-chuong-1-item-4",
+      "title": "ĐẸP MẮT TRÊN BÀN ĂN",
+      "block": "block-au-su-staub-ot-chuong-1",
+      "position": 4,
+      "body": "Có thể sơ chế, nướng, quay hoặc cấp đông trực tiếp trong đồ gốm sứ STAUB, sau đó phục vụ ngay trên bàn ăn - trình bày đẹp mắt và tinh tế.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-khay-nuong-su-staub-1-item-1",
+      "title": "NẤU NƯỚNG ĐA MÓN",
+      "block": "block-khay-nuong-su-staub-1",
+      "position": 1,
+      "body": "Khay nướng gốm sứ STAUB lý tưởng để chế biến đa dạng món mặn đến các món bánh ngọt và tráng miệng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-khay-nuong-su-staub-1-item-2",
+      "title": "ĐA DẠNG KÍCH THƯỚC, LINH HOẠT CHO MỌI BỮA ĂN",
+      "block": "block-khay-nuong-su-staub-1",
+      "position": 2,
+      "body": "Khay nướng STAUB có nhiều kích thước đa dạng, linh hoạt cho nhiều nhu cầu chế biến và phục vụ, từ khẩu phần riêng đến những món ăn dành cho cả gia đình.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-khay-nuong-su-staub-1-item-3",
+      "title": "THIẾT KẾ TIỆN DỤNG, TIẾT KIỆM KHÔNG GIAN",
+      "block": "block-khay-nuong-su-staub-1",
+      "position": 3,
+      "body": "Tay cầm công thái học giúp cầm nắm và di chuyển thuận tiện, trong khi thiết kế có thể xếp chồng giúp bảo quản gọn gàng và tiết kiệm không gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-khay-nuong-su-staub-1-item-4",
+      "title": "MÀU SẮC ĐẸP MẮT, DỄ VỆ SINH",
+      "block": "block-khay-nuong-su-staub-1",
+      "position": 4,
+      "body": "Với nhiều gam màu đa dạng, bề mặt tráng men chống trầy vừa tạo điểm nhấn tinh tế trên bàn ăn, vừa dễ dàng vệ sinh sau mỗi lần sử dụng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-dung-gia-vi-storage-1-item-1",
+      "title": "GỌN GÀNG, TIỆN DỤNG",
+      "block": "block-bo-dung-gia-vi-storage-1",
+      "position": 1,
+      "body": "Bộ đựng gia vị STAUB giúp sắp xếp các loại gia vị yêu thích một cách gọn gàng, luôn trong tầm tay khi nấu nướng hoặc dùng bữa.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-dung-gia-vi-storage-1-item-2",
+      "title": "ĐẸP TỪ GIAN BẾP ĐẾN BÀN ĂN",
+      "block": "block-bo-dung-gia-vi-storage-1",
+      "position": 2,
+      "body": "Thiết kế đặc trưng của STAUB biến những vật dụng vốn dĩ quen thuộc thành điểm nhấn tinh tế cho khu vực bếp và bàn ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-dung-gia-vi-storage-1-item-3",
+      "title": "TIỆN DỤNG CHO MỖI NGÀY",
+      "block": "block-bo-dung-gia-vi-storage-1",
+      "position": 3,
+      "body": "Thiết kế hướng đến sự tiện dụng, giúp việc nêm nếm và phục vụ gia vị trở nên dễ dàng, đồng thời giữ cho không gian luôn gọn gàng, ngăn nắp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-dung-gia-vi-storage-1-item-4",
+      "title": "LỚP MEN SỨ BỀN BỈ, DỄ VỆ SINH",
+      "block": "block-bo-dung-gia-vi-storage-1",
+      "position": 4,
+      "body": "Lớp men sứ có khả năng chống trầy xước, dễ dàng vệ sinh và hạn chế ám mùi, giúp bộ đựng gia vị luôn sạch đẹp và phù hợp cho sử dụng hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-may-hut-chan-khong-1-item-1",
+      "title": "HÚT CHÂN KHÔNG CHỈ TRONG VÀI GIÂY",
+      "block": "block-may-hut-chan-khong-1",
+      "position": 1,
+      "body": "Chỉ cần đặt máy lên van của túi hoặc hộp Fresh & Save và nhấn nút. Máy nhanh chóng hút không khí chỉ trong vài giây và tự động dừng khi đạt độ chân không cần thiết.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-may-hut-chan-khong-1-item-2",
+      "title": "GIỮ TRỌN ĐỘ TƯƠI NGON",
+      "block": "block-may-hut-chan-khong-1",
+      "position": 2,
+      "body": "Hệ thống Fresh & Save loại bỏ không khí dư thừa, giúp duy trì độ tươi, hương vị và vitamin của thực phẩm lâu hơn, giữ thực phẩm tươi ngon lâu hơn lên đến 5 lần.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-may-hut-chan-khong-1-item-3",
+      "title": "KHÔNG DÂY, TỰ ĐỘNG & TIỆN DỤNG",
+      "block": "block-may-hut-chan-khong-1",
+      "position": 3,
+      "body": "Thiết kế nhỏ gọn, vận hành êm ái và không cần dây điện, với pin lithium-ion bền bỉ. Máy tự động dừng khi đạt độ chân không cần thiết và có thể dễ dàng sạc qua cáp USB đi kèm.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-may-hut-chan-khong-1-item-4",
+      "title": "MỘT MÁY BƠM, KẾT NỐI TOÀN BỘ HỆ THỐNG",
+      "block": "block-may-hut-chan-khong-1",
+      "position": 4,
+      "body": "Tương thích với tất cả túi hút chân không, hộp bảo quản và dụng cụ bảo quản rượu vang trong hệ thống Fresh & Save, máy hút chân không giúp bạn dễ dàng bảo quản đa dạng thực phẩm chỉ với một thiết bị.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-may-hut-chan-khong-3-item-1",
+      "title": "MẠNH MẼ, VẬN HÀNH ÊM ÁI",
+      "block": "block-may-hut-chan-khong-3",
+      "position": 1,
+      "body": "Kết hợp hiệu suất mạnh mẽ của máy hút chân không để bàn cùng sự linh hoạt của thiết bị cầm tay, máy bơm hút chân không hoạt động nhanh chóng, êm ái và dễ sử dụng.",
+      "image": "",
+      "coordX": "42.0",
+      "coordY": "72.0"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-3-item-2",
+      "title": "TƯƠI NGON CHỈ VỚI MỘT NÚT NHẤN",
+      "block": "block-may-hut-chan-khong-3",
+      "position": 2,
+      "body": "Chỉ với một nút nhấn, máy nhanh chóng hút chân không trong vài giây và tự động dừng khi đạt độ chân không cần thiết.",
+      "image": "",
+      "coordX": "52.0",
+      "coordY": "22.0"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-3-item-3",
+      "title": "THIẾT KẾ KHÔNG DÂY",
+      "block": "block-may-hut-chan-khong-3",
+      "position": 3,
+      "body": "Máy hút không dây sử dụng pin lithium-ion bền bỉ, mang đến sự linh hoạt và thuận tiện trong quá trình sử dụng.",
+      "image": "",
+      "coordX": "48.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-3-item-4",
+      "title": "THIẾT KẾ NHỎ GỌN, TINH TẾ",
+      "block": "block-may-hut-chan-khong-3",
+      "position": 4,
+      "body": "Thiết kế nhỏ gọn giúp dễ dàng lưu trữ trong ngăn kéo, đồng thời mang đến vẻ hiện đại, tinh tế cho mọi không gian bếp.",
+      "image": "",
+      "coordX": "58.0",
+      "coordY": "52.0"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-3-item-5",
+      "title": "DỄ DÀNG SẠC LẠI",
+      "block": "block-may-hut-chan-khong-3",
+      "position": 5,
+      "body": "Máy có thể dễ dàng sạc lại bằng cáp USB đi kèm, thuận tiện cho việc sử dụng hằng ngày.",
+      "image": "",
+      "coordX": "54.0",
+      "coordY": "35.0"
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-1-item-1",
+      "title": "GIỮ THỰC PHẨM TƯƠI NGON LÂU HƠN ĐẾN 5 LẦN",
+      "block": "block-tui-hut-chan-khong-1",
+      "position": 1,
+      "body": "Hút chân không giúp loại bỏ không khí dư thừa, giữ trọn hương vị và dưỡng chất, giúp thực phẩm tươi ngon lâu hơn đến 5 lần so với phương pháp bảo quản thông thường.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-1-item-2",
+      "title": "HÚT CHÂN KHÔNG DỄ DÀNG",
+      "block": "block-tui-hut-chan-khong-1",
+      "position": 2,
+      "body": "Đặt máy hút chân không Fresh & Save vào van túi và nhấn nút, máy sẽ tự động hút không khí ra chỉ trong vài giây – đơn giản, nhanh chóng và tiện lợi.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-1-item-3",
+      "title": "LINH HOẠT CHO MỌI NHU CẦU BẢO QUẢN",
+      "block": "block-tui-hut-chan-khong-1",
+      "position": 3,
+      "body": "Từ rau củ, thịt cá tươi đến thức ăn đã chế biến, túi Fresh & Save giúp bảo quản thực phẩm tiện lợi trong tủ lạnh hoặc ngăn đông.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-1-item-4",
+      "title": "TÁI SỬ DỤNG, DỄ DÀNG SỬ DỤNG",
+      "block": "block-tui-hut-chan-khong-1",
+      "position": 4,
+      "body": "Túi có thể tái sử dụng nhiều lần, với khóa kéo chắc chắn và van hút chân không tiện lợi, giúp việc bảo quản thực phẩm trở nên nhanh chóng và dễ dàng. Chỉ cần cho thực phẩm vào túi, đóng khóa và kết nối với máy hút chân không Fresh & Save.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-2-item-1",
+      "title": "NHỰA KHÔNG CHỨA BPA, BỀN BỈ",
+      "block": "block-tui-hut-chan-khong-2",
+      "position": 1,
+      "body": "Tiện lợi để chuẩn bị trước và bảo quản thực phẩm tươi ngon lâu hơn.",
+      "image": "",
+      "coordX": "52.0",
+      "coordY": "58.0"
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-2-item-2",
+      "title": "KHÓA ZIP KÍN CHẮC CHẮN",
+      "block": "block-tui-hut-chan-khong-2",
+      "position": 2,
+      "body": "Tạo độ kín hoàn hảo, giúp bảo quản thực phẩm hiệu quả.",
+      "image": "",
+      "coordX": "50.0",
+      "coordY": "25.0"
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-2-item-3",
+      "title": "THIẾT KẾ GỌN GÀNG, TIẾT KIỆM KHÔNG GIAN",
+      "block": "block-tui-hut-chan-khong-2",
+      "position": 3,
+      "body": "Phù hợp để bảo quản trong tủ bếp, tủ lạnh và ngăn đông.",
+      "image": "",
+      "coordX": "68.0",
+      "coordY": "42.0"
+    },
+    {
+      "ID": "block-hop-nhua-hut-chan-khong-1-item-1",
+      "title": "GIỮ THỰC PHẨM TƯƠI NGON LÂU HƠN ĐẾN 5 LẦN",
+      "block": "block-hop-nhua-hut-chan-khong-1",
+      "position": 1,
+      "body": "Hút chân không giúp loại bỏ không khí dư thừa, giữ trọn hương vị và dưỡng chất, giúp thực phẩm tươi ngon lâu hơn đến 5 lần so với phương pháp bảo quản thông thường.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-nhua-hut-chan-khong-1-item-2",
+      "title": "NHẸ, BỀN VÀ THUẬN TIỆN MỌI LÚC, MỌI NƠI",
+      "block": "block-hop-nhua-hut-chan-khong-1",
+      "position": 2,
+      "body": "Được làm từ nhựa không chứa BPA, hộp nhẹ, bền chắc và khó vỡ, thuận tiện để sử dụng và mang theo mỗi ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-nhua-hut-chan-khong-1-item-3",
+      "title": "TIỆN LỢI TỪ CHUẨN BỊ ĐẾN THƯỞNG THỨC",
+      "block": "block-hop-nhua-hut-chan-khong-1",
+      "position": 3,
+      "body": "Lý tưởng để chuẩn bị trước các món salad, ngũ cốc, súp, đồ ăn nhẹ và nhiều món ăn khác. Khi cần thưởng thức, chỉ cần mở nắp và đặt hộp vào lò vi sóng để hâm nóng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-nhua-hut-chan-khong-1-item-4",
+      "title": "DỄ DÀNG SỬ DỤNG VÀ VỆ SINH",
+      "block": "block-hop-nhua-hut-chan-khong-1",
+      "position": 4,
+      "body": "Hộp có thể sử dụng trong ngăn đông và máy rửa chén, đồng thời dễ vệ sinh sau khi sử dụng. Thiết kế có thể xếp gọn cũng giúp tiết kiệm không gian lưu trữ.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-1-item-1",
+      "title": "GIỮ THỰC PHẨM TƯƠI NGON LÂU HƠN ĐẾN 5 LẦN",
+      "block": "block-hop-thuy-tinh-hut-chan-khong-1",
+      "position": 1,
+      "body": "Hút chân không giúp loại bỏ không khí dư thừa, giữ trọn hương vị và dưỡng chất, giúp thực phẩm tươi ngon lâu hơn đến 5 lần so với phương pháp bảo quản thông thường.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-1-item-2",
+      "title": "THỦY TINH BOROSILICATE BỀN BỈ",
+      "block": "block-hop-thuy-tinh-hut-chan-khong-1",
+      "position": 2,
+      "body": "Được làm từ thủy tinh borosilicate chất lượng cao, hộp bền chắc và chịu nhiệt tốt, phù hợp cho nhiều nhu cầu bảo quản và chuẩn bị thực phẩm hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-1-item-3",
+      "title": "TỪ NGĂN ĐÔNG ĐẾN LÒ NƯỚNG, LÊN BÀN ĂN",
+      "block": "block-hop-thuy-tinh-hut-chan-khong-1",
+      "position": 3,
+      "body": "Có thể sử dụng trong ngăn đông, lò nướng (không dùng nắp) và lò vi sóng (không hút chân không), hộp thủy tinh cũng có thể được dùng để phục vụ món ăn trực tiếp trên bàn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-1-item-4",
+      "title": "THIẾT KẾ THÔNG MINH, TIẾT KIỆM KHÔNG GIAN",
+      "block": "block-hop-thuy-tinh-hut-chan-khong-1",
+      "position": 4,
+      "body": "Với nhiều kích thước đa dạng, các hộp có thể xếp gọn lồng vào nhau để tiết kiệm không gian. Nắp hộp với cấu trúc gioăng kép tạo độ kín chắc chắn, hỗ trợ bảo quản thực phẩm hiệu quả.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-2-item-1",
+      "title": "Thủy tinh chịu nhiệt",
+      "block": "block-hop-thuy-tinh-hut-chan-khong-2",
+      "position": 1,
+      "body": "Thủy tinh borosilicate an toàn khi sử dụng trong khoảng -18°C đến 280°C.",
+      "image": "",
+      "coordX": "48.0",
+      "coordY": "65.0"
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-2-item-2",
+      "title": "Thiết kế lồng vào và xếp chồng",
+      "block": "block-hop-thuy-tinh-hut-chan-khong-2",
+      "position": 2,
+      "body": "Giúp tiết kiệm không gian, dễ dàng bảo quản.",
+      "image": "",
+      "coordX": "32.0",
+      "coordY": "38.0"
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-2-item-3",
+      "title": "Nắp hộp kín",
+      "block": "block-hop-thuy-tinh-hut-chan-khong-2",
+      "position": 3,
+      "body": "Tạo độ kín hoàn hảo, giúp bảo quản thực phẩm tốt hơn.",
+      "image": "",
+      "coordX": "64.0",
+      "coordY": "32.0"
+    },
+    {
+      "ID": "block-bo-san-pham-hut-chan-khong-27-40-mon-1-item-1",
+      "title": "HỆ THỐNG BẢO QUẢN CHÂN KHÔNG TOÀN DIỆN",
+      "block": "block-bo-san-pham-hut-chan-khong-27-40-mon-1",
+      "position": 1,
+      "body": "Hệ thống Fresh & Save kết hợp máy hút chân không không dây cùng túi và hộp bảo quản, mang đến giải pháp linh hoạt giúp thực phẩm luôn tươi ngon và được sắp xếp gọn gàng trong tủ lạnh, tủ đông hoặc pantry.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-san-pham-hut-chan-khong-27-40-mon-1-item-2",
+      "title": "HÚT CHÂN KHÔNG CHỈ TRONG VÀI GIÂY",
+      "block": "block-bo-san-pham-hut-chan-khong-27-40-mon-1",
+      "position": 2,
+      "body": "Chỉ cần đặt máy lên van của túi hoặc hộp Fresh & Save và nhấn nút. Máy nhanh chóng loại bỏ không khí chỉ trong vài giây và tự động dừng khi đạt độ chân không cần thiết.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-san-pham-hut-chan-khong-27-40-mon-1-item-3",
+      "title": "ĐA DẠNG GIẢI PHÁP BẢO QUẢN",
+      "block": "block-bo-san-pham-hut-chan-khong-27-40-mon-1",
+      "position": 3,
+      "body": "Từ túi hút chân không linh hoạt đến hộp nhựa bền chắc và hộp thủy tinh chịu nhiệt, Fresh & Save mang đến nhiều lựa chọn bảo quản phù hợp với đa dạng thực phẩm và nhu cầu sử dụng hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-san-pham-hut-chan-khong-27-40-mon-1-item-4",
+      "title": "MÁY HÚT KHÔNG DÂY, LINH HOẠT",
+      "block": "block-bo-san-pham-hut-chan-khong-27-40-mon-1",
+      "position": 4,
+      "body": "Máy hút chân không nhỏ gọn, không dây với pin lithium-ion bền bỉ và khả năng tự động hút chân không. Tương thích với túi hút chân không, hộp nhựa, hộp thủy tinh và dụng cụ bảo quản rượu vang Fresh & Save.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-nap-hut-chan-khong-1-item-1",
+      "title": "CÔNG NGHỆ GIOĂNG KÉP",
+      "block": "block-bo-nap-hut-chan-khong-1",
+      "position": 1,
+      "body": "Thiết kế gioăng kép giúp tạo độ kín chắc chắn, hỗ trợ giữ thực phẩm tươi lâu hơn đến 5 lần so với bảo quản thông thường không hút chân không.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-nap-hut-chan-khong-1-item-2",
+      "title": "3 KÍCH THƯỚC, LINH HOẠT BẢO QUẢN",
+      "block": "block-bo-nap-hut-chan-khong-1",
+      "position": 2,
+      "body": "Bộ sản phẩm gồm 3 nắp hút chân không kích thước 16 cm, 19 cm và 23 cm, phù hợp với đa dạng tô, đĩa và nồi theo kích thước tương ứng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-nap-hut-chan-khong-1-item-3",
+      "title": "TƯƠNG THÍCH ĐA DẠNG",
+      "block": "block-bo-nap-hut-chan-khong-1",
+      "position": 3,
+      "body": "Tương thích với các loại ZWILLING FRESH & SAVE BOWLS và sản phẩm STAUB CERAMIQUE theo kích thước tương ứng, thuận tiện cho việc chuẩn bị, phục vụ và bảo quản thực phẩm.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-nap-hut-chan-khong-1-item-4",
+      "title": "TIỆN LỢI SỬ DỤNG HẰNG NGÀY",
+      "block": "block-bo-nap-hut-chan-khong-1",
+      "position": 4,
+      "body": "Nắp có thể sử dụng trong máy rửa chén, ngăn đông và lò vi sóng, mang đến sự tiện lợi trong quá trình bảo quản và sử dụng thực phẩm.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-1-item-1",
+      "title": "HỆ THỐNG CHUẨN BỊ VÀ BẢO QUẢN TOÀN DIỆN, GIỮ THỰC PHẨM TƯƠI LÂU HƠN",
+      "block": "block-bo-to-hut-chan-khong-1",
+      "position": 1,
+      "body": "FRESH & SAVE bowls mang đến giải pháp toàn diện từ chuẩn bị, bảo quản đến phục vụ. Chuẩn bị món ăn trong âu thép không gỉ hoặc âu thủy tinh, bảo quản trong tủ lạnh cho đến khi sẵn sàng chế biến hoặc thưởng thức, sau đó có thể phục vụ trực tiếp trên bàn ăn trong chính chiếc âu đó.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-1-item-2",
+      "title": "TÔ THÉP KHÔNG GỈ VÀ TÔ THỦY TINH BOROSILICATE CHỊU NHIỆT CAO CẤP",
+      "block": "block-bo-to-hut-chan-khong-1",
+      "position": 2,
+      "body": "Tô thép không gỉ và tô thủy tinh chịu nhiệt chất lượng cao có thiết kế nhẹ, bền và dễ dàng di chuyển, thuận tiện cho mọi thao tác trong căn bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-1-item-3",
+      "title": "THIẾT KẾ TIẾT KIỆM KHÔNG GIAN",
+      "block": "block-bo-to-hut-chan-khong-1",
+      "position": 3,
+      "body": "Các loại âu thép không gỉ và âu thủy tinh có thể xếp chồng, kết hợp linh hoạt và lồng vào nhau, giúp tiết kiệm không gian và dễ dàng bảo quản trong căn bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-1-item-4",
+      "title": "NẮP KÍN KHÍT HOÀN HẢO",
+      "block": "block-bo-to-hut-chan-khong-1",
+      "position": 4,
+      "body": "Nắp không chứa BPA tạo độ kín hoàn hảo khi kết hợp với máy hút chân không FRESH & SAVE, giúp bảo quản thực phẩm hiệu quả hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-2-item-1",
+      "title": "Nắp hút chân không",
+      "block": "block-bo-to-hut-chan-khong-2",
+      "position": 1,
+      "body": "Nắp tạo độ kín hoàn hảo khi kết hợp với máy hút chân không FRESH & SAVE, giúp giữ thực phẩm tươi lâu hơn.",
+      "image": "",
+      "coordX": "48.0",
+      "coordY": "26.0"
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-2-item-2",
+      "title": "Dụng cụ bào Z-Cut",
+      "block": "block-bo-to-hut-chan-khong-2",
+      "position": 2,
+      "body": "3 thiết kế mặt bào ứng dụng công nghệ bào 2 chiều Z-Cut được cấp bằng sáng chế, giúp bào thực phẩm nhanh chóng và tiết kiệm thời gian hơn.",
+      "image": "",
+      "coordX": "68.0",
+      "coordY": "38.0"
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-2-item-3",
+      "title": "Tấm chắn chống bắn",
+      "block": "block-bo-to-hut-chan-khong-2",
+      "position": 3,
+      "body": "Giúp hạn chế nguyên liệu bắn ra ngoài trong quá trình trộn hoặc đánh, giữ khu vực bếp sạch sẽ và giảm tình trạng thực phẩm bắn tung tóe trên mặt bàn.",
+      "image": "",
+      "coordX": "35.0",
+      "coordY": "45.0"
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-2-item-4",
+      "title": "Âu thép không gỉ",
+      "block": "block-bo-to-hut-chan-khong-2",
+      "position": 4,
+      "body": "Âu thép không gỉ chất lượng cao có thiết kế nhẹ và dễ dàng di chuyển, thuận tiện cho mọi thao tác trong căn bếp.",
+      "image": "",
+      "coordX": "52.0",
+      "coordY": "62.0"
+    },
+    {
+      "ID": "block-bo-to-hut-chan-khong-2-item-5",
+      "title": "Âu thủy tinh borosilicate",
+      "block": "block-bo-to-hut-chan-khong-2",
+      "position": 5,
+      "body": "Thủy tinh chịu nhiệt cho phép hâm nóng bằng lò vi sóng hoặc nướng trực tiếp, sau đó có thể phục vụ ngay từ tủ lạnh lên bàn ăn.",
+      "image": "",
+      "coordX": "30.0",
+      "coordY": "75.0"
+    },
+    {
+      "ID": "block-bo-hop-cube-hut-chan-khong-1-item-1",
+      "title": "LƯU TRỮ. XẾP GỌN. TỐI ƯU KHÔNG GIAN.",
+      "block": "block-bo-hop-cube-hut-chan-khong-1",
+      "position": 1,
+      "body": "Nói lời tạm biệt với căn bếp bừa bộn cùng hệ thống bảo quản thực phẩm kín khí. Sắp xếp tủ đựng thực phẩm khoa học, kéo dài thời gian bảo quản và tối ưu không gian bếp với đa dạng hộp và phụ kiện được thiết kế để mang đến giải pháp lưu trữ thông minh hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-hop-cube-hut-chan-khong-1-item-2",
+      "title": "THIẾT KẾ TIẾT KIỆM KHÔNG GIAN",
+      "block": "block-bo-hop-cube-hut-chan-khong-1",
+      "position": 2,
+      "body": "Thiết kế có thể xếp chồng, tối ưu diện tích với thành hộp thẳng, đế chống trượt và cấu trúc mô-đun linh hoạt, dễ dàng sắp xếp trong tủ đựng thực phẩm, ngăn kéo hoặc trên mặt bàn bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-hop-cube-hut-chan-khong-1-item-3",
+      "title": "NẮP KÍN, BẢO QUẢN TƯƠI LÂU",
+      "block": "block-bo-hop-cube-hut-chan-khong-1",
+      "position": 3,
+      "body": "Nắp kín trong suốt giúp giữ trọn độ tươi ngon và hương vị, trong khi công nghệ hút chân không hỗ trợ bảo toàn dưỡng chất và độ giòn, giúp thực phẩm tươi ngon lâu hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-bo-hop-cube-hut-chan-khong-1-item-4",
+      "title": "SẮP XẾP GỌN GÀNG, TINH TẾ",
+      "block": "block-bo-hop-cube-hut-chan-khong-1",
+      "position": 4,
+      "body": "Từ gia vị đến ngũ cốc, hộp CUBE có thể sử dụng trong máy rửa chén, giúp sắp xếp tủ đựng thực phẩm và ngăn kéo gọn gàng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-thep-zwilling-prof-1-item-1",
+      "title": "THIẾT KẾ TỐI GIẢN, VƯỢT THỜI GIAN",
+      "block": "block-dung-cu-nau-an-thep-zwilling-prof-1",
+      "position": 1,
+      "body": "Dòng ZWILLING Prof được thiết kế bởi hai nhà thiết kế Ý Matteo Thun & Antonio Rodriguez, kết hợp đường nét tối giản, hiện đại với tính ứng dụng cao, phù hợp với mọi không gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-thep-zwilling-prof-1-item-2",
+      "title": "THÉP KHÔNG GỈ 18/10 CAO CẤP",
+      "block": "block-dung-cu-nau-an-thep-zwilling-prof-1",
+      "position": 2,
+      "body": "Được làm từ thép không gỉ 18/10 cao cấp, dụng cụ ZWILLING Prof có độ bền vượt trội, đồng thời chống ăn mòn và hạn chế đổi màu trong quá trình sử dụng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-thep-zwilling-prof-1-item-3",
+      "title": "TAY CẦM CÔNG THÁI HỌC, HAI BỀ MẶT HOÀN THIỆN",
+      "block": "block-dung-cu-nau-an-thep-zwilling-prof-1",
+      "position": 3,
+      "body": "Tay cầm công thái học kết hợp bề mặt bóng và nhám, mang đến cảm giác cầm nắm thoải mái, đồng thời tạo điểm nhấn tinh tế cho thiết kế tổng thể.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-thep-zwilling-prof-1-item-4",
+      "title": "TIỆN DỤNG CHO MỖI NGÀY",
+      "block": "block-dung-cu-nau-an-thep-zwilling-prof-1",
+      "position": 4,
+      "body": "Được thiết kế cho nhu cầu nấu nướng hằng ngày, dụng cụ ZWILLING Prof có thể sử dụng trong máy rửa chén, giúp việc vệ sinh trở nên nhanh chóng và thuận tiện.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-staub-silicone-1-item-1",
+      "title": "TẬN HƯỞNG TRỌN VẸN TỪNG KHOẢNH KHẮC NẤU NƯỚNG",
+      "block": "block-dung-cu-nau-an-staub-silicone-1",
+      "position": 1,
+      "body": "Dụng cụ nấu ăn STAUB được thiết kế để mỗi thao tác trong bếp trở nên thú vị hơn, giúp bạn chậm lại, tập trung vào quá trình nấu nướng và tận hưởng trọn vẹn trải nghiệm.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-staub-silicone-1-item-2",
+      "title": "SILICONE CHỊU NHIỆT ĐẾN 220°C, THÂN THIỆN VỚI BỀ MẶT NỒI CHẢO",
+      "block": "block-dung-cu-nau-an-staub-silicone-1",
+      "position": 2,
+      "body": "Được làm từ silicone không chứa BPA, chịu nhiệt tốt, dụng cụ STAUB lướt nhẹ nhàng trên bề mặt nồi chảo, phù hợp sử dụng với nguyên liệu nóng và chảo chống dính.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-staub-silicone-1-item-3",
+      "title": "TAY CẦM GỖ ACACIA CÔNG THÁI HỌC",
+      "block": "block-dung-cu-nau-an-staub-silicone-1",
+      "position": 3,
+      "body": "Tay cầm gỗ Acacia thiết kế công thái học mang đến cảm giác cầm nắm thoải mái, đồng thời tạo điểm nhấn tự nhiên và tinh tế cho không gian bếp.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dung-cu-nau-an-staub-silicone-1-item-4",
+      "title": "DỄ DÀNG VỆ SINH",
+      "block": "block-dung-cu-nau-an-staub-silicone-1",
+      "position": 4,
+      "body": "Chất liệu silicone dễ làm sạch, giúp việc vệ sinh sau mỗi lần nấu trở nên nhanh chóng và thuận tiện.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-1-item-1",
+      "title": "HIỆU SUẤT CẮT CHÍNH XÁC CHO MỌI NHU CẦU",
+      "block": "block-keo-zwilling-twin-select-keo-da-nang-1",
+      "position": 1,
+      "body": "ZWILLING TWIN SELECT mang đến khả năng cắt chính xác với lưỡi kéo bằng thép không gỉ sắc bén, giúp thao tác dễ dàng trên nhiều loại vật liệu. Tay cầm được thiết kế công thái học cho cảm giác cầm nắm thoải mái và chắc chắn, biến TWIN SELECT thành dụng cụ đa năng không thể thiếu cho những công việc cắt tỉa trong gia đình.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-1-item-2",
+      "title": "THÉP KHÔNG GỈ CÔNG THỨC ĐẶC BIỆT",
+      "block": "block-keo-zwilling-twin-select-keo-da-nang-1",
+      "position": 2,
+      "body": "Được chế tác từ thép không gỉ công thức đặc biệt của ZWILLING, lưỡi kéo có khả năng chống ăn mòn và duy trì độ sắc bén bền lâu.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-1-item-3",
+      "title": "LƯỠI KÉO TÔI LẠNH FRIODUR®",
+      "block": "block-keo-zwilling-twin-select-keo-da-nang-1",
+      "position": 3,
+      "body": "Công nghệ tôi lạnh FRIODUR® giúp tăng khả năng chống ăn mòn, hạn chế ố màu và sứt mẻ, đồng thời duy trì độ sắc bén của lưỡi kéo.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-1-item-4",
+      "title": "TAY CẦM THOẢI MÁI, DỄ DÀNG SỬ DỤNG",
+      "block": "block-keo-zwilling-twin-select-keo-da-nang-1",
+      "position": 4,
+      "body": "Tay cầm chắc chắn, vừa vặn giúp thao tác thoải mái và an toàn, phù hợp cho cả người thuận tay trái và tay phải. Sản phẩm cũng có thể sử dụng trong máy rửa chén để thuận tiện vệ sinh.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-3-item-1",
+      "title": "THÉP KHÔNG GỈ CÔNG THỨC ĐẶC BIỆT",
+      "block": "block-keo-zwilling-twin-select-keo-da-nang-3",
+      "position": 1,
+      "body": "Lưỡi kéo được mài thủ công với cạnh răng cưa siêu nhỏ.",
+      "image": "",
+      "coordX": "48.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-3-item-2",
+      "title": "TAY CẦM THOẢI MÁI",
+      "block": "block-keo-zwilling-twin-select-keo-da-nang-3",
+      "position": 2,
+      "body": "Phù hợp sử dụng cho cả người thuận tay trái và tay phải.",
+      "image": "",
+      "coordX": "75.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-3-item-3",
+      "title": "LƯỠI KÉO TÔI LẠNH FRIODUR",
+      "block": "block-keo-zwilling-twin-select-keo-da-nang-3",
+      "position": 3,
+      "body": "Thép không gỉ có khả năng chống ăn mòn, hạn chế ố màu và sứt mẻ.",
+      "image": "",
+      "coordX": "24.0",
+      "coordY": "48.0"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1-item-1",
+      "title": "HIỆU SUẤT CẮT CHÍNH XÁC CHO MỌI NHU CẦU",
+      "block": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1",
+      "position": 1,
+      "body": "ZWILLING TWIN SELECT mang đến khả năng cắt chính xác với lưỡi kéo bằng thép không gỉ sắc bén, giúp thao tác dễ dàng trên nhiều loại vật liệu. Tay cầm được thiết kế công thái học cho cảm giác cầm nắm thoải mái và chắc chắn, biến TWIN SELECT thành dụng cụ đa năng không thể thiếu cho những công việc cắt tỉa trong gia đình.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1-item-2",
+      "title": "Cắt nhẹ nhàng, thoải mái hơn",
+      "block": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1",
+      "position": 2,
+      "body": "Thiết kế đòn bẩy thông minh giúp tối ưu lực cắt, cho thao tác nhẹ nhàng và chính xác ngay cả với những vật liệu khó cắt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1-item-3",
+      "title": "Một dòng kéo, đa dạng kích thước",
+      "block": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1",
+      "position": 3,
+      "body": "Với đa dạng kích thước, ZWILLING TWIN SELECT đáp ứng linh hoạt nhiều nhu cầu cắt khác nhau, từ những thao tác nhẹ nhàng đến các công việc cần lực cắt mạnh hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1-item-4",
+      "title": "Dễ dàng vệ sinh sau mỗi lần sử dụng",
+      "block": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1",
+      "position": 4,
+      "body": "Kéo ZWILLING TWIN SELECT có thể dễ dàng làm sạch dưới vòi nước ấm và lau khô bằng khăn mềm, giúp kéo luôn sạch sẽ và sẵn sàng cho lần sử dụng tiếp theo.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-ebony-1-item-1",
+      "title": "Tre nguyên khối bền chắc",
+      "block": "block-thot-ebony-1",
+      "position": 1,
+      "body": "Được làm từ tre nguyên khối, thớt mang đến bề mặt cắt chắc chắn, ổn định cho các công việc sơ chế hằng ngày, đồng thời thân thiện với lưỡi dao.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-ebony-1-item-2",
+      "title": "Thiết kế sử dụng hai mặt",
+      "block": "block-thot-ebony-1",
+      "position": 2,
+      "body": "Thiết kế sử dụng được cả hai mặt, giúp linh hoạt trong quá trình sơ chế nhiều loại thực phẩm.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-ebony-1-item-3",
+      "title": "Rãnh hứng nước tiện lợi",
+      "block": "block-thot-ebony-1",
+      "position": 3,
+      "body": "Một mặt được tích hợp rãnh hứng nước, giúp hạn chế nước thực phẩm chảy ra ngoài khi sơ chế thịt, cá và các nguyên liệu nhiều nước.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-ebony-1-item-4",
+      "title": "Lý tưởng cho sơ chế hằng ngày",
+      "block": "block-thot-ebony-1",
+      "position": 4,
+      "body": "Kích thước XL mang đến không gian sơ chế rộng rãi và ổn định, phù hợp cho các thao tác cắt, thái và băm trong căn bếp hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-zwilling-now-1-item-1",
+      "title": "Hai chất liệu, linh hoạt trong mọi thao tác",
+      "block": "block-thot-zwilling-now-1",
+      "position": 1,
+      "body": "Kết hợp gỗ tre tự nhiên và nhựa TPU chất lượng cao, bộ 2 thớt ZWILLING Now mang đến sự linh hoạt cho nhiều nhu cầu sơ chế thực phẩm hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-zwilling-now-1-item-2",
+      "title": "Bề mặt thân thiện với lưỡi dao",
+      "block": "block-thot-zwilling-now-1",
+      "position": 2,
+      "body": "Bề mặt thớt được thiết kế để hạn chế tác động lên lưỡi dao trong quá trình cắt, thái và băm, giúp duy trì độ sắc bén của dao lâu dài.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-zwilling-now-1-item-3",
+      "title": "Dễ vệ sinh, tiện dụng mỗi ngày",
+      "block": "block-thot-zwilling-now-1",
+      "position": 3,
+      "body": "Thớt TPU có khả năng chống khuẩn, giúp việc làm sạch sau mỗi lần sử dụng trở nên nhanh chóng và thuận tiện.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-thot-zwilling-now-1-item-4",
+      "title": "Thiết kế thông minh, tiết kiệm không gian",
+      "block": "block-thot-zwilling-now-1",
+      "position": 4,
+      "body": "Thớt gỗ được tích hợp rãnh viền giúp giữ nước thực phẩm, hạn chế nước chảy ra khu vực bếp. Cả hai thớt đều có lỗ treo tiện lợi, giúp cất giữ gọn gàng và tiết kiệm không gian.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1-item-1",
+      "title": "THIẾT KẾ TỐI GIẢN, THANH LỊCH",
+      "block": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1",
+      "position": 1,
+      "body": "Dụng cụ bàn ăn ZWILLING Minimale sở hữu đường nét tinh gọn và tỷ lệ cân đối, mang đến vẻ đẹp thanh lịch, dễ dàng kết hợp với nhiều phong cách bàn ăn, từ những bữa ăn hằng ngày đến những dịp đặc biệt.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1-item-2",
+      "title": "BỀ MẶT NHÁM TINH TẾ",
+      "block": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1",
+      "position": 2,
+      "body": "Bề mặt nhám mờ mang đến vẻ đẹp nhẹ nhàng, hiện đại với hai sắc Bạc Nhám và Vàng Hồng Nhám, tạo điểm nhấn tinh tế cho bàn ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1-item-3",
+      "title": "THÉP KHÔNG GỈ CAO CẤP",
+      "block": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1",
+      "position": 3,
+      "body": "Được làm từ thép không gỉ chất lượng cao, dụng cụ bàn ăn ZWILLING Minimale có khả năng chống ăn mòn và bền bỉ theo thời gian.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1-item-4",
+      "title": "THOẢI MÁI SỬ DỤNG, DỄ DÀNG VỆ SINH",
+      "block": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1",
+      "position": 4,
+      "body": "Thiết kế cân đối mang đến cảm giác cầm nắm thoải mái, đồng thời có thể sử dụng trong máy rửa chén, giúp việc vệ sinh sau mỗi bữa ăn trở nên đơn giản và thuận tiện.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-satin-polishing-1-item-1",
+      "title": "THIẾT KẾ TỐI GIẢN, THANH LỊCH",
+      "block": "block-zwilling-minimale-satin-polishing-1",
+      "position": 1,
+      "body": "Dòng ZWILLING Minimale sở hữu đường nét tinh gọn và tỷ lệ cân đối, mang đến vẻ đẹp thanh lịch, dễ dàng kết hợp với cả những bữa ăn hằng ngày lẫn bàn ăn trang trọng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-satin-polishing-1-item-2",
+      "title": "BỀ MẶT SATIN TINH TẾ",
+      "block": "block-zwilling-minimale-satin-polishing-1",
+      "position": 2,
+      "body": "Bề mặt được hoàn thiện bóng mang đến vẻ ngoài tinh tế, thanh lịch, tạo điểm nhấn trang nhã cho bàn ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-satin-polishing-1-item-3",
+      "title": "THÉP KHÔNG GỈ CAO CẤP",
+      "block": "block-zwilling-minimale-satin-polishing-1",
+      "position": 3,
+      "body": "Được làm từ thép không gỉ chất lượng cao, dụng cụ bàn ăn ZWILLING Minimale có khả năng chống ăn mòn và bền bỉ theo thời gian.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-minimale-satin-polishing-1-item-4",
+      "title": "THOẢI MÁI SỬ DỤNG, DỄ DÀNG VỆ SINH",
+      "block": "block-zwilling-minimale-satin-polishing-1",
+      "position": 4,
+      "body": "Thiết kế cân đối mang đến cảm giác cầm nắm thoải mái, đồng thời có thể sử dụng trong máy rửa chén, giúp việc vệ sinh sau mỗi bữa ăn trở nên đơn giản và thuận tiện.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-nova-1-item-1",
+      "title": "THIẾT KẾ TINH TẾ, VƯỢT THỜI GIAN",
+      "block": "block-zwilling-nova-1",
+      "position": 1,
+      "body": "Dòng dụng cụ bàn ăn ZWILLING Nova sở hữu đường nét tối giản, tỷ lệ cân đối và bề mặt hoàn thiện bóng, dễ dàng kết hợp với nhiều phong cách bàn ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-nova-1-item-2",
+      "title": "THÉP KHÔNG GỈ CAO CẤP",
+      "block": "block-zwilling-nova-1",
+      "position": 2,
+      "body": "Được làm từ thép không gỉ chất lượng cao, dụng cụ bàn ăn ZWILLING Nova có khả năng chống ăn mòn và bền bỉ theo thời gian.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-nova-1-item-3",
+      "title": "CÂN ĐỐI, THOẢI MÁI KHI SỬ DỤNG",
+      "block": "block-zwilling-nova-1",
+      "position": 3,
+      "body": "Thiết kế cân đối với kiểu dáng vừa vặn giúp cầm nắm thoải mái, mang đến trải nghiệm thưởng thức trọn vẹn trong mỗi bữa ăn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-zwilling-nova-1-item-4",
+      "title": "DỄ DÀNG VỆ SINH, TIỆN DỤNG MỖI NGÀY",
+      "block": "block-zwilling-nova-1",
+      "position": 4,
+      "body": "Có thể sử dụng trong máy rửa chén và dễ dàng vệ sinh, ZWILLING Nova mang đến sự tiện lợi cho những bữa ăn hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1-item-1",
+      "title": "THÊM SẮC MÀU CHO BÀN ĂN",
+      "block": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1",
+      "position": 1,
+      "body": "Thiết kế tinh tế với những gam màu nổi bật, bộ đũa mang đến điểm nhấn thanh lịch cho bàn ăn, phù hợp từ những bữa cơm gia đình hằng ngày đến các buổi sum họp cùng bạn bè.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1-item-2",
+      "title": "CẦM CHẮC TAY, GẮP DỄ DÀNG",
+      "block": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1",
+      "position": 2,
+      "body": "Thân đũa với bề mặt vân nổi tạo cảm giác cầm nắm thoải mái, trong khi đầu đũa có bề mặt nhám chống trượt, giúp gắp thức ăn chắc chắn và dễ dàng hơn.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1-item-3",
+      "title": "BỀN, ĐẸP ĐỂ SỬ DỤNG HẰNG NGÀY",
+      "block": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1",
+      "position": 3,
+      "body": "Được làm từ chất liệu nhựa ABS chất lượng cao, đũa được thiết kế để sử dụng lâu dài mà vẫn giữ được vẻ đẹp trong quá trình sử dụng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1-item-4",
+      "title": "DỄ DÀNG VỆ SINH",
+      "block": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1",
+      "position": 4,
+      "body": "Bề mặt dễ làm sạch, đũa có thể vệ sinh bằng tay hoặc sử dụng an toàn trong máy rửa chén, thuận tiện cho mọi bữa ăn hằng ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-zwilling-sorrento-1-item-1",
+      "title": "CÁCH NHIỆT HAI LỚP",
+      "block": "block-ly-zwilling-sorrento-1",
+      "position": 1,
+      "body": "Thiết kế hai lớp giúp giữ nóng lâu hơn, giữ lạnh tốt hơn mà vẫn giữ bề mặt bên ngoài khô ráo, không đọng hơi nước.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-zwilling-sorrento-1-item-2",
+      "title": "THỦY TINH BOROSILICATE THỔI THỦ CÔNG",
+      "block": "block-ly-zwilling-sorrento-1",
+      "position": 2,
+      "body": "Được làm thủ công từ thủy tinh borosilicate cao cấp, bền chắc bởi các nghệ nhân lành nghề, mang đến vẻ đẹp tinh tế và ấn tượng cho từng chiếc ly.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-zwilling-sorrento-1-item-3",
+      "title": "NHẸ NHÀNG, DỄ CẦM NẮM",
+      "block": "block-ly-zwilling-sorrento-1",
+      "position": 3,
+      "body": "Tay cầm được thiết kế vừa vặn, mang đến cảm giác thoải mái khi sử dụng. Trọng lượng nhẹ cũng giúp ly thuận tiện để thưởng thức tại nhà hoặc trong những bữa tiệc ngoài trời.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-zwilling-sorrento-1-item-4",
+      "title": "TIỆN DỤNG CHO MỌI NGÀY",
+      "block": "block-ly-zwilling-sorrento-1",
+      "position": 4,
+      "body": "Ly có thể sử dụng trong lò vi sóng, ngăn đông và máy rửa chén, mang đến sự tiện lợi từ thưởng thức đến vệ sinh sau mỗi lần sử dụng.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1-item-1",
+      "title": "GIỮ TRỌN NHIỆT ĐỘ YÊU THÍCH",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1",
+      "position": 1,
+      "body": "Thiết kế cách nhiệt giúp giữ lạnh lên đến 12 giờ hoặc giữ nóng đến 14 giờ, để bạn luôn thưởng thức thức uống yêu thích ở nhiệt độ lý tưởng, dù ở bất cứ đâu.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1-item-2",
+      "title": "THIẾT KẾ TINH TẾ, ĐỒNG HÀNH MỌI NƠI",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1",
+      "position": 2,
+      "body": "Thiết kế bởi Matteo Thun & Antonio Rodriguez, tumbler mang tinh thần tối giản của nước Ý với diện mạo hiện đại, thanh lịch cùng ba gam màu tinh tế.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1-item-3",
+      "title": "NẮP TIỆN DỤNG, DỄ DÀNG THƯỞNG THỨC",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1",
+      "position": 3,
+      "body": "Thiết kế nắp tiện lợi cho phép bạn uống trực tiếp hoặc sử dụng ống hút. Khi không dùng, ống hút có thể được cất gọn ngay bên trong nắp, thuận tiện cho mọi hành trình.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1-item-4",
+      "title": "ĐỒNG HÀNH TRONG MỌI KHOẢNH KHẮC",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1",
+      "position": 4,
+      "body": "Từ ly cà phê buổi sáng, thức uống mát lạnh buổi chiều đến những bữa ăn nóng hổi khi đang di chuyển, dòng THERMO PLUS được thiết kế để đồng hành cùng mọi khoảnh khắc trong ngày.",
+      "image": "",
+      "coordX": "",
+      "coordY": ""
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2-item-1",
+      "title": "CÁCH NHIỆT HAI LỚP",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2",
+      "position": 1,
+      "body": "Thiết kế hai lớp cách nhiệt chân không giúp giữ thức uống ở nhiệt độ lý tưởng trong nhiều giờ.",
+      "image": "",
+      "coordX": "50.0",
+      "coordY": "60.0"
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2-item-2",
+      "title": "THÉP KHÔNG GỈ CAO CẤP",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2",
+      "position": 2,
+      "body": "Lớp bên trong được làm từ thép không gỉ 316L, có khả năng chống ăn mòn, bền bỉ và không làm ảnh hưởng đến hương vị thức uống.",
+      "image": "",
+      "coordX": "45.0",
+      "coordY": "45.0"
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2-item-3",
+      "title": "NẮP TRITAN BỀN BỈ",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2",
+      "position": 3,
+      "body": "Nắp Tritan có khả năng chống vỡ, chịu nhiệt tốt và giúp giữ trọn hương vị tự nhiên của thức uống.",
+      "image": "",
+      "coordX": "52.0",
+      "coordY": "24.0"
+    },
+    {
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2-item-4",
+      "title": "SILICONE AN TOÀN CHO THỰC PHẨM",
+      "block": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2",
+      "position": 4,
+      "body": "Gioăng làm từ silicone an toàn cho thực phẩm giúp ngăn rò rỉ, để bạn yên tâm mang theo thức uống trong mọi hành trình.",
+      "image": "",
+      "coordX": "62.0",
+      "coordY": "15.0"
+    },
+    {
+      "ID": "block-zwilling-pro-2-item-1",
+      "title": "MŨI DAO ĐA NĂNG",
+      "block": "block-zwilling-pro-2",
+      "position": 1,
+      "body": "Thiết kế mũi dao nhọn cong lý tưởng cho các thao tác thái lát, cắt hạt lựu và cắt lướt linh hoạt với độ chuẩn xác cao.",
+      "image": "",
+      "coordX": "6.0",
+      "coordY": "68.0"
+    },
+    {
+      "ID": "block-zwilling-pro-2-item-2",
+      "title": "CHẤT THÉP VƯỢT TRỘI",
+      "block": "block-zwilling-pro-2",
+      "position": 2,
+      "body": "Lưỡi dao được rèn nguyên khối từ thép không gỉ carbon cao với công thức chuyên biệt, mang lại độ bền và hiệu suất cắt vượt trội.",
+      "image": "",
+      "coordX": "22.5",
+      "coordY": "57.0"
+    },
+    {
+      "ID": "block-zwilling-pro-2-item-3",
+      "title": "LƯỠI DAO SẮC BÉN TỐI ƯU",
+      "block": "block-zwilling-pro-2",
+      "position": 3,
+      "body": "Lưỡi dao được mài chính xác, kết hợp công nghệ laser kiểm soát góc cắt để đạt độ sắc bén vượt trội.",
+      "image": "",
+      "coordX": "39.0",
+      "coordY": "45.7"
+    },
+    {
+      "ID": "block-zwilling-pro-2-item-4",
+      "title": "GÙ DAO CONG ĐẶC TRƯNG",
+      "block": "block-zwilling-pro-2",
+      "position": 4,
+      "body": "Phần gù dao cong nối liền mạch với cán, giúp thao tác chính xác, nâng đỡ ngón tay an toàn và thoải mái hơn.",
+      "image": "",
+      "coordX": "55.0",
+      "coordY": "50.0"
+    },
+    {
+      "ID": "block-zwilling-pro-2-item-5",
+      "title": "CÁN DAO CHẮC CHẮN, THOẢI MÁI",
+      "block": "block-zwilling-pro-2",
+      "position": 5,
+      "body": "Kết cấu thép nguyên khối xuyên suốt từ lưỡi đến cán, được cố định bằng ba đinh tán, mang lại độ cân bằng vững chắc và cảm giác cầm thoải mái.",
+      "image": "",
+      "coordX": "75.7",
+      "coordY": "47.8"
+    }
+  ]
+}
