@@ -595,11 +595,14 @@ export class WxFeatureBlocks extends LitElement {
     let heading = block.heading || block.title;
     let body = block.body || '';
     let cards = childItems;
+    let bannerImage = (childItems.length > 0 && childItems[0].image) ? childItems[0].image : (block.image || '');
 
     if (!block.heading && childItems.length > 0) {
       const firstItem = childItems[0];
       heading = firstItem.title || heading;
       body = firstItem.body || body;
+      cards = childItems.slice(1);
+    } else if (childItems.length > 0 && (childItems[0].title === heading || childItems[0].position === 1)) {
       cards = childItems.slice(1);
     }
 
@@ -608,7 +611,7 @@ export class WxFeatureBlocks extends LitElement {
         <!-- Banner 50/50 -->
         <div class="story-banner">
           <div class="story-media">
-            ${this._renderMedia(block.image, heading, '320px')}
+            ${this._renderMedia(bannerImage, heading, '320px')}
           </div>
 
           <div class="story-content">
@@ -656,7 +659,9 @@ export class WxFeatureBlocks extends LitElement {
 
   _renderHighlightsBlock(block, childItems) {
     const items = childItems.length > 0 ? childItems : [];
-    const rawImage = block.image || (block.ID ? `/images/${block.ID}.png` : (block._id ? `/images/${block._id}.png` : ''));
+    const itemWithImage = childItems.find((it) => it.image);
+    // Ưu tiên cao nhất là ảnh mới tải lên ở FeatureItems, sau đó mới đến block.image, cuối cùng là ảnh mặc định
+    const rawImage = (itemWithImage ? itemWithImage.image : '') || block.image || (block.ID ? `/images/${block.ID}.png` : (block._id ? `/images/${block._id}.png` : ''));
     const resolvedImage = resolveImageUrl(rawImage);
     const hasImage = this._isImageAvailable(resolvedImage);
 
@@ -676,10 +681,10 @@ export class WxFeatureBlocks extends LitElement {
                   ${items.map((item, idx) => {
                     const rawX = item.coordX !== undefined && item.coordX !== null && item.coordX !== ''
                       ? item.coordX
-                      : (item.x ?? item.hotspotX);
+                      : (item.CoordX ?? item.coord_x ?? item.x ?? item.hotspotX);
                     const rawY = item.coordY !== undefined && item.coordY !== null && item.coordY !== ''
                       ? item.coordY
-                      : (item.y ?? item.hotspotY);
+                      : (item.CoordY ?? item.coord_y ?? item.y ?? item.hotspotY);
 
                     if (rawX === undefined || rawX === null || rawX === '') return '';
                     const x = parseFloat(rawX);
