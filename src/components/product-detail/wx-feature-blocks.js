@@ -502,6 +502,23 @@ export class WxFeatureBlocks extends LitElement {
     this.failedImages = new Set();
   }
 
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    const filtered = this._getFilteredBlocks();
+    this.hidden = !filtered || filtered.length === 0;
+  }
+
+  _getFilteredBlocks() {
+    const rawBlocks = this._getEffectiveBlocks();
+    if (!rawBlocks || rawBlocks.length === 0) return [];
+    return rawBlocks.filter((b) => {
+      const comp = b.component || 'story';
+      if (comp === 'intro') return false;
+      if (!this.type || this.type === 'all') return comp === 'story' || comp === 'highlights';
+      return comp === this.type;
+    });
+  }
+
   _getEffectiveBlocks() {
     if (this.block && typeof this.block === 'object') {
       return [this.block];
@@ -768,16 +785,10 @@ export class WxFeatureBlocks extends LitElement {
   }
 
   render() {
-    const rawBlocks = this._getEffectiveBlocks();
-    if (!rawBlocks || rawBlocks.length === 0) return html``;
-
-    // Chỉ render các khối hợp lệ: 'story' và 'highlights'. Bỏ qua hoàn toàn các khối 'intro' cũ còn sót lại trong CMS.
-    const filteredBlocks = rawBlocks.filter((b) => {
-      const comp = b.component || 'story';
-      if (comp === 'intro') return false;
-      if (!this.type || this.type === 'all') return comp === 'story' || comp === 'highlights';
-      return comp === this.type;
-    });
+    const filteredBlocks = this._getFilteredBlocks();
+    if (filteredBlocks.length === 0) {
+      return html``;
+    }
 
     return html`
       <div class="feature-blocks-container">

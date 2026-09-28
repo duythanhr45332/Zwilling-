@@ -24,6 +24,16 @@ $w.onReady(async function () {
     return null;
   }
 
+  function findContainer(ids) {
+    for (const id of ids) {
+      try {
+        const el = $w(id);
+        if (el && typeof el.collapse === 'function') return el;
+      } catch (e) {}
+    }
+    return null;
+  }
+
   function safeSet(el, attrName, val) {
     if (el && typeof el.setAttribute === 'function') {
       el.setAttribute(attrName, typeof val === 'string' ? val : JSON.stringify(val));
@@ -149,55 +159,36 @@ $w.onReady(async function () {
     safeSet(detailEl, 'product', fullProduct);
 
     // 6. Nạp các khối tính năng FeatureBlocks & FeatureItems theo Series của sản phẩm
-    const storyEl = findElement(['#storySection', '#wxStorySection', '#featureStory', '#wxFeatureStory']);
-    const hotspotEl = findElement(['#hotspotSection', '#wxHotspotSection', '#featureHotspot', '#wxFeatureHighlights', '#hotspotBlock']);
+    const storyEl = findElement([
+      '#storySection', '#wxStorySection', '#featureStory', '#wxFeatureStory',
+      '#storyBlock', '#story', '#customElementStory', '#customElement1', '#customElement'
+    ]);
+    const hotspotEl = findElement([
+      '#hotspotSection', '#wxHotspotSection', '#featureHotspot', '#wxFeatureHighlights',
+      '#hotspotBlock', '#hotspot', '#highlights', '#highlightsSection', '#wxHotspot',
+      '#customElementHotspot', '#customElement2', '#customElement3'
+    ]);
     const featureBlocksEl = findElement(['#featureBlocks', '#productFeatureBlocks', '#wxFeatureBlocks']);
+
+    // Hỗ trợ thu gọn cả Section hoặc Box bọc ngoài trên Wix Studio
+    const hotspotContainer = findContainer([
+      '#sectionHotspot', '#hotspotSectionContainer', '#sectionHighlights',
+      '#highlightsSectionContainer', '#boxHotspot', '#hotspotBox',
+      '#hotspotSectionWrap', '#sectionCustomElement2', '#sectionCustomElement3'
+    ]);
+    const storyContainer = findContainer([
+      '#sectionStory', '#storySectionContainer', '#boxStory', '#storyBox',
+      '#sectionCustomElement1'
+    ]);
 
     if (storyEl || hotspotEl || featureBlocksEl) {
       try {
-        // Bảng ánh xạ chính xác từ Series ID sang Block IDs của FeatureBlocks
-        const SERIES_BLOCK_MAP = {
-          // Dao bếp
-          'series-zwilling-zwilling-tanrei': ['block-zwilling-tanrei-1', 'block-zwilling-tanrei-3'],
-          'series-zwilling-zwilling-pro': ['block-zwilling-pro-1', 'block-zwilling-pro-2'],
-          'series-zwilling-zwilling-pro-hb': ['block-zwilling-pro-1', 'block-zwilling-pro-2'],
-          'series-zwilling-zwilling-four-star': ['block-zwilling-fourstar-1', 'block-zwilling-fourstar-2'],
-          'series-zwilling-zwilling-gourmet': ['block-zwilling-gourmet-1', 'block-zwilling-gourmet-3'],
-          'series-miyabi-miyabi-kaizen-ii-5000fcd': ['block-miyabi-kaizen-ii-5000fcd-1', 'block-miyabi-kaizen-ii-5000fcd-3'],
-          'series-zwilling-zwilling-twin-pollux': ['block-zwilling-twin-pollux-1'],
-          'series-zwilling-zwilling-now-s': ['block-zwilling-now-s-block-dao-keo-1'],
+        // =========================================================================
+        // TRUY VẤN FEATURE BLOCKS ĐỘNG (CMS-DRIVEN & RELATIONAL QUERY)
+        // =========================================================================
+        let blocks = [];
 
-          // Nồi gang Staub
-          'series-staub-staub-round-cocotte': ['block-staub-dang-tron-1', 'block-staub-dang-tron-2'],
-          'series-staub-staub-twister-cocotte': ['block-staub-dang-tron-1', 'block-staub-dang-tron-2'],
-          'series-staub-staub-chistera': ['block-staub-dang-tron-1', 'block-staub-dang-tron-2'],
-          'series-staub-staub-snowflake': ['block-staub-dang-tron-1', 'block-staub-dang-tron-2'],
-          'series-staub-staub-rice-cocotte': ['block-staub-dang-tron-1', 'block-staub-dang-tron-2'],
-          'series-staub-staub-steamer': ['block-staub-dang-tron-1', 'block-staub-dang-tron-2'],
-          'series-staub-staub-artshape': ['block-staub-pumpkin-1', 'block-staub-pumpkin-2'],
-          'series-staub-staub-grill': ['block-chao-gang-staub-american-grill-1'],
-          'series-staub-staub-knob': ['block-num-noi-gang-staub-1'],
-
-          // Nồi chảo Zwilling
-          'series-zwilling-zwilling-milano': ['block-milano-1', 'block-milano-3'],
-          'series-zwilling-zwilling-madura-plus': ['block-madura-1', 'block-madura-3'],
-          'series-zwilling-zwilling-pro-ii': ['block-zwilling-pro-ii-1'],
-          'series-zwilling-zwilling-spirit': ['block-zwilling-spirit-1'],
-          'series-zwilling-zwilling-twin-specials': ['block-zwilling-pro-ii-1'],
-          'series-zwilling-zwilling-unlock': ['block-milano-1', 'block-milano-3'],
-          'series-zwilling-zwilling-steamer': ['block-zwilling-pro-ii-1'],
-
-          // Dụng cụ đồ bếp, bàn ăn, ly
-          'series-zwilling-zwilling-prof': ['block-dung-cu-nau-an-thep-zwilling-prof-1'],
-          'series-zwilling-zwilling-twin-select': ['block-keo-zwilling-twin-select-keo-da-nang-1', 'block-keo-zwilling-twin-select-keo-da-nang-3'],
-          'series-zwilling-zwilling-minimale': ['block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1'],
-          'series-zwilling-zwilling-nova': ['block-zwilling-nova-1'],
-          'series-zwilling-zwilling-sorrento': ['block-ly-zwilling-sorrento-1'],
-          'series-zwilling-zwilling-now': ['block-thot-zwilling-now-1'],
-          'series-zwilling-zwilling-twin': ['block-zwilling-twin-pollux-1']
-        };
-
-        // 1. Phân giải thông tin Series của sản phẩm (hỗ trợ cả String ID, Object Reference, Array)
+        // 1. Phân giải thông tin Series của sản phẩm (hỗ trợ cả Object Reference, String ID, Array)
         let sVal = currentProduct.series;
         if (Array.isArray(sVal) && sVal.length > 0) sVal = sVal[0];
         let seriesId = '';
@@ -208,12 +199,12 @@ $w.onReady(async function () {
           seriesId = sVal._id || sVal.ID || '';
           seriesTitle = sVal.title || sVal.name || '';
           seriesSlug = sVal.slug || '';
-        } else if (typeof sVal === 'string') {
-          seriesId = sVal;
+        } else if (typeof sVal === 'string' && sVal.trim()) {
+          seriesId = sVal.trim();
         }
 
-        // Nếu có seriesId nhưng chưa có seriesTitle, truy vấn bảng Series
-        if (seriesId && (!seriesTitle || !SERIES_BLOCK_MAP[seriesId])) {
+        // Nếu có seriesId nhưng chưa có seriesTitle hoặc seriesSlug, tra cứu bảng Series
+        if (seriesId && (!seriesTitle || !seriesSlug)) {
           try {
             const seriesRes = await wixData.query('Series')
               .hasSome('_id', [seriesId])
@@ -225,142 +216,165 @@ $w.onReady(async function () {
               const sRow = seriesRes.items[0];
               seriesTitle = sRow.title || seriesTitle;
               seriesSlug = sRow.slug || seriesSlug;
-              if (sRow.ID && SERIES_BLOCK_MAP[sRow.ID]) {
-                seriesId = sRow.ID;
-              } else if (sRow._id && SERIES_BLOCK_MAP[sRow._id]) {
-                seriesId = sRow._id;
-              }
+              if (sRow.ID) seriesId = sRow.ID;
             }
           } catch (e) {
             console.warn('[Wix Velo] Không thể truy vấn Series:', e);
           }
         }
 
-        // 2. Xác định danh sách Block IDs mục tiêu
-        let targetBlockIds = SERIES_BLOCK_MAP[seriesId] || [];
+        // 2. Cách 1: Truy vấn trực tiếp theo trường liên kết CMS (nếu Products có featureBlocks)
+        let directBlocks = currentProduct.featureBlocks;
+        if (directBlocks) {
+          const directIds = Array.isArray(directBlocks)
+            ? directBlocks.map(b => (typeof b === 'object' ? b._id || b.ID : b)).filter(Boolean)
+            : (typeof directBlocks === 'string' ? directBlocks.split(',').map(s => s.trim()).filter(Boolean) : []);
 
-        // Thử tìm theo slug nếu chưa có
-        if (targetBlockIds.length === 0 && seriesSlug) {
-          for (const [k, v] of Object.entries(SERIES_BLOCK_MAP)) {
-            if (k.endsWith(seriesSlug) || k.includes(seriesSlug)) {
-              targetBlockIds = v;
-              break;
+          if (directIds.length > 0) {
+            try {
+              const dRes = await wixData.query('FeatureBlocks')
+                .hasSome('_id', directIds)
+                .or(wixData.query('FeatureBlocks').hasSome('ID', directIds))
+                .find();
+              if (dRes.items.length > 0) blocks = dRes.items;
+            } catch (e) {}
+          }
+        }
+
+        // 3. Cách 2: Truy vấn trực tiếp theo trường `series` trong FeatureBlocks (Chuẩn CMS)
+        if (blocks.length === 0 && seriesId) {
+          try {
+            const bBySeries = await wixData.query('FeatureBlocks')
+              .eq('series', seriesId)
+              .or(wixData.query('FeatureBlocks').hasSome('series', [seriesId]))
+              .find();
+            if (bBySeries.items.length > 0) {
+              blocks = bBySeries.items;
+            }
+          } catch (e) {}
+        }
+
+        // 4. Cách 3: Dự phòng thông minh tự động tìm kiếm theo Slug / Tiêu đề (không cần bảng fix cứng)
+        if (blocks.length === 0) {
+          try {
+            let bQuery = wixData.query('FeatureBlocks');
+
+            // Khớp theo tên series (sourceTitle)
+            if (seriesTitle) {
+              const titleCandidates = [
+                seriesTitle,
+                seriesTitle.toUpperCase(),
+                seriesTitle.toLowerCase()
+              ];
+              bQuery = bQuery.hasSome('sourceTitle', titleCandidates);
+            }
+
+            // Khớp theo slug series trong ID block
+            if (seriesSlug) {
+              const cleanSlug = seriesSlug.replace(/^series-/, '').replace(/^(zwilling|staub|miyabi)-/, '');
+              bQuery = bQuery.or(wixData.query('FeatureBlocks').contains('ID', seriesSlug))
+                             .or(wixData.query('FeatureBlocks').contains('ID', cleanSlug));
+            }
+
+            const autoRes = await bQuery.hasSome('component', ['story', 'highlights']).find();
+            if (autoRes.items.length > 0) {
+              blocks = autoRes.items;
+            }
+          } catch (e) {}
+        }
+
+        // 5. Cách 4: Dự phòng cho sản phẩm lẻ / phụ kiện không gắn Series (như máy hút, gốm sứ, khay nướng...)
+        if (blocks.length === 0) {
+          const pSlug = (currentProduct.slug || '').toLowerCase();
+          const pTitle = (currentProduct.title || '').toLowerCase();
+
+          try {
+            const candidateKeywords = [
+              'may-hut-chan-khong', 'tui-hut-chan-khong', 'hop-thuy-tinh-hut-chan-khong',
+              'hop-nhua-hut-chan-khong', 'bo-to-hut-chan-khong', 'bo-hop-cube-hut-chan-khong',
+              'bo-nap-hut-chan-khong', 'ly-giu-nhiet-zwilling-thermoplus', 'thot-zwilling-now',
+              'dua-zwilling-now', 'dung-cu-nau-an', 'thot-ebony', 'khay-nuong-su-staub',
+              'au-su-staub-bi-ngo', 'au-su-staub-ca-chua', 'au-su-staub-ot-chuong',
+              'chao-gang-staub-american-grill', 'chao-gang-co-mieng-rot', 'staub-oven-dish', 'num-noi-gang-staub',
+              'dia-su', 'to-su', 'chen-dia', 'dinnerware'
+            ];
+
+            for (const kw of candidateKeywords) {
+              if (pSlug.includes(kw) || pTitle.includes(kw.replace(/-/g, ' '))) {
+                let targetKw = kw;
+                if (['dia-su', 'to-su', 'chen-dia'].includes(kw)) targetKw = 'dinnerware';
+                const kwRes = await wixData.query('FeatureBlocks').contains('ID', targetKw).find();
+                if (kwRes.items.length > 0) {
+                  blocks = kwRes.items;
+                  break;
+                }
+              }
+            }
+          } catch (e) {}
+        }
+
+        console.log('[Wix Velo PDP] Số blocks tìm thấy động:', blocks.length, 'cho sản phẩm:', currentProduct.title);
+
+        // Hàm chọn lọc block chính xác nhất cho từng sản phẩm (tránh gộp nhiều block của cả series vào một sản phẩm)
+        function selectBestBlock(blockList, product, sTitle) {
+          if (!blockList || blockList.length === 0) return null;
+          if (blockList.length === 1) {
+            const single = blockList[0];
+            const bSt = (single.sourceTitle || '').toLowerCase();
+            const pTitle = (product.title || '').toLowerCase();
+            const pSlug = (product.slug || '').toLowerCase();
+            // Nếu block có đặc thù riêng (như 'miệng rót' hay 'american grill') mà sản phẩm không phải thì không nạp nhầm
+            if (bSt.includes('miệng rót') && !pTitle.includes('miệng rót') && !pSlug.includes('mieng-rot')) return null;
+            if (bSt.includes('american grill') && !pTitle.includes('american grill') && !pSlug.includes('american-grill')) return null;
+            return single;
+          }
+
+          const pTitle = (product.title || '').toLowerCase();
+          const pSlug = (product.slug || '').toLowerCase();
+          const sTitleNorm = (sTitle || '').toLowerCase();
+
+          let bestBlock = null;
+          let maxScore = 0;
+
+          for (const b of blockList) {
+            let score = 0;
+            const bId = (b.ID || b._id || '').toLowerCase().replace('block-', '');
+            const sTitle = (b.sourceTitle || '').toLowerCase();
+
+            // Khớp chính xác cụm từ hoặc slug
+            if (sTitle && (pTitle.includes(sTitle) || pSlug.includes(sTitle))) score += 15;
+            if (bId && (pSlug.includes(bId) || pTitle.includes(bId))) score += 15;
+
+            // Xử lý dòng STAUB DÁNG TRÒN (Round Cocotte / Mini 10cm, 18-26cm)
+            if (sTitle.includes('dáng tròn') && (pTitle.includes('nồi gang') || pTitle.includes('mini') || pSlug.includes('mini') || pSlug.includes('dang-tron'))) {
+              score += 20;
+            }
+
+            // Khớp từng từ khóa trong tiêu đề nguồn (> 2 ký tự)
+            const words = sTitle.split(/\s+/).filter(w => w.length > 2);
+            for (const w of words) {
+              if (pTitle.includes(w) || pSlug.includes(w)) score += 2;
+            }
+
+            if (score > maxScore) {
+              maxScore = score;
+              bestBlock = b;
             }
           }
-        }
 
-        // 3. Fallback theo từ khóa tiêu đề sản phẩm (hữu ích cho sản phẩm chưa gán series hoặc Ceramic, FS)
-        if (targetBlockIds.length === 0) {
-          const tLower = (currentProduct.title || '').toLowerCase();
-          if (tLower.includes('tanrei')) {
-            targetBlockIds = ['block-zwilling-tanrei-1', 'block-zwilling-tanrei-3'];
-          } else if (tLower.includes('pro hb') || tLower.includes('zwilling pro')) {
-            targetBlockIds = ['block-zwilling-pro-1', 'block-zwilling-pro-2'];
-          } else if (tLower.includes('four star')) {
-            targetBlockIds = ['block-zwilling-fourstar-1', 'block-zwilling-fourstar-2'];
-          } else if (tLower.includes('gourmet')) {
-            targetBlockIds = ['block-zwilling-gourmet-1', 'block-zwilling-gourmet-3'];
-          } else if (tLower.includes('kaizen') || tLower.includes('miyabi')) {
-            targetBlockIds = ['block-miyabi-kaizen-ii-5000fcd-1', 'block-miyabi-kaizen-ii-5000fcd-3'];
-          } else if (tLower.includes('twin pollux')) {
-            targetBlockIds = ['block-zwilling-twin-pollux-1'];
-          } else if (tLower.includes('now s')) {
-            targetBlockIds = ['block-zwilling-now-s-block-dao-keo-1'];
-          } else if (tLower.includes('dáng tròn') || tLower.includes('round cocotte') || tLower.includes('staub mini')) {
-            targetBlockIds = ['block-staub-dang-tron-1', 'block-staub-dang-tron-2'];
-          } else if (tLower.includes('bí ngô') || tLower.includes('pumpkin')) {
-            targetBlockIds = ['block-staub-pumpkin-1', 'block-staub-pumpkin-2'];
-          } else if (tLower.includes('american grill')) {
-            targetBlockIds = ['block-chao-gang-staub-american-grill-1'];
-          } else if (tLower.includes('núm nồi')) {
-            targetBlockIds = ['block-num-noi-gang-staub-1'];
-          } else if (tLower.includes('milano')) {
-            targetBlockIds = ['block-milano-1', 'block-milano-3'];
-          } else if (tLower.includes('madura')) {
-            targetBlockIds = ['block-madura-1', 'block-madura-3'];
-          } else if (tLower.includes('pro ii')) {
-            targetBlockIds = ['block-zwilling-pro-ii-1'];
-          } else if (tLower.includes('spirit')) {
-            targetBlockIds = ['block-zwilling-spirit-1'];
-          } else if (tLower.includes('twin select')) {
-            targetBlockIds = ['block-keo-zwilling-twin-select-keo-da-nang-1', 'block-keo-zwilling-twin-select-keo-da-nang-3'];
-          } else if (tLower.includes('twin prof') || tLower.includes('zwilling prof')) {
-            targetBlockIds = ['block-dung-cu-nau-an-thep-zwilling-prof-1'];
-          } else if (tLower.includes('minimale')) {
-            targetBlockIds = ['block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1'];
-          } else if (tLower.includes('nova')) {
-            targetBlockIds = ['block-zwilling-nova-1'];
-          } else if (tLower.includes('sorrento')) {
-            targetBlockIds = ['block-ly-zwilling-sorrento-1'];
-          } else if (tLower.includes('máy hút chân không')) {
-            targetBlockIds = ['block-may-hut-chan-khong-1', 'block-may-hut-chan-khong-3'];
-          } else if (tLower.includes('túi hút chân không')) {
-            targetBlockIds = ['block-tui-hut-chan-khong-1', 'block-tui-hut-chan-khong-2'];
-          } else if (tLower.includes('hộp nhựa hút chân không')) {
-            targetBlockIds = ['block-hop-nhua-hut-chan-khong-1'];
-          } else if (tLower.includes('hộp thủy tinh hút chân không')) {
-            targetBlockIds = ['block-hop-thuy-tinh-hut-chan-khong-1', 'block-hop-thuy-tinh-hut-chan-khong-2'];
-          } else if (tLower.includes('hộp cube')) {
-            targetBlockIds = ['block-bo-hop-cube-hut-chan-khong-1'];
-          } else if (tLower.includes('tô hút chân không')) {
-            targetBlockIds = ['block-bo-to-hut-chan-khong-1', 'block-bo-to-hut-chan-khong-2'];
-          } else if (tLower.includes('nắp hút chân không')) {
-            targetBlockIds = ['block-bo-nap-hut-chan-khong-1'];
-          } else if (tLower.includes('hút chân không 27') || tLower.includes('hút chân không 40')) {
-            targetBlockIds = ['block-bo-san-pham-hut-chan-khong-27-40-mon-1', 'block-may-hut-chan-khong-3'];
-          } else if (tLower.includes('âu sứ') && tLower.includes('cà chua')) {
-            targetBlockIds = ['block-au-su-staub-ca-chua-1'];
-          } else if (tLower.includes('âu sứ') && tLower.includes('ớt chuông')) {
-            targetBlockIds = ['block-au-su-staub-ot-chuong-1'];
-          } else if (tLower.includes('âu sứ') && tLower.includes('bí ngô')) {
-            targetBlockIds = ['block-au-su-staub-bi-ngo-1'];
-          } else if (tLower.includes('khay nướng sứ')) {
-            targetBlockIds = ['block-khay-nuong-su-staub-1'];
-          } else if (tLower.includes('thớt ebony')) {
-            targetBlockIds = ['block-thot-ebony-1'];
-          } else if (tLower.includes('thớt') && tLower.includes('now')) {
-            targetBlockIds = ['block-thot-zwilling-now-1'];
-          } else if (tLower.includes('đũa') && tLower.includes('now')) {
-            targetBlockIds = ['block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1'];
-          } else if (tLower.includes('thermoplus') || tLower.includes('ly giữ nhiệt')) {
-            targetBlockIds = ['block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1', 'block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2'];
+          // Dự phòng nếu không có từ khớp riêng: ưu tiên block trùng tên series hoặc block đầu tiên
+          if (!bestBlock && blockList.length > 0) {
+            for (const b of blockList) {
+              const sTitle = (b.sourceTitle || '').toLowerCase();
+              if (sTitleNorm && sTitle.includes(sTitleNorm)) return b;
+            }
+            return blockList[0];
           }
+
+          return bestBlock;
         }
 
-        // 4. Thực hiện truy vấn FeatureBlocks từ CMS
-        let blocks = [];
-        if (targetBlockIds && targetBlockIds.length > 0) {
-          const blocksRes = await wixData.query('FeatureBlocks')
-            .hasSome('_id', targetBlockIds)
-            .or(wixData.query('FeatureBlocks').hasSome('ID', targetBlockIds))
-            .or(wixData.query('FeatureBlocks').hasSome('id', targetBlockIds))
-            .find();
-
-          if (blocksRes.items.length > 0) {
-            blocks = blocksRes.items;
-          }
-        }
-
-        // Dự phòng: Tìm theo sourceTitle (hỗ trợ nhiều biến thể viết hoa/thường)
-        if (blocks.length === 0 && seriesTitle) {
-          const titleCandidates = [
-            seriesTitle,
-            seriesTitle.toUpperCase(),
-            seriesTitle.toLowerCase()
-          ];
-          const blocksRes = await wixData.query('FeatureBlocks')
-            .hasSome('sourceTitle', titleCandidates)
-            .hasSome('component', ['story', 'highlights'])
-            .find();
-
-          if (blocksRes.items.length > 0) {
-            blocks = blocksRes.items;
-          }
-        }
-
-        console.log('[Wix Velo PDP] Target Block IDs:', targetBlockIds, '-> Số blocks tìm thấy:', blocks.length);
-
-        // 5. Nếu có blocks, truy vấn FeatureItems và đẩy vào Custom Elements
+        // 6. Nếu có blocks, truy vấn FeatureItems và đẩy vào Custom Elements
         if (blocks.length > 0) {
           const blockKeys = [];
           blocks.forEach((b) => {
@@ -376,52 +390,84 @@ $w.onReady(async function () {
 
           const allItems = itemsRes.items || [];
           console.log('[Wix Velo PDP] Số FeatureItems tìm thấy:', allItems.length);
-          const storyBlocks = blocks.filter((b) => (b.component || 'story') === 'story');
-          const hotspotBlocks = blocks.filter((b) => b.component === 'highlights');
+
+          const rawStoryBlocks = blocks.filter((b) => (b.component || 'story') === 'story');
+          const rawHotspotBlocks = blocks.filter((b) => b.component === 'highlights');
+
+          // Chọn đúng 1 Story block và 1 Hotspot block tương ứng nhất cho sản phẩm
+          const storyBlock = selectBestBlock(rawStoryBlocks, currentProduct, seriesTitle);
+          const hotspotBlock = selectBestBlock(rawHotspotBlocks, currentProduct, seriesTitle);
 
           // Nạp riêng cho Component 1 (Story Section)
-          if (storyEl) {
-            if (storyBlocks.length > 0) {
+          if (storyBlock) {
+            if (storyContainer && typeof storyContainer.expand === 'function') storyContainer.expand();
+            if (storyEl) {
               if (typeof storyEl.expand === 'function') storyEl.expand();
-              safeSet(storyEl, 'blocks', storyBlocks);
+              safeSet(storyEl, 'blocks', [storyBlock]);
               safeSet(storyEl, 'items', allItems);
-            } else {
-              if (typeof storyEl.collapse === 'function') storyEl.collapse();
             }
+          } else {
+            if (storyEl) {
+              if (typeof storyEl.collapse === 'function') storyEl.collapse();
+              safeSet(storyEl, 'blocks', []);
+              safeSet(storyEl, 'items', []);
+            }
+            if (storyContainer && typeof storyContainer.collapse === 'function') storyContainer.collapse();
           }
 
           // Nạp riêng cho Component 2 (Hotspot / Highlights Section)
-          if (hotspotEl) {
-            if (hotspotBlocks.length > 0) {
+          if (hotspotBlock) {
+            if (hotspotContainer && typeof hotspotContainer.expand === 'function') hotspotContainer.expand();
+            if (hotspotEl) {
               if (typeof hotspotEl.expand === 'function') hotspotEl.expand();
-              safeSet(hotspotEl, 'blocks', hotspotBlocks);
+              safeSet(hotspotEl, 'blocks', [hotspotBlock]);
               safeSet(hotspotEl, 'items', allItems);
-            } else {
-              if (typeof hotspotEl.collapse === 'function') hotspotEl.collapse();
             }
+          } else {
+            if (hotspotEl) {
+              if (typeof hotspotEl.collapse === 'function') hotspotEl.collapse();
+              safeSet(hotspotEl, 'blocks', []);
+              safeSet(hotspotEl, 'items', []);
+            }
+            if (hotspotContainer && typeof hotspotContainer.collapse === 'function') hotspotContainer.collapse();
           }
 
           // Nạp cho Component gộp nếu vẫn dùng tag cũ
           if (featureBlocksEl) {
-            if (blocks.length > 0) {
+            const combinedBlocks = [storyBlock, hotspotBlock].filter(Boolean);
+            if (combinedBlocks.length > 0) {
               if (typeof featureBlocksEl.expand === 'function') featureBlocksEl.expand();
-              safeSet(featureBlocksEl, 'blocks', blocks);
+              safeSet(featureBlocksEl, 'blocks', combinedBlocks);
               safeSet(featureBlocksEl, 'items', allItems);
             } else {
               if (typeof featureBlocksEl.collapse === 'function') featureBlocksEl.collapse();
             }
           }
         } else {
-          // Không có blocks cho sản phẩm này -> Tự động thu gọn (collapse) để không hiển thị khung trống
-          if (storyEl && typeof storyEl.collapse === 'function') storyEl.collapse();
-          if (hotspotEl && typeof hotspotEl.collapse === 'function') hotspotEl.collapse();
+          // Không có blocks cho sản phẩm này -> Tự động thu gọn (collapse) toàn bộ Custom Elements & Sections
+          if (storyEl) {
+            if (typeof storyEl.collapse === 'function') storyEl.collapse();
+            safeSet(storyEl, 'blocks', []);
+            safeSet(storyEl, 'items', []);
+          }
+          if (storyContainer && typeof storyContainer.collapse === 'function') storyContainer.collapse();
+
+          if (hotspotEl) {
+            if (typeof hotspotEl.collapse === 'function') hotspotEl.collapse();
+            safeSet(hotspotEl, 'blocks', []);
+            safeSet(hotspotEl, 'items', []);
+          }
+          if (hotspotContainer && typeof hotspotContainer.collapse === 'function') hotspotContainer.collapse();
+
           if (featureBlocksEl && typeof featureBlocksEl.collapse === 'function') featureBlocksEl.collapse();
         }
       } catch (featErr) {
         console.warn('[Wix Velo] Không thể nạp FeatureBlocks:', featErr);
         // Trong trường hợp lỗi ngoại lệ, thu gọn các phần tử để tránh khung vỡ
         if (storyEl && typeof storyEl.collapse === 'function') storyEl.collapse();
+        if (storyContainer && typeof storyContainer.collapse === 'function') storyContainer.collapse();
         if (hotspotEl && typeof hotspotEl.collapse === 'function') hotspotEl.collapse();
+        if (hotspotContainer && typeof hotspotContainer.collapse === 'function') hotspotContainer.collapse();
         if (featureBlocksEl && typeof featureBlocksEl.collapse === 'function') featureBlocksEl.collapse();
       }
     }
