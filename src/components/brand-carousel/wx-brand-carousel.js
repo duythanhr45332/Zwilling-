@@ -3,6 +3,7 @@ import { themeStyles } from '../../styles/theme.js';
 import { safeDefine } from '../../utils/element.js';
 import { dispatchCustomEvent } from '../../utils/events.js';
 import { t } from '../../utils/i18n.js';
+import { resolveImageUrl } from '../../utils/formatters.js';
 
 export class WxBrandCarousel extends LitElement {
   static properties = {
@@ -189,8 +190,8 @@ export class WxBrandCarousel extends LitElement {
                 @keydown="${(e) => e.key === 'Enter' && this._handleItemClick(item)}"
               >
                 <div class="brand-logo-box">
-                  ${item.logo
-                    ? html`<img src="${item.logo}" alt="${item.title}" style="max-height: 48px; max-width: 140px;" />`
+                  ${(item.image || item.logoImage || item.logo)
+                    ? html`<img src="${resolveImageUrl(item.image || item.logoImage || item.logo)}" alt="${item.title}" style="max-height: 48px; max-width: 140px;" />`
                     : html`<span class="brand-name">${item.title}</span>`}
                 </div>
                 ${item.description ? html`<div class="brand-desc">${item.description}</div>` : ''}

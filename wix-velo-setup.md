@@ -506,7 +506,7 @@ $w.onReady(async function () {
     const brandsData = brandsRes.items.map(b => ({
       ...b,
       title: b.title,
-      image: b.logo || b.bannerImage || null,
+      image: b.image || b.logo || b.bannerImage || null,
       slug: b.slug || b.ID
     }));
 
