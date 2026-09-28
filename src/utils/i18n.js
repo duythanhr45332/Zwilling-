@@ -78,7 +78,8 @@ export const translations = {
     home: 'TRANG CHỦ',
     products: 'SẢN PHẨM',
     brandsBreadcrumb: 'THƯƠNG HIỆU',
-    about: 'GIỚI THIỆU'
+    about: 'GIỚI THIỆU',
+    blog: 'BÀI VIẾT'
   },
   en: {
     // wx-product-listing
@@ -153,7 +154,8 @@ export const translations = {
     home: 'HOME',
     products: 'PRODUCTS',
     brandsBreadcrumb: 'BRANDS',
-    about: 'ABOUT US'
+    about: 'ABOUT US',
+    blog: 'BLOG'
   }
 };
 
