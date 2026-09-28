@@ -44,21 +44,35 @@ fs.mkdirSync(path.resolve('dist', 'data'), { recursive: true });
 fs.mkdirSync(path.resolve('public', 'data'), { recursive: true });
 fs.mkdirSync(path.resolve('dist', 'images'), { recursive: true });
 
-// 2. Generate blocks-data.json
-const blocksCsvPath = path.resolve('wix-csv', 'FeatureBlocks.csv');
-const itemsCsvPath = path.resolve('wix-csv', 'FeatureItems.csv');
+// 2. Generate blocks-data.json (prioritize tools/live-wix-csv)
+const candidateBlocksPaths = [
+  path.resolve('tools', 'live-wix-csv', 'FeatureBlocksWix.csv.csv'),
+  path.resolve('tools', 'live-wix-csv', 'FeatureBlocksWix.csv'),
+  path.resolve('tools', 'live-wix-csv', 'FeatureBlocks.csv'),
+  path.resolve('wix-csv', 'FeatureBlocks.csv')
+];
+const blocksCsvPath = candidateBlocksPaths.find(p => fs.existsSync(p)) || candidateBlocksPaths[candidateBlocksPaths.length - 1];
+
+const candidateItemsPaths = [
+  path.resolve('tools', 'live-wix-csv', 'FeatureItemsWix.csv'),
+  path.resolve('tools', 'live-wix-csv', 'FeatureItems.csv'),
+  path.resolve('wix-csv', 'FeatureItems.csv')
+];
+const itemsCsvPath = candidateItemsPaths.find(p => fs.existsSync(p)) || candidateItemsPaths[candidateItemsPaths.length - 1];
+
+const cleanHdr = (hdr) => hdr.map((h) => h.replace(/^\ufeff/, '').replace(/^"(.*)"$/, '$1').trim().toLowerCase());
 
 let blocks = [];
 if (fs.existsSync(blocksCsvPath)) {
   const rows = parseCsv(fs.readFileSync(blocksCsvPath, 'utf8'));
   if (rows.length > 1) {
-    const header = rows[0];
-    const idIdx = header.indexOf('ID');
-    const titleIdx = header.indexOf('title');
-    const compIdx = header.indexOf('component');
-    const imgIdx = header.indexOf('image');
-    const srcSheetIdx = header.indexOf('sourceSheet');
-    const srcTitleIdx = header.indexOf('sourceTitle');
+    const h = cleanHdr(rows[0]);
+    const idIdx = h.indexOf('id');
+    const titleIdx = h.indexOf('title');
+    const compIdx = h.indexOf('component');
+    const imgIdx = h.indexOf('image');
+    const srcSheetIdx = h.indexOf('sourcesheet');
+    const srcTitleIdx = h.indexOf('sourcetitle');
 
     blocks = rows.slice(1).map(r => ({
       ID: r[idIdx] || '',
@@ -75,15 +89,15 @@ let items = [];
 if (fs.existsSync(itemsCsvPath)) {
   const rows = parseCsv(fs.readFileSync(itemsCsvPath, 'utf8'));
   if (rows.length > 1) {
-    const header = rows[0];
-    const idIdx = header.indexOf('ID');
-    const titleIdx = header.indexOf('title');
-    const blockIdx = header.indexOf('block');
-    const posIdx = header.indexOf('position');
-    const bodyIdx = header.indexOf('body');
-    const imgIdx = header.indexOf('image');
-    const cxIdx = header.indexOf('coordX');
-    const cyIdx = header.indexOf('coordY');
+    const h = cleanHdr(rows[0]);
+    const idIdx = h.indexOf('id');
+    const titleIdx = h.indexOf('title');
+    const blockIdx = h.indexOf('block');
+    const posIdx = h.indexOf('position');
+    const bodyIdx = h.indexOf('body');
+    const imgIdx = h.indexOf('image');
+    const cxIdx = h.indexOf('coordx');
+    const cyIdx = h.indexOf('coordy');
 
     items = rows.slice(1).map(r => ({
       ID: r[idIdx] || '',

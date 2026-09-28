@@ -41,4 +41,8 @@ export const themeStyles = css`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+
+  button, input, select, textarea, optgroup {
+    font-family: inherit;
+  }
 `;

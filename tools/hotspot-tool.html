@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+  <!-- Thư viện UI bundle hỗ trợ cả Vercel lẫn Localhost -->
+  <script src="/my-wix-ui-lib.bundle.js"></script>
+  <script type="module">
+    if (!customElements.get('wx-hotspot-section')) {
+      try {
+        await import('/src/index.js');
+      } catch (e) {}
+    }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZWILLING · Hotspot Coordinate Studio (Wix CMS)</title>
@@ -15,9 +25,11 @@
       --bg: #f4f5f8;
       --card-bg: #ffffff;
       --border: #dcdfe4;
+      --border-dark: #b8bcc4;
       --text: #1a1a1a;
       --text-muted: #666666;
       --success: #0f8b44;
+      --amber: #d97706;
       --font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
@@ -27,10 +39,9 @@
       padding: 0;
     }
 
-    /* CLEAR, ALWAYS-VISIBLE SCROLLBARS */
     ::-webkit-scrollbar {
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
     }
     ::-webkit-scrollbar-track {
       background: #eef1f5;
@@ -43,35 +54,30 @@
       background: #6c757d;
     }
 
-    html {
+    html, body {
       height: 100%;
-    }
-
-    body {
       min-height: 100%;
-      height: 100%;
       font-family: var(--font);
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
       display: flex;
       flex-direction: column;
-      overflow-y: auto;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     /* TOP HEADER */
     .top-header {
       background: #111111;
       color: #ffffff;
-      padding: 10px 24px;
+      padding: 0 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-shrink: 0;
       z-index: 1000;
       border-bottom: 1px solid #222222;
-      height: 58px;
+      height: 56px;
     }
 
     .brand-area {
@@ -94,11 +100,22 @@
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .brand-subtitle {
+    .data-source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 139, 68, 0.15);
+      border: 1px solid rgba(15, 139, 68, 0.4);
+      color: #34d399;
       font-size: 11px;
-      color: #aaaaaa;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
     }
 
     .header-actions {
@@ -140,17 +157,16 @@
     /* STUDIO LAYOUT (3 COLUMNS) */
     .studio-container {
       display: grid;
-      grid-template-columns: 340px 1fr 400px;
+      grid-template-columns: 330px 1fr 410px;
       flex: 1;
-      height: calc(100vh - 58px);
-      min-height: 540px;
+      height: calc(100vh - 56px);
       background: #e4e7ec;
       gap: 1px;
       overflow: hidden;
     }
 
-    /* LEFT COLUMN: HOTSPOT SERIES LIST */
-    .block-list-panel {
+    /* LEFT SIDEBAR: BLOCKS LIST */
+    .sidebar-panel {
       background: #ffffff;
       display: flex;
       flex-direction: column;
@@ -160,7 +176,7 @@
       border-right: 1px solid var(--border);
     }
 
-    .panel-header-search {
+    .sidebar-header {
       padding: 12px 14px;
       border-bottom: 1px solid var(--border);
       background: #fafafa;
@@ -170,67 +186,79 @@
       flex-shrink: 0;
     }
 
-    .search-input-wrapper {
-      position: relative;
+    .sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #333;
       display: flex;
+      justify-content: space-between;
       align-items: center;
     }
 
-    .search-input {
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
       width: 100%;
-      padding: 8px 30px 8px 10px;
+      padding: 7px 28px 7px 10px;
       border: 1px solid var(--border);
       border-radius: 4px;
       font-size: 12px;
       font-family: var(--font);
+      outline: none;
+      transition: border-color 0.15s;
     }
 
-    .search-clear-btn {
+    .search-box input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-clear {
       position: absolute;
       right: 8px;
-      background: none;
+      top: 50%;
+      transform: translateY(-50%);
       border: none;
+      background: transparent;
       color: #999;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 14px;
       display: none;
     }
 
-    /* CATEGORY FILTER PILLS */
     .sheet-filter-bar {
       display: flex;
-      gap: 5px;
+      gap: 4px;
       overflow-x: auto;
       padding-bottom: 2px;
-      scrollbar-width: thin;
     }
 
     .sheet-pill {
       font-size: 10.5px;
       font-weight: 600;
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 12px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      color: #555555;
+      background: #e9ecef;
+      color: #495057;
+      border: none;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.15s ease;
+      transition: all 0.15s;
     }
 
     .sheet-pill:hover {
-      background: #f0f0f0;
-      color: #111111;
+      background: #dee2e6;
     }
 
     .sheet-pill.active {
       background: #111111;
       color: #ffffff;
-      border-color: #111111;
     }
 
-    /* SCROLLABLE HOTSPOT CARDS */
-    .block-scroll-list {
+    .block-list {
       flex: 1 1 0px;
       overflow-y: auto;
       overflow-x: hidden;
@@ -238,214 +266,293 @@
       padding: 10px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      scrollbar-width: thin;
+      gap: 6px;
     }
 
     .block-card {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 10px 12px;
       display: flex;
-      gap: 12px;
       align-items: center;
-      cursor: pointer;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
       background: #ffffff;
+      cursor: pointer;
       transition: all 0.15s ease;
+      user-select: none;
     }
 
     .block-card:hover {
-      border-color: #b0b4ba;
-      background: #fdfdfd;
+      border-color: var(--primary);
+      background: #fffafa;
       transform: translateY(-1px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
 
     .block-card.active {
       border-color: var(--primary);
-      background: #fff8f8;
-      box-shadow: 0 0 0 1px var(--primary);
+      background: #fff5f6;
+      box-shadow: 0 0 0 1.5px var(--primary);
     }
 
     .block-thumb {
-      width: 58px;
-      height: 44px;
-      background: #f4f5f7;
-      border-radius: 4px;
+      width: 50px;
+      height: 42px;
       object-fit: contain;
+      background: #f8f9fa;
+      border: 1px solid #eeeeee;
+      border-radius: 4px;
       flex-shrink: 0;
-      border: 1px solid #e2e4e8;
       padding: 2px;
     }
 
     .block-info {
       flex: 1;
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .block-sheet-tag {
       font-size: 9.5px;
       font-weight: 700;
-      color: #888888;
+      color: var(--primary);
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     .block-name {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #111111;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-top: 1px;
     }
 
     .block-status-badge {
-      display: inline-block;
-      font-size: 9.5px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 3px;
-      margin-top: 3px;
-      background: #eafaf1;
-      color: #0f8b44;
-      border: 1px solid #c2ecd5;
+      font-size: 10px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    /* CENTER COLUMN: CANVAS & TOOLBAR */
+    .status-complete { color: var(--success); }
+    .status-incomplete { color: var(--amber); }
+
+    /* CENTER WORKSPACE: CANVAS */
     .canvas-panel {
-      background: #ffffff;
+      background: #f0f2f5;
       display: flex;
       flex-direction: column;
       height: 100%;
       min-height: 0;
       overflow: hidden;
+      position: relative;
     }
 
     .canvas-toolbar {
-      padding: 10px 18px;
-      background: #fafafa;
+      background: #ffffff;
+      padding: 8px 16px;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
       flex-shrink: 0;
+      gap: 12px;
+      z-index: 10;
     }
 
-    .current-block-title {
-      font-size: 13.5px;
+    .active-block-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
       font-weight: 700;
       color: #111111;
+      min-width: 0;
+    }
+
+    .view-mode-tabs {
+      display: inline-flex;
+      background: #edf0f5;
+      padding: 2px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .view-mode-btn {
+      padding: 5px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: #555555;
+      font-family: var(--font);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .view-mode-btn.active {
+      background: #ffffff;
+      color: #111111;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    }
+
+    .canvas-controls {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .canvas-view-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .control-select {
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      outline: none;
+      cursor: pointer;
     }
 
     .canvas-workspace {
       flex: 1 1 0px;
       overflow: auto;
+      min-height: 0;
       display: flex;
-      background: #f7f7fa;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      user-select: none;
       padding: 24px;
-      scrollbar-width: thin;
+      background-image: 
+        linear-gradient(45deg, #e9ecef 25%, transparent 25%), 
+        linear-gradient(-45deg, #e9ecef 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #e9ecef 75%), 
+        linear-gradient(-45deg, transparent 75%, #e9ecef 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     }
 
     .canvas-wrapper {
-      margin: auto;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 95%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 24px;
+      user-select: none;
+      transition: transform 0.15s ease-out;
+      line-height: 0;
+    }
+
+    .knife-media-wrapper {
       position: relative;
       display: inline-block;
-      cursor: crosshair;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-      background: #ffffff;
-      border-radius: 6px;
-      transition: transform 0.2s ease;
+      line-height: 0;
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
     }
 
     .canvas-image {
       display: block;
+      width: auto;
       max-width: 100%;
-      max-height: 520px;
       height: auto;
+      max-height: 480px;
       pointer-events: none;
-      border-radius: 6px;
     }
 
-    /* HOTSPOT PIN ON CANVAS */
+    /* EXACT HOTSPOT PIN STYLING AS IN WX-HOTSPOT-SECTION */
     .tool-pin {
       position: absolute;
       transform: translate(-50%, -50%);
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(18, 18, 18, 0.3);
+      background: rgba(18, 18, 18, 0.28);
       border: 2px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
       cursor: grab;
+      padding: 0;
+      margin: 0;
+      outline: none;
       z-index: 10;
       backdrop-filter: blur(2px);
-      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+      -webkit-backdrop-filter: blur(2px);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background-color 0.2s ease,
+                  border-color 0.2s ease,
+                  box-shadow 0.2s ease;
     }
 
-    .tool-pin:active { cursor: grabbing; }
+    .tool-pin:active {
+      cursor: grabbing;
+    }
 
     .tool-pin:hover {
-      transform: translate(-50%, -50%) scale(1.15);
+      transform: translate(-50%, -50%) scale(1.18);
       background: rgba(18, 18, 18, 0.45);
       border-color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      z-index: 25;
     }
 
     .tool-pin-inner {
-      width: 11px;
-      height: 11px;
+      display: block;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
       background: #ffffff;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, background-color 0.2s ease;
       pointer-events: none;
     }
 
     .tool-pin-badge {
       position: absolute;
-      top: -9px;
-      right: -9px;
+      top: -8px;
+      right: -8px;
       background: #111111;
       color: #ffffff;
       font-size: 10px;
-      font-weight: 700;
-      width: 18px;
-      height: 18px;
+      font-weight: 800;
+      width: 19px;
+      height: 19px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #fff;
+      border: 1.5px solid #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
       pointer-events: none;
+      transition: background-color 0.2s ease;
     }
 
     .tool-pin.active {
+      background: rgba(212, 0, 38, 0.28);
       border-color: var(--primary);
-      background: rgba(212, 0, 38, 0.25);
-      box-shadow: 0 0 16px rgba(212, 0, 38, 0.7), 0 2px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 16px rgba(212, 0, 38, 0.8), 0 2px 10px rgba(0, 0, 0, 0.4);
       transform: translate(-50%, -50%) scale(1.15);
-      z-index: 20;
+      z-index: 30;
     }
 
     .tool-pin.active .tool-pin-inner {
       background: var(--primary);
-      box-shadow: 0 0 8px rgba(212, 0, 38, 0.8);
+      box-shadow: 0 0 8px rgba(212, 0, 38, 0.9);
     }
 
     .tool-pin.active .tool-pin-badge {
@@ -470,21 +577,255 @@
       100% { transform: scale(1.75); opacity: 0; }
     }
 
-    .coord-tooltip {
+    /* PIN HOVER TOOLTIP */
+    .tool-pin-label {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(0, 0, 0, 0.85);
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.88);
       color: #ffffff;
       font-size: 11px;
       font-weight: 600;
       padding: 4px 8px;
-      border-radius: 3px;
+      border-radius: 4px;
+      white-space: nowrap;
       pointer-events: none;
-      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 40;
     }
 
-    /* RIGHT COLUMN: HOTSPOT ITEMS EDITOR */
+    .tool-pin:hover .tool-pin-label {
+      opacity: 1;
+    }
+
+    /* HUD INFOS */
+    .coord-tooltip {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(17, 17, 17, 0.85);
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 600;
+      font-family: monospace;
+      padding: 6px 12px;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    .target-mode-banner {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111111;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--primary);
+      animation: banner-glow 1.5s infinite alternate;
+    }
+
+    @keyframes banner-glow {
+      from { box-shadow: 0 0 10px rgba(212, 0, 38, 0.4); }
+      to { box-shadow: 0 0 20px rgba(212, 0, 38, 0.9); }
+    }
+
+    /* LIVE PREVIEW WRAPPER */
+    .live-component-viewport {
+      display: none;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background: #ffffff;
+      padding: 30px;
+    }
+
+    /* ----------------------------------------------------
+     * LIVE COMPONENT: HOTSPOT SECTION & ACCORDION (ZW SITE)
+     * ---------------------------------------------------- */
+    .hotspot-section {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 48px;
+      align-items: center;
+      background: #ffffff;
+      padding: 24px 0;
+      width: 100%;
+    }
+
+    @media (max-width: 920px) {
+      .hotspot-section {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .knife-viewport {
+      position: relative;
+      width: 100%;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      user-select: none;
+      padding: 10px 0;
+    }
+
+    .knife-media-wrapper-live {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      line-height: 0;
+    }
+
+    .knife-media-wrapper-live img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 340px;
+      display: block;
+      pointer-events: none;
+    }
+
+    .hotspot-pin-live {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(18, 18, 18, 0.22);
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      z-index: 5;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background-color 0.2s ease,
+                  border-color 0.2s ease,
+                  box-shadow 0.2s ease;
+    }
+
+    .hotspot-pin-live:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: rgba(18, 18, 18, 0.35);
+      border-color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .hotspot-pin-live-inner {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      pointer-events: none;
+    }
+
+    .hotspot-pin-live-pulse {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px solid #d40026;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hotspot-pin-live.active {
+      background: rgba(212, 0, 38, 0.25);
+      border-color: #d40026;
+      box-shadow: 0 0 14px rgba(212, 0, 38, 0.7), 0 2px 8px rgba(0, 0, 0, 0.3);
+      transform: translate(-50%, -50%) scale(1.1);
+      z-index: 10;
+    }
+
+    .hotspot-pin-live.active .hotspot-pin-live-inner {
+      background: #d40026;
+      box-shadow: 0 0 8px rgba(212, 0, 38, 0.8);
+    }
+
+    .hotspot-pin-live.active .hotspot-pin-live-pulse {
+      animation: wx-live-pulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+
+    @keyframes wx-live-pulse {
+      0% { transform: scale(0.9); opacity: 0.85; }
+      100% { transform: scale(1.65); opacity: 0; }
+    }
+
+    .live-accordion-col {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .live-accordion-row {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .live-accordion-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      color: #111111;
+      font-family: var(--font);
+      transition: color 0.15s ease;
+    }
+
+    .live-accordion-btn:hover {
+      color: #d40026;
+    }
+
+    .live-accordion-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .live-accordion-icon {
+      font-size: 12px;
+      color: #111111;
+      transition: transform 0.2s ease;
+    }
+
+    .live-accordion-details {
+      padding: 0 0 16px 0;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #555555;
+      animation: wx-fade-down 0.2s ease-out;
+    }
+
+    /* RIGHT COLUMN: EDITOR PANEL */
     .editor-panel {
       background: #ffffff;
       display: flex;
@@ -504,9 +845,9 @@
 
     .tab-btn {
       flex: 1;
-      padding: 10px 10px;
+      padding: 12px 10px;
       font-family: var(--font);
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       border: none;
       background: transparent;
@@ -514,6 +855,7 @@
       color: #666666;
       border-bottom: 2px solid transparent;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
     .tab-btn.active {
@@ -531,7 +873,6 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      scrollbar-width: thin;
     }
 
     .point-card {
@@ -575,6 +916,7 @@
       align-items: center;
       justify-content: center;
       font-size: 10px;
+      font-weight: 800;
     }
 
     .point-card.active .point-number-circle {
@@ -584,11 +926,11 @@
     .point-coords-tag {
       font-size: 11px;
       font-family: monospace;
-      color: #555555;
+      color: #444444;
       background: #f0f2f5;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 4px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .coord-steppers {
@@ -598,7 +940,6 @@
       background: #f7f8fa;
       padding: 8px;
       border-radius: 4px;
-      border: 1px solid #e6e8ec;
     }
 
     .coord-field {
@@ -606,105 +947,90 @@
       align-items: center;
       gap: 3px;
       font-size: 11px;
-    }
-
-    .coord-field span {
       font-weight: 700;
-      color: #555;
-      width: 14px;
     }
 
     .coord-field input {
-      width: 50px;
-      padding: 3px 4px;
+      width: 44px;
+      text-align: center;
+      padding: 3px 2px;
       border: 1px solid var(--border);
       border-radius: 3px;
       font-size: 11px;
+      font-weight: 700;
       font-family: monospace;
-      text-align: center;
+      outline: none;
     }
 
     .step-btn {
-      background: #ffffff;
-      border: 1px solid #ccd0d8;
-      border-radius: 3px;
-      font-size: 9.5px;
-      font-weight: 700;
       padding: 2px 4px;
+      font-size: 10px;
+      font-weight: 700;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 3px;
       cursor: pointer;
-      color: #444;
-      line-height: 1;
+      color: #333333;
+      user-select: none;
     }
 
-    .step-btn:hover { background: #e8ebf0; }
+    .step-btn:hover {
+      background: #eeeeee;
+      border-color: #999999;
+    }
 
     .input-field-group {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
     }
 
     .input-field-group label {
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
-      color: #777777;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
+      color: #555555;
     }
 
     .input-field-group input,
     .input-field-group textarea {
+      width: 100%;
       padding: 6px 8px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
       font-family: var(--font);
       font-size: 12px;
-      line-height: 1.4;
-      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      outline: none;
     }
 
-    .input-field-group textarea {
-      resize: vertical;
-      min-height: 48px;
+    .input-field-group input:focus,
+    .input-field-group textarea:focus {
+      border-color: var(--primary);
     }
 
     .point-card-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 2px;
+      padding-top: 4px;
+      border-top: 1px solid #f0f0f0;
     }
 
-    /* FULL CSV VIEW */
-    .csv-textarea {
-      width: 100%;
-      height: 420px;
-      font-family: monospace;
-      font-size: 10.5px;
-      line-height: 1.4;
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      background: #fafafa;
-      resize: vertical;
-    }
-
-    /* PREVIEW ACCORDION */
+    /* RIGHT PANEL ACCORDION PREVIEW */
     .preview-accordion {
       display: flex;
       flex-direction: column;
-      border-top: 1px solid #e0e0e0;
+      border-top: 1px solid #e5e5e5;
     }
 
     .preview-row {
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e5e5e5;
     }
 
     .preview-btn {
       width: 100%;
       background: none;
       border: none;
-      padding: 12px 0;
+      padding: 14px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -712,23 +1038,51 @@
       text-align: left;
       color: #111111;
       font-family: var(--font);
-      font-size: 12.5px;
+      font-size: 14px;
       font-weight: 800;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
+      transition: color 0.15s ease;
     }
 
-    .preview-row.active .preview-btn { color: var(--primary); }
+    .preview-btn:hover {
+      color: var(--primary);
+    }
+
+    .preview-row.active .preview-btn {
+      color: var(--primary);
+    }
 
     .preview-body {
-      padding: 0 0 12px 0;
-      font-size: 12px;
-      line-height: 1.55;
+      padding: 0 0 14px 0;
+      font-size: 13.5px;
+      line-height: 1.6;
       color: #555555;
       display: none;
     }
 
-    .preview-row.active .preview-body { display: block; }
+    .preview-row.active .preview-body {
+      display: block;
+      animation: wx-fade-down 0.2s ease-out;
+    }
+
+    @keyframes wx-fade-down {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .csv-textarea {
+      width: 100%;
+      height: 380px;
+      font-family: monospace;
+      font-size: 11px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      outline: none;
+      resize: vertical;
+      background: #fafafa;
+    }
 
     /* TOAST NOTIFICATION */
     .toast {
@@ -737,41 +1091,27 @@
       right: 24px;
       background: #111111;
       color: #ffffff;
-      padding: 12px 18px;
+      padding: 12px 20px;
       border-radius: 6px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-      font-size: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+      font-size: 13px;
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 10px;
+      z-index: 9999;
       transform: translateY(100px);
       opacity: 0;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 9999;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
     .toast.success { border-left: 4px solid var(--success); }
     .toast.error { border-left: 4px solid var(--primary); }
-
-    /* RESPONSIVE LAYOUT */
-    @media (max-width: 1100px) {
-      .studio-container {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-        overflow: visible;
-      }
-      .block-list-panel, .canvas-panel, .editor-panel {
-        height: auto !important;
-        min-height: 480px;
-      }
-      .block-scroll-list, .editor-tab-content {
-        max-height: 500px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -779,97 +1119,146 @@
   <!-- TOP HEADER -->
   <header class="top-header">
     <div class="brand-area">
-      <div class="brand-logo">ZWILLING</div>
-      <div>
-        <div class="brand-title">HOTSPOT COORDINATE STUDIO</div>
-        <div class="brand-subtitle">Chấm toạ độ Hotspot (X, Y) cho các dòng sản phẩm & Xuất Wix CSV</div>
+      <span class="brand-logo">ZWILLING</span>
+      <div class="brand-title">
+        <span>Hotspot Interactive Studio</span>
+        <span class="data-source-badge" id="sourceBadge">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #34d399;"></span>
+          <span id="sourceBadgeText">Live Wix CSV: 16 Blocks · 66 Toạ độ</span>
+        </span>
       </div>
     </div>
+
     <div class="header-actions">
-      <span style="font-size: 12px; color: #bbb; margin-right: 8px;" id="overallProgress">Nạp dữ liệu...</span>
-      <button class="btn btn-outline" id="btnResetDefault" title="Khôi phục toạ độ mặc định từ file CSV gốc">🔄 Reset</button>
-      <a href="/demo" class="btn btn-outline" target="_blank">🌐 Demo Site</a>
-      <button class="btn btn-success" id="btnSaveFullCsv">⚡ LƯU TOÀN BỘ VÀO WIX CSV</button>
-      <button class="btn btn-primary" id="btnDownloadFullCsv">💾 TẢI FILE CSV HOÀN CHỈNH</button>
+      <button class="btn btn-primary" id="btnSaveFullCsv" title="Lưu toạ độ vào FeatureItems.csv trên ổ đĩa">
+        💾 LƯU TOÀN BỘ VÀO CSV
+      </button>
+      <button class="btn btn-outline" id="btnDownloadFullCsv" title="Tải file FeatureItems.csv sẵn sàng import vào Wix CMS">
+        📥 Tải CSV Wix
+      </button>
+      <button class="btn btn-outline" id="btnResetDefault" title="Khôi phục lại dữ liệu gốc từ file CSV (Xóa cache tạm)">
+        🔄 Nạp lại CSV gốc
+      </button>
     </div>
   </header>
 
-  <!-- STUDIO CONTAINER -->
+  <!-- MAIN 3-COLUMN STUDIO LAYOUT -->
   <div class="studio-container">
 
-    <!-- LEFT COLUMN: HOTSPOT BLOCKS LIST (STORY COMPLETELY EXCLUDED) -->
-    <aside class="block-list-panel">
-      <div class="panel-header-search">
-        <!-- SEARCH -->
-        <div class="search-input-wrapper">
-          <input type="text" id="searchBlock" class="search-input" placeholder="🔍 Tìm dòng Hotspot (pro, staub, miyabi...)" />
-          <button class="search-clear-btn" id="searchClearBtn">&times;</button>
+    <!-- LEFT SIDEBAR: LIST OF 16 HIGHLIGHT BLOCKS -->
+    <aside class="sidebar-panel">
+      <div class="sidebar-header">
+        <div class="sidebar-title">
+          <span>Danh Sách Khối Hotspot (<span id="countHighlights">16</span>)</span>
+          <span id="overallProgress" style="font-size: 11px; font-weight: 600; color: #666;">Tiến độ: --</span>
         </div>
 
-        <!-- CATEGORY SHEET PILLS -->
-        <div class="sheet-filter-bar" id="sheetFilterBar">
-          <button class="sheet-pill active" data-sheet="ALL">Tất cả (<span id="countAll">0</span>)</button>
-          <button class="sheet-pill" data-sheet="A. Các dòng dao">Dao bếp</button>
-          <button class="sheet-pill" data-sheet="B. NỒI GANG">Nồi gang</button>
-          <button class="sheet-pill" data-sheet="C. NỒI CHẢO ZWILLING">Nồi chảo</button>
+        <div class="search-box">
+          <input type="text" id="searchBlock" placeholder="Tìm kiếm sản phẩm hoặc mã block..." />
+          <button class="search-clear" id="searchClearBtn">✕</button>
+        </div>
+
+        <div class="sheet-filter-bar">
+          <button class="sheet-pill active" data-sheet="ALL">Tất cả (16)</button>
+          <button class="sheet-pill" data-sheet="B. NỒI GANG">Nồi Gang</button>
+          <button class="sheet-pill" data-sheet="C. DAO">Dao</button>
           <button class="sheet-pill" data-sheet="E. FS">Fresh & Save</button>
-          <button class="sheet-pill" data-sheet="F. DỤNG CỤ ĐỒ BẾP">Kéo bếp</button>
-          <button class="sheet-pill" data-sheet="H. BÌNH NƯỚC">Bình nước</button>
+          <button class="sheet-pill" data-sheet="OTHER">Khác</button>
         </div>
       </div>
 
-      <!-- SCROLLABLE LIST OF HOTSPOT BLOCKS -->
-      <div class="block-scroll-list" id="blockListContainer">
+      <div class="block-list" id="blockListContainer">
         <!-- Rendered dynamically -->
       </div>
     </aside>
 
-    <!-- CENTER COLUMN: VISUAL CANVAS -->
+    <!-- CENTER WORKSPACE: INTERACTIVE CANVAS / LIVE VIEW -->
     <main class="canvas-panel">
+      <!-- CANVAS TOOLBAR -->
       <div class="canvas-toolbar">
-        <div class="current-block-title" id="currentBlockHeader">
-          <span style="color: var(--primary);">🎯</span>
-          <span id="activeBlockTitle">Đang nạp dữ liệu...</span>
+        <div class="active-block-label" id="activeBlockLabel">
+          <span style="color: var(--primary);" id="activeBlockSheet">[HOTSPOT]</span>
+          <span id="activeBlockTitle">Đang tải...</span>
         </div>
 
-        <div class="canvas-view-controls">
-          <input type="file" id="singleImageInput" accept="image/*" style="display: none;" />
-          <button class="btn btn-secondary btn-sm" onclick="document.getElementById('singleImageInput').click()">
-            🖼️ Đổi ảnh dòng này
+        <div class="view-mode-tabs">
+          <button class="view-mode-btn active" id="btnModeStudio" onclick="setViewMode('studio')">
+            🎯 Kéo Thả Toạ Độ (Studio)
           </button>
-          <button class="btn btn-secondary btn-sm" id="btnAutoSpread">
-            ✨ Phân bổ đều điểm
+          <button class="view-mode-btn" id="btnModeLive" onclick="setViewMode('live')">
+            👁️ Xem Website Thực Tế
           </button>
-          <select id="zoomSelect" style="padding: 4px 8px; font-size: 11px; border: 1px solid #ccc; border-radius: 4px;">
-            <option value="1">Zoom 100%</option>
-            <option value="1.25">Zoom 125%</option>
-            <option value="1.5">Zoom 150%</option>
+        </div>
+
+        <div class="canvas-controls">
+          <label style="font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; cursor: pointer;">
+            <input type="checkbox" id="chkShowNumbers" checked />
+            <span>Hiện số thứ tự</span>
+          </label>
+
+          <select class="control-select" id="zoomSelect" title="Tỷ lệ phóng to canvas">
+            <option value="1">Vừa khung (100%)</option>
+            <option value="1.25">Phóng to (125%)</option>
+            <option value="1.5">Phóng to (150%)</option>
+            <option value="0.8">Thu nhỏ (80%)</option>
           </select>
+
+          <button class="btn btn-secondary btn-sm" id="btnAutoSpread" title="Tự động phân bổ các điểm đều nhau theo chiều ngang">
+            ⚡ Dàn đều điểm
+          </button>
         </div>
       </div>
 
+      <!-- TARGET MODE ACTIVE BANNER -->
+      <div class="target-mode-banner" id="targetBanner">
+        <span>🎯 CHẾ ĐỘ ĐỊNH VỊ: Click vào bất kỳ vị trí nào trên ảnh để đặt toạ độ!</span>
+        <button class="btn btn-sm btn-outline" style="padding: 2px 6px;" onclick="cancelTargetMode()">Hủy</button>
+      </div>
+
+      <!-- 1. STUDIO CANVAS VIEW -->
       <div class="canvas-workspace" id="canvasWorkspace">
         <div class="canvas-wrapper" id="canvasWrapper">
-          <img id="mainImage" class="canvas-image" src="" alt="Product Canvas" />
-          <!-- Hotspot pins rendered dynamically -->
+          <div class="knife-media-wrapper" id="knifeMediaWrapper">
+            <img id="mainImage" class="canvas-image" src="" alt="Zwilling Product" />
+            <!-- Hotspot pins rendered strictly inside knifeMediaWrapper -->
+          </div>
         </div>
 
         <div class="coord-tooltip" id="coordTooltip">X: 0.0% | Y: 0.0%</div>
       </div>
+
+      <!-- 2. LIVE COMPONENT VIEW (Uses <wx-hotspot-section>) -->
+      <div class="live-component-viewport" id="liveComponentViewport">
+        <div style="max-width: 1100px; margin: 0 auto;">
+          <div style="padding: 12px 16px; background: #fafafa; border: 1px solid #e5e5e5; border-radius: 6px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 12px; font-weight: 700; color: #333;">✨ Component Hotspot Section chuẩn giao diện Website Zwilling</span>
+            <span style="font-size: 11px; color: #666;">Thử click vào các chấm trên dao hoặc các dòng Accordion bên phải!</span>
+          </div>
+
+          <div id="liveHotspotMount"></div>
+          <wx-hotspot-section id="realHotspotComponent" style="display: none;"></wx-hotspot-section>
+        </div>
+      </div>
     </main>
 
-    <!-- RIGHT COLUMN: HOTSPOT POINTS EDITOR & CSV PREVIEW TABS -->
+    <!-- RIGHT PANEL: POINTS EDITOR & ACCORDION PREVIEW -->
     <aside class="editor-panel">
       <div class="editor-tabs">
-        <button class="tab-btn active" id="tabPointsBtn" onclick="switchTab('points')">📝 Điểm Hotspot (<span id="tabPointsCount">0</span>)</button>
-        <button class="tab-btn" id="tabPreviewBtn" onclick="switchTab('preview')">👁️ Live Preview</button>
-        <button class="tab-btn" id="tabCsvBtn" onclick="switchTab('csv')">📊 Xem CSV Full</button>
+        <button class="tab-btn active" id="tabPointsBtn" onclick="switchRightTab('points')">
+          📝 Điểm Toạ Độ (<span id="tabPointsCount">0</span>)
+        </button>
+        <button class="tab-btn" id="tabPreviewBtn" onclick="switchRightTab('preview')">
+          👁️ Accordion Chi Tiết
+        </button>
+        <button class="tab-btn" id="tabCsvBtn" onclick="switchRightTab('csv')">
+          📊 File CSV
+        </button>
       </div>
 
       <!-- TAB 1: POINTS EDITOR -->
       <div class="editor-tab-content" id="tabContentPoints">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 11px; color: #555;" id="targetModeStatus">Click vào ảnh để định vị điểm</span>
+          <span style="font-size: 11px; color: #555;" id="targetModeStatus">Kéo thả chấm trên ảnh hoặc click "+ Thêm Point"</span>
           <button class="btn btn-secondary btn-sm" id="btnAddPoint">+ Thêm Point</button>
         </div>
         <div id="pointsCardList" style="display: flex; flex-direction: column; gap: 8px;">
@@ -877,19 +1266,19 @@
         </div>
       </div>
 
-      <!-- TAB 2: LIVE PREVIEW -->
+      <!-- TAB 2: LIVE ACCORDION PREVIEW -->
       <div class="editor-tab-content" id="tabContentPreview" style="display: none;">
-        <div style="font-size: 12px; font-weight: 700; color: #111;">Xem trước giao diện Accordion trên Website</div>
+        <div style="font-size: 12px; font-weight: 700; color: #111;">Bản mô phỏng Accordion tương tác đồng bộ với ảnh:</div>
         <div class="preview-accordion" id="livePreviewAccordion">
-          <!-- Accordion rows rendered here -->
+          <!-- Accordion rows rendered dynamically -->
         </div>
       </div>
 
-      <!-- TAB 3: FULL CSV VIEW -->
+      <!-- TAB 3: MASTER CSV PREVIEW -->
       <div class="editor-tab-content" id="tabContentCsv" style="display: none;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 11px; color: #666;">Dữ liệu FeatureItems.csv hoàn chỉnh (gồm cả story và toạ độ hotspots)</span>
-          <button class="btn btn-secondary btn-sm" id="btnCopyCsvText">📋 Copy</button>
+          <span style="font-size: 11px; color: #666;">Dữ liệu FeatureItems.csv (gồm cả story và 66 toạ độ)</span>
+          <button class="btn btn-secondary btn-sm" id="btnCopyCsvText">📋 Copy CSV</button>
         </div>
         <textarea id="fullCsvTextarea" class="csv-textarea" readonly></textarea>
       </div>
@@ -904,32 +1293,62 @@
   </div>
 
   <script>
-    // State
+    // URL RESOLVER: Converts wix:image://v1/<media_id>/... to Wix CDN URL
+    function resolveImageUrl(url, fallback = '') {
+      if (!url) return fallback;
+      if (typeof url === 'object' && url) {
+        url = url.src || url.url || fallback;
+      }
+      if (typeof url !== 'string') return fallback;
+      const trimmed = url.trim();
+      if (!trimmed) return fallback;
+
+      if (trimmed.startsWith('wix:image://')) {
+        const parts = trimmed.split('/');
+        if (parts.length >= 4) {
+          const mediaId = parts[3].split('#')[0];
+          return `https://static.wixstatic.com/media/${mediaId}`;
+        }
+      }
+      return trimmed;
+    }
+
+    // STATE
     let allBlocks = []; // Highlights blocks ONLY
-    let allItems = [];  // Master FeatureItems list (story items are safely preserved!)
+    let allItems = [];  // Master FeatureItems list (241 items preserved!)
     let selectedBlockId = 'block-zwilling-pro-2';
     let activePointIndex = 0;
     let targetAssignIndex = -1; // when user clicks "Chọn vị trí"
     let isDragging = false;
     let dragIndex = -1;
     let currentZoom = 1;
-    let blockCustomImages = {}; // blockId -> custom dataURL or path
     let selectedSheetFilter = 'ALL';
+    let showNumbers = true;
+    let currentViewMode = 'studio'; // 'studio' | 'live'
 
-    // Elements
+    // DOM ELEMENTS
     const blockListContainer = document.getElementById('blockListContainer');
     const searchBlock = document.getElementById('searchBlock');
     const searchClearBtn = document.getElementById('searchClearBtn');
+    const activeBlockSheet = document.getElementById('activeBlockSheet');
     const activeBlockTitle = document.getElementById('activeBlockTitle');
     const mainImage = document.getElementById('mainImage');
     const canvasWrapper = document.getElementById('canvasWrapper');
+    const knifeMediaWrapper = document.getElementById('knifeMediaWrapper');
+    const canvasWorkspace = document.getElementById('canvasWorkspace');
+    const liveComponentViewport = document.getElementById('liveComponentViewport');
+    const realHotspotComponent = document.getElementById('realHotspotComponent');
     const coordTooltip = document.getElementById('coordTooltip');
+    const targetBanner = document.getElementById('targetBanner');
+    const targetModeStatus = document.getElementById('targetModeStatus');
     const pointsCardList = document.getElementById('pointsCardList');
     const tabPointsCount = document.getElementById('tabPointsCount');
     const livePreviewAccordion = document.getElementById('livePreviewAccordion');
     const fullCsvTextarea = document.getElementById('fullCsvTextarea');
     const overallProgress = document.getElementById('overallProgress');
+    const countHighlights = document.getElementById('countHighlights');
     const zoomSelect = document.getElementById('zoomSelect');
+    const chkShowNumbers = document.getElementById('chkShowNumbers');
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toastMsg');
     const toastIcon = document.getElementById('toastIcon');
@@ -941,9 +1360,25 @@
       setTimeout(() => { toast.className = 'toast'; }, 3500);
     }
 
-    // Switch right panel tabs
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    // SWITCH VIEW MODE (STUDIO VS LIVE)
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      document.getElementById('btnModeStudio').classList.toggle('active', mode === 'studio');
+      document.getElementById('btnModeLive').classList.toggle('active', mode === 'live');
+
+      if (mode === 'studio') {
+        canvasWorkspace.style.display = 'flex';
+        liveComponentViewport.style.display = 'none';
+      } else {
+        canvasWorkspace.style.display = 'none';
+        liveComponentViewport.style.display = 'block';
+        updateRealComponent();
+      }
+    }
+
+    // SWITCH RIGHT PANEL TABS
+    function switchRightTab(tab) {
+      document.querySelectorAll('.editor-panel .tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('tabContentPoints').style.display = 'none';
       document.getElementById('tabContentPreview').style.display = 'none';
       document.getElementById('tabContentCsv').style.display = 'none';
@@ -954,7 +1389,7 @@
       } else if (tab === 'preview') {
         document.getElementById('tabPreviewBtn').classList.add('active');
         document.getElementById('tabContentPreview').style.display = 'flex';
-        renderLivePreview();
+        renderLivePreviewAccordion();
       } else if (tab === 'csv') {
         document.getElementById('tabCsvBtn').classList.add('active');
         document.getElementById('tabContentCsv').style.display = 'flex';
@@ -962,7 +1397,7 @@
       }
     }
 
-    // Sheet Filter Bar handling
+    // SHEET FILTER PILLS
     document.querySelectorAll('.sheet-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.sheet-pill').forEach(b => b.classList.remove('active'));
@@ -972,7 +1407,7 @@
       });
     });
 
-    // Search clear button
+    // SEARCH INPUT
     searchBlock.addEventListener('input', () => {
       searchClearBtn.style.display = searchBlock.value ? 'block' : 'none';
       renderBlockList();
@@ -983,23 +1418,31 @@
       renderBlockList();
     });
 
-    // Fetch initial data from server or static fallback (Vercel-ready)
+    // TOGGLE NUMBER BADGES
+    chkShowNumbers.addEventListener('change', (e) => {
+      showNumbers = e.target.checked;
+      renderCanvasPins();
+    });
+
+    // ZOOM SELECTOR
+    zoomSelect.addEventListener('change', (e) => {
+      currentZoom = parseFloat(e.target.value) || 1;
+      canvasWrapper.style.transform = `scale(${currentZoom})`;
+      canvasWrapper.style.transformOrigin = 'center center';
+    });
+
+    // DATA INITIALIZATION
     async function initData() {
       try {
-        const savedCustomItems = localStorage.getItem('zwilling_hotspot_custom_items');
-        const savedCustomImages = localStorage.getItem('zwilling_hotspot_custom_images');
-        if (savedCustomImages) {
-          try { blockCustomImages = JSON.parse(savedCustomImages); } catch (e) {}
-        }
-
         let data = null;
-        // 1. Try local dev server API
+
+        // 1. Fetch from local dev server API (reads tools/live-wix-csv or wix-csv)
         try {
           const res = await fetch('/api/blocks-data');
           if (res.ok) data = await res.json();
         } catch (e) {}
 
-        // 2. Try static JSON endpoint (Vercel deployment)
+        // 2. Fallback to static JSON endpoint
         if (!data) {
           try {
             const res = await fetch('/data/blocks-data.json');
@@ -1008,23 +1451,35 @@
         }
 
         if (data) {
-          // FILTER ONLY HIGHLIGHTS (HOTSPOT) BLOCKS! STORY IS 100% EXCLUDED
+          // Filter ONLY highlights blocks (story blocks are in Component Story Section)
           allBlocks = (data.blocks || []).filter(b => b.component === 'highlights');
           allItems = data.items || [];
         }
 
-        // Restore custom edits from localStorage if available
+        // Check url param for fresh reload
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('fresh') === '1' || urlParams.get('reset') === '1') {
+          localStorage.removeItem('zwilling_hotspot_custom_items');
+        }
+
+        // Check if there is temporary work in localStorage
+        const savedCustomItems = localStorage.getItem('zwilling_hotspot_custom_items');
         if (savedCustomItems) {
           try {
-            const parsedItems = JSON.parse(savedCustomItems);
-            if (Array.isArray(parsedItems) && parsedItems.length > 0) {
-              allItems = parsedItems;
-              showToast('Đã phục hồi toạ độ bạn đã lưu gần nhất!', true);
+            const parsed = JSON.parse(savedCustomItems);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              allItems = parsed;
+              showToast('Đang hiển thị bản nháp local. Bấm "🔄 Nạp lại CSV gốc" để đồng bộ dữ liệu mới nhất từ Wix CSV!', true);
             }
           } catch (e) {}
         }
 
-        document.getElementById('countAll').textContent = allBlocks.length;
+        countHighlights.textContent = allBlocks.length;
+
+        // If default block doesn't exist, pick first block
+        if (!allBlocks.find(b => b.ID === selectedBlockId) && allBlocks.length > 0) {
+          selectedBlockId = allBlocks[0].ID;
+        }
 
         renderBlockList();
         selectBlock(selectedBlockId);
@@ -1033,7 +1488,7 @@
       }
     }
 
-    // Render Hotspot Blocks in Left Sidebar
+    // RENDER LEFT SIDEBAR BLOCKS
     function renderBlockList() {
       const q = searchBlock.value.toLowerCase().trim();
       blockListContainer.innerHTML = '';
@@ -1041,12 +1496,16 @@
       let readyCount = 0;
 
       const filteredBlocks = allBlocks.filter(b => {
-        // Sheet filter
+        // Category filter
         if (selectedSheetFilter !== 'ALL') {
-          if (b.sourceSheet !== selectedSheetFilter) return false;
+          if (selectedSheetFilter === 'OTHER') {
+            if (['B. NỒI GANG', 'C. DAO', 'E. FS'].includes(b.sourceSheet)) return false;
+          } else {
+            if (b.sourceSheet !== selectedSheetFilter) return false;
+          }
         }
 
-        // Search query filter
+        // Search text
         if (q) {
           const matchTitle = (b.title || '').toLowerCase().includes(q);
           const matchId = (b.ID || '').toLowerCase().includes(q);
@@ -1073,15 +1532,16 @@
         const card = document.createElement('div');
         const isSelected = b.ID === selectedBlockId;
         card.className = `block-card ${isSelected ? 'active' : ''}`;
+        card.dataset.id = b.ID;
 
-        const imgSrc = blockCustomImages[b.ID] || (b.image ? `/${b.image}` : `/images/${b.ID}.png`);
+        const resolvedThumb = resolveImageUrl(b.image, '/images/placeholder.png');
 
         card.innerHTML = `
-          <img class="block-thumb" src="${imgSrc}" onerror="this.onerror=null; this.src='/images/placeholder.png';" alt="Thumb" />
+          <img class="block-thumb" src="${resolvedThumb}" onerror="this.onerror=null; this.src='/images/placeholder.png';" alt="${escapeHtml(b.title)}" />
           <div class="block-info">
             <div class="block-sheet-tag">${b.sourceSheet || 'Hotspot'}</div>
-            <div class="block-name" title="${b.sourceTitle || b.title}">${b.sourceTitle || b.title}</div>
-            <span class="block-status-badge">
+            <div class="block-name" title="${escapeHtml(b.sourceTitle || b.title)}">${escapeHtml(b.sourceTitle || b.title)}</div>
+            <span class="block-status-badge ${hasAllCoords ? 'status-complete' : 'status-incomplete'}">
               ${hasAllCoords ? `✓ Đủ ${coordsCount} điểm toạ độ` : `🎯 ${coordsCount}/${bItems.length} điểm đã chấm`}
             </span>
           </div>
@@ -1094,58 +1554,138 @@
         blockListContainer.appendChild(card);
       });
 
-      overallProgress.textContent = `Tiến độ: ${readyCount}/${allBlocks.length} dòng Hotspot sẵn sàng`;
+      overallProgress.textContent = `${readyCount}/${allBlocks.length} khối hoàn chỉnh`;
     }
 
-    // Select a Block to work on
+    // SELECT A BLOCK
     function selectBlock(bId) {
       selectedBlockId = bId;
       activePointIndex = 0;
       targetAssignIndex = -1;
+      cancelTargetMode();
 
       const currentBlock = allBlocks.find(b => b.ID === bId);
       if (currentBlock) {
-        const sheetPrefix = currentBlock.sourceSheet ? `[${currentBlock.sourceSheet}] ` : '';
-        activeBlockTitle.textContent = `${sheetPrefix}${currentBlock.sourceTitle || currentBlock.title}`;
+        activeBlockSheet.textContent = currentBlock.sourceSheet ? `[${currentBlock.sourceSheet}]` : '[HOTSPOT]';
+        activeBlockTitle.textContent = currentBlock.sourceTitle || currentBlock.title;
       }
 
-      // Update image
-      const imgSrc = blockCustomImages[bId] || (currentBlock && currentBlock.image ? `/${currentBlock.image}` : `/images/${bId}.png`);
-      mainImage.src = imgSrc;
+      // Update image on canvas using resolved Wix CDN URL
+      const resolvedImg = resolveImageUrl(currentBlock ? currentBlock.image : '', '/images/placeholder.png');
+      mainImage.src = resolvedImg;
 
-      // Update sidebar visual selection
-      document.querySelectorAll('.block-card').forEach(c => c.classList.remove('active'));
-      const cards = Array.from(document.querySelectorAll('.block-card'));
-      const activeCard = cards.find(c => c.innerHTML.includes(bId));
-      if (activeCard) activeCard.classList.add('active');
+      // Update sidebar visual active state
+      document.querySelectorAll('.block-card').forEach(c => {
+        c.classList.toggle('active', c.dataset.id === bId);
+      });
 
       renderCanvasPins();
       renderPointsEditor();
-      renderLivePreview();
+      renderLivePreviewAccordion();
+      updateRealComponent();
       generateFullCsv();
     }
 
-    // Get current items for active block
+    // GET CURRENT ITEMS FOR ACTIVE BLOCK
     function getCurrentBlockItems() {
       return allItems
         .filter(it => it.block === selectedBlockId)
         .sort((a, b) => (Number(a.position) || 0) - (Number(b.position) || 0));
     }
 
-    // Render Canvas Hotspot Pins
+    // RENDER LIVE WEBSITE COMPONENT PREVIEW (NATIVE & SYNCHRONIZED)
+    function renderLiveSection() {
+      const container = document.getElementById('liveHotspotMount');
+      if (!container) return;
+
+      const currentBlock = allBlocks.find(b => b.ID === selectedBlockId);
+      const items = getCurrentBlockItems();
+      const resolvedImg = resolveImageUrl(currentBlock ? currentBlock.image : '', '/images/placeholder.png');
+
+      container.innerHTML = `
+        <div class="hotspot-section">
+          <!-- Cột Trái: Ảnh Dao & Pins -->
+          <div class="knife-viewport">
+            <div class="knife-media-wrapper-live">
+              <img src="${resolvedImg}" alt="${escapeHtml(currentBlock ? (currentBlock.sourceTitle || currentBlock.title) : 'Sản phẩm')}" />
+              ${items.map((it, idx) => {
+                const rawX = it.coordX !== undefined && it.coordX !== '' ? it.coordX : it.x;
+                const rawY = it.coordY !== undefined && it.coordY !== '' ? it.coordY : it.y;
+                if (rawX === undefined || rawX === null || rawX === '') return '';
+                const x = parseFloat(rawX);
+                const y = parseFloat(rawY);
+                if (isNaN(x) || isNaN(y)) return '';
+                const isCurrent = activePointIndex === idx;
+
+                return `
+                  <button
+                    type="button"
+                    class="hotspot-pin-live ${isCurrent ? 'active' : ''}"
+                    style="left: ${x}%; top: ${y}%;"
+                    onclick="setActivePoint(${idx})"
+                    title="${escapeHtml(it.title || `Điểm #${idx + 1}`)}"
+                  >
+                    <span class="hotspot-pin-live-pulse"></span>
+                    <span class="hotspot-pin-live-inner"></span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- Cột Phải: Accordion Tính Năng -->
+          <div class="live-accordion-col">
+            ${items.map((it, idx) => {
+              const isExpanded = activePointIndex === idx;
+              return `
+                <div class="live-accordion-row ${isExpanded ? 'active' : ''}">
+                  <button type="button" class="live-accordion-btn" onclick="setActivePoint(${isExpanded ? -1 : idx})">
+                    <span class="live-accordion-title">${escapeHtml(it.title || `Điểm #${idx + 1}`)}</span>
+                    <span class="live-accordion-icon">${isExpanded ? '▲' : '▼'}</span>
+                  </button>
+                  ${isExpanded ? `<div class="live-accordion-details">${escapeHtml(it.body || '')}</div>` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // UPDATE REAL WEB COMPONENT (<wx-hotspot-section>) & NATIVE LIVE SECTION
+    function updateRealComponent() {
+      renderLiveSection();
+      if (!realHotspotComponent) return;
+      const currentBlock = allBlocks.find(b => b.ID === selectedBlockId);
+      if (currentBlock) {
+        realHotspotComponent.block = { ...currentBlock };
+        realHotspotComponent.items = getCurrentBlockItems().map(it => ({ ...it }));
+        realHotspotComponent.activeHotspotIndex = activePointIndex;
+        if (typeof realHotspotComponent.requestUpdate === 'function') {
+          realHotspotComponent.requestUpdate();
+        }
+      }
+    }
+
+    // RENDER CANVAS HOTSPOT PINS
     function renderCanvasPins() {
-      const oldPins = canvasWrapper.querySelectorAll('.tool-pin');
+      const oldPins = knifeMediaWrapper.querySelectorAll('.tool-pin');
       oldPins.forEach(p => p.remove());
 
       const items = getCurrentBlockItems();
       tabPointsCount.textContent = items.length;
 
       items.forEach((pt, idx) => {
-        const x = parseFloat(pt.coordX);
-        const y = parseFloat(pt.coordY);
+        const rawX = pt.coordX !== undefined && pt.coordX !== '' ? pt.coordX : pt.x;
+        const rawY = pt.coordY !== undefined && pt.coordY !== '' ? pt.coordY : pt.y;
+
+        if (rawX === undefined || rawX === null || rawX === '') return;
+        const x = parseFloat(rawX);
+        const y = parseFloat(rawY);
         if (isNaN(x) || isNaN(y)) return;
 
-        const pin = document.createElement('div');
+        const pin = document.createElement('button');
+        pin.type = 'button';
         const isActive = activePointIndex === idx;
         pin.className = `tool-pin ${isActive ? 'active' : ''}`;
         pin.style.left = `${x}%`;
@@ -1155,14 +1695,17 @@
         pin.innerHTML = `
           <span class="tool-pin-pulse"></span>
           <span class="tool-pin-inner"></span>
-          <span class="tool-pin-badge">${idx + 1}</span>
+          ${showNumbers ? `<span class="tool-pin-badge">${idx + 1}</span>` : ''}
+          <span class="tool-pin-label">${idx + 1}. ${escapeHtml(pt.title || 'Điểm tính năng')} (${x.toFixed(1)}%, ${y.toFixed(1)}%)</span>
         `;
 
+        // Click to select
         pin.addEventListener('click', (e) => {
           e.stopPropagation();
           setActivePoint(idx);
         });
 
+        // Mouse down to drag
         pin.addEventListener('mousedown', (e) => {
           e.stopPropagation();
           isDragging = true;
@@ -1170,11 +1713,11 @@
           setActivePoint(idx);
         });
 
-        canvasWrapper.appendChild(pin);
+        knifeMediaWrapper.appendChild(pin);
       });
     }
 
-    // Render Point Cards in Right Panel
+    // RENDER POINTS EDITOR (RIGHT PANEL TAB 1)
     function renderPointsEditor() {
       pointsCardList.innerHTML = '';
       const items = getCurrentBlockItems();
@@ -1202,7 +1745,7 @@
           <div class="point-card-header">
             <div class="point-number-badge">
               <span class="point-number-circle">${idx + 1}</span>
-              <span>Point #${idx + 1}</span>
+              <span>Điểm #${idx + 1}</span>
             </div>
             <div class="point-coords-tag">X: ${cx}% | Y: ${cy}%</div>
           </div>
@@ -1210,19 +1753,19 @@
           <div class="coord-steppers">
             <div class="coord-field">
               <span>X:</span>
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordX', -1)">-1%</button>
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordX', -0.1)">-0.1%</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordX', -1)">-1</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordX', -0.1)">-0.1</button>
               <input type="number" step="0.1" value="${pt.coordX !== undefined && pt.coordX !== '' ? pt.coordX : 50}" onchange="updateItemField(${idx}, 'coordX', this.value)" />
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordX', 0.1)">+0.1%</button>
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordX', 1)">+1%</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordX', 0.1)">+0.1</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordX', 1)">+1</button>
             </div>
             <div class="coord-field">
               <span>Y:</span>
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordY', -1)">-1%</button>
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordY', -0.1)">-0.1%</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordY', -1)">-1</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordY', -0.1)">-0.1</button>
               <input type="number" step="0.1" value="${pt.coordY !== undefined && pt.coordY !== '' ? pt.coordY : 50}" onchange="updateItemField(${idx}, 'coordY', this.value)" />
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordY', 0.1)">+0.1%</button>
-              <button class="step-btn" onclick="adjustCoord(${idx}, 'coordY', 1)">+1%</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordY', 0.1)">+0.1</button>
+              <button type="button" class="step-btn" onclick="adjustCoord(${idx}, 'coordY', 1)">+1</button>
             </div>
           </div>
 
@@ -1232,18 +1775,18 @@
           </div>
 
           <div class="input-field-group">
-            <label>Nội dung mô tả (Body):</label>
+            <label>Mô tả tính năng (Body):</label>
             <textarea rows="2" oninput="updateItemField(${idx}, 'body', this.value)">${escapeHtml(pt.body)}</textarea>
           </div>
 
           <div class="point-card-actions">
-            <button class="btn btn-sm ${isTarget ? 'btn-primary' : 'btn-secondary'}" onclick="setTargetMode(${idx})">
-              ${isTarget ? '🎯 Click vào ảnh để đặt' : '🎯 Chọn vị trí'}
+            <button type="button" class="btn btn-sm ${isTarget ? 'btn-primary' : 'btn-secondary'}" onclick="setTargetMode(${idx})">
+              ${isTarget ? '🎯 Đang đợi click ảnh...' : '🎯 Chọn vị trí trên ảnh'}
             </button>
             <div style="display: flex; gap: 4px;">
-              <button class="btn btn-secondary btn-sm" onclick="movePoint(${idx}, -1)" ${idx === 0 ? 'disabled' : ''}>▲</button>
-              <button class="btn btn-secondary btn-sm" onclick="movePoint(${idx}, 1)" ${idx === items.length - 1 ? 'disabled' : ''}>▼</button>
-              <button class="btn btn-secondary btn-sm" style="color: var(--primary);" onclick="deletePoint(${idx})">🗑️</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="movePoint(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} title="Đẩy lên">▲</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="movePoint(${idx}, 1)" ${idx === items.length - 1 ? 'disabled' : ''} title="Đẩy xuống">▼</button>
+              <button type="button" class="btn btn-secondary btn-sm" style="color: var(--primary);" onclick="deletePoint(${idx})" title="Xoá điểm">🗑️</button>
             </div>
           </div>
         `;
@@ -1258,8 +1801,8 @@
       });
     }
 
-    // Render Live Preview Accordion
-    function renderLivePreview() {
+    // RENDER LIVE PREVIEW ACCORDION (RIGHT PANEL TAB 2)
+    function renderLivePreviewAccordion() {
       livePreviewAccordion.innerHTML = '';
       const items = getCurrentBlockItems();
 
@@ -1269,11 +1812,11 @@
         row.className = `preview-row ${isActive ? 'active' : ''}`;
 
         row.innerHTML = `
-          <button class="preview-btn">
-            <span>${pt.title || `Điểm #${idx + 1}`}</span>
+          <button type="button" class="preview-btn">
+            <span>${idx + 1}. ${escapeHtml(pt.title || `Điểm #${idx + 1}`)}</span>
             <span>${isActive ? '▲' : '▼'}</span>
           </button>
-          <div class="preview-body">${pt.body || ''}</div>
+          <div class="preview-body">${escapeHtml(pt.body || '')}</div>
         `;
 
         row.querySelector('.preview-btn').addEventListener('click', () => {
@@ -1284,26 +1827,35 @@
       });
     }
 
-    // Set Active Point
+    // SET ACTIVE POINT
     function setActivePoint(index) {
       activePointIndex = index;
       renderCanvasPins();
       renderPointsEditor();
-      renderLivePreview();
+      renderLivePreviewAccordion();
+      updateRealComponent();
 
       if (index >= 0 && pointsCardList.children[index]) {
         pointsCardList.children[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     }
 
-    // Target mode: user clicks "Chọn vị trí" on a point, then next canvas click assigns to that point!
+    // TARGET MODE: User clicks "Chọn vị trí trên ảnh", then canvas click assigns to this point
     function setTargetMode(idx) {
       targetAssignIndex = idx;
       setActivePoint(idx);
-      document.getElementById('targetModeStatus').innerHTML = `<strong style="color: var(--primary);">🎯 Hãy click vào vị trí trên ảnh cho Point #${idx + 1}!</strong>`;
+      targetBanner.style.display = 'flex';
+      targetModeStatus.innerHTML = `<strong style="color: var(--primary);">🎯 Hãy click vào vị trí trên ảnh cho Điểm #${idx + 1}!</strong>`;
     }
 
-    // Update item field
+    function cancelTargetMode() {
+      targetAssignIndex = -1;
+      targetBanner.style.display = 'none';
+      targetModeStatus.textContent = 'Kéo thả chấm trên ảnh hoặc click "+ Thêm Point"';
+      renderPointsEditor();
+    }
+
+    // UPDATE ITEM FIELD
     function updateItemField(idx, field, val) {
       const items = getCurrentBlockItems();
       if (items[idx]) {
@@ -1314,6 +1866,8 @@
         }
         renderCanvasPins();
         renderBlockList();
+        renderLivePreviewAccordion();
+        updateRealComponent();
         generateFullCsv();
       }
     }
@@ -1327,6 +1881,8 @@
         renderCanvasPins();
         renderPointsEditor();
         renderBlockList();
+        renderLivePreviewAccordion();
+        updateRealComponent();
         generateFullCsv();
       }
     }
@@ -1339,19 +1895,23 @@
         items[idx].position = items[targetIdx].position;
         items[targetIdx].position = tempPos;
         setActivePoint(targetIdx);
+        renderBlockList();
       }
     }
 
     function deletePoint(idx) {
       const items = getCurrentBlockItems();
-      if (items[idx] && confirm(`Xóa điểm #${idx + 1}?`)) {
+      if (items[idx] && confirm(`Xóa điểm #${idx + 1} (${items[idx].title})?`)) {
         const itemId = items[idx].ID;
         allItems = allItems.filter(it => it.ID !== itemId);
         setActivePoint(Math.max(0, idx - 1));
+        renderBlockList();
+        generateFullCsv();
+        showToast('Đã xóa điểm toạ độ!');
       }
     }
 
-    // Auto-Spread points evenly across canvas
+    // AUTO-SPREAD POINTS
     document.getElementById('btnAutoSpread').addEventListener('click', () => {
       const items = getCurrentBlockItems();
       if (items.length === 0) return;
@@ -1363,11 +1923,13 @@
       renderCanvasPins();
       renderPointsEditor();
       renderBlockList();
+      renderLivePreviewAccordion();
+      updateRealComponent();
       generateFullCsv();
       showToast(`Đã tự động phân bổ đều ${count} điểm!`);
     });
 
-    // Add new point
+    // ADD NEW POINT
     document.getElementById('btnAddPoint').addEventListener('click', () => {
       const items = getCurrentBlockItems();
       const newPos = items.length + 1;
@@ -1383,33 +1945,36 @@
       };
       allItems.push(newItem);
       setActivePoint(items.length);
+      renderBlockList();
+      generateFullCsv();
       showToast(`Đã thêm Point #${newPos}`);
     });
 
     // CANVAS CLICK: ADD OR ASSIGN POINT
-    canvasWrapper.addEventListener('click', (e) => {
+    knifeMediaWrapper.addEventListener('click', (e) => {
       if (isDragging) return;
       const rect = mainImage.getBoundingClientRect();
-      const x = Math.round((((e.clientX - rect.left) / rect.width) * 100) * 10) / 10;
-      const y = Math.round((((e.clientY - rect.top) / rect.height) * 100) * 10) / 10;
+      const x = Math.max(0, Math.min(100, Math.round((((e.clientX - rect.left) / rect.width) * 100) * 10) / 10));
+      const y = Math.max(0, Math.min(100, Math.round((((e.clientY - rect.top) / rect.height) * 100) * 10) / 10));
 
       const items = getCurrentBlockItems();
 
-      // If in target mode: assign coordinates to target item
+      // If in target mode: assign to target point
       if (targetAssignIndex >= 0 && items[targetAssignIndex]) {
         items[targetAssignIndex].coordX = x;
         items[targetAssignIndex].coordY = y;
         showToast(`Đã gán Point #${targetAssignIndex + 1} tại (${x}%, ${y}%)`);
-        targetAssignIndex = -1;
-        document.getElementById('targetModeStatus').textContent = 'Click vào ảnh để định vị điểm';
+        cancelTargetMode();
         renderCanvasPins();
         renderPointsEditor();
         renderBlockList();
+        renderLivePreviewAccordion();
+        updateRealComponent();
         generateFullCsv();
         return;
       }
 
-      // Otherwise: update active point
+      // Otherwise update current active point
       if (activePointIndex >= 0 && items[activePointIndex]) {
         items[activePointIndex].coordX = x;
         items[activePointIndex].coordY = y;
@@ -1417,12 +1982,14 @@
         renderCanvasPins();
         renderPointsEditor();
         renderBlockList();
+        renderLivePreviewAccordion();
+        updateRealComponent();
         generateFullCsv();
       }
     });
 
     // CANVAS MOUSEMOVE & DRAGGING
-    canvasWrapper.addEventListener('mousemove', (e) => {
+    canvasWorkspace.addEventListener('mousemove', (e) => {
       const rect = mainImage.getBoundingClientRect();
       const x = Math.max(0, Math.min(100, Math.round((((e.clientX - rect.left) / rect.width) * 100) * 10) / 10));
       const y = Math.max(0, Math.min(100, Math.round((((e.clientY - rect.top) / rect.height) * 100) * 10) / 10));
@@ -1445,34 +2012,13 @@
         dragIndex = -1;
         renderPointsEditor();
         renderBlockList();
+        renderLivePreviewAccordion();
+        updateRealComponent();
         generateFullCsv();
       }
     });
 
-    // Zoom
-    zoomSelect.addEventListener('change', (e) => {
-      currentZoom = parseFloat(e.target.value) || 1;
-      canvasWrapper.style.transform = `scale(${currentZoom})`;
-      canvasWrapper.style.transformOrigin = 'center center';
-    });
-
-    // Single Image upload for active block
-    document.getElementById('singleImageInput').addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          blockCustomImages[selectedBlockId] = evt.target.result;
-          mainImage.src = evt.target.result;
-          renderCanvasPins();
-          renderBlockList();
-          showToast(`Đã nạp ảnh mới cho ${selectedBlockId}! Bấm "LƯU TOÀN BỘ" để lưu vĩnh viễn.`);
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // GENERATE FULL CSV (PRESERVES ALL 241 ITEMS SAFELY!)
+    // GENERATE FULL CSV (241 ITEMS PRESERVED SAFELY)
     function generateFullCsv() {
       const header = 'ID,title,block,position,body,image,coordX,coordY';
       const rows = allItems.map(it => {
@@ -1492,7 +2038,7 @@
       return fullCsv;
     }
 
-    // DOWNLOAD HELPER
+    // DOWNLOAD CSV FILE
     function downloadCsvFile() {
       const fullCsv = generateFullCsv();
       const blob = new Blob([fullCsv], { type: 'text/csv;charset=utf-8;' });
@@ -1506,28 +2052,22 @@
       URL.revokeObjectURL(url);
     }
 
-    // SAVE FULL CSV (LOCAL DISK ON DEV SERVER OR LOCALSTORAGE + DOWNLOAD ON VERCEL)
+    // SAVE FULL CSV DIRECT TO SERVER & LOCALSTORAGE
     async function saveFullCsvDirect() {
       try {
         const fullCsv = generateFullCsv();
 
-        // 1. Always save in localStorage so work is never lost on reload
+        // Save in localStorage so work is preserved on reload
         try {
           localStorage.setItem('zwilling_hotspot_custom_items', JSON.stringify(allItems));
-          localStorage.setItem('zwilling_hotspot_custom_images', JSON.stringify(blockCustomImages));
         } catch (e) {}
-
-        const blockImages = {};
-        for (const [bId, img] of Object.entries(blockCustomImages)) {
-          blockImages[bId] = img;
-        }
 
         let isServerSaved = false;
         try {
           const res = await fetch('/api/save-hotspots', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ fullCsv, blockImages })
+            body: JSON.stringify({ fullCsv })
           });
           if (res.ok) {
             isServerSaved = true;
@@ -1535,11 +2075,10 @@
         } catch (e) {}
 
         if (isServerSaved) {
-          showToast('✅ Đã lưu trực tiếp vào wix-csv/FeatureItems.csv thành công!', true);
+          showToast('✅ Đã lưu trực tiếp vào FeatureItems.csv trên ổ đĩa thành công!', true);
         } else {
-          // On Vercel: trigger download of CSV and save to browser storage!
           downloadCsvFile();
-          showToast('✅ Đã lưu toạ độ vào bộ nhớ & Tải file FeatureItems.csv hoàn chỉnh!', true);
+          showToast('✅ Đã lưu vào bộ nhớ & Tải file FeatureItems.csv hoàn chỉnh!', true);
         }
         renderBlockList();
       } catch (err) {
@@ -1552,16 +2091,15 @@
     // DOWNLOAD FULL CSV
     document.getElementById('btnDownloadFullCsv').addEventListener('click', () => {
       downloadCsvFile();
-      showToast('Đã tải xuống file FeatureItems.csv hoàn chỉnh để import vào Wix CMS!');
+      showToast('Đã tải xuống FeatureItems.csv hoàn chỉnh để import vào Wix CMS!');
     });
 
     // RESET TO DEFAULT CSV DATA
     document.getElementById('btnResetDefault').addEventListener('click', () => {
-      if (confirm('Khôi phục toàn bộ toạ độ về dữ liệu gốc ban đầu từ file CSV? Các thay đổi chưa tải về sẽ bị xóa.')) {
+      if (confirm('Khôi phục toàn bộ toạ độ về dữ liệu gốc từ file CSV (Xóa toàn bộ bản nháp lưu tạm trong trình duyệt)?')) {
         localStorage.removeItem('zwilling_hotspot_custom_items');
-        localStorage.removeItem('zwilling_hotspot_custom_images');
-        showToast('Đang khôi phục dữ liệu gốc...');
-        setTimeout(() => location.reload(), 500);
+        showToast('Đang khôi phục dữ liệu gốc từ CSV...');
+        setTimeout(() => location.reload(), 400);
       }
     });
 
@@ -1573,7 +2111,7 @@
       });
     });
 
-    // Helpers
+    // HELPERS
     function escapeHtml(str) {
       if (!str) return '';
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -1588,7 +2126,7 @@
       return str;
     }
 
-    // Run initialization
+    // RUN INIT
     initData();
   </script>
 </body>
