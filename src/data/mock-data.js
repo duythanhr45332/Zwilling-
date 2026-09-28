@@ -12455,8 +12455,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Được chế tác từ thép không gỉ carbon cao với công thức chuyên biệt, mang lại độ bền và hiệu suất cắt vượt trội.",
     "image": "",
-    "coordX": "28.0",
-    "coordY": "52.0"
+    "coordX": "7.9",
+    "coordY": "51.5"
   },
   {
     "ID": "block-zwilling-fourstar-2-item-2",
@@ -12465,8 +12465,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Công nghệ SIGMAFORGE tạo nên thân dao liền khối từ một phôi thép duy nhất, mang lại kết cấu chắc chắn và độ cân bằng tối ưu.",
     "image": "",
-    "coordX": "53.0",
-    "coordY": "48.0"
+    "coordX": "16.2",
+    "coordY": "51.8"
   },
   {
     "ID": "block-zwilling-fourstar-2-item-3",
@@ -12475,8 +12475,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Lưỡi dao được mài tinh chính xác, kết hợp công nghệ laser kiểm soát góc cắt để đạt độ sắc bén vượt trội.",
     "image": "",
-    "coordX": "12.0",
-    "coordY": "56.0"
+    "coordX": "24.0",
+    "coordY": "69.0"
   },
   {
     "ID": "block-zwilling-fourstar-2-item-4",
@@ -12485,8 +12485,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Cán dao mang lại cảm giác cầm nắm thoải mái, được sản xuất với tối thiểu 75% nhựa tái chế.",
     "image": "",
-    "coordX": "78.0",
-    "coordY": "46.0"
+    "coordX": "37.6",
+    "coordY": "58.2"
   },
   {
     "ID": "block-zwilling-fourstar-2-item-5",
@@ -12495,8 +12495,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 5,
     "body": "Nhẹ hơn, mỏng hơn và ngắn hơn, lưỡi dao kết hợp sự đa năng của dao đầu bếp cổ điển với độ chính xác đặc trưng của dao Santoku.",
     "image": "",
-    "coordX": "40.0",
-    "coordY": "44.0"
+    "coordX": "46.7",
+    "coordY": "51.8"
   },
   {
     "ID": "block-zwilling-tanrei-1-item-1",
@@ -12542,11 +12542,11 @@ export const MOCK_FEATURE_ITEMS = [
     "ID": "block-zwilling-tanrei-3-item-1",
     "title": "CÁN DAO BA ĐINH TÁN",
     "block": "block-zwilling-tanrei-3",
-    "position": 1,
+    "position": 3,
     "body": "Thiết kế cán ba đinh tán thanh lịch mang phong cách truyền thống, được chế tác từ vật liệu Micarta cao cấp.",
     "image": "",
-    "coordX": "79.0",
-    "coordY": "48.0"
+    "coordX": "39.2",
+    "coordY": "52.8"
   },
   {
     "ID": "block-zwilling-tanrei-3-item-2",
@@ -12555,58 +12555,58 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Lưỡi dao gồm 101 lớp thép cao cấp, được chế tác tại Seki, Nhật Bản.",
     "image": "",
-    "coordX": "25.0",
-    "coordY": "55.0"
+    "coordX": "26.0",
+    "coordY": "48.5"
   },
   {
     "ID": "block-zwilling-tanrei-3-item-3",
-    "title": "GỐI DAO THANH MẢNH",
+    "title": "GÙ CÁN DAO THANH MẢNH",
     "block": "block-zwilling-tanrei-3",
-    "position": 3,
-    "body": "Gối dao thanh mảnh với đường cong nhẹ cho phép cầm sát lưỡi, mang lại khả năng kiểm soát linh hoạt, đặc biệt phù hợp với các kỹ thuật cắt kiểu Á Đông.",
+    "position": 4,
+    "body": "Gù cán dao thanh mảnh với đường cong nhẹ cho phép cầm sát lưỡi, mang lại khả năng kiểm soát linh hoạt, đặc biệt phù hợp với các kỹ thuật cắt kiểu Á Đông.",
     "image": "",
-    "coordX": "55.0",
-    "coordY": "51.0"
+    "coordX": "30.5",
+    "coordY": "48.8"
   },
   {
     "ID": "block-zwilling-tanrei-3-item-4",
     "title": "VÂN DAMASCUS ĐỘC BẢN",
     "block": "block-zwilling-tanrei-3",
-    "position": 4,
+    "position": 5,
     "body": "Dưới bàn tay của những nghệ nhân bậc thầy, mỗi lưỡi dao hình thành một hệ vân Damascus riêng biệt, không chiếc nào hoàn toàn giống chiếc nào.",
     "image": "",
-    "coordX": "38.0",
-    "coordY": "46.0"
+    "coordX": "20.9",
+    "coordY": "51.8"
   },
   {
     "ID": "block-zwilling-tanrei-3-item-5",
     "title": "LƯỠI DAO CÓ ĐỘ CỨNG VƯỢT TRỘI",
     "block": "block-zwilling-tanrei-3",
-    "position": 5,
+    "position": 6,
     "body": "Độ cứng 63 HRC mang lại cho lưỡi dao khả năng cắt sắc bén ấn tượng và duy trì độ sắc bền lâu.",
     "image": "",
-    "coordX": "32.0",
-    "coordY": "62.0"
+    "coordX": "18.5",
+    "coordY": "50.8"
   },
   {
     "ID": "block-zwilling-tanrei-3-item-6",
     "title": "LƯỠI DAO TÔI LẠNH",
     "block": "block-zwilling-tanrei-3",
-    "position": 6,
+    "position": 7,
     "body": "Quy trình tôi lạnh độc quyền của ZWILLING giúp lưỡi dao đạt độ linh hoạt tối ưu, đồng thời tăng cường khả năng chống ăn mòn.",
     "image": "",
-    "coordX": "20.0",
-    "coordY": "42.0"
+    "coordX": "9.9",
+    "coordY": "51.3"
   },
   {
     "ID": "block-zwilling-tanrei-3-item-7",
     "title": "ĐỘ SẮC TỐI ƯU",
     "block": "block-zwilling-tanrei-3",
-    "position": 7,
+    "position": 1,
     "body": "Lưỡi cắt Razor Edge được hoàn thiện với độ chính xác cao, mang lại khả năng cắt đặc biệt sắc bén và tinh gọn.",
     "image": "",
-    "coordX": "8.0",
-    "coordY": "65.0"
+    "coordX": "6.7",
+    "coordY": "54.0"
   },
   {
     "ID": "block-miyabi-kaizen-ii-5000fcd-1-item-1",
@@ -12655,8 +12655,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Quy trình tôi lạnh chuyên biệt giúp tăng cường độ sắc bén, đồng thời mang lại khả năng chống ăn mòn vượt trội.",
     "image": "",
-    "coordX": "25.0",
-    "coordY": "45.0"
+    "coordX": "28.6",
+    "coordY": "65.6"
   },
   {
     "ID": "block-miyabi-kaizen-ii-5000fcd-3-item-2",
@@ -12665,8 +12665,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Cán dao bằng gỗ Pakka mang lại cảm giác cầm nắm thoải mái, giúp dao đạt độ cân bằng tối ưu và cho phép kiểm soát chính xác trong từng thao tác.",
     "image": "",
-    "coordX": "76.0",
-    "coordY": "48.0"
+    "coordX": "9.6",
+    "coordY": "59.6"
   },
   {
     "ID": "block-miyabi-kaizen-ii-5000fcd-3-item-3",
@@ -12675,8 +12675,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Được chế tác từ thép FC61 có độ cứng 60–62 HRC, lưỡi dao duy trì độ sắc bền lâu và sở hữu độ bền vượt trội.",
     "image": "",
-    "coordX": "40.0",
-    "coordY": "50.0"
+    "coordX": "41.3",
+    "coordY": "51.6"
   },
   {
     "ID": "block-miyabi-kaizen-ii-5000fcd-3-item-4",
@@ -12685,8 +12685,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Lưỡi dao được các nghệ nhân lành nghề tại Seki, Nhật Bản mài và đánh bóng theo kỹ thuật Honbazuke, mang lại độ chính xác cao trong từng đường cắt.",
     "image": "",
-    "coordX": "10.0",
-    "coordY": "58.0"
+    "coordX": "50.6",
+    "coordY": "67.2"
   },
   {
     "ID": "block-zwilling-gourmet-1-item-1",
@@ -12735,8 +12735,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Thiết kế cán ba đinh tán thanh lịch vượt thời gian, mang lại cảm giác cầm nắm thoải mái và chắc chắn.",
     "image": "",
-    "coordX": "78.0",
-    "coordY": "48.0"
+    "coordX": "37.3",
+    "coordY": "39.5"
   },
   {
     "ID": "block-zwilling-gourmet-3-item-2",
@@ -12745,8 +12745,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Công thức thép chuyên biệt được sản xuất độc quyền cho ZWILLING.",
     "image": "",
-    "coordX": "38.0",
-    "coordY": "48.0"
+    "coordX": "23.6",
+    "coordY": "48.4"
   },
   {
     "ID": "block-zwilling-gourmet-3-item-3",
@@ -12755,8 +12755,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Quy trình tôi lạnh giúp lưỡi dao đạt độ linh hoạt tối ưu, đồng thời tăng cường khả năng chống ăn mòn.",
     "image": "",
-    "coordX": "22.0",
-    "coordY": "44.0"
+    "coordX": "14.1",
+    "coordY": "44.8"
   },
   {
     "ID": "block-zwilling-gourmet-3-item-4",
@@ -12765,8 +12765,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Lưỡi cắt dạng chữ V được hoàn thiện với độ chính xác cao, mang lại khả năng cắt sắc bén và hiệu suất ổn định.",
     "image": "",
-    "coordX": "9.0",
-    "coordY": "62.0"
+    "coordX": "28.3",
+    "coordY": "57.6"
   },
   {
     "ID": "block-zwilling-now-s-block-dao-keo-1-item-1",
@@ -12895,8 +12895,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Các gai nhỏ phân bố đều dưới nắp liên tục đưa hơi ẩm ngưng tụ trở lại thực phẩm, giúp món ăn chín mềm, mọng nước và tròn vị.",
     "image": "",
-    "coordX": "49.0",
-    "coordY": "28.0"
+    "coordX": "26.9",
+    "coordY": "24.2"
   },
   {
     "ID": "block-staub-dang-tron-2-item-2",
@@ -12905,8 +12905,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Khả năng giữ và phân bổ nhiệt vượt trội, hỗ trợ tạo màu áp chảo đẹp mắt. Không cần tôi dầu trước khi sử dụng.",
     "image": "",
-    "coordX": "45.0",
-    "coordY": "60.0"
+    "coordX": "26.9",
+    "coordY": "50.3"
   },
   {
     "ID": "block-staub-dang-tron-2-item-3",
@@ -12915,8 +12915,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Thiết kế tay cầm thoải mái giúp nâng nhấc và di chuyển nồi thuận tiện, an toàn hơn trong quá trình sử dụng.",
     "image": "",
-    "coordX": "82.0",
-    "coordY": "45.0"
+    "coordX": "7.3",
+    "coordY": "48.7"
   },
   {
     "ID": "block-staub-dang-tron-2-item-4",
@@ -12925,8 +12925,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Đáy nồi tráng men phẳng, nhẵn, sử dụng được trên mọi loại bếp, bao gồm cả bếp từ.",
     "image": "",
-    "coordX": "50.0",
-    "coordY": "86.0"
+    "coordX": "26.8",
+    "coordY": "86.2"
   },
   {
     "ID": "block-staub-pumpkin-1-item-1",
@@ -12975,8 +12975,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Không gian nấu rộng rãi, linh hoạt cho nhiều phương pháp chế biến—từ nướng, ninh, om đến phục vụ món ăn trực tiếp trên bàn.",
     "image": "",
-    "coordX": "50.0",
-    "coordY": "25.0"
+    "coordX": "16.7",
+    "coordY": "71.9"
   },
   {
     "ID": "block-staub-pumpkin-2-item-2",
@@ -12985,8 +12985,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Khả năng giữ và phân bổ nhiệt vượt trội, hỗ trợ tạo màu áp chảo đẹp mắt. Không cần tôi dầu trước khi sử dụng.",
     "image": "",
-    "coordX": "46.0",
-    "coordY": "62.0"
+    "coordX": "29.1",
+    "coordY": "71.1"
   },
   {
     "ID": "block-staub-pumpkin-2-item-3",
@@ -12995,8 +12995,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Tương thích với mọi loại bếp, bao gồm bếp từ; sử dụng an toàn trong lò nướng ở nhiệt độ lên đến 260°C.",
     "image": "",
-    "coordX": "84.0",
-    "coordY": "48.0"
+    "coordX": "39.2",
+    "coordY": "71.1"
   },
   {
     "ID": "block-chao-gang-co-mieng-rot-1-item-1",
@@ -13045,8 +13045,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Thiết kế đa năng đáp ứng linh hoạt nhiều phương pháp chế biến trong cùng một chiếc chảo.",
     "image": "",
-    "coordX": "28.0",
-    "coordY": "48.0"
+    "coordX": "12.0",
+    "coordY": "39.1"
   },
   {
     "ID": "block-chao-gang-co-mieng-rot-2-item-2",
@@ -13055,8 +13055,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Phù hợp để áp chảo, xào, nướng trong lò, nướng lửa trên và chiên rán.",
     "image": "",
-    "coordX": "50.0",
-    "coordY": "55.0"
+    "coordX": "38.6",
+    "coordY": "38.4"
   },
   {
     "ID": "block-chao-gang-co-mieng-rot-2-item-3",
@@ -13065,8 +13065,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Khả năng giữ và phân bổ nhiệt vượt trội giúp thực phẩm tạo màu đẹp mắt. Không cần tôi dầu trước khi sử dụng.",
     "image": "",
-    "coordX": "60.0",
-    "coordY": "68.0"
+    "coordX": "23.1",
+    "coordY": "55.7"
   },
   {
     "ID": "block-chao-gang-co-mieng-rot-2-item-4",
@@ -13075,8 +13075,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Giúp hạn chế dầu mỡ và thực phẩm bắn ra ngoài trong quá trình nấu trên bếp.",
     "image": "",
-    "coordX": "40.0",
-    "coordY": "35.0"
+    "coordX": "23.5",
+    "coordY": "22.4"
   },
   {
     "ID": "block-chao-gang-co-mieng-rot-2-item-5",
@@ -13085,8 +13085,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 5,
     "body": "Đáy tráng men phẳng, nhẵn, sử dụng được trên mọi loại bếp, bao gồm cả bếp từ.",
     "image": "",
-    "coordX": "85.0",
-    "coordY": "42.0"
+    "coordX": "34.3",
+    "coordY": "62.1"
   },
   {
     "ID": "block-chao-gang-staub-american-grill-1-item-1",
@@ -13255,8 +13255,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Nắp kính vừa khít giúp dễ dàng quan sát món ăn trong quá trình nấu, đồng thời giữ nhiệt hiệu quả bên trong nồi.",
     "image": "",
-    "coordX": "50.0",
-    "coordY": "26.0"
+    "coordX": "19.6",
+    "coordY": "25.0"
   },
   {
     "ID": "block-milano-3-item-2",
@@ -13265,8 +13265,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "ZWILLING Milano có nhiều lựa chọn màu sắc nổi bật, đưa nét thanh lịch đặc trưng của thiết kế Milan vào gian bếp. Lớp phủ màu bền chắc và an toàn khi vệ sinh bằng máy rửa chén.",
     "image": "",
-    "coordX": "36.0",
-    "coordY": "62.0"
+    "coordX": "21.6",
+    "coordY": "46.5"
   },
   {
     "ID": "block-milano-3-item-3",
@@ -13275,8 +13275,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Tay cầm với sắc màu nổi bật hoàn thiện thiết kế hiện đại của Matteo Thun & Antonio Rodriguez. Kết cấu tán đinh chắc chắn vào thân nồi, chảo mang lại độ ổn định và bền bỉ khi sử dụng.",
     "image": "",
-    "coordX": "82.0",
-    "coordY": "48.0"
+    "coordX": "29.8",
+    "coordY": "61.7"
   },
   {
     "ID": "block-milano-3-item-4",
@@ -13285,8 +13285,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Tất cả nồi và chảo trong dòng sản phẩm đều được phủ lớp chống dính ceramic bền bỉ, không chứa PFAS, mang lại hiệu suất nấu nướng vượt trội.",
     "image": "",
-    "coordX": "55.0",
-    "coordY": "54.0"
+    "coordX": "15.3",
+    "coordY": "71.3"
   },
   {
     "ID": "block-madura-1-item-1",
@@ -13335,8 +13335,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Lớp chống dính gốm siêu bền có tuổi thọ cao gấp 5 lần so với thế hệ lớp phủ gốm trước đây.",
     "image": "",
-    "coordX": "45.0",
-    "coordY": "55.0"
+    "coordX": "36.2",
+    "coordY": "17.3"
   },
   {
     "ID": "block-madura-3-item-2",
@@ -13345,8 +13345,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Thân chảo bằng nhôm nguyên khối dẫn nhiệt nhanh, hiệu quả và phân bổ nhiệt đồng đều, giúp thực phẩm chín đẹp.",
     "image": "",
-    "coordX": "32.0",
-    "coordY": "65.0"
+    "coordX": "25.2",
+    "coordY": "17.0"
   },
   {
     "ID": "block-madura-3-item-3",
@@ -13355,8 +13355,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Tay cầm bằng nhựa hạn chế nóng lên trong quá trình chiên rán, duy trì cảm giác mát và thoải mái khi cầm.",
     "image": "",
-    "coordX": "82.0",
-    "coordY": "44.0"
+    "coordX": "15.8",
+    "coordY": "32.3"
   },
   {
     "ID": "block-madura-3-item-4",
@@ -13365,8 +13365,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Thiết kế chuyên biệt giúp rót nước xốt và các chất lỏng gọn gàng, hạn chế dây đổ.",
     "image": "",
-    "coordX": "24.0",
-    "coordY": "40.0"
+    "coordX": "29.7",
+    "coordY": "36.5"
   },
   {
     "ID": "block-madura-3-item-5",
@@ -13375,8 +13375,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 5,
     "body": "Được sản xuất tại Ý theo những tiêu chuẩn chất lượng khắt khe.",
     "image": "",
-    "coordX": "52.0",
-    "coordY": "75.0"
+    "coordX": "46.3",
+    "coordY": "43.0"
   },
   {
     "ID": "block-zwilling-pro-ii-1-item-1",
@@ -13745,8 +13745,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Kết hợp hiệu suất mạnh mẽ của máy hút chân không để bàn cùng sự linh hoạt của thiết bị cầm tay, máy bơm hút chân không hoạt động nhanh chóng, êm ái và dễ sử dụng.",
     "image": "",
-    "coordX": "42.0",
-    "coordY": "72.0"
+    "coordX": "22.1",
+    "coordY": "9.1"
   },
   {
     "ID": "block-may-hut-chan-khong-3-item-2",
@@ -13755,8 +13755,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Chỉ với một nút nhấn, máy nhanh chóng hút chân không trong vài giây và tự động dừng khi đạt độ chân không cần thiết.",
     "image": "",
-    "coordX": "52.0",
-    "coordY": "22.0"
+    "coordX": "22.5",
+    "coordY": "26.8"
   },
   {
     "ID": "block-may-hut-chan-khong-3-item-3",
@@ -13765,8 +13765,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Máy hút không dây sử dụng pin lithium-ion bền bỉ, mang đến sự linh hoạt và thuận tiện trong quá trình sử dụng.",
     "image": "",
-    "coordX": "48.0",
-    "coordY": "48.0"
+    "coordX": "22.3",
+    "coordY": "38.5"
   },
   {
     "ID": "block-may-hut-chan-khong-3-item-4",
@@ -13775,8 +13775,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Thiết kế nhỏ gọn giúp dễ dàng lưu trữ trong ngăn kéo, đồng thời mang đến vẻ hiện đại, tinh tế cho mọi không gian bếp.",
     "image": "",
-    "coordX": "58.0",
-    "coordY": "52.0"
+    "coordX": "22.3",
+    "coordY": "49.8"
   },
   {
     "ID": "block-may-hut-chan-khong-3-item-5",
@@ -13785,8 +13785,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 5,
     "body": "Máy có thể dễ dàng sạc lại bằng cáp USB đi kèm, thuận tiện cho việc sử dụng hằng ngày.",
     "image": "",
-    "coordX": "54.0",
-    "coordY": "35.0"
+    "coordX": "22.5",
+    "coordY": "92.6"
   },
   {
     "ID": "block-tui-hut-chan-khong-1-item-1",
@@ -13835,8 +13835,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Tiện lợi để chuẩn bị trước và bảo quản thực phẩm tươi ngon lâu hơn.",
     "image": "",
-    "coordX": "52.0",
-    "coordY": "58.0"
+    "coordX": "8.2",
+    "coordY": "30.3"
   },
   {
     "ID": "block-tui-hut-chan-khong-2-item-2",
@@ -13845,8 +13845,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Tạo độ kín hoàn hảo, giúp bảo quản thực phẩm hiệu quả.",
     "image": "",
-    "coordX": "50.0",
-    "coordY": "25.0"
+    "coordX": "20.6",
+    "coordY": "31.4"
   },
   {
     "ID": "block-tui-hut-chan-khong-2-item-3",
@@ -13855,8 +13855,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Phù hợp để bảo quản trong tủ bếp, tủ lạnh và ngăn đông.",
     "image": "",
-    "coordX": "68.0",
-    "coordY": "42.0"
+    "coordX": "32.0",
+    "coordY": "32.0"
   },
   {
     "ID": "block-hop-nhua-hut-chan-khong-1-item-1",
@@ -13945,8 +13945,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Thủy tinh borosilicate an toàn khi sử dụng trong khoảng -18°C đến 280°C.",
     "image": "",
-    "coordX": "48.0",
-    "coordY": "65.0"
+    "coordX": "13.9",
+    "coordY": "42.9"
   },
   {
     "ID": "block-hop-thuy-tinh-hut-chan-khong-2-item-2",
@@ -13955,8 +13955,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Giúp tiết kiệm không gian, dễ dàng bảo quản.",
     "image": "",
-    "coordX": "32.0",
-    "coordY": "38.0"
+    "coordX": "20.2",
+    "coordY": "68.7"
   },
   {
     "ID": "block-hop-thuy-tinh-hut-chan-khong-2-item-3",
@@ -13965,8 +13965,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Tạo độ kín hoàn hảo, giúp bảo quản thực phẩm tốt hơn.",
     "image": "",
-    "coordX": "64.0",
-    "coordY": "32.0"
+    "coordX": "37.3",
+    "coordY": "33.2"
   },
   {
     "ID": "block-bo-san-pham-hut-chan-khong-27-40-mon-1-item-1",
@@ -14095,38 +14095,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Nắp tạo độ kín hoàn hảo khi kết hợp với máy hút chân không FRESH & SAVE, giúp giữ thực phẩm tươi lâu hơn.",
     "image": "",
-    "coordX": "48.0",
-    "coordY": "26.0"
-  },
-  {
-    "ID": "block-bo-to-hut-chan-khong-2-item-2",
-    "title": "Dụng cụ bào Z-Cut",
-    "block": "block-bo-to-hut-chan-khong-2",
-    "position": 2,
-    "body": "3 thiết kế mặt bào ứng dụng công nghệ bào 2 chiều Z-Cut được cấp bằng sáng chế, giúp bào thực phẩm nhanh chóng và tiết kiệm thời gian hơn.",
-    "image": "",
-    "coordX": "68.0",
-    "coordY": "38.0"
-  },
-  {
-    "ID": "block-bo-to-hut-chan-khong-2-item-3",
-    "title": "Tấm chắn chống bắn",
-    "block": "block-bo-to-hut-chan-khong-2",
-    "position": 3,
-    "body": "Giúp hạn chế nguyên liệu bắn ra ngoài trong quá trình trộn hoặc đánh, giữ khu vực bếp sạch sẽ và giảm tình trạng thực phẩm bắn tung tóe trên mặt bàn.",
-    "image": "",
-    "coordX": "35.0",
-    "coordY": "45.0"
-  },
-  {
-    "ID": "block-bo-to-hut-chan-khong-2-item-4",
-    "title": "Âu thép không gỉ",
-    "block": "block-bo-to-hut-chan-khong-2",
-    "position": 4,
-    "body": "Âu thép không gỉ chất lượng cao có thiết kế nhẹ và dễ dàng di chuyển, thuận tiện cho mọi thao tác trong căn bếp.",
-    "image": "",
-    "coordX": "52.0",
-    "coordY": "62.0"
+    "coordX": "69.8",
+    "coordY": "35.9"
   },
   {
     "ID": "block-bo-to-hut-chan-khong-2-item-5",
@@ -14135,8 +14105,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 5,
     "body": "Thủy tinh chịu nhiệt cho phép hâm nóng bằng lò vi sóng hoặc nướng trực tiếp, sau đó có thể phục vụ ngay từ tủ lạnh lên bàn ăn.",
     "image": "",
-    "coordX": "30.0",
-    "coordY": "75.0"
+    "coordX": "26.0",
+    "coordY": "65.7"
   },
   {
     "ID": "block-bo-hop-cube-hut-chan-khong-1-item-1",
@@ -14305,8 +14275,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Lưỡi kéo được mài thủ công với cạnh răng cưa siêu nhỏ.",
     "image": "",
-    "coordX": "48.0",
-    "coordY": "48.0"
+    "coordX": "14.7",
+    "coordY": "47.3"
   },
   {
     "ID": "block-keo-zwilling-twin-select-keo-da-nang-3-item-2",
@@ -14315,8 +14285,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Phù hợp sử dụng cho cả người thuận tay trái và tay phải.",
     "image": "",
-    "coordX": "75.0",
-    "coordY": "48.0"
+    "coordX": "37.5",
+    "coordY": "48.4"
   },
   {
     "ID": "block-keo-zwilling-twin-select-keo-da-nang-3-item-3",
@@ -14325,8 +14295,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Thép không gỉ có khả năng chống ăn mòn, hạn chế ố màu và sứt mẻ.",
     "image": "",
-    "coordX": "24.0",
-    "coordY": "48.0"
+    "coordX": "25.4",
+    "coordY": "47.5"
   },
   {
     "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1-item-1",
@@ -14695,8 +14665,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Thiết kế hai lớp cách nhiệt chân không giúp giữ thức uống ở nhiệt độ lý tưởng trong nhiều giờ.",
     "image": "",
-    "coordX": "50.0",
-    "coordY": "60.0"
+    "coordX": "23.2",
+    "coordY": "73.3"
   },
   {
     "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2-item-2",
@@ -14705,8 +14675,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Lớp bên trong được làm từ thép không gỉ 316L, có khả năng chống ăn mòn, bền bỉ và không làm ảnh hưởng đến hương vị thức uống.",
     "image": "",
-    "coordX": "45.0",
-    "coordY": "45.0"
+    "coordX": "18.9",
+    "coordY": "54.6"
   },
   {
     "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2-item-3",
@@ -14715,8 +14685,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Nắp Tritan có khả năng chống vỡ, chịu nhiệt tốt và giúp giữ trọn hương vị tự nhiên của thức uống.",
     "image": "",
-    "coordX": "52.0",
-    "coordY": "24.0"
+    "coordX": "19.8",
+    "coordY": "18.1"
   },
   {
     "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2-item-4",
@@ -14725,8 +14695,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Gioăng làm từ silicone an toàn cho thực phẩm giúp ngăn rò rỉ, để bạn yên tâm mang theo thức uống trong mọi hành trình.",
     "image": "",
-    "coordX": "62.0",
-    "coordY": "15.0"
+    "coordX": "24.6",
+    "coordY": "10.8"
   },
   {
     "ID": "block-zwilling-pro-2-item-1",
@@ -14735,8 +14705,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 1,
     "body": "Thiết kế mũi dao nhọn cong lý tưởng cho các thao tác thái lát, cắt hạt lựu và cắt lướt linh hoạt với độ chuẩn xác cao.",
     "image": "",
-    "coordX": "6.0",
-    "coordY": "68.0"
+    "coordX": "4.7",
+    "coordY": "48.7"
   },
   {
     "ID": "block-zwilling-pro-2-item-2",
@@ -14745,8 +14715,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 2,
     "body": "Lưỡi dao được rèn nguyên khối từ thép không gỉ carbon cao với công thức chuyên biệt, mang lại độ bền và hiệu suất cắt vượt trội.",
     "image": "",
-    "coordX": "22.5",
-    "coordY": "57.0"
+    "coordX": "16.9",
+    "coordY": "48.1"
   },
   {
     "ID": "block-zwilling-pro-2-item-3",
@@ -14755,8 +14725,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 3,
     "body": "Lưỡi dao được mài chính xác, kết hợp công nghệ laser kiểm soát góc cắt để đạt độ sắc bén vượt trội.",
     "image": "",
-    "coordX": "39.0",
-    "coordY": "45.7"
+    "coordX": "16.7",
+    "coordY": "62.9"
   },
   {
     "ID": "block-zwilling-pro-2-item-4",
@@ -14765,8 +14735,8 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 4,
     "body": "Phần gù dao cong nối liền mạch với cán, giúp thao tác chính xác, nâng đỡ ngón tay an toàn và thoải mái hơn.",
     "image": "",
-    "coordX": "55.0",
-    "coordY": "50.0"
+    "coordX": "29.6",
+    "coordY": "48.7"
   },
   {
     "ID": "block-zwilling-pro-2-item-5",
@@ -14775,7 +14745,7 @@ export const MOCK_FEATURE_ITEMS = [
     "position": 5,
     "body": "Kết cấu thép nguyên khối xuyên suốt từ lưỡi đến cán, được cố định bằng ba đinh tán, mang lại độ cân bằng vững chắc và cảm giác cầm thoải mái.",
     "image": "",
-    "coordX": "75.7",
-    "coordY": "47.8"
+    "coordX": "38.8",
+    "coordY": "49.2"
   }
 ];
