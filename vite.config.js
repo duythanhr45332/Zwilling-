@@ -52,25 +52,39 @@ function hotspotApiPlugin() {
   return {
     name: 'hotspot-api-plugin',
     configureServer(server) {
-      // API 1: Lấy danh sách blocks và items từ CSV
+      // API 1: Lấy danh sách blocks và items từ CSV (ưu tiên tools/live-wix-csv)
       server.middlewares.use('/api/blocks-data', (req, res, next) => {
         if (req.method !== 'GET') return next();
         try {
-          const blocksCsvPath = path.resolve('wix-csv', 'FeatureBlocks.csv');
-          const itemsCsvPath = path.resolve('wix-csv', 'FeatureItems.csv');
+          const candidateBlocksPaths = [
+            path.resolve('tools', 'live-wix-csv', 'FeatureBlocksWix.csv.csv'),
+            path.resolve('tools', 'live-wix-csv', 'FeatureBlocksWix.csv'),
+            path.resolve('tools', 'live-wix-csv', 'FeatureBlocks.csv'),
+            path.resolve('wix-csv', 'FeatureBlocks.csv')
+          ];
+          const blocksCsvPath = candidateBlocksPaths.find(p => fs.existsSync(p)) || candidateBlocksPaths[candidateBlocksPaths.length - 1];
+
+          const candidateItemsPaths = [
+            path.resolve('tools', 'live-wix-csv', 'FeatureItemsWix.csv'),
+            path.resolve('tools', 'live-wix-csv', 'FeatureItems.csv'),
+            path.resolve('wix-csv', 'FeatureItems.csv')
+          ];
+          const itemsCsvPath = candidateItemsPaths.find(p => fs.existsSync(p)) || candidateItemsPaths[candidateItemsPaths.length - 1];
+
+          const cleanHeader = (hdr) => hdr.map((h) => h.replace(/^\ufeff/, '').replace(/^"(.*)"$/, '$1').trim().toLowerCase());
 
           let blocks = [];
           if (fs.existsSync(blocksCsvPath)) {
             const rawBlocks = fs.readFileSync(blocksCsvPath, 'utf8');
             const rows = parseCsv(rawBlocks);
             if (rows.length > 1) {
-              const header = rows[0];
-              const idIdx = header.indexOf('ID');
-              const titleIdx = header.indexOf('title');
-              const compIdx = header.indexOf('component');
-              const imgIdx = header.indexOf('image');
-              const srcSheetIdx = header.indexOf('sourceSheet');
-              const srcTitleIdx = header.indexOf('sourceTitle');
+              const h = cleanHeader(rows[0]);
+              const idIdx = h.indexOf('id');
+              const titleIdx = h.indexOf('title');
+              const compIdx = h.indexOf('component');
+              const imgIdx = h.indexOf('image');
+              const srcSheetIdx = h.indexOf('sourcesheet');
+              const srcTitleIdx = h.indexOf('sourcetitle');
 
               blocks = rows.slice(1).map((r) => ({
                 ID: r[idIdx] || '',
@@ -88,15 +102,15 @@ function hotspotApiPlugin() {
             const rawItems = fs.readFileSync(itemsCsvPath, 'utf8');
             const rows = parseCsv(rawItems);
             if (rows.length > 1) {
-              const header = rows[0];
-              const idIdx = header.indexOf('ID');
-              const titleIdx = header.indexOf('title');
-              const blockIdx = header.indexOf('block');
-              const posIdx = header.indexOf('position');
-              const bodyIdx = header.indexOf('body');
-              const imgIdx = header.indexOf('image');
-              const cxIdx = header.indexOf('coordX');
-              const cyIdx = header.indexOf('coordY');
+              const h = cleanHeader(rows[0]);
+              const idIdx = h.indexOf('id');
+              const titleIdx = h.indexOf('title');
+              const blockIdx = h.indexOf('block');
+              const posIdx = h.indexOf('position');
+              const bodyIdx = h.indexOf('body');
+              const imgIdx = h.indexOf('image');
+              const cxIdx = h.indexOf('coordx');
+              const cyIdx = h.indexOf('coordy');
 
               items = rows.slice(1).map((r) => ({
                 ID: r[idIdx] || '',
@@ -120,7 +134,7 @@ function hotspotApiPlugin() {
         }
       });
 
-      // API 2: Lưu dữ liệu hotspots vào wix-csv/FeatureItems.csv
+      // API 2: Lưu dữ liệu hotspots vào cả tools/live-wix-csv và wix-csv
       server.middlewares.use('/api/save-hotspots', (req, res, next) => {
         if (req.method !== 'POST') return next();
         let body = '';
@@ -130,43 +144,64 @@ function hotspotApiPlugin() {
         req.on('end', () => {
           try {
             const payload = JSON.parse(body);
+            const candidateItemsPaths = [
+              path.resolve('tools', 'live-wix-csv', 'FeatureItemsWix.csv'),
+              path.resolve('tools', 'live-wix-csv', 'FeatureItems.csv'),
+              path.resolve('wix-csv', 'FeatureItems.csv')
+            ];
+            const candidateBlocksPaths = [
+              path.resolve('tools', 'live-wix-csv', 'FeatureBlocksWix.csv.csv'),
+              path.resolve('tools', 'live-wix-csv', 'FeatureBlocksWix.csv'),
+              path.resolve('tools', 'live-wix-csv', 'FeatureBlocks.csv'),
+              path.resolve('wix-csv', 'FeatureBlocks.csv')
+            ];
             const itemsCsvPath = path.resolve('wix-csv', 'FeatureItems.csv');
             const blocksCsvPath = path.resolve('wix-csv', 'FeatureBlocks.csv');
 
             // 1. Trường hợp gửi thẳng fullCsv hoàn chỉnh
             if (payload.fullCsv && typeof payload.fullCsv === 'string') {
-              fs.writeFileSync(itemsCsvPath, payload.fullCsv.trim() + '\n', 'utf8');
+              const csvContent = payload.fullCsv.trim() + '\n';
+              for (const p of candidateItemsPaths) {
+                try {
+                  fs.mkdirSync(path.dirname(p), { recursive: true });
+                  fs.writeFileSync(p, csvContent, 'utf8');
+                } catch (e) {}
+              }
 
               // Cập nhật block images nếu có
               if (payload.blockImages && typeof payload.blockImages === 'object') {
-                if (fs.existsSync(blocksCsvPath)) {
-                  const bRows = parseCsv(fs.readFileSync(blocksCsvPath, 'utf8'));
-                  const bHeader = bRows[0];
-                  const bIdIdx = bHeader.indexOf('ID');
-                  const bImgIdx = bHeader.indexOf('image');
-                  if (bIdIdx >= 0 && bImgIdx >= 0) {
-                    for (let i = 1; i < bRows.length; i++) {
-                      const id = bRows[i][bIdIdx];
-                      if (payload.blockImages[id]) {
-                        let imgVal = payload.blockImages[id];
-                        if (imgVal.startsWith('data:image/')) {
-                          try {
-                            const base64Data = imgVal.split(',')[1];
-                            const extMatch = imgVal.match(/^data:image\/(\w+);/);
-                            const ext = extMatch ? (extMatch[1] === 'jpeg' ? 'jpg' : extMatch[1]) : 'png';
-                            const imgFilename = `${id}.${ext}`;
-                            const targetDiskPath = path.resolve('wix-csv', 'images', imgFilename);
-                            fs.writeFileSync(targetDiskPath, Buffer.from(base64Data, 'base64'));
-                            imgVal = `images/${imgFilename}`;
-                          } catch (e) {
-                            console.error('Error writing base64 image for', id, e);
+                const targetBlocksFiles = candidateBlocksPaths.filter(p => fs.existsSync(p));
+
+                for (const bFilePath of targetBlocksFiles) {
+                  if (fs.existsSync(bFilePath)) {
+                    const bRows = parseCsv(fs.readFileSync(bFilePath, 'utf8'));
+                    const cleanHdr = bRows[0].map((h) => h.replace(/^\ufeff/, '').replace(/^"(.*)"$/, '$1').trim().toLowerCase());
+                    const bIdIdx = cleanHdr.indexOf('id');
+                    const bImgIdx = cleanHdr.indexOf('image');
+                    if (bIdIdx >= 0 && bImgIdx >= 0) {
+                      for (let i = 1; i < bRows.length; i++) {
+                        const id = bRows[i][bIdIdx];
+                        if (payload.blockImages[id]) {
+                          let imgVal = payload.blockImages[id];
+                          if (imgVal.startsWith('data:image/')) {
+                            try {
+                              const base64Data = imgVal.split(',')[1];
+                              const extMatch = imgVal.match(/^data:image\/(\w+);/);
+                              const ext = extMatch ? (extMatch[1] === 'jpeg' ? 'jpg' : extMatch[1]) : 'png';
+                              const imgFilename = `${id}.${ext}`;
+                              const targetDiskPath = path.resolve('wix-csv', 'images', imgFilename);
+                              fs.writeFileSync(targetDiskPath, Buffer.from(base64Data, 'base64'));
+                              imgVal = `images/${imgFilename}`;
+                            } catch (e) {
+                              console.error('Error writing base64 image for', id, e);
+                            }
                           }
+                          bRows[i][bImgIdx] = imgVal;
                         }
-                        bRows[i][bImgIdx] = imgVal;
                       }
+                      const bOutput = bRows.map((r) => r.map(escapeCsvCell).join(',')).join('\n') + '\n';
+                      fs.writeFileSync(bFilePath, bOutput, 'utf8');
                     }
-                    const bOutput = bRows.map((r) => r.map(escapeCsvCell).join(',')).join('\n') + '\n';
-                    fs.writeFileSync(blocksCsvPath, bOutput, 'utf8');
                   }
                 }
               }
@@ -175,7 +210,7 @@ function hotspotApiPlugin() {
               return res.end(
                 JSON.stringify({
                   success: true,
-                  message: 'Đã lưu toàn bộ bản CSV hoàn chỉnh vào wix-csv/FeatureItems.csv!'
+                  message: 'Đã lưu toàn bộ bản CSV hoàn chỉnh vào FeatureItems.csv!'
                 })
               );
             }

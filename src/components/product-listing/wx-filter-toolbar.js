@@ -24,6 +24,14 @@ export class WxFilterToolbar extends LitElement {
         padding: 0;
       }
 
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      button, input, select, textarea, a {
+        font-family: inherit;
+      }
+
       .toolbar {
         display: flex;
         flex-wrap: wrap;

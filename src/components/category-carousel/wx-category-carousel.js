@@ -30,6 +30,14 @@ export class WxCategoryCarousel extends LitElement {
       display: none !important;
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
     @keyframes wx-shimmer {
       0% {
         background-position: -200% 0;
@@ -124,6 +132,7 @@ export class WxCategoryCarousel extends LitElement {
     }
 
     .item-card {
+      font-family: inherit;
       flex: 0 0 188px;
       width: 188px;
       display: flex;

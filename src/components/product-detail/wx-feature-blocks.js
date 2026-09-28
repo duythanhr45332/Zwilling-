@@ -38,6 +38,10 @@ export class WxFeatureBlocks extends LitElement {
         box-sizing: border-box;
       }
 
+      button, input, select, textarea {
+        font-family: inherit;
+      }
+
       .feature-blocks-container {
         display: flex;
         flex-direction: column;
@@ -299,10 +303,10 @@ export class WxFeatureBlocks extends LitElement {
       }
 
       .knife-media-wrapper img {
+        width: auto;
         max-width: 100%;
         height: auto;
         max-height: 320px;
-        object-fit: contain;
         display: block;
         pointer-events: none;
       }
@@ -591,15 +595,18 @@ export class WxFeatureBlocks extends LitElement {
    * RENDER: COMPONENT 1 — STORY & 3-COLUMN HIGHLIGHTS
    * ---------------------------------------------------- */
   _renderStoryBlock(block, childItems) {
-    // Nếu item đầu tiên chứa tiêu đề và nội dung story (như file FeatureItems.csv)
+    // Nếu item đầu tiên chứa tiêu đề, nội dung và ảnh story (theo đúng cấu trúc FeatureItems.csv)
     let heading = block.heading || block.title;
     let body = block.body || '';
     let cards = childItems;
+    let bannerImage = block.image || '';
 
-    if (!block.heading && childItems.length > 0) {
+    if (childItems && childItems.length > 0) {
       const firstItem = childItems[0];
       heading = firstItem.title || heading;
       body = firstItem.body || body;
+      // Luôn lấy ảnh banner chính từ item 1 trong FeatureItems (ưu tiên FeatureItems)
+      bannerImage = firstItem.image || bannerImage;
       cards = childItems.slice(1);
     }
 
@@ -608,7 +615,7 @@ export class WxFeatureBlocks extends LitElement {
         <!-- Banner 50/50 -->
         <div class="story-banner">
           <div class="story-media">
-            ${this._renderMedia(block.image, heading, '320px')}
+            ${this._renderMedia(bannerImage, heading, '320px')}
           </div>
 
           <div class="story-content">
