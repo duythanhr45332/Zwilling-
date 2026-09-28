@@ -47,7 +47,7 @@ $w.onReady(function () {
   safeSet(breadcrumbEl, 'lang', 'vi');
   safeSet(breadcrumbEl, 'items', [
     { label: 'Trang chủ', url: '/' },
-    { label: 'Blog' }
+    { label: 'Tin tức', url: '/tintuc' }
   ]);
 
   // Xử lý click điều hướng trên breadcrumb
