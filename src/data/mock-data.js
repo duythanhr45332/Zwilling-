@@ -5,7 +5,7 @@ export const MOCK_BRANDS = [
     "title": "MIYABI",
     "slug": "miyabi",
     "description": "",
-    "logo": "",
+    "image": "",
     "bannerImage": "",
     "sortOrder": 0,
     "isActive": true
@@ -15,7 +15,7 @@ export const MOCK_BRANDS = [
     "title": "ZWILLING",
     "slug": "zwilling",
     "description": "",
-    "logo": "",
+    "image": "",
     "bannerImage": "",
     "sortOrder": 1,
     "isActive": true
@@ -25,7 +25,7 @@ export const MOCK_BRANDS = [
     "title": "STAUB",
     "slug": "staub",
     "description": "",
-    "logo": "",
+    "image": "",
     "bannerImage": "",
     "sortOrder": 2,
     "isActive": true
