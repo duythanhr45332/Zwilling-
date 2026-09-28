@@ -1,4 +1,4 @@
-ID,title,slug,description,logo,bannerImage,sortOrder,isActive
+ID,title,slug,description,image,bannerImage,sortOrder,isActive
 brand-miyabi,MIYABI,miyabi,,,,0,true
 brand-zwilling,ZWILLING,zwilling,,,,1,true
 brand-staub,STAUB,staub,,,,2,true

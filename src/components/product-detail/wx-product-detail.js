@@ -19,7 +19,7 @@ export class WxProductDetail extends LitElement {
   static styles = css`
     :host {
       display: block;
-      font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: inherit;
       margin: 0;
       padding: 0;
       background: #ffffff;
@@ -28,6 +28,11 @@ export class WxProductDetail extends LitElement {
 
     :host([hidden]) {
       display: none !important;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: inherit;
     }
 
     @keyframes wx-shimmer {
@@ -370,11 +375,35 @@ export class WxProductDetail extends LitElement {
     }
 
     .highlights-list {
-      list-style-type: disc;
-      padding-left: 20px;
+      list-style-type: none;
+      padding-left: 0;
+      font-family: var(--wx-font-family);
       font-size: 13px;
       color: #444444;
       line-height: 1.7;
+      margin: 0;
+    }
+
+    .highlights-list li {
+      margin-bottom: 4px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .highlights-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: #444444;
+    }
+
+    .highlights-heading {
+      font-family: var(--wx-font-family);
+      font-size: 14px;
+      font-weight: 400;
+      color: #222222;
+      line-height: 1.5;
+      margin-bottom: 10px;
     }
 
     /* Accordions */
@@ -410,8 +439,50 @@ export class WxProductDetail extends LitElement {
 
     .accordion-body {
       padding: 0 0 20px 0;
+      font-family: var(--wx-font-family);
       font-size: 13px;
       line-height: 1.6;
+      color: #444444;
+    }
+
+    .desc-formatted {
+      font-family: var(--wx-font-family);
+    }
+
+    .desc-paragraph {
+      margin: 0 0 14px 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #444444;
+    }
+
+    .desc-paragraph:last-child {
+      margin-bottom: 0;
+    }
+
+    .desc-bullets {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 14px 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #444444;
+    }
+
+    .desc-bullets:last-child {
+      margin-bottom: 0;
+    }
+
+    .desc-bullets li {
+      margin-bottom: 4px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .desc-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
       color: #444444;
     }
 
@@ -502,6 +573,87 @@ export class WxProductDetail extends LitElement {
     };
   }
 
+  /**
+   * Parse shortDescription thành heading + bullet list.
+   * Format data: "Heading text\n\n- Bullet 1\n- Bullet 2\n..."
+   */
+  _renderHighlights(text) {
+    if (!text || typeof text !== 'string') return html``;
+
+    const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+    const heading = [];
+    const bullets = [];
+
+    for (const line of lines) {
+      if (line.startsWith('- ') || line.startsWith('• ') || line.startsWith('· ')) {
+        bullets.push(line.replace(/^[-•·]\s*/, ''));
+      } else {
+        // Nếu chưa có bullet nào → là heading, nếu đã có → là text thường
+        if (bullets.length === 0) {
+          heading.push(line);
+        } else {
+          bullets.push(line);
+        }
+      }
+    }
+
+    return html`
+      ${heading.length
+        ? html`<div class="highlights-heading">${heading.join(' ')}</div>`
+        : ''}
+      ${bullets.length
+        ? html`<ul class="highlights-list">
+            ${bullets.map(b => html`<li>${b}</li>`)}
+          </ul>`
+        : ''}
+    `;
+  }
+
+  /**
+   * Parse description thành paragraphs + bullet list.
+   * Đoạn cách nhau bằng dòng trống → <p>, dòng bắt đầu bằng '- ' → bullet list.
+   */
+  _renderDescription(text) {
+    if (!text || typeof text !== 'string') return html``;
+
+    // Tách thành các block bằng dòng trống (2+ newlines)
+    const blocks = text.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+    const result = [];
+
+    for (const block of blocks) {
+      const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+      const isBulletBlock = lines.every(l => l.startsWith('- ') || l.startsWith('• ') || l.startsWith('· '));
+
+      if (isBulletBlock) {
+        const items = lines.map(l => l.replace(/^[-•·]\s*/, ''));
+        result.push(html`<ul class="desc-bullets">
+          ${items.map(item => html`<li>${item}</li>`)}
+        </ul>`);
+      } else {
+        // Kiểm tra nếu block có lẫn cả text thường và bullets
+        const paragraphLines = [];
+        const bulletLines = [];
+        for (const line of lines) {
+          if (line.startsWith('- ') || line.startsWith('• ') || line.startsWith('· ')) {
+            bulletLines.push(line.replace(/^[-•·]\s*/, ''));
+          } else {
+            paragraphLines.push(line);
+          }
+        }
+        if (paragraphLines.length) {
+          result.push(html`<p class="desc-paragraph">${paragraphLines.join(' ')}</p>`);
+        }
+        if (bulletLines.length) {
+          result.push(html`<ul class="desc-bullets">
+            ${bulletLines.map(item => html`<li>${item}</li>`)}
+          </ul>`);
+        }
+      }
+    }
+
+    return html`<div class="desc-formatted">${result}</div>`;
+  }
+
   render() {
     const rawProduct = this.data || this.product;
     const isExplicitLoading = this.loading === true || this.loading === 'true';
@@ -557,15 +709,15 @@ export class WxProductDetail extends LitElement {
             @mouseleave="${this._onMouseLeave}"
           >
             ${p.labels && p.labels.length
-              ? html`<span class="badge-top-left">${Array.isArray(p.labels) ? p.labels[0] : p.labels}</span>`
-              : ''}
+        ? html`<span class="badge-top-left">${Array.isArray(p.labels) ? p.labels[0] : p.labels}</span>`
+        : ''}
             
             ${images.length > 1
-              ? html`
+        ? html`
                   <button class="nav-arrow prev" @click="${(e) => { e.stopPropagation(); this._prevImage(images); }}" aria-label="${t('prevImage', this.lang)}">&#x2039;</button>
                   <button class="nav-arrow next" @click="${(e) => { e.stopPropagation(); this._nextImage(images); }}" aria-label="${t('nextImage', this.lang)}">&#x203A;</button>
                 `
-              : ''}
+        : ''}
 
             <!-- Icon kính lúp có dấu + góc dưới phải -->
             <div class="zoom-badge" aria-hidden="true" title="Phóng to chi tiết">
@@ -578,17 +730,17 @@ export class WxProductDetail extends LitElement {
             </div>
 
             ${currentImg
-              ? html`
+        ? html`
                   <img
                     class="main-img"
                     src="${currentImg}"
                     alt="${p.title}"
                     style="${this.isZoomed
-                      ? `transform-origin: ${this.zoomX}% ${this.zoomY}%; transform: scale(2.4);`
-                      : 'transform-origin: center center; transform: scale(1);'}"
+            ? `transform-origin: ${this.zoomX}% ${this.zoomY}%; transform: scale(2.4);`
+            : 'transform-origin: center center; transform: scale(1);'}"
                   />
                 `
-              : html`
+        : html`
                   <div style="width: 100%; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f9f9f9; border: 1px dashed #d5d5d5; border-radius: 4px; color: #999; gap: 8px;">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -602,7 +754,7 @@ export class WxProductDetail extends LitElement {
 
           <!-- Thumbnail Matrix -->
           ${images.length > 1
-            ? html`
+        ? html`
                 <div class="thumbnails-grid">
                   ${images.map((img, idx) => html`
                     <div
@@ -614,7 +766,7 @@ export class WxProductDetail extends LitElement {
                   `)}
                 </div>
               `
-            : ''}
+        : ''}
         </div>
 
         <!-- Cột Thông tin bên phải -->
@@ -628,34 +780,32 @@ export class WxProductDetail extends LitElement {
           <!-- Price Row -->
           <div class="price-row">
             ${comparePrice && comparePrice > price
-              ? html`<span class="compare-price">${formatCurrencyVND(comparePrice)}</span>`
-              : ''}
+        ? html`<span class="compare-price">${formatCurrencyVND(comparePrice)}</span>`
+        : ''}
             <span class="sale-price">${price ? formatCurrencyVND(price) : t('contactUs', this.lang)}</span>
             ${discountPercent ? html`<span class="discount-box">-${discountPercent}%</span>` : ''}
           </div>
 
           <!-- Ratings nếu có -->
           ${p.rating
-            ? html`
+        ? html`
                 <div class="rating-row">
                   <span class="stars">★★★★★</span>
                   <span>${p.rating}</span>
                   ${p.reviewCount ? html`<span class="rating-link">${t('reviewsCount', this.lang, p.reviewCount)}</span>` : ''}
                 </div>
               `
-            : ''}
+        : ''}
 
           <!-- Highlights Bullet list nếu có shortDescription -->
           ${p.shortDescription
-            ? html`
+        ? html`
                 <div class="highlights-box">
                   <div class="highlights-title">${t('highlights', this.lang)}</div>
-                  <div style="font-size: 14px; line-height: 1.6; color: #444;">
-                    ${p.shortDescription}
-                  </div>
+                  ${this._renderHighlights(p.shortDescription)}
                 </div>
               `
-            : ''}
+        : ''}
 
           <!-- Accordion Sections -->
           <div class="accordion-section">
@@ -666,12 +816,12 @@ export class WxProductDetail extends LitElement {
                 <span class="accordion-icon">${this.openSections.description ? '▲' : '▼'}</span>
               </button>
               ${this.openSections.description
-                ? html`
+        ? html`
                     <div class="accordion-body">
-                      ${p.description || p.shortDescription || t('noDescription', this.lang)}
+                      ${this._renderDescription(p.description || p.shortDescription || t('noDescription', this.lang))}
                     </div>
                   `
-                : ''}
+        : ''}
             </div>
 
             <!-- 2. Specifications -->
@@ -681,27 +831,27 @@ export class WxProductDetail extends LitElement {
                 <span class="accordion-icon">${this.openSections.specifications ? '▲' : '▼'}</span>
               </button>
               ${this.openSections.specifications
-                ? html`
+        ? html`
                     <div class="accordion-body">
                       ${specsData && specsData.length > 0
-                        ? html`
+            ? html`
                             <table class="specs-table">
                               <tbody>
                                 ${specsData.map(
-                                  (s) => html`
+              (s) => html`
                                     <tr>
                                       <td>${s.name || s.key}</td>
                                       <td>${s.value}</td>
                                     </tr>
                                   `
-                                )}
+            )}
                               </tbody>
                             </table>
                           `
-                        : html`<p>${t('noSpecs', this.lang)}</p>`}
+            : html`<p>${t('noSpecs', this.lang)}</p>`}
                     </div>
                   `
-                : ''}
+        : ''}
             </div>
 
             <!-- 3. Manual and Safety Instructions -->
@@ -711,7 +861,7 @@ export class WxProductDetail extends LitElement {
                 <span class="accordion-icon">${this.openSections.instructions ? '▲' : '▼'}</span>
               </button>
               ${this.openSections.instructions
-                ? html`
+        ? html`
                     <div class="accordion-body">
                       ${p.instructions || p.manual || html`
                         <ul>
@@ -720,7 +870,7 @@ export class WxProductDetail extends LitElement {
                       `}
                     </div>
                   `
-                : ''}
+        : ''}
             </div>
           </div>
         </div>
