@@ -111,7 +111,7 @@ export class WxBreadcrumb extends LitElement {
     if (upper === 'PRODUCTS' || upper === 'SẢN PHẨM') return t('products', this.lang);
     if (upper === 'BRANDS' || upper === 'THƯƠNG HIỆU') return t('brandsBreadcrumb', this.lang);
     if (upper === 'ABOUT' || upper === 'ABOUT US' || upper === 'GIỚI THIỆU' || upper === 'VỀ CHÚNG TÔI') return t('about', this.lang);
-    if (upper === 'BLOG' || upper === 'BÀI VIẾT' || upper === 'TIN TỨC') return t('blog', this.lang);
+    if (upper === 'BLOG' || upper === 'NEWS' || upper === 'BÀI VIẾT' || upper === 'TIN TỨC') return t('news', this.lang);
     return label;
   }
 
