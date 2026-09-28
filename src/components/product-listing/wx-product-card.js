@@ -26,6 +26,10 @@ export class WxProductCard extends LitElement {
       box-sizing: border-box;
     }
 
+    button, input, select, textarea, a {
+      font-family: inherit;
+    }
+
     .card {
       background: #ffffff;
       border: 1px solid #e7e7e7;

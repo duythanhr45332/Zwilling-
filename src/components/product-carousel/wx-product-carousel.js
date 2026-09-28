@@ -29,6 +29,14 @@ export class WxProductCarousel extends LitElement {
       display: none !important;
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
     @keyframes wx-shimmer {
       0% {
         background-position: -200% 0;

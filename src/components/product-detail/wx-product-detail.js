@@ -19,7 +19,7 @@ export class WxProductDetail extends LitElement {
   static styles = css`
     :host {
       display: block;
-      font-family: inherit;
+      font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #ffffff;
@@ -32,6 +32,10 @@ export class WxProductDetail extends LitElement {
 
     *, *::before, *::after {
       box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    button, input, select, textarea {
       font-family: inherit;
     }
 
