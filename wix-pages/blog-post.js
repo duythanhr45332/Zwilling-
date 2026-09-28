@@ -1,6 +1,6 @@
 /**
  * WIX VELO PAGE CODE: Trang Post — Chi tiết bài viết Blog
- * URL: /post/[slug]
+ * URL: /news/[slug]
  * 
  * Các phần tử Custom Element trên trang:
  * 1. #aboutBreadcrumb (Tag Name: wx-breadcrumb)
@@ -65,7 +65,7 @@ $w.onReady(function () {
   // Cách 2: Lấy từ URL slug và format thành tiêu đề
   if (!postTitle) {
     const path = wixLocation.path || [];
-    // URL dạng /post/ten-bai-viet → path = ['post', 'ten-bai-viet']
+    // URL dạng /news/ten-bai-viet → path = ['news', 'ten-bai-viet']
     if (path.length >= 2) {
       const slug = path[path.length - 1];
       // Chuyển slug thành title: "ten-bai-viet" → "Ten bai viet"
@@ -88,7 +88,7 @@ $w.onReady(function () {
   // === Breadcrumb: TRANG CHỦ › BÀI VIẾT › [TÊN BÀI VIẾT] ===
   const breadcrumbItems = [
     { label: 'Trang chủ', url: '/' },
-    { label: 'Blog', url: '/blog' }
+    { label: 'Tin tức', url: '/news' }
   ];
 
   if (postTitle) {
