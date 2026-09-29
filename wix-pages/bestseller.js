@@ -102,7 +102,7 @@ $w.onReady(async function () {
   // ============================================================
   let hasCached = false;
   try {
-    const cachedProds = session.getItem('zw_bestseller_prods');
+    const cachedProds = session.getItem('zw_bestseller_prods_v2');
     const cachedCats = session.getItem('zw_bestseller_cats');
     const cachedBrands = session.getItem('zw_bestseller_brands');
 
@@ -147,7 +147,7 @@ $w.onReady(async function () {
         .ascending('sortOrder')
         .find(),
 
-      // Ưu tiên lấy sản phẩm có nhãn 'Bán chạy' hoặc 'Bestseller'
+      // CHỈ lấy các sản phẩm thực sự gắn nhãn 'Bán chạy' hoặc 'Bestseller'
       wixData.query('Products')
         .eq('status', 'active')
         .contains('labels', 'Bán chạy')
@@ -157,24 +157,10 @@ $w.onReady(async function () {
             .contains('labels', 'Bestseller')
         )
         .descending('soldCount')
-        .limit(100)
         .find()
     ]);
 
     let products = prodResPrimary.items;
-
-    // Fallback: nếu số lượng sản phẩm gắn nhãn ít hơn 4, bổ sung thêm các sản phẩm có lượt bán cao nhất
-    if (products.length < 8) {
-      const existingIds = products.map(p => p.ID || p._id);
-      const moreProdsRes = await wixData.query('Products')
-        .eq('status', 'active')
-        .descending('soldCount')
-        .limit(30)
-        .find();
-
-      const additional = moreProdsRes.items.filter(p => !existingIds.includes(p.ID || p._id));
-      products = [...products, ...additional];
-    }
 
     // Đảm bảo tất cả sản phẩm trong trang này đều được gán nhãn Bán chạy nếu chưa có
     products = products.map(p => {
@@ -244,7 +230,7 @@ $w.onReady(async function () {
 
     // Lưu vào Cache sessionStorage để người dùng quay lại không phải chờ
     try {
-      session.setItem('zw_bestseller_prods', JSON.stringify(products));
+      session.setItem('zw_bestseller_prods_v2', JSON.stringify(products));
       session.setItem('zw_bestseller_cats', JSON.stringify(catsRes.items));
       session.setItem('zw_bestseller_brands', JSON.stringify(brandsRes.items));
     } catch (e) {}
