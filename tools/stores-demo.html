@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZWILLING Stores - Store Locator</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fbfbfb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .demo-header {
+      background: #111;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-header">
+    <span>ZWILLING VIỆT NAM — HỆ THỐNG SHOWROOM</span>
+    <span style="font-size: 12px; color: #aaa;">Demo Component &lt;wx-store-locator&gt;</span>
+  </div>
+
+  <div style="max-width: 1440px; margin: 0 auto; padding: 16px 16px 0;">
+    <!-- Breadcrumb Custom Element test -->
+    <div style="margin-bottom: 16px;">
+      <wx-breadcrumb id="bestsellerBreadcrumb"></wx-breadcrumb>
+    </div>
+
+    <!-- Hero Banner giả lập kéo thả trên Wix -->
+    <div style="width: 100%; height: 260px; border-radius: 4px; overflow: hidden; margin-bottom: 24px; background: #eee;">
+      <img src="/images/store-banner.jpg" alt="Showroom Banner" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+    </div>
+
+    <!-- Tiêu đề kéo thả trên Wix -->
+    <h1 style="text-align: center; font-size: 26px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 32px 0;">
+      ZWILLING STORES
+    </h1>
+
+    <!-- Component <wx-store-locator> chuyên biệt: Cột trái (Store List) & Cột phải (Bản đồ) -->
+    <wx-store-locator id="storeLocator"></wx-store-locator>
+  </div>
+
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>

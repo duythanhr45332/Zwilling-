@@ -175,8 +175,20 @@ export const jsonArrayConverter = {
     if (typeof value === 'object') return Array.isArray(value) ? value : [value];
     try {
       let str = typeof value === 'string' ? decodeHtmlEntities(value.trim()) : '';
-      const parsed = JSON.parse(str);
-      return Array.isArray(parsed) ? parsed : [parsed];
+      if (str.startsWith('[') || str.startsWith('{')) {
+        const parsed = JSON.parse(str);
+        return Array.isArray(parsed) ? parsed : [parsed];
+      }
+      // Hỗ trợ chuỗi dạng "TRANG CHỦ > CỬA HÀNG" hoặc "TRANG CHỦ, CỬA HÀNG"
+      if (str.includes('>') || str.includes(',')) {
+        const separator = str.includes('>') ? '>' : ',';
+        return str.split(separator).map(s => s.trim()).filter(Boolean).map((label, idx, arr) => ({
+          label,
+          url: idx === 0 ? '/' : (idx === arr.length - 1 ? '#' : '')
+        }));
+      }
+      if (str) return [{ label: str, url: '#' }];
+      return [];
     } catch (e) {
       console.warn('[jsonArrayConverter] Lỗi parse JSON:', e, value);
       return [];
