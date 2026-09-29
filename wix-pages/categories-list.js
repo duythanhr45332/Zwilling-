@@ -47,6 +47,14 @@ $w.onReady(async function () {
       { label: 'SẢN PHẨM', url: '/products' }
     ]);
 
+    // Lắng nghe sự kiện click Breadcrumb để chuyển hướng (TRANG CHỦ -> /)
+    safeOn(breadcrumbEl, 'breadcrumb-click', (e) => {
+      const targetUrl = e.detail?.item?.url;
+      if (targetUrl && targetUrl !== '#') {
+        wixLocation.to(targetUrl);
+      }
+    });
+
     // 2. Lấy 5 danh mục sản phẩm chính cấp 0 (Dao Bếp, Nồi & Chảo, Dụng cụ bàn ăn...)
     let catRes = await wixData.query('Categories')
       .eq('taxonomy', 'product')
