@@ -7,6 +7,8 @@ import { t } from '../../utils/i18n.js';
 export class WxBreadcrumb extends LitElement {
   static properties = {
     items: { type: Array, converter: jsonArrayConverter },
+    defaultItems: { type: String, attribute: 'default-items' },
+    current: { type: String },
     lang: { type: String },
     loading: { type: Boolean, converter: booleanConverter }
   };
@@ -100,8 +102,74 @@ export class WxBreadcrumb extends LitElement {
   constructor() {
     super();
     this.items = null;
+    this.defaultItems = '';
+    this.current = '';
     this.lang = 'vi';
     this.loading = false;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._checkContext();
+  }
+
+  firstUpdated(changedProps) {
+    super.firstUpdated(changedProps);
+    this._checkContext();
+    // Đề phòng wx-store-locator mount sau wx-breadcrumb vài mili-giây
+    setTimeout(() => this._checkContext(), 200);
+    setTimeout(() => this._checkContext(), 600);
+  }
+
+  _checkContext() {
+    if (!this.items || !this.items.length) {
+      const effective = this._getEffectiveItems();
+      if (effective && effective.length > 0) {
+        this.items = effective;
+        this.loading = false;
+        this.requestUpdate();
+      }
+    }
+  }
+
+  _getEffectiveItems() {
+    if (this.items && Array.isArray(this.items) && this.items.length > 0) {
+      return this.items;
+    }
+    // Nếu có attribute default-items
+    if (this.defaultItems) {
+      const parsed = jsonArrayConverter.fromAttribute(this.defaultItems);
+      if (parsed && parsed.length > 0) return parsed;
+    }
+    // Nếu có attribute current (vd: current="CỬA HÀNG")
+    if (this.current) {
+      return [
+        { label: 'TRANG CHỦ', url: '/' },
+        { label: this.current, url: '#' }
+      ];
+    }
+    // Tự động nhận diện ngữ cảnh từ DOM và URL
+    if (typeof document !== 'undefined') {
+      try {
+        if (document.querySelector('wx-store-locator') || document.querySelector('[data-locator]')) {
+          return [
+            { label: 'TRANG CHỦ', url: '/' },
+            { label: 'CỬA HÀNG', url: '/stores' }
+          ];
+        }
+      } catch (e) {}
+
+      try {
+        const href = (window.location.href || '') + ' ' + (window.location.pathname || '') + ' ' + (document.title || '');
+        if (/store|cua-hang|cửa hàng/i.test(href)) {
+          return [
+            { label: 'TRANG CHỦ', url: '/' },
+            { label: 'CỬA HÀNG', url: '/stores' }
+          ];
+        }
+      } catch (e) {}
+    }
+    return null;
   }
 
   _formatLabel(label) {
@@ -115,17 +183,26 @@ export class WxBreadcrumb extends LitElement {
     return label;
   }
 
-  _handleClick(e, item, index) {
-    if (index === this.items.length - 1) return;
+  _handleClick(e, item, index, list = this.items) {
+    if (list && index === list.length - 1) return;
     e.preventDefault();
     dispatchCustomEvent(this, 'breadcrumb-click', { item, index });
+    const targetUrl = item && (item.url || item.link || item.href);
+    if (targetUrl && targetUrl !== '#' && targetUrl !== '') {
+      try {
+        if (typeof window !== 'undefined' && window.location) {
+          window.location.href = targetUrl;
+        }
+      } catch (err) {}
+    }
   }
 
   render() {
+    const effectiveItems = this._getEffectiveItems();
     const isExplicitLoading = this.loading === true || this.loading === 'true';
-    const isLoading = isExplicitLoading || (!this.items && this.items === null);
+    const isLoading = isExplicitLoading || (!effectiveItems && this.items === null && this.loading !== false);
 
-    if (isLoading) {
+    if (isLoading && !effectiveItems) {
       return html`
         <nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px;">
           <div class="skeleton-box" style="width: 70px; height: 14px;"></div>
@@ -135,13 +212,14 @@ export class WxBreadcrumb extends LitElement {
       `;
     }
 
-    if (!this.items || !this.items.length) return html``;
+    const itemsToRender = effectiveItems || [];
+    if (!itemsToRender.length) return html``;
 
     return html`
       <nav aria-label="Breadcrumb">
-        ${this.items.map((item, index) => {
+        ${itemsToRender.map((item, index) => {
           const isFirst = index === 0;
-          const isLast = index === this.items.length - 1;
+          const isLast = index === itemsToRender.length - 1;
           const rawLabel = typeof item === 'string' ? item : item.label || item.title;
           const label = this._formatLabel(rawLabel);
 
@@ -150,7 +228,7 @@ export class WxBreadcrumb extends LitElement {
             <button
               class="crumb-btn ${isFirst ? 'first' : ''} ${isLast ? 'active' : ''}"
               ?disabled="${isLast}"
-              @click="${(e) => this._handleClick(e, item, index)}"
+              @click="${(e) => this._handleClick(e, item, index, itemsToRender)}"
               aria-current="${isLast ? 'page' : 'false'}"
             >
               ${label}

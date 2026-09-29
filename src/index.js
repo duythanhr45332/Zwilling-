@@ -22,6 +22,9 @@ export { WxProductDetail } from './components/product-detail/wx-product-detail.j
 // 6. Component Feature Blocks (Ảnh 1: Story 3-col & Ảnh 2: Hotspot Accordion)
 export { WxFeatureBlocks, WxStorySection, WxHotspotSection } from './components/product-detail/wx-feature-blocks.js';
 
+// 7. Component Store Locator (Bản đồ & Danh sách Showroom)
+export { WxStoreLocator, DEFAULT_STORES } from './components/store-locator/wx-store-locator.js';
+
 // Tiện ích
 export { safeDefine } from './utils/element.js';
 export { formatCurrencyVND, safeJsonParse, parseGallery } from './utils/formatters.js';
