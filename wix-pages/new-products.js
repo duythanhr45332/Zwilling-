@@ -68,12 +68,14 @@ $w.onReady(async function () {
   const productListingEl = findElement([
     '#newProductListing',
     '#productListing',
+    '#bestsellerProductListing',
     '#catalogElement',
     '#categoryProductListing'
   ]);
   const breadcrumbEl = findElement([
     '#newBreadcrumb',
     '#breadcrumb',
+    '#bestsellerBreadcrumb',
     '#categoryBreadcrumb'
   ]);
 
