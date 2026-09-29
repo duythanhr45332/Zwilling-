@@ -183,18 +183,50 @@ export class WxBreadcrumb extends LitElement {
     return label;
   }
 
+  _resolveUrl(url) {
+    if (!url || url === '#' || url === '') return '#';
+    if (/^https?:\/\//i.test(url)) return url;
+
+    // Tự động thêm tiền tố site nếu đang chạy trên staging URL của Wix Studio / Wix Site (*.wixstudio.com/{sitename}/...)
+    if (typeof window !== 'undefined' && window.location) {
+      const hostname = window.location.hostname || '';
+      const pathname = window.location.pathname || '';
+      if (hostname.includes('wixstudio.com') || hostname.includes('wixsite.com')) {
+        const parts = pathname.split('/').filter(Boolean);
+        if (parts.length > 0) {
+          const sitePrefix = '/' + parts[0]; // Ví dụ: "/danish"
+          if (url === '/') return sitePrefix + '/';
+          if (!url.startsWith(sitePrefix)) {
+            return url.startsWith('/') ? `${sitePrefix}${url}` : `${sitePrefix}/${url}`;
+          }
+        }
+      }
+    }
+    return url;
+  }
+
   _handleClick(e, item, index, list = this.items) {
     if (list && index === list.length - 1) return;
     e.preventDefault();
     dispatchCustomEvent(this, 'breadcrumb-click', { item, index });
-    const targetUrl = item && (item.url || item.link || item.href);
-    if (targetUrl && targetUrl !== '#' && targetUrl !== '') {
+
+    const rawUrl = item && (item.url || item.link || item.href);
+    if (!rawUrl || rawUrl === '#' || rawUrl === '') return;
+
+    const targetUrl = this._resolveUrl(rawUrl);
+
+    // Tự động chuyển trang dự phòng nếu trang Velo chưa có safeOn('breadcrumb-click')
+    setTimeout(() => {
       try {
         if (typeof window !== 'undefined' && window.location) {
-          window.location.href = targetUrl;
+          const currentPath = (window.location.pathname || '').replace(/\/$/, '');
+          const targetPath = targetUrl.replace(/\/$/, '');
+          if (currentPath !== targetPath) {
+            window.location.href = targetUrl;
+          }
         }
       } catch (err) {}
-    }
+    }, 150);
   }
 
   render() {

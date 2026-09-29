@@ -40,6 +40,16 @@ $w.onReady(async function () {
     }
   }
 
+  function safeOn(el, eventName, handler) {
+    if (el && typeof el.on === 'function') {
+      try {
+        el.on(eventName, handler);
+      } catch (e) {
+        console.warn(`[Wix Velo] Không thể gán sự kiện ${eventName}:`, e);
+      }
+    }
+  }
+
   try {
     let currentProduct = null;
 
@@ -121,6 +131,14 @@ $w.onReady(async function () {
       url: '#'
     });
     safeSet(breadcrumbEl, 'items', breadcrumbItems);
+
+    // Lắng nghe sự kiện click Breadcrumb để chuyển hướng
+    safeOn(breadcrumbEl, 'breadcrumb-click', (e) => {
+      const targetUrl = e.detail?.item?.url;
+      if (targetUrl && targetUrl !== '#') {
+        wixLocation.to(targetUrl);
+      }
+    });
 
     // 4. Truy vấn biến thể (ProductVariants) để lấy thông số kỹ thuật (specs), mô tả chi tiết, ảnh gallery
     let variant = null;
