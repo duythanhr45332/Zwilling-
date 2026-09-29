@@ -42,7 +42,11 @@ function parseCsv(text) {
 fs.mkdirSync(path.resolve('dist', 'tools'), { recursive: true });
 fs.mkdirSync(path.resolve('dist', 'data'), { recursive: true });
 fs.mkdirSync(path.resolve('public', 'data'), { recursive: true });
-fs.mkdirSync(path.resolve('dist', 'images'), { recursive: true });
+const distImagesPath = path.resolve('dist', 'images');
+if (fs.existsSync(distImagesPath) && fs.statSync(distImagesPath).isFile()) {
+  fs.unlinkSync(distImagesPath);
+}
+fs.mkdirSync(distImagesPath, { recursive: true });
 
 // 2. Generate blocks-data.json (prioritize tools/live-wix-csv)
 const candidateBlocksPaths = [

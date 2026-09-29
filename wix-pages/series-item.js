@@ -128,6 +128,14 @@ $w.onReady(async function () {
     ];
     safeSet(breadcrumbEl, 'items', breadcrumbItems);
 
+    // Lắng nghe sự kiện click Breadcrumb để chuyển hướng
+    safeOn(breadcrumbEl, 'breadcrumb-click', (e) => {
+      const targetUrl = e.detail?.item?.url;
+      if (targetUrl && targetUrl !== '#') {
+        wixLocation.to(targetUrl);
+      }
+    });
+
     // 5. Truy vấn sản phẩm: CHỈ LẤY CÁC SẢN PHẨM THUỘC SERIES NÀY
     const [catsRes, prodsRes] = await Promise.all([
       wixData.query('Categories').eq('depth', 0).ascending('sortOrder').find(),

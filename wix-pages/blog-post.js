@@ -18,7 +18,6 @@ import wixWindow from 'wix-window';
 $w.onReady(function () {
   console.log('[Wix Velo] Đang nạp trang Blog Post...');
 
-  // === Hàm tiện ích ===
   function findElement(ids) {
     for (const id of ids) {
       try {
@@ -26,6 +25,12 @@ $w.onReady(function () {
         if (el && typeof el.setAttribute === 'function') return el;
       } catch (e) {}
     }
+    try {
+      const customEl = $w('CustomElement');
+      if (customEl && typeof customEl.setAttribute === 'function') {
+        return customEl;
+      }
+    } catch (e) {}
     return null;
   }
 
@@ -42,7 +47,7 @@ $w.onReady(function () {
   }
 
   // === Tìm phần tử Breadcrumb ===
-  const breadcrumbEl = findElement(['#aboutBreadcrumb', '#blogBreadcrumb', '#breadcrumb']);
+  const breadcrumbEl = findElement(['#aboutBreadcrumb', '#blogBreadcrumb', '#breadcrumb', '#customElement1']);
 
   if (!breadcrumbEl) {
     console.warn('[Blog Post] Không tìm thấy breadcrumb element');
