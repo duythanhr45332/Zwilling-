@@ -272,63 +272,18 @@ $w.onReady(async function () {
           } catch (e) {}
         }
 
-        // 4. Cách 3: Dự phòng thông minh tự động tìm kiếm theo Slug / Tiêu đề (không cần bảng fix cứng)
+        // 4. Cách 3: Nạp danh sách FeatureBlocks có sẵn trong CMS để chọn lọc
         if (blocks.length === 0) {
           try {
-            let bQuery = wixData.query('FeatureBlocks');
-
-            // Khớp theo tên series (sourceTitle)
-            if (seriesTitle) {
-              const titleCandidates = [
-                seriesTitle,
-                seriesTitle.toUpperCase(),
-                seriesTitle.toLowerCase()
-              ];
-              bQuery = bQuery.hasSome('sourceTitle', titleCandidates);
+            const allBlocksRes = await wixData.query('FeatureBlocks')
+              .limit(100)
+              .find();
+            if (allBlocksRes.items && allBlocksRes.items.length > 0) {
+              blocks = allBlocksRes.items;
             }
-
-            // Khớp theo slug series trong ID block
-            if (seriesSlug) {
-              const cleanSlug = seriesSlug.replace(/^series-/, '').replace(/^(zwilling|staub|miyabi)-/, '');
-              bQuery = bQuery.or(wixData.query('FeatureBlocks').contains('ID', seriesSlug))
-                             .or(wixData.query('FeatureBlocks').contains('ID', cleanSlug));
-            }
-
-            const autoRes = await bQuery.hasSome('component', ['story', 'highlights']).find();
-            if (autoRes.items.length > 0) {
-              blocks = autoRes.items;
-            }
-          } catch (e) {}
-        }
-
-        // 5. Cách 4: Dự phòng cho sản phẩm lẻ / phụ kiện không gắn Series (như máy hút, gốm sứ, khay nướng...)
-        if (blocks.length === 0) {
-          const pSlug = (currentProduct.slug || '').toLowerCase();
-          const pTitle = (currentProduct.title || '').toLowerCase();
-
-          try {
-            const candidateKeywords = [
-              'may-hut-chan-khong', 'tui-hut-chan-khong', 'hop-thuy-tinh-hut-chan-khong',
-              'hop-nhua-hut-chan-khong', 'bo-to-hut-chan-khong', 'bo-hop-cube-hut-chan-khong',
-              'bo-nap-hut-chan-khong', 'ly-giu-nhiet-zwilling-thermoplus', 'thot-zwilling-now',
-              'dua-zwilling-now', 'dung-cu-nau-an', 'thot-ebony', 'khay-nuong-su-staub',
-              'au-su-staub-bi-ngo', 'au-su-staub-ca-chua', 'au-su-staub-ot-chuong',
-              'chao-gang-staub-american-grill', 'chao-gang-co-mieng-rot', 'staub-oven-dish', 'num-noi-gang-staub',
-              'dia-su', 'to-su', 'chen-dia', 'dinnerware'
-            ];
-
-            for (const kw of candidateKeywords) {
-              if (pSlug.includes(kw) || pTitle.includes(kw.replace(/-/g, ' '))) {
-                let targetKw = kw;
-                if (['dia-su', 'to-su', 'chen-dia'].includes(kw)) targetKw = 'dinnerware';
-                const kwRes = await wixData.query('FeatureBlocks').contains('ID', targetKw).find();
-                if (kwRes.items.length > 0) {
-                  blocks = kwRes.items;
-                  break;
-                }
-              }
-            }
-          } catch (e) {}
+          } catch (e) {
+            console.warn('[Wix Velo] Không thể truy vấn FeatureBlocks:', e);
+          }
         }
 
         console.log('[Wix Velo PDP] Số blocks tìm thấy động:', blocks.length, 'cho sản phẩm:', currentProduct.title);
@@ -336,20 +291,13 @@ $w.onReady(async function () {
         // Hàm chọn lọc block chính xác nhất cho từng sản phẩm (tránh gộp nhiều block của cả series vào một sản phẩm)
         function selectBestBlock(blockList, product, sTitle) {
           if (!blockList || blockList.length === 0) return null;
-          if (blockList.length === 1) {
-            const single = blockList[0];
-            const bSt = (single.sourceTitle || '').toLowerCase();
-            const pTitle = (product.title || '').toLowerCase();
-            const pSlug = (product.slug || '').toLowerCase();
-            // Nếu block có đặc thù riêng (như 'miệng rót' hay 'american grill') mà sản phẩm không phải thì không nạp nhầm
-            if (bSt.includes('miệng rót') && !pTitle.includes('miệng rót') && !pSlug.includes('mieng-rot')) return null;
-            if (bSt.includes('american grill') && !pTitle.includes('american grill') && !pSlug.includes('american-grill')) return null;
-            return single;
-          }
-
-          const pTitle = (product.title || '').toLowerCase();
+          const pTitle = (product.title || product.name || '').toLowerCase();
           const pSlug = (product.slug || '').toLowerCase();
           const sTitleNorm = (sTitle || '').toLowerCase();
+
+          // Chuẩn hóa loại bỏ brand name nằm xen giữa slug và title (giúp khớp chính xác như: chảo gang staub có miệng rót -> chảo gang có miệng rót)
+          const pTitleClean = pTitle.replace(/zwilling|staub|miyabi|ballarini/gi, '').replace(/\s+/g, ' ').trim();
+          const pSlugClean = pSlug.replace(/-(zwilling|staub|miyabi|ballarini)-/gi, '-').replace(/^-(zwilling|staub|miyabi|ballarini)-/, '');
 
           let bestBlock = null;
           let maxScore = 0;
@@ -357,21 +305,30 @@ $w.onReady(async function () {
           for (const b of blockList) {
             let score = 0;
             const bId = (b.ID || b._id || '').toLowerCase().replace('block-', '');
-            const sTitle = (b.sourceTitle || '').toLowerCase();
+            const bSt = (b.sourceTitle || '').toLowerCase();
+
+            // Loại trừ nếu block có đặc thù riêng không khớp sản phẩm
+            if (bSt.includes('miệng rót') && !pTitle.includes('miệng rót') && !pSlug.includes('mieng-rot')) continue;
+            if (bSt.includes('american grill') && !pTitle.includes('american grill') && !pSlug.includes('american-grill')) continue;
 
             // Khớp chính xác cụm từ hoặc slug
-            if (sTitle && (pTitle.includes(sTitle) || pSlug.includes(sTitle))) score += 15;
-            if (bId && (pSlug.includes(bId) || pTitle.includes(bId))) score += 15;
+            if (bSt && (pTitle.includes(bSt) || pSlug.includes(bSt) || pTitleClean.includes(bSt) || pSlugClean.includes(bSt))) score += 20;
+            if (bId && (pSlug.includes(bId) || pTitle.includes(bId) || pSlugClean.includes(bId) || pTitleClean.includes(bId))) score += 20;
+
+            // Khớp ID không tính số đuôi (-1, -2, -3)
+            const bIdClean = bId.replace(/-\d+$/, '');
+            if (bIdClean && (pSlug.includes(bIdClean) || pTitle.includes(bIdClean.replace(/-/g, ' ')) || pSlugClean.includes(bIdClean))) score += 25;
 
             // Xử lý dòng STAUB DÁNG TRÒN (Round Cocotte / Mini 10cm, 18-26cm)
-            if (sTitle.includes('dáng tròn') && (pTitle.includes('nồi gang') || pTitle.includes('mini') || pSlug.includes('mini') || pSlug.includes('dang-tron'))) {
-              score += 20;
+            if (bSt.includes('dáng tròn') && (pTitle.includes('nồi gang') || pTitle.includes('mini') || pSlug.includes('mini') || pSlug.includes('dang-tron') || pTitle.includes('tròn') || pSlug.includes('tron'))) {
+              score += 15;
             }
 
-            // Khớp từng từ khóa trong tiêu đề nguồn (> 2 ký tự)
-            const words = sTitle.split(/\s+/).filter(w => w.length > 2);
+            // Khớp từng từ khóa trong tiêu đề nguồn (> 2 ký tự, bỏ qua tên thương hiệu chung)
+            const brandWords = ['zwilling', 'staub', 'miyabi', 'ballarini', 'demeyere'];
+            const words = bSt.split(/\s+/).filter(w => w.length > 2 && !brandWords.includes(w));
             for (const w of words) {
-              if (pTitle.includes(w) || pSlug.includes(w)) score += 2;
+              if (pTitle.includes(w) || pSlug.includes(w)) score += 3;
             }
 
             if (score > maxScore) {
@@ -380,35 +337,21 @@ $w.onReady(async function () {
             }
           }
 
-          // Dự phòng nếu không có từ khớp riêng: ưu tiên block trùng tên series hoặc block đầu tiên
-          if (!bestBlock && blockList.length > 0) {
+          if (maxScore >= 15) return bestBlock;
+
+          // Dự phòng nếu không có từ khớp riêng: ưu tiên block trùng tên series
+          if (sTitleNorm) {
             for (const b of blockList) {
-              const sTitle = (b.sourceTitle || '').toLowerCase();
-              if (sTitleNorm && sTitle.includes(sTitleNorm)) return b;
+              const bSt = (b.sourceTitle || '').toLowerCase();
+              if (bSt && bSt.includes(sTitleNorm)) return b;
             }
-            return blockList[0];
           }
 
-          return bestBlock;
+          return null;
         }
 
-        // 6. Nếu có blocks, truy vấn FeatureItems và đẩy vào Custom Elements
+        // 6. Nếu có blocks, chọn lọc đúng storyBlock và hotspotBlock trước, sau đó chỉ truy vấn FeatureItems của đúng 2 block đó
         if (blocks.length > 0) {
-          const blockKeys = [];
-          blocks.forEach((b) => {
-            if (b._id) blockKeys.push(b._id);
-            if (b.ID) blockKeys.push(b.ID);
-            if (b.id) blockKeys.push(b.id);
-          });
-
-          const itemsRes = await wixData.query('FeatureItems')
-            .hasSome('block', blockKeys)
-            .ascending('position')
-            .find();
-
-          const allItems = itemsRes.items || [];
-          console.log('[Wix Velo PDP] Số FeatureItems tìm thấy:', allItems.length);
-
           const rawStoryBlocks = blocks.filter((b) => (b.component || 'story') === 'story');
           const rawHotspotBlocks = blocks.filter((b) => b.component === 'highlights');
 
@@ -416,13 +359,71 @@ $w.onReady(async function () {
           const storyBlock = selectBestBlock(rawStoryBlocks, currentProduct, seriesTitle);
           const hotspotBlock = selectBestBlock(rawHotspotBlocks, currentProduct, seriesTitle);
 
+          console.log('[Wix Velo PDP] Block chọn lọc:', {
+            story: storyBlock ? (storyBlock._id || storyBlock.ID) : 'NONE',
+            hotspot: hotspotBlock ? (hotspotBlock._id || hotspotBlock.ID) : 'NONE'
+          });
+
+          let storyItems = [];
+          let hotspotItems = [];
+
+          // Truy vấn FeatureItems riêng cho Story Block (chuẩn CMS relational query)
+          if (storyBlock) {
+            try {
+              const sId = storyBlock._id || storyBlock.ID || '';
+              const sRes = await wixData.query('FeatureItems')
+                .eq('block', sId)
+                .ascending('position')
+                .limit(20)
+                .find();
+              storyItems = sRes.items || [];
+
+              if (storyItems.length === 0 && storyBlock.title) {
+                const sRes2 = await wixData.query('FeatureItems')
+                  .eq('block', storyBlock.title)
+                  .ascending('position')
+                  .limit(20)
+                  .find();
+                if (sRes2.items.length > 0) storyItems = sRes2.items;
+              }
+            } catch (itemErr) {
+              console.warn('[Wix Velo] Lỗi khi truy vấn Story FeatureItems:', itemErr);
+            }
+          }
+
+          // Truy vấn FeatureItems riêng cho Hotspot Block (chuẩn CMS relational query)
+          if (hotspotBlock) {
+            try {
+              const hId = hotspotBlock._id || hotspotBlock.ID || '';
+              const hRes = await wixData.query('FeatureItems')
+                .eq('block', hId)
+                .ascending('position')
+                .limit(20)
+                .find();
+              hotspotItems = hRes.items || [];
+
+              if (hotspotItems.length === 0 && hotspotBlock.title) {
+                const hRes2 = await wixData.query('FeatureItems')
+                  .eq('block', hotspotBlock.title)
+                  .ascending('position')
+                  .limit(20)
+                  .find();
+                if (hRes2.items.length > 0) hotspotItems = hRes2.items;
+              }
+            } catch (itemErr) {
+              console.warn('[Wix Velo] Lỗi khi truy vấn Hotspot FeatureItems:', itemErr);
+            }
+          }
+
+          console.log('[Wix Velo PDP] Số Story items:', storyItems.length, '| Số Hotspot items:', hotspotItems.length);
+
           // Nạp riêng cho Component 1 (Story Section)
           if (storyBlock) {
             if (storyContainer && typeof storyContainer.expand === 'function') storyContainer.expand();
             if (storyEl) {
               if (typeof storyEl.expand === 'function') storyEl.expand();
               safeSet(storyEl, 'blocks', [storyBlock]);
-              safeSet(storyEl, 'items', allItems);
+              safeSet(storyEl, 'items', storyItems);
             }
           } else {
             if (storyEl) {
@@ -439,7 +440,7 @@ $w.onReady(async function () {
             if (hotspotEl) {
               if (typeof hotspotEl.expand === 'function') hotspotEl.expand();
               safeSet(hotspotEl, 'blocks', [hotspotBlock]);
-              safeSet(hotspotEl, 'items', allItems);
+              safeSet(hotspotEl, 'items', hotspotItems);
             }
           } else {
             if (hotspotEl) {
@@ -453,10 +454,11 @@ $w.onReady(async function () {
           // Nạp cho Component gộp nếu vẫn dùng tag cũ
           if (featureBlocksEl) {
             const combinedBlocks = [storyBlock, hotspotBlock].filter(Boolean);
+            const combinedItems = [...storyItems, ...hotspotItems];
             if (combinedBlocks.length > 0) {
               if (typeof featureBlocksEl.expand === 'function') featureBlocksEl.expand();
               safeSet(featureBlocksEl, 'blocks', combinedBlocks);
-              safeSet(featureBlocksEl, 'items', allItems);
+              safeSet(featureBlocksEl, 'items', combinedItems);
             } else {
               if (typeof featureBlocksEl.collapse === 'function') featureBlocksEl.collapse();
             }
