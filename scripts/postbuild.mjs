@@ -135,10 +135,6 @@ if (fs.existsSync(path.resolve('index.html'))) {
   console.log('[postbuild] Copied index.html to dist/index.html');
 }
 
-if (fs.existsSync(path.resolve('dist', 'my-wix-ui-lib.bundle.js'))) {
-  fs.copyFileSync(path.resolve('dist', 'my-wix-ui-lib.bundle.js'), path.resolve('public', 'my-wix-ui-lib.bundle.js'));
-  console.log('[postbuild] Copied bundle to public/my-wix-ui-lib.bundle.js');
-}
 
 // 4. Ensure all images are copied as real files to dist/images
 const imagesDir = path.resolve('wix-csv', 'images');
@@ -157,4 +153,12 @@ if (fs.existsSync(imagesDir)) {
   }
   console.log(`[postbuild] Copied ${count} product images to dist/images/`);
 }
+// 5. Ensure bundle is copied to public/ for local dev and direct referencing
+const distBundle = path.resolve('dist', 'my-wix-ui-lib.bundle.js');
+const publicBundle = path.resolve('public', 'my-wix-ui-lib.bundle.js');
+if (fs.existsSync(distBundle)) {
+  fs.copyFileSync(distBundle, publicBundle);
+  console.log('[postbuild] Copied dist/my-wix-ui-lib.bundle.js to public/my-wix-ui-lib.bundle.js');
+}
+
 console.log('[postbuild] Ready for Vercel production deployment!');

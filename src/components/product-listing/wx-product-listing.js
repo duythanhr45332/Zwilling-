@@ -441,6 +441,25 @@ export class WxProductListing extends LitElement {
       cursor: pointer;
     }
 
+    .clear-section-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 11px;
+      font-weight: 700;
+      color: #d40026;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-family: inherit;
+      transition: opacity 0.2s;
+    }
+
+    .clear-section-btn:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
     .sidebar-footer {
       padding: 16px 24px;
       border-top: 1px solid #eeeeee;
@@ -668,12 +687,41 @@ export class WxProductListing extends LitElement {
     this.sidebarOpen = false;
   }
 
-  _clearAllFilters() {
+  _clearAllFilters(e) {
+    if (e) e.preventDefault();
     this.selectedCategory = '';
     this.selectedBrand = '';
     this.selectedPriceRange = '';
     this.selectedSort = 'default';
-    this.visibleCount = this.pageSize;
+    this.visibleCount = this.pageSize || 32;
+    this.requestUpdate();
+  }
+
+  _clearCategoryFilter(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.selectedCategory = '';
+    this.requestUpdate();
+  }
+
+  _clearBrandFilter(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.selectedBrand = '';
+    this.requestUpdate();
+  }
+
+  _clearPriceFilter(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.selectedPriceRange = '';
+    this.requestUpdate();
   }
 
   _loadMore() {
@@ -854,7 +902,9 @@ export class WxProductListing extends LitElement {
             <div class="filter-section">
               <div class="filter-group-title">
                 <span>${t('categories', this.lang)}</span>
-                ${this.selectedCategory ? html`<a style="font-size: 11px; color: #d40026; cursor: pointer;" @click="${() => (this.selectedCategory = '')}">${t('clear', this.lang)}</a>` : ''}
+                ${this.selectedCategory
+                  ? html`<button type="button" class="clear-section-btn" @click="${this._clearCategoryFilter}">${t('clear', this.lang)}</button>`
+                  : ''}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -862,7 +912,7 @@ export class WxProductListing extends LitElement {
                     type="radio"
                     name="cat_filter"
                     value=""
-                    ?checked="${!this.selectedCategory}"
+                    .checked="${!this.selectedCategory}"
                     @change="${() => (this.selectedCategory = '')}"
                   />
                   <span>${t('allCategories', this.lang)}</span>
@@ -876,7 +926,7 @@ export class WxProductListing extends LitElement {
                               type="radio"
                               name="cat_filter"
                               value="${c.ID || c.slug || c._id}"
-                              ?checked="${this.selectedCategory === (c.ID || c.slug || c._id)}"
+                              .checked="${this.selectedCategory === (c.ID || c.slug || c._id)}"
                               @change="${() => (this.selectedCategory = c.ID || c.slug || c._id)}"
                             />
                             <span>${c.title}</span>
@@ -891,7 +941,9 @@ export class WxProductListing extends LitElement {
             <div class="filter-section">
               <div class="filter-group-title">
                 <span>${t('brands', this.lang)}</span>
-                ${this.selectedBrand ? html`<a style="font-size: 11px; color: #d40026; cursor: pointer;" @click="${() => (this.selectedBrand = '')}">${t('clear', this.lang)}</a>` : ''}
+                ${this.selectedBrand
+                  ? html`<button type="button" class="clear-section-btn" @click="${this._clearBrandFilter}">${t('clear', this.lang)}</button>`
+                  : ''}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -899,7 +951,7 @@ export class WxProductListing extends LitElement {
                     type="radio"
                     name="brand_filter"
                     value=""
-                    ?checked="${!this.selectedBrand}"
+                    .checked="${!this.selectedBrand}"
                     @change="${() => (this.selectedBrand = '')}"
                   />
                   <span>${t('allBrands', this.lang)}</span>
@@ -912,7 +964,7 @@ export class WxProductListing extends LitElement {
                             type="radio"
                             name="brand_filter"
                             value="${b.ID || b.slug || b._id}"
-                            ?checked="${this.selectedBrand === (b.ID || b.slug || b._id)}"
+                            .checked="${this.selectedBrand === (b.ID || b.slug || b._id)}"
                             @change="${() => (this.selectedBrand = b.ID || b.slug || b._id)}"
                           />
                           <span>${b.title}</span>
@@ -926,7 +978,9 @@ export class WxProductListing extends LitElement {
             <div class="filter-section">
               <div class="filter-group-title">
                 <span>${t('priceRange', this.lang)}</span>
-                ${this.selectedPriceRange ? html`<a style="font-size: 11px; color: #d40026; cursor: pointer;" @click="${() => (this.selectedPriceRange = '')}">${t('clear', this.lang)}</a>` : ''}
+                ${this.selectedPriceRange
+                  ? html`<button type="button" class="clear-section-btn" @click="${this._clearPriceFilter}">${t('clear', this.lang)}</button>`
+                  : ''}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -934,7 +988,7 @@ export class WxProductListing extends LitElement {
                     type="radio"
                     name="price_filter"
                     value=""
-                    ?checked="${!this.selectedPriceRange}"
+                    .checked="${!this.selectedPriceRange}"
                     @change="${() => (this.selectedPriceRange = '')}"
                   />
                   <span>${t('allPrices', this.lang)}</span>
@@ -944,7 +998,7 @@ export class WxProductListing extends LitElement {
                     type="radio"
                     name="price_filter"
                     value="under-1m"
-                    ?checked="${this.selectedPriceRange === 'under-1m'}"
+                    .checked="${this.selectedPriceRange === 'under-1m'}"
                     @change="${() => (this.selectedPriceRange = 'under-1m')}"
                   />
                   <span>${t('priceUnder1m', this.lang)}</span>
@@ -954,7 +1008,7 @@ export class WxProductListing extends LitElement {
                     type="radio"
                     name="price_filter"
                     value="1m-3m"
-                    ?checked="${this.selectedPriceRange === '1m-3m'}"
+                    .checked="${this.selectedPriceRange === '1m-3m'}"
                     @change="${() => (this.selectedPriceRange = '1m-3m')}"
                   />
                   <span>${t('price1mTo3m', this.lang)}</span>
@@ -964,7 +1018,7 @@ export class WxProductListing extends LitElement {
                     type="radio"
                     name="price_filter"
                     value="3m-5m"
-                    ?checked="${this.selectedPriceRange === '3m-5m'}"
+                    .checked="${this.selectedPriceRange === '3m-5m'}"
                     @change="${() => (this.selectedPriceRange = '3m-5m')}"
                   />
                   <span>${t('price3mTo5m', this.lang)}</span>
@@ -974,7 +1028,7 @@ export class WxProductListing extends LitElement {
                     type="radio"
                     name="price_filter"
                     value="over-5m"
-                    ?checked="${this.selectedPriceRange === 'over-5m'}"
+                    .checked="${this.selectedPriceRange === 'over-5m'}"
                     @change="${() => (this.selectedPriceRange = 'over-5m')}"
                   />
                   <span>${t('priceOver5m', this.lang)}</span>
