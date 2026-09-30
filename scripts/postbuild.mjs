@@ -135,6 +135,11 @@ if (fs.existsSync(path.resolve('index.html'))) {
   console.log('[postbuild] Copied index.html to dist/index.html');
 }
 
+if (fs.existsSync(path.resolve('dist', 'my-wix-ui-lib.bundle.js'))) {
+  fs.copyFileSync(path.resolve('dist', 'my-wix-ui-lib.bundle.js'), path.resolve('public', 'my-wix-ui-lib.bundle.js'));
+  console.log('[postbuild] Copied bundle to public/my-wix-ui-lib.bundle.js');
+}
+
 // 4. Ensure all images are copied as real files to dist/images
 const imagesDir = path.resolve('wix-csv', 'images');
 if (fs.existsSync(imagesDir)) {
