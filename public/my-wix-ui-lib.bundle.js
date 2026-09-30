@@ -2151,7 +2151,8 @@ var st=Object.defineProperty;var rt=(u,w,A)=>w in u?st(u,w,{enumerable:!0,config
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      background: radial-gradient(#ffffff, #f8f7f6);
+      background: transparent;
+      mix-blend-mode: multiply;
       transition: transform 0.12s ease-out, opacity 0.2s ease;
       pointer-events: none;
       user-select: none;
