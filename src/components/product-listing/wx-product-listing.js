@@ -11,8 +11,10 @@ export class WxProductListing extends LitElement {
     data: { type: Array, converter: jsonArrayConverter },
     brands: { type: Array, converter: jsonArrayConverter },
     categories: { type: Array, converter: jsonArrayConverter },
+    series: { type: Array, converter: jsonArrayConverter },
     selectedCategory: { type: String },
     selectedBrand: { type: String },
+    selectedSeries: { type: String },
     selectedPriceRange: { type: String },
     selectedSort: { type: String },
     sidebarOpen: { type: Boolean },
@@ -570,8 +572,10 @@ export class WxProductListing extends LitElement {
     this.data = null;
     this.brands = [];
     this.categories = [];
+    this.series = [];
     this.selectedCategory = '';
     this.selectedBrand = '';
+    this.selectedSeries = '';
     this.selectedPriceRange = '';
     this.selectedSort = 'default';
     this.sidebarOpen = false;
@@ -600,6 +604,33 @@ export class WxProductListing extends LitElement {
     return false;
   }
 
+  _seriesMatchesProduct(s, p) {
+    if (!s || !p) return false;
+    const sid = s.ID || s._id;
+    const sslug = s.slug;
+    const stitle = s.title;
+
+    const pSeries = p.series;
+    if (!pSeries) return false;
+
+    if (typeof pSeries === 'object') {
+      const pid = pSeries.ID || pSeries._id;
+      const pslug = pSeries.slug;
+      if (sid && (pid === sid || pslug === sid)) return true;
+      if (sslug && (pid === sslug || pslug === sslug)) return true;
+      if (stitle && pSeries.title === stitle) return true;
+      return false;
+    }
+
+    if (typeof pSeries === 'string') {
+      if (sid && (pSeries === sid || pSeries.includes(sid))) return true;
+      if (sslug && (pSeries === sslug || pSeries.includes(sslug))) return true;
+      if (stitle && pSeries.toLowerCase().includes(stitle.toLowerCase())) return true;
+    }
+
+    return false;
+  }
+
   _getAvailableCategories() {
     const raw = this.data || this.products;
     const products = Array.isArray(raw) ? raw : [];
@@ -611,6 +642,58 @@ export class WxProductListing extends LitElement {
     // Chỉ giữ lại những danh mục có ít nhất 1 sản phẩm trong danh sách sản phẩm hiện có
     return allCats.filter((c) => {
       return products.some((p) => this._categoryMatchesProduct(c, p));
+    });
+  }
+
+  _getAvailableSeries() {
+    const raw = this.data || this.products;
+    const products = Array.isArray(raw) ? raw : [];
+    let allSeries = Array.isArray(this.series) ? [...this.series] : [];
+
+    // Nếu không truyền mảng series từ ngoài, tự động trích xuất các series từ products
+    if (!allSeries.length && products.length) {
+      const seriesMap = new Map();
+      for (const p of products) {
+        if (p.series) {
+          let id = '';
+          let title = '';
+          let brand = p.brand || '';
+          if (typeof p.series === 'object') {
+            id = p.series.ID || p.series._id || p.series.slug || '';
+            title = p.series.title || id;
+            brand = p.series.brand || brand;
+          } else if (typeof p.series === 'string') {
+            id = p.series;
+            title = id
+              .replace(/^series-/, '')
+              .replace(/^brand-/, '')
+              .replace(/^[a-z]+-/, '')
+              .replace(/-/g, ' ')
+              .toUpperCase();
+          }
+          if (id && !seriesMap.has(id)) {
+            seriesMap.set(id, { ID: id, title, brand });
+          }
+        }
+      }
+      allSeries = Array.from(seriesMap.values());
+    }
+
+    if (!allSeries.length || !products.length) return [];
+
+    // Nếu người dùng đang chọn Thương hiệu (selectedBrand), lọc chỉ các series thuộc thương hiệu đó
+    if (this.selectedBrand) {
+      const brandLower = this.selectedBrand.toLowerCase().replace(/^brand-/, '');
+      allSeries = allSeries.filter((s) => {
+        const b = (s.brand || '').toLowerCase().replace(/^brand-/, '');
+        const sid = (s.ID || s.slug || '').toLowerCase();
+        return b === brandLower || b.includes(brandLower) || brandLower.includes(b) || sid.includes(brandLower);
+      });
+    }
+
+    // Chỉ giữ lại những series có ít nhất 1 sản phẩm trong danh sách sản phẩm hiện có
+    return allSeries.filter((s) => {
+      return products.some((p) => this._seriesMatchesProduct(s, p));
     });
   }
 
@@ -647,6 +730,25 @@ export class WxProductListing extends LitElement {
         const pBrand = (p.brand || '').toLowerCase();
         return pBrand === brand || pBrand.includes(brand) || (p.brandPath && p.brandPath.toLowerCase().includes(brand));
       });
+    }
+
+    if (this.selectedSeries) {
+      const allSeries = Array.isArray(this.series) ? this.series : [];
+      const matchedSeries = allSeries.find(
+        (s) => s.ID === this.selectedSeries || s._id === this.selectedSeries || s.slug === this.selectedSeries
+      );
+      if (matchedSeries) {
+        filtered = filtered.filter((p) => this._seriesMatchesProduct(matchedSeries, p));
+      } else {
+        filtered = filtered.filter((p) => {
+          const s = this.selectedSeries;
+          if (!p.series) return false;
+          if (typeof p.series === 'object') {
+            return p.series.ID === s || p.series._id === s || p.series.slug === s;
+          }
+          return p.series === s || p.series.includes(s);
+        });
+      }
     }
 
     if (this.selectedPriceRange) {
@@ -691,6 +793,7 @@ export class WxProductListing extends LitElement {
     if (e) e.preventDefault();
     this.selectedCategory = '';
     this.selectedBrand = '';
+    this.selectedSeries = '';
     this.selectedPriceRange = '';
     this.selectedSort = 'default';
     this.visibleCount = this.pageSize || 32;
@@ -715,6 +818,15 @@ export class WxProductListing extends LitElement {
     this.requestUpdate();
   }
 
+  _clearSeriesFilter(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.selectedSeries = '';
+    this.requestUpdate();
+  }
+
   _clearPriceFilter(e) {
     if (e) {
       e.preventDefault();
@@ -732,6 +844,7 @@ export class WxProductListing extends LitElement {
     if (
       changedProps.has('selectedCategory') ||
       changedProps.has('selectedBrand') ||
+      changedProps.has('selectedSeries') ||
       changedProps.has('selectedPriceRange') ||
       changedProps.has('selectedSort') ||
       changedProps.has('products') ||
@@ -783,7 +896,8 @@ export class WxProductListing extends LitElement {
 
     const filteredList = this._getFilteredProducts();
     const availableCategories = this._getAvailableCategories();
-    const hasActiveFilters = this.selectedCategory || this.selectedBrand || this.selectedPriceRange;
+    const availableSeries = this._getAvailableSeries();
+    const hasActiveFilters = this.selectedCategory || this.selectedBrand || this.selectedSeries || this.selectedPriceRange;
     const totalItems = filteredList.length;
     const displayedList = filteredList.slice(0, this.visibleCount);
     const progressPercent = totalItems > 0 ? Math.min(100, (displayedList.length / totalItems) * 100) : 0;
@@ -817,6 +931,13 @@ export class WxProductListing extends LitElement {
               @click="${() => this._openSidebar('brand')}"
             >
               <span>${t('filterBrand', this.lang)}</span>
+            </button>
+
+            <button
+              class="filter-trigger-btn ${this.selectedSeries ? 'has-value' : ''}"
+              @click="${() => this._openSidebar('series')}"
+            >
+              <span>${t('filterSeries', this.lang)}</span>
             </button>
 
             <button
@@ -972,6 +1093,45 @@ export class WxProductListing extends LitElement {
                       `
                     )
                   : ''}
+              </div>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-group-title">
+                <span>${t('series', this.lang)}</span>
+                ${this.selectedSeries
+                  ? html`<button type="button" class="clear-section-btn" @click="${this._clearSeriesFilter}">${t('clear', this.lang)}</button>`
+                  : ''}
+              </div>
+              <div class="filter-options-list">
+                <label class="filter-option-label">
+                  <input
+                    type="radio"
+                    name="series_filter"
+                    value=""
+                    .checked="${!this.selectedSeries}"
+                    @change="${() => (this.selectedSeries = '')}"
+                  />
+                  <span>${t('allSeries', this.lang)}</span>
+                </label>
+                <div class="filter-options-scrollable">
+                  ${availableSeries && availableSeries.length > 0
+                    ? availableSeries.map(
+                        (s) => html`
+                          <label class="filter-option-label">
+                            <input
+                              type="radio"
+                              name="series_filter"
+                              value="${s.ID || s.slug || s._id}"
+                              .checked="${this.selectedSeries === (s.ID || s.slug || s._id)}"
+                              @change="${() => (this.selectedSeries = s.ID || s.slug || s._id)}"
+                            />
+                            <span>${s.title}</span>
+                          </label>
+                        `
+                      )
+                    : html`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${t('noSeries', this.lang)}</span>`}
+                </div>
               </div>
             </div>
 
