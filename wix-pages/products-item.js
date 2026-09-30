@@ -492,6 +492,59 @@ $w.onReady(async function () {
       }
     }
 
+    // 7. Nạp Component Related Products (Chỉ hiển thị 4 sản phẩm cùng danh mục)
+    const relatedEl = findElement(['#relatedProducts', '#wxRelatedProducts', '#compRelatedProducts', '#related']);
+    const relatedContainer = findContainer(['#sectionRelatedProducts', '#relatedSection', '#relatedContainer']);
+
+    if (relatedEl) {
+      try {
+        const catId = currentProduct.category;
+        const currentProdId = currentProduct._id || currentProduct.ID;
+
+        // Truy vấn tối đa 4 sản phẩm cùng danh mục, loại trừ sản phẩm hiện tại
+        let relatedItems = [];
+        if (catId) {
+          const relRes = await wixData.query('Products')
+            .eq('category', catId)
+            .ne('_id', currentProdId)
+            .limit(4)
+            .find();
+          relatedItems = relRes.items;
+        }
+
+        // Nếu danh mục con có ít hơn 4 sản phẩm, bổ sung thêm sản phẩm cùng Brand
+        if (relatedItems.length < 4 && currentProduct.brand) {
+          const remainingCount = 4 - relatedItems.length;
+          const excludeIds = [currentProdId, ...relatedItems.map(p => p._id || p.ID)].filter(Boolean);
+          const brandRes = await wixData.query('Products')
+            .eq('brand', currentProduct.brand)
+            .not(wixData.query('Products').hasSome('_id', excludeIds))
+            .limit(remainingCount)
+            .find();
+          relatedItems = [...relatedItems, ...brandRes.items];
+        }
+
+        if (relatedItems.length > 0) {
+          if (relatedContainer && typeof relatedContainer.expand === 'function') relatedContainer.expand();
+          if (typeof relatedEl.expand === 'function') relatedEl.expand();
+          safeSet(relatedEl, 'products', relatedItems);
+        } else {
+          if (relatedContainer && typeof relatedContainer.collapse === 'function') relatedContainer.collapse();
+          if (typeof relatedEl.collapse === 'function') relatedEl.collapse();
+        }
+
+        // Lắng nghe sự kiện click sản phẩm để điều hướng sang trang PDP mới
+        safeOn(relatedEl, 'product-select', (e) => {
+          const targetProduct = e.detail?.product;
+          if (targetProduct && targetProduct.slug) {
+            wixLocation.to(`/product/${targetProduct.slug}`);
+          }
+        });
+      } catch (relErr) {
+        console.warn('[Wix Velo] Lỗi nạp dữ liệu Related Products:', relErr);
+      }
+    }
+
   } catch (err) {
     console.error('[Wix Velo] Lỗi nạp dữ liệu trang Product (Item):', err);
   }

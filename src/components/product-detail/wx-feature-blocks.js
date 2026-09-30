@@ -86,7 +86,7 @@ export class WxFeatureBlocks extends LitElement {
         display: flex;
         flex-direction: column;
         gap: 32px;
-        background: #f2f0ee;
+        background: #EFECEA;
         padding: 40px;
         border-radius: 4px;
       }
