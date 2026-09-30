@@ -25,12 +25,13 @@ export class WxProductGallery extends LitElement {
         position: relative;
         width: 100%;
         padding-top: 100%; /* 1:1 Aspect ratio */
-        background: var(--wx-color-surface-subtle);
+        background: radial-gradient(#ffffff, #f8f7f6);
         border: 1px solid var(--wx-color-border);
         border-radius: var(--wx-radius-md);
         overflow: hidden;
       }
 
+      .main-img,
       .main-image {
         position: absolute;
         top: 0;
@@ -39,6 +40,7 @@ export class WxProductGallery extends LitElement {
         height: 100%;
         object-fit: contain;
         padding: 24px;
+        background: radial-gradient(#ffffff, #f8f7f6);
         transition: opacity var(--wx-transition-normal);
       }
 
@@ -113,7 +115,7 @@ export class WxProductGallery extends LitElement {
       <div class="gallery-container">
         <div class="main-viewport">
           ${currentImg
-        ? html`<img class="main-image" src="${currentImg}" alt="Product preview" />`
+        ? html`<img class="main-img" src="${currentImg}" alt="Product preview" />`
         : html`<div class="empty-placeholder">🔪</div>`}
         </div>
 

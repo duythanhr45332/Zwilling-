@@ -61,6 +61,7 @@ export const translations = {
       'Lau khô hoàn toàn trước khi cất giữ.',
       'Bảo quản nơi khô ráo, thoáng mát.'
     ],
+    relatedProducts: 'SẢN PHẨM LIÊN QUAN',
 
     // wx-filter-toolbar
     toolbarResults: (count) => `${count} KẾT QUẢ`,
@@ -141,6 +142,7 @@ export const translations = {
       'Dry completely before storage.',
       'Store in a cool, dry place.'
     ],
+    relatedProducts: 'RELATED PRODUCTS',
 
     // wx-filter-toolbar
     toolbarResults: (count) => `${count} RESULTS`,

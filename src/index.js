@@ -18,6 +18,7 @@ export { WxProductListing } from './components/product-listing/wx-product-listin
 
 // 5. Component Product Detail View (Ảnh 5 - bỏ add to cart & shipping)
 export { WxProductDetail } from './components/product-detail/wx-product-detail.js';
+export { WxRelatedProducts } from './components/product-detail/wx-related-products.js';
 
 // 6. Component Feature Blocks (Ảnh 1: Story 3-col & Ảnh 2: Hotspot Accordion)
 export { WxFeatureBlocks, WxStorySection, WxHotspotSection } from './components/product-detail/wx-feature-blocks.js';

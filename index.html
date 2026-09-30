@@ -188,6 +188,15 @@
       <wx-product-detail id="comp-product-detail"></wx-product-detail>
     </section>
 
+    <!-- 5.1. Component Related Products (Chỉ hiển thị 4 sản phẩm cùng danh mục) -->
+    <section class="component-section" id="sec-related-products">
+      <div class="section-header">
+        <h2 class="section-title">5.1. Component Related Products (4 Sản Phẩm Cùng Danh Mục)</h2>
+        <span class="tag-name">&lt;wx-related-products&gt;</span>
+      </div>
+      <wx-related-products id="comp-related-products"></wx-related-products>
+    </section>
+
     <!-- 6. Trang Tĩnh: Best Seller (List Product Kèm Filter) -->
     <section class="component-section" id="sec-bestseller">
       <div class="section-header">
@@ -398,6 +407,13 @@
       tiktokUrl: 'https://tiktok.com'
     };
     detailComp.product = pdpData;
+
+    // 5.1 Gán dữ liệu cho Component Related Products (4 sản phẩm cùng danh mục)
+    const relatedComp = document.getElementById('comp-related-products');
+    if (relatedComp) {
+      relatedComp.currentProduct = pdpData;
+      relatedComp.products = enrichedProducts;
+    }
 
     // 6. Gán dữ liệu cho Trang tĩnh Best Seller (Chỉ lấy sản phẩm Bán chạy / Bestseller)
     const bestsellerListingComp = document.getElementById('comp-bestseller-listing');
