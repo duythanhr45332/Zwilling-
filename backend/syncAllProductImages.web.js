@@ -113,7 +113,7 @@ export const syncAllProductImagesToCMS = webMethod(Permissions.Admin, async () =
               fileName = decoded;
             }
           }
-        } catch (e) {}
+        } catch (e) { }
       }
 
       if (!fileName) {
