@@ -934,6 +934,9 @@ $w.onReady(async function () {
 - **Các Custom Element trên trang:**
   - `#productBreadcrumb` (Tag Name: `wx-breadcrumb`)
   - `#productDetail` (Tag Name: `wx-product-detail`)
+  - `#storySection` (Tag Name: `wx-feature-story`)
+  - `#hotspotSection` (Tag Name: `wx-feature-highlights`)
+  - `#relatedProducts` (Tag Name: `wx-related-products` hoặc `wx-related`): Hiển thị đúng 4 sản phẩm cùng danh mục
 - **Velo Code:**
 ```javascript
 import wixData from 'wix-data';

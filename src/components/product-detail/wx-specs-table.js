@@ -45,8 +45,10 @@ export class WxSpecsTable extends LitElement {
       .spec-name {
         padding: 10px 14px;
         font-weight: 600;
-        color: var(--wx-color-text-secondary);
+        color: #333333;
         width: 35%;
+        background-color: #EFECEA;
+        border-bottom: 1px solid #ffffff;
       }
 
       .spec-value {

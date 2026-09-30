@@ -127,7 +127,7 @@ export class WxProductDetail extends LitElement {
       width: 100%;
       max-width: 650px;
       height: 650px;
-      background: transparent;
+      background: radial-gradient(#ffffff, #f8f7f6);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -162,6 +162,8 @@ export class WxProductDetail extends LitElement {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      background: transparent;
+      mix-blend-mode: multiply;
       transition: transform 0.12s ease-out, opacity 0.2s ease;
       pointer-events: none;
       user-select: none;
@@ -372,9 +374,9 @@ export class WxProductDetail extends LitElement {
     }
 
     .highlights-title {
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #111111;
     }
 
@@ -382,32 +384,34 @@ export class WxProductDetail extends LitElement {
       list-style-type: none;
       padding-left: 0;
       font-family: var(--wx-font-family);
-      font-size: 13px;
+      font-size: 16px;
       color: #444444;
       line-height: 1.7;
       margin: 0;
     }
 
     .highlights-list li {
-      margin-bottom: 4px;
-      padding-left: 16px;
+      margin-bottom: 6px;
+      padding-left: 20px;
       position: relative;
     }
 
     .highlights-list li::before {
-      content: '–';
+      content: '•';
       position: absolute;
-      left: 0;
+      left: 2px;
       color: #444444;
+      font-size: 18px;
+      line-height: 1.5;
     }
 
     .highlights-heading {
       font-family: var(--wx-font-family);
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 400;
       color: #222222;
-      line-height: 1.5;
-      margin-bottom: 10px;
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
     /* Accordions */
@@ -423,30 +427,54 @@ export class WxProductDetail extends LitElement {
       width: 100%;
       background: none;
       border: none;
-      padding: 16px 0;
+      padding: 18px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: #111111;
       text-align: left;
     }
 
     .accordion-icon {
-      font-size: 14px;
+      font-size: 16px;
       transition: transform 0.2s ease;
     }
 
     .accordion-body {
       padding: 0 0 20px 0;
       font-family: var(--wx-font-family);
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.7;
       color: #444444;
+    }
+
+    .accordion-body ul:not(.desc-bullets) {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 16px 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444444;
+    }
+
+    .accordion-body ul:not(.desc-bullets) li {
+      margin-bottom: 6px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .accordion-body ul:not(.desc-bullets) li::before {
+      content: '•';
+      position: absolute;
+      left: 2px;
+      color: #444444;
+      font-size: 18px;
+      line-height: 1.5;
     }
 
     .desc-formatted {
@@ -454,8 +482,8 @@ export class WxProductDetail extends LitElement {
     }
 
     .desc-paragraph {
-      margin: 0 0 14px 0;
-      font-size: 13px;
+      margin: 0 0 16px 0;
+      font-size: 16px;
       line-height: 1.7;
       color: #444444;
     }
@@ -467,8 +495,8 @@ export class WxProductDetail extends LitElement {
     .desc-bullets {
       list-style-type: none;
       padding-left: 0;
-      margin: 0 0 14px 0;
-      font-size: 13px;
+      margin: 0 0 16px 0;
+      font-size: 16px;
       line-height: 1.7;
       color: #444444;
     }
@@ -478,16 +506,18 @@ export class WxProductDetail extends LitElement {
     }
 
     .desc-bullets li {
-      margin-bottom: 4px;
-      padding-left: 16px;
+      margin-bottom: 6px;
+      padding-left: 20px;
       position: relative;
     }
 
     .desc-bullets li::before {
-      content: '–';
+      content: '•';
       position: absolute;
-      left: 0;
+      left: 2px;
       color: #444444;
+      font-size: 18px;
+      line-height: 1.5;
     }
 
     .specs-table {
@@ -497,14 +527,18 @@ export class WxProductDetail extends LitElement {
     }
 
     .specs-table td {
-      padding: 8px 12px;
+      padding: 10px 14px;
       border-bottom: 1px solid #f0f0f0;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
     .specs-table td:first-child {
+      background-color: #EFECEA;
       font-weight: 600;
       width: 40%;
-      color: #666666;
+      color: #333333;
+      border-bottom: 1px solid #ffffff;
     }
   `;
 
@@ -587,10 +621,11 @@ export class WxProductDetail extends LitElement {
     const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
     const heading = [];
     const bullets = [];
+    const bulletRegex = /^[-–—*•·]\s*/;
 
     for (const line of lines) {
-      if (line.startsWith('- ') || line.startsWith('• ') || line.startsWith('· ')) {
-        bullets.push(line.replace(/^[-•·]\s*/, ''));
+      if (bulletRegex.test(line)) {
+        bullets.push(line.replace(bulletRegex, ''));
       } else {
         // Nếu chưa có bullet nào → là heading, nếu đã có → là text thường
         if (bullets.length === 0) {
@@ -615,7 +650,7 @@ export class WxProductDetail extends LitElement {
 
   /**
    * Parse description thành paragraphs + bullet list.
-   * Đoạn cách nhau bằng dòng trống → <p>, dòng bắt đầu bằng '- ' → bullet list.
+   * Đoạn cách nhau bằng dòng trống → <p>, dòng bắt đầu bằng bullet/dash → bullet list.
    */
   _renderDescription(text) {
     if (!text || typeof text !== 'string') return html``;
@@ -623,13 +658,14 @@ export class WxProductDetail extends LitElement {
     // Tách thành các block bằng dòng trống (2+ newlines)
     const blocks = text.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
     const result = [];
+    const bulletRegex = /^[-–—*•·]\s*/;
 
     for (const block of blocks) {
       const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
-      const isBulletBlock = lines.every(l => l.startsWith('- ') || l.startsWith('• ') || l.startsWith('· '));
+      const isBulletBlock = lines.every(l => bulletRegex.test(l));
 
       if (isBulletBlock) {
-        const items = lines.map(l => l.replace(/^[-•·]\s*/, ''));
+        const items = lines.map(l => l.replace(bulletRegex, ''));
         result.push(html`<ul class="desc-bullets">
           ${items.map(item => html`<li>${item}</li>`)}
         </ul>`);
@@ -638,8 +674,8 @@ export class WxProductDetail extends LitElement {
         const paragraphLines = [];
         const bulletLines = [];
         for (const line of lines) {
-          if (line.startsWith('- ') || line.startsWith('• ') || line.startsWith('· ')) {
-            bulletLines.push(line.replace(/^[-•·]\s*/, ''));
+          if (bulletRegex.test(line)) {
+            bulletLines.push(line.replace(bulletRegex, ''));
           } else {
             paragraphLines.push(line);
           }

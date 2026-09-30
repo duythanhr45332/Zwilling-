@@ -135,6 +135,7 @@ if (fs.existsSync(path.resolve('index.html'))) {
   console.log('[postbuild] Copied index.html to dist/index.html');
 }
 
+
 // 4. Ensure all images are copied as real files to dist/images
 const imagesDir = path.resolve('wix-csv', 'images');
 if (fs.existsSync(imagesDir)) {
