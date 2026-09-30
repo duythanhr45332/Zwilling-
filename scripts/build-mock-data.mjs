@@ -81,6 +81,51 @@ const variants = parseCSV(fs.readFileSync(path.join(wixCsvDir, 'ProductVariants.
 const featureBlocks = parseCSV(fs.readFileSync(path.join(wixCsvDir, 'FeatureBlocks.csv'), 'utf8'));
 const featureItems = parseCSV(fs.readFileSync(path.join(wixCsvDir, 'FeatureItems.csv'), 'utf8'));
 
+// Gắn ảnh thực tế từ Dao_compressed cho các sản phẩm dao nếu chưa có ảnh
+const daoDir = path.join(wixCsvDir, 'Dao_compressed');
+let daoFiles = [];
+if (fs.existsSync(daoDir)) {
+  daoFiles = fs.readdirSync(daoDir);
+}
+
+products.forEach(p => {
+  const sku = (p.ID || '').replace(/^prod-/, '').trim();
+  if (sku && daoFiles.length > 0) {
+    if (!p.mainImage) {
+      const mainImg = daoFiles.find(f => f.startsWith(sku + '_Main Image') || f.startsWith(sku + '_main'));
+      if (mainImg) {
+        p.mainImage = `/wix-csv/Dao_compressed/${mainImg}`;
+      }
+    }
+    if (!p.gallery) {
+      const galleryImgs = daoFiles.filter(f => f.startsWith(sku + '_Gallery'));
+      galleryImgs.sort();
+      if (galleryImgs.length > 0) {
+        p.gallery = galleryImgs.map(f => `/wix-csv/Dao_compressed/${f}`).join(';');
+      }
+    }
+  }
+});
+
+variants.forEach(v => {
+  const sku = (v.sku || (v.ID || '').replace(/^sku-/, '')).trim();
+  if (sku && daoFiles.length > 0) {
+    if (!v.mainImage) {
+      const mainImg = daoFiles.find(f => f.startsWith(sku + '_Main Image') || f.startsWith(sku + '_main'));
+      if (mainImg) {
+        v.mainImage = `/wix-csv/Dao_compressed/${mainImg}`;
+      }
+    }
+    if (!v.gallery) {
+      const galleryImgs = daoFiles.filter(f => f.startsWith(sku + '_Gallery'));
+      galleryImgs.sort();
+      if (galleryImgs.length > 0) {
+        v.gallery = galleryImgs.map(f => `/wix-csv/Dao_compressed/${f}`).join(';');
+      }
+    }
+  }
+});
+
 console.log('Parsed Counts:');
 console.log('Brands:', brands.length);
 console.log('Categories:', categories.length);
@@ -90,16 +135,31 @@ console.log('Variants:', variants.length);
 console.log('FeatureBlocks:', featureBlocks.length);
 console.log('FeatureItems:', featureItems.length);
 
-const outContent = `// Dữ liệu trích xuất từ các file CSV trong wix-csv
-export const MOCK_BRANDS = ${JSON.stringify(brands, null, 2)};
-export const MOCK_CATEGORIES = ${JSON.stringify(categories, null, 2)};
-export const MOCK_SERIES = ${JSON.stringify(series, null, 2)};
-export const MOCK_PRODUCTS = ${JSON.stringify(products, null, 2)};
-export const MOCK_VARIANTS = ${JSON.stringify(variants, null, 2)};
-export const MOCK_FEATURE_BLOCKS = ${JSON.stringify(featureBlocks, null, 2)};
-export const MOCK_FEATURE_ITEMS = ${JSON.stringify(featureItems, null, 2)};
+const outContent = `// Dữ liệu chuẩn trực tiếp từ các file CSV trong wix-csv
+export const BRANDS = ${JSON.stringify(brands, null, 2)};
+export const CATEGORIES = ${JSON.stringify(categories, null, 2)};
+export const SERIES = ${JSON.stringify(series, null, 2)};
+export const PRODUCTS = ${JSON.stringify(products, null, 2)};
+export const VARIANTS = ${JSON.stringify(variants, null, 2)};
+export const FEATURE_BLOCKS = ${JSON.stringify(featureBlocks, null, 2)};
+export const FEATURE_ITEMS = ${JSON.stringify(featureItems, null, 2)};
+
+// Tương thích ngược:
+export const MOCK_BRANDS = BRANDS;
+export const MOCK_CATEGORIES = CATEGORIES;
+export const MOCK_SERIES = SERIES;
+export const MOCK_PRODUCTS = PRODUCTS;
+export const MOCK_VARIANTS = VARIANTS;
+export const MOCK_FEATURE_BLOCKS = FEATURE_BLOCKS;
+export const MOCK_FEATURE_ITEMS = FEATURE_ITEMS;
+`;
+
+const productsOnlyContent = `// Dữ liệu chuẩn từ wix-csv/Products.csv
+export const PRODUCTS = ${JSON.stringify(products, null, 2)};
+export default PRODUCTS;
 `;
 
 fs.mkdirSync(path.join(rootDir, 'src', 'data'), { recursive: true });
 fs.writeFileSync(path.join(rootDir, 'src', 'data', 'mock-data.js'), outContent, 'utf8');
-console.log('Successfully generated src/data/mock-data.js');
+fs.writeFileSync(path.join(rootDir, 'src', 'data', 'products.js'), productsOnlyContent, 'utf8');
+console.log('Successfully generated src/data/mock-data.js and src/data/products.js');

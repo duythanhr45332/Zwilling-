@@ -260,11 +260,11 @@
   <script type="module">
     import './src/index.js';
     import {
-      MOCK_BRANDS,
-      MOCK_CATEGORIES,
-      MOCK_SERIES,
-      MOCK_PRODUCTS,
-      MOCK_VARIANTS
+      BRANDS,
+      CATEGORIES,
+      SERIES,
+      PRODUCTS,
+      VARIANTS
     } from './src/data/mock-data.js';
 
     // 1. Gán dữ liệu cho Component Breadcrumb
@@ -322,89 +322,41 @@
       }
     ];
 
-    // Chuẩn hóa sản phẩm demo với đầy đủ % giảm giá, labels, mainImage và gallery
-    const sampleBadges = ['NEW TO SALE', 'BESTSELLER', 'BÁN CHẠY', 'MỚI'];
-    const sampleGalleries = [
-      [
-        'https://images.unsplash.com/photo-1593618998160-e34014e67546?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1584990347449-399a6c9d0b84?w=600&auto=format&fit=crop&q=80'
-      ],
-      [
-        'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80'
-      ]
-    ];
-
-    const enrichedProducts = MOCK_PRODUCTS.map((p, idx) => {
-      const price = p.minPrice || p.price || 2000000;
-      // Tạo giá cũ cao hơn để tính ra % giảm giá (ví dụ: -26%, -40%, -57%, -58%)
-      const discountRates = [0.57, 0.58, 0.40, 0.26, 0.35, 0.50];
-      const rate = discountRates[idx % discountRates.length];
-      const comparePrice = Math.round(price / (1 - rate));
-
-      let labels = p.labels;
-      if (!labels || labels === '[]') {
-        labels = [sampleBadges[idx % sampleBadges.length]];
-      }
-
-      const gSet = sampleGalleries[idx % sampleGalleries.length];
-      const mainImg = p.mainImage || gSet[0];
-      const galleryStr = p.gallery || gSet.slice(1).join(';');
-
-      return {
-        ...p,
-        mainImage: mainImg,
-        gallery: galleryStr,
-        minPrice: price,
-        compareAtPrice: comparePrice,
-        labels: labels
-      };
-    });
-
     // 3. Gán dữ liệu cho Component Product Carousel (Ảnh 3)
     const carouselComp = document.getElementById('comp-product-carousel');
-    carouselComp.products = enrichedProducts.slice(0, 8);
+    carouselComp.products = PRODUCTS.slice(0, 8);
 
-    // 4. Gán dữ liệu cho Component List Product kèm Filter (Ảnh 4)
+    // 4. Gán dữ liệu cho Component List Product kèm Filter (Ảnh 4) - Dữ liệu chuẩn từ Products.csv
     const listComp = document.getElementById('comp-product-listing');
-    listComp.brands = MOCK_BRANDS;
-    listComp.categories = MOCK_CATEGORIES.filter(c => c.depth === 0);
-    listComp.series = MOCK_SERIES;
-    listComp.products = enrichedProducts;
+    listComp.brands = BRANDS;
+    listComp.categories = CATEGORIES.filter(c => c.depth === 0);
+    listComp.series = SERIES;
+    listComp.products = PRODUCTS;
 
     // 5. Gán dữ liệu cho Component Product Detail (Ảnh 5)
     const detailComp = document.getElementById('comp-product-detail');
-    const sampleProduct = MOCK_PRODUCTS.find(p => p.ID === 'prod-1002144') || MOCK_PRODUCTS[0];
-    const sampleVariant = MOCK_VARIANTS.find(v => v.product === sampleProduct.ID) || MOCK_VARIANTS[0];
+    const sampleProduct = PRODUCTS.find(p => p.ID === 'prod-1002144') || PRODUCTS[0];
+    const sampleVariant = VARIANTS.find(v => v.product === sampleProduct.ID) || VARIANTS[0];
 
-    // Tạo bộ ảnh thumbnail phong phú cho PDP
     const pdpData = {
       ...sampleProduct,
       ...sampleVariant,
-      title: 'Bread knife 8 inch, serrated edge',
-      brand: 'brand-zwilling',
-      series: 'FOUR STAR',
-      minPrice: 1250000,
-      compareAtPrice: 2950000,
-      gallery: [
-        sampleProduct.mainImage || 'https://images.unsplash.com/photo-1593618998160-e34014e67546?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1584990347449-399a6c9d0b84?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&auto=format&fit=crop&q=80'
-      ].join(';'),
-      specs: JSON.stringify([
-        { section: 'Thông số kỹ thuật', name: 'Xuất xứ', value: 'Đức (Solingen, Germany)' },
-        { section: 'Thông số kỹ thuật', name: 'Chiều dài lưỡi dao', value: '20 cm / 8 inch' },
-        { section: 'Thông số kỹ thuật', name: 'Chất liệu thép', value: 'Thép không gỉ công thức đặc biệt (Special Formula Steel)' },
-        { section: 'Thông số kỹ thuật', name: 'Độ cứng Rockwell', value: '57 HRC' },
-        { section: 'Thông số kỹ thuật', name: 'Chất liệu cán', value: 'Nhựa cao cấp đúc liền khối công thái học' }
+      title: sampleProduct.title,
+      brand: sampleProduct.brand,
+      series: sampleProduct.series,
+      minPrice: sampleProduct.minPrice,
+      maxPrice: sampleProduct.maxPrice,
+      mainImage: sampleProduct.mainImage || sampleVariant.mainImage || '',
+      gallery: sampleProduct.gallery || sampleVariant.gallery || '',
+      specs: sampleVariant.specs || sampleProduct.specs || JSON.stringify([
+        { section: 'Thông số kỹ thuật', name: 'Xuất xứ', value: 'Nhật Bản' },
+        { section: 'Thông số kỹ thuật', name: 'Chất liệu lưỡi dao', value: 'Thép FC61 với 48 lớp Damascus' },
+        { section: 'Thông số kỹ thuật', name: 'Phương pháp mài', value: 'Mài thủ công Honbazuke' },
+        { section: 'Thông số kỹ thuật', name: 'Độ cứng Rockwell', value: '61 HRC' },
+        { section: 'Thông số kỹ thuật', name: 'Chất liệu cán', value: 'Gỗ Pakka công thái học' }
       ]),
-      shopeeUrl: 'https://shopee.vn',
-      tiktokUrl: 'https://tiktok.com'
+      shopeeUrl: sampleVariant.shopeeUrl || 'https://shopee.vn',
+      tiktokUrl: sampleVariant.tiktokUrl || 'https://tiktok.com'
     };
     detailComp.product = pdpData;
 
@@ -412,62 +364,35 @@
     const relatedComp = document.getElementById('comp-related-products');
     if (relatedComp) {
       relatedComp.currentProduct = pdpData;
-      relatedComp.products = enrichedProducts;
+      relatedComp.products = PRODUCTS;
     }
 
-    // 6. Gán dữ liệu cho Trang tĩnh Best Seller (Chỉ lấy sản phẩm Bán chạy / Bestseller)
+    // 6. Gán dữ liệu cho Trang tĩnh Best Seller (Sản phẩm Bán chạy thực tế từ Products.csv)
     const bestsellerListingComp = document.getElementById('comp-bestseller-listing');
     if (bestsellerListingComp) {
-      bestsellerListingComp.brands = MOCK_BRANDS;
-      bestsellerListingComp.categories = MOCK_CATEGORIES.filter(c => c.depth === 0);
-      // Lọc các sản phẩm bán chạy hoặc soldCount cao
-      const bestsellerList = enrichedProducts.filter(p =>
-        (p.labels && (p.labels.includes('BÁN CHẠY') || p.labels.includes('BESTSELLER') || p.labels.includes('Bán chạy'))) ||
+      bestsellerListingComp.brands = BRANDS;
+      bestsellerListingComp.categories = CATEGORIES.filter(c => c.depth === 0);
+      bestsellerListingComp.series = SERIES;
+      const bestsellerList = PRODUCTS.filter(p =>
+        (p.labels && (p.labels.includes('Bán chạy') || p.labels.includes('BÁN CHẠY') || p.labels.toLowerCase().includes('bestseller'))) ||
         p.soldCount > 70
-      ).map(p => ({
-        ...p,
-        isBestseller: true,
-        labels: p.labels && (p.labels.includes('BÁN CHẠY') || p.labels.includes('Bán chạy')) ? p.labels : ['BÁN CHẠY', ...(p.labels || [])]
-      }));
-      bestsellerListingComp.products = bestsellerList.length > 0 ? bestsellerList : enrichedProducts.slice(0, 10);
+      );
+      bestsellerListingComp.products = bestsellerList.length > 0 ? bestsellerList : PRODUCTS.slice(0, 10);
     }
 
-    // 7. Gán dữ liệu cho Trang tĩnh Sale / Khuyến Mãi (Chỉ lấy sản phẩm có Sale / Giảm giá / chênh lệch giá)
+    // 7. Gán dữ liệu cho Trang tĩnh Sale / Khuyến Mãi (Sản phẩm có giá ưu đãi thực tế từ Products.csv)
     const saleListingComp = document.getElementById('comp-sale-listing');
     if (saleListingComp) {
-      saleListingComp.brands = MOCK_BRANDS;
-      saleListingComp.categories = MOCK_CATEGORIES.filter(c => c.depth === 0);
-
-      const saleList = enrichedProducts.filter(p => {
-        const labelsStr = (Array.isArray(p.labels) ? p.labels.join(' ') : String(p.labels || '')).toLowerCase();
+      saleListingComp.brands = BRANDS;
+      saleListingComp.categories = CATEGORIES.filter(c => c.depth === 0);
+      saleListingComp.series = SERIES;
+      const saleList = PRODUCTS.filter(p => {
+        const labelsStr = String(p.labels || '').toLowerCase();
         const hasSaleLabel = labelsStr.includes('sale') || labelsStr.includes('giảm giá') || labelsStr.includes('mới mở bán');
         const hasDiscountPrice = p.maxPrice && p.minPrice && Number(p.maxPrice) > Number(p.minPrice);
         return hasSaleLabel || hasDiscountPrice;
-      }).map(p => {
-        const currentPrice = Number(p.minPrice || p.price || 0);
-        let comparePrice = Number(p.compareAtPrice || 0);
-        if (!comparePrice && p.maxPrice && Number(p.maxPrice) > currentPrice) {
-          comparePrice = Number(p.maxPrice);
-        }
-        if (!comparePrice && currentPrice > 0) {
-          comparePrice = Math.round((currentPrice * 1.2) / 10000) * 10000;
-        }
-        const discountPercent = Math.round(((comparePrice - currentPrice) / comparePrice) * 100);
-
-        let labels = Array.isArray(p.labels) ? [...p.labels] : ['Giảm giá'];
-        if (!labels.includes('Giảm giá') && !labels.includes('Sale')) {
-          labels.unshift('Giảm giá');
-        }
-        return {
-          ...p,
-          labels,
-          compareAtPrice: comparePrice,
-          discountPercent: discountPercent,
-          isSale: true
-        };
       });
-
-      saleListingComp.products = saleList.length > 0 ? saleList : enrichedProducts.slice(0, 10);
+      saleListingComp.products = saleList.length > 0 ? saleList : PRODUCTS.slice(0, 10);
     }
 
     // 8. Gán dữ liệu cho 2 Component Tách Riêng (Ảnh 1 & Ảnh 2)
