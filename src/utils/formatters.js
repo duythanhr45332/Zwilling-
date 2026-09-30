@@ -66,8 +66,8 @@ export function calculateProductPricing(p) {
     return 0;
   };
 
-  const maxP = toNum(p.maxPrice) || toNum(p.compareAtPrice) || toNum(p.price);
-  const minP = toNum(p.minPrice);
+  const maxP = toNum(p.maxPrice) || toNum(p.max_price) || toNum(p.compareAtPrice) || toNum(p.regularPrice) || toNum(p.price);
+  const minP = toNum(p.minPrice) || toNum(p.min_price) || toNum(p.discountedPrice);
 
   let price = 0;
   let comparePrice = null;
@@ -80,12 +80,28 @@ export function calculateProductPricing(p) {
     discountPercent = Math.round(((maxP - minP) / maxP) * 100);
   } else {
     // Không giảm giá: giá sản phẩm là maxPrice (hoặc minPrice nếu maxPrice để trống)
-    price = maxP || minP || toNum(p.price);
+    price = maxP || minP || toNum(p.price) || toNum(p.unitPrice);
     comparePrice = null;
     discountPercent = null;
   }
 
+  // Fallback nếu price vẫn chưa lấy được từ các trường trên
+  if ((!price || price <= 0) && typeof extractProductPrice === 'function') {
+    price = extractProductPrice(p);
+  }
+
   return { price, comparePrice, discountPercent };
+}
+
+/**
+ * Trích xuất mức giá bán thực tế của sản phẩm (dùng để lọc và sắp xếp)
+ */
+export function getProductEffectivePrice(p) {
+  if (!p || typeof p !== 'object') return 0;
+  const { price } = calculateProductPricing(p);
+  if (typeof price === 'number' && !isNaN(price) && price > 0) return price;
+  const ext = extractProductPrice(p);
+  return (typeof ext === 'number' && !isNaN(ext) && ext > 0) ? ext : 0;
 }
 
 /**

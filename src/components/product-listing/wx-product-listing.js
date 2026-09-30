@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { safeDefine } from '../../utils/element.js';
 import { dispatchCustomEvent } from '../../utils/events.js';
-import { formatCurrencyVND, jsonArrayConverter, booleanConverter } from '../../utils/formatters.js';
+import { formatCurrencyVND, jsonArrayConverter, booleanConverter, getProductEffectivePrice } from '../../utils/formatters.js';
 import { t } from '../../utils/i18n.js';
 import './wx-product-card.js';
 
@@ -753,10 +753,10 @@ export class WxProductListing extends LitElement {
 
     if (this.selectedPriceRange) {
       filtered = filtered.filter((p) => {
-        const price = Number(p.minPrice || p.price || 0);
+        const price = this._getProductPrice(p);
         switch (this.selectedPriceRange) {
           case 'under-1m':
-            return price < 1000000;
+            return price > 0 && price < 1000000;
           case '1m-3m':
             return price >= 1000000 && price <= 3000000;
           case '3m-5m':
@@ -770,14 +770,18 @@ export class WxProductListing extends LitElement {
     }
 
     if (this.selectedSort === 'price-asc') {
-      filtered.sort((a, b) => (Number(a.minPrice || a.price || 0)) - (Number(b.minPrice || b.price || 0)));
+      filtered.sort((a, b) => this._getProductPrice(a) - this._getProductPrice(b));
     } else if (this.selectedSort === 'price-desc') {
-      filtered.sort((a, b) => (Number(b.minPrice || b.price || 0)) - (Number(a.minPrice || a.price || 0)));
+      filtered.sort((a, b) => this._getProductPrice(b) - this._getProductPrice(a));
     } else if (this.selectedSort === 'title-asc') {
       filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
     }
 
     return filtered;
+  }
+
+  _getProductPrice(p) {
+    return getProductEffectivePrice(p);
   }
 
   _openSidebar(tab = 'all') {
