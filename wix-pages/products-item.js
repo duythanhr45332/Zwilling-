@@ -19,7 +19,7 @@ $w.onReady(async function () {
       try {
         const el = $w(id);
         if (el && typeof el.setAttribute === 'function') return el;
-      } catch (e) {}
+      } catch (e) { }
     }
     return null;
   }
@@ -29,7 +29,7 @@ $w.onReady(async function () {
       try {
         const el = $w(id);
         if (el && typeof el.collapse === 'function') return el;
-      } catch (e) {}
+      } catch (e) { }
     }
     return null;
   }
@@ -59,7 +59,7 @@ $w.onReady(async function () {
         await $w('#dynamicDataset').onReadyAsync();
         currentProduct = $w('#dynamicDataset').getCurrentItem();
       }
-    } catch (e) {}
+    } catch (e) { }
 
     // 2. Dự phòng: đọc slug trực tiếp từ URL (ví dụ: /product/abc-xyz -> slug: abc-xyz)
     if (!currentProduct || !currentProduct.slug) {
@@ -255,7 +255,7 @@ $w.onReady(async function () {
                 .or(wixData.query('FeatureBlocks').hasSome('ID', directIds))
                 .find();
               if (dRes.items.length > 0) blocks = dRes.items;
-            } catch (e) {}
+            } catch (e) { }
           }
         }
 
@@ -269,7 +269,7 @@ $w.onReady(async function () {
             if (bBySeries.items.length > 0) {
               blocks = bBySeries.items;
             }
-          } catch (e) {}
+          } catch (e) { }
         }
 
         // 4. Cách 3: Nạp danh sách FeatureBlocks có sẵn trong CMS để chọn lọc

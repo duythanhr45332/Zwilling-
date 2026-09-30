@@ -2571,7 +2571,7 @@ var ct=Object.defineProperty;var dt=(m,k,C)=>k in m?ct(m,k,{enumerable:!0,config
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
-      background: #ffffff;
+      background: transparent;
       padding: 0;
       width: 100%;
     }
@@ -2611,15 +2611,23 @@ var ct=Object.defineProperty;var dt=(m,k,C)=>k in m?ct(m,k,{enumerable:!0,config
     .related-container {
       width: 100%;
       position: relative;
+      background-color: #EFECEA;
+      padding: 44px 32px 48px;
+      border-radius: 4px;
+      box-sizing: border-box;
     }
 
     .related-title {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #111111;
-      margin-bottom: 20px;
+      text-align: center;
+      margin: 0 0 32px 0;
+      padding: 0;
+      background: transparent;
+      line-height: 1.2;
     }
 
     /* 4-Column Grid Layout on Desktop */
@@ -2773,6 +2781,16 @@ var ct=Object.defineProperty;var dt=(m,k,C)=>k in m?ct(m,k,{enumerable:!0,config
 
       .controls-row {
         display: flex;
+      }
+
+      .related-container {
+        padding: 28px 16px 32px;
+      }
+
+      .related-title {
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding: 0;
       }
     }
   `),v("wx-related-products",X),v("wx-related",class extends X{});const xe=S`
