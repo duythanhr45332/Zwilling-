@@ -546,9 +546,17 @@ export class WxFeatureBlocks extends LitElement {
   }
 
   _getItemsForBlock(blockOrId) {
+    const allItems = this._getEffectiveItems();
+    if (!allItems || allItems.length === 0) return [];
+
+    // Nếu danh sách items đã được lọc riêng cho block này từ ngoài vào (số lượng <= 10), sử dụng trực tiếp
+    if (allItems.length <= 10) {
+      return allItems.slice().sort((a, b) => (Number(a.position) || 0) - (Number(b.position) || 0));
+    }
+
     const bId1 = typeof blockOrId === 'object' && blockOrId ? (blockOrId._id || '') : blockOrId;
     const bId2 = typeof blockOrId === 'object' && blockOrId ? (blockOrId.ID || '') : blockOrId;
-    const allItems = this._getEffectiveItems();
+    const bTitle = typeof blockOrId === 'object' && blockOrId ? (blockOrId.title || '') : '';
     return allItems
       .filter((it) => {
         const b = it.block;
@@ -556,12 +564,14 @@ export class WxFeatureBlocks extends LitElement {
         if (typeof b === 'object' && b !== null) {
           const itId1 = b._id || '';
           const itId2 = b.ID || '';
+          const itTitle = b.title || '';
           return (
             (bId1 && (itId1 === bId1 || itId2 === bId1)) ||
-            (bId2 && (itId1 === bId2 || itId2 === bId2))
+            (bId2 && (itId1 === bId2 || itId2 === bId2)) ||
+            (bTitle && (itId1 === bTitle || itId2 === bTitle || itTitle === bTitle))
           );
         }
-        return (bId1 && b === bId1) || (bId2 && b === bId2);
+        return (bId1 && b === bId1) || (bId2 && b === bId2) || (bTitle && b === bTitle);
       })
       .sort((a, b) => (Number(a.position) || 0) - (Number(b.position) || 0));
   }
