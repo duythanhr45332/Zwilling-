@@ -169,8 +169,10 @@ $w.onReady(async function () {
       shortDescription: (variant && variant.shortDescription) ? variant.shortDescription : currentProduct.shortDescription,
       mainImage: (variant && variant.mainImage) ? variant.mainImage : currentProduct.mainImage,
       gallery: (variant && variant.gallery) ? variant.gallery : currentProduct.gallery,
-      shopeeUrl: (variant && variant.shopeeUrl) ? variant.shopeeUrl : currentProduct.shopeeUrl,
-      tiktokUrl: (variant && variant.tiktokUrl) ? variant.tiktokUrl : currentProduct.tiktokUrl
+      shopeeUrl: (variant && variant.shopeeUrl) || currentProduct.shopeeUrl || '',
+      tiktokUrl: (variant && variant.tiktokUrl) || currentProduct.tiktokUrl || '',
+      messengerUrl: (variant && variant.messengerUrl) || currentProduct.messengerUrl || 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0',
+      messUrl: (variant && variant.messUrl) || currentProduct.messUrl || 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0'
     };
 
     // Gán dữ liệu vào Custom Element <wx-product-detail>

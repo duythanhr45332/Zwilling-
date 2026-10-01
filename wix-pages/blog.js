@@ -6,7 +6,7 @@
  * 1. #blogBreadcrumb (Tag Name: wx-breadcrumb)
  * 
  * HƯỚNG DẪN CÀI ĐẶT TRÊN WIX:
- * 1. Vào trang Blog trên Wix Editor/Studio
+ * 1.Vào trang Blog trên Wix Editor/Studio
  * 2. Thêm Custom Element → Tag Name: wx-breadcrumb → Server URL: link tới bundle JS
  * 3. Đặt ID cho phần tử breadcrumb: blogBreadcrumb
  * 4. Copy toàn bộ code này vào phần Code (Velo) của trang Blog
@@ -23,7 +23,7 @@ $w.onReady(function () {
       try {
         const el = $w(id);
         if (el && typeof el.setAttribute === 'function') return el;
-      } catch (e) {}
+      } catch (e) { }
     }
     return null;
   }
@@ -47,7 +47,7 @@ $w.onReady(function () {
   safeSet(breadcrumbEl, 'lang', 'vi');
   safeSet(breadcrumbEl, 'items', [
     { label: 'Trang chủ', url: '/' },
-    { label: 'Tin tức', url: '/tintuc' }
+    { label: 'Tin tức', url: '/news' }
   ]);
 
   // Xử lý click điều hướng trên breadcrumb
