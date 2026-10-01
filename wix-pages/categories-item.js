@@ -59,7 +59,9 @@ $w.onReady(async function () {
       const slugFromUrl = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1] : '';
       if (slugFromUrl) {
         const catRes = await wixData.query('Categories').eq('slug', slugFromUrl).find();
-        if (catRes.items.length > 0) currentCat = catRes.items[0];
+        if (catRes.items.length > 0) {
+          currentCat = catRes.items.find(c => c.taxonomy === 'product') || catRes.items[0];
+        }
       }
     }
 
@@ -129,16 +131,22 @@ $w.onReady(async function () {
     });
 
     // 4. Lấy danh mục con (Subcategories) của danh mục hiện tại
-    let subCatRes = await wixData.query('Categories')
-      .hasSome('parent', [catDbId, catId].filter(Boolean))
-      .ascending('sortOrder')
-      .find();
+    let subCatQuery = wixData.query('Categories')
+      .hasSome('parent', [catDbId, catId].filter(Boolean));
+    if (currentCat.taxonomy) {
+      subCatQuery = subCatQuery.eq('taxonomy', currentCat.taxonomy);
+    }
+    let subCatRes = await subCatQuery.ascending('sortOrder').find();
 
-    if (subCatRes.items.length === 0 && currentCat.slug) {
-      subCatRes = await wixData.query('Categories')
-        .startsWith('path', `/${currentCat.slug}/`)
-        .ascending('sortOrder')
-        .find();
+    // Fallback: nếu parent chưa có nhưng phân cấp theo path thực sự của danh mục cha
+    if (subCatRes.items.length === 0 && currentCat.path && currentCat.path.length > 1) {
+      let pathQuery = wixData.query('Categories')
+        .startsWith('path', currentCat.path)
+        .ne('path', currentCat.path);
+      if (catDbId) pathQuery = pathQuery.ne('_id', catDbId);
+      if (catId) pathQuery = pathQuery.ne('ID', catId);
+      if (currentCat.taxonomy) pathQuery = pathQuery.eq('taxonomy', currentCat.taxonomy);
+      subCatRes = await pathQuery.ascending('sortOrder').find();
     }
 
     if (subCatRes.items.length > 0) {

@@ -51,16 +51,15 @@ cat-p-dung-cu-ban-an--to-dia--to-chen,Tô & Chén,to-chen,product,cat-p-dung-cu-
 cat-b-gom-su-thu-cong--to-chen,Tô & Chén,to-chen,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/to-chen/,1,,,,4,49,true
 cat-p-dung-cu-ban-an--set-dung-gia-vi,Set đựng Gia vị,set-dung-gia-vi,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/set-dung-gia-vi/,1,,,,2,50,true
 cat-b-gom-su-thu-cong--set-dung-gia-vi,Set đựng Gia vị,set-dung-gia-vi,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/set-dung-gia-vi/,1,,,,2,51,true
-cat-p-dung-cu-ban-an--san-pham-dac-biet,Sản phẩm đặc biệt,san-pham-dac-biet,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/san-pham-dac-biet/,1,,,,5,52,true
-cat-b-gom-su-thu-cong--san-pham-dac-biet,Sản phẩm đặc biệt,san-pham-dac-biet,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/san-pham-dac-biet/,1,,,,5,53,true
+cat-p-dung-cu-ban-an--san-pham-dac-biet,ÂU SỨ,san-pham-dac-biet,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/san-pham-dac-biet/,1,,,,5,52,true
+cat-b-gom-su-thu-cong--san-pham-dac-biet,ÂU SỨ,san-pham-dac-biet,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/san-pham-dac-biet/,1,,,,5,53,true
 cat-p-dung-cu-ban-an--khay-nuong,Khay nướng,khay-nuong,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/khay-nuong/,1,,,,2,54,true
 cat-b-gom-su-thu-cong--khay-nuong,Khay nướng,khay-nuong,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/khay-nuong/,1,,,,2,55,true
 cat-p-dung-cu-ban-an--ly-coc,Ly & Cốc,ly-coc,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/ly-coc/,1,,,,10,56,true
 cat-p-dung-cu-ban-an--ly-coc--coc,Cốc,coc,product,cat-p-dung-cu-ban-an--ly-coc,/dung-cu-ban-an/ly-coc/coc/,2,,,,4,57,true
 cat-b-gom-su-thu-cong--coc,Cốc,coc,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/coc/,1,,,,4,58,true
-cat-p-dung-cu-ban-an--dao-dung-cu-an,Dao & Dụng cụ ăn,dao-dung-cu-an,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/dao-dung-cu-an/,1,,,,26,59,true
-cat-p-dung-cu-ban-an--dao-dung-cu-an--set-dung-cu-an,Set dụng cụ ăn,set-dung-cu-an,product,cat-p-dung-cu-ban-an--dao-dung-cu-an,/dung-cu-ban-an/dao-dung-cu-an/set-dung-cu-an/,2,,,,1,60,true
-cat-b-gom-su-thu-cong--dao-dung-cu-an,Dao & Dụng cụ ăn,dao-dung-cu-an,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/dao-dung-cu-an/,1,,,,1,61,true
+cat-p-dung-cu-ban-an--dao-dung-cu-an,Dụng cụ ăn,dao-dung-cu-an,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/dao-dung-cu-an/,1,,,,26,59,true
+cat-b-gom-su-thu-cong--dao-dung-cu-an,Dụng cụ ăn,dao-dung-cu-an,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/dao-dung-cu-an/,1,,,,1,61,true
 cat-p-bo-bao-quan-fresh-save,Bộ bảo quản Fresh & Save,bo-bao-quan-fresh-save,product,,/bo-bao-quan-fresh-save/,0,,,,15,62,true
 cat-p-bo-bao-quan-fresh-save--may-hut-chan-khong,Máy hút chân không,may-hut-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/may-hut-chan-khong/,1,,,,1,63,true
 cat-b-luu-tru-thuc-pham,Lưu trữ thực phẩm,luu-tru-thuc-pham,brand,,/luu-tru-thuc-pham/,0,,,,15,64,true
@@ -87,6 +86,6 @@ cat-b-dung-cu-nha-bep--thot,Thớt,thot,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha
 cat-b-dung-cu-nha-bep--gia-de-dung-cu-bep,Giá để dụng cụ bếp,gia-de-dung-cu-bep,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/gia-de-dung-cu-bep/,1,,,,1,85,true
 cat-p-dung-cu-nha-bep--xung,Xửng,xung,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/xung/,1,,,,1,86,true
 cat-b-dung-cu-nha-bep--xung,Xửng,xung,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/xung/,1,,,,1,87,true
-cat-b-dao-dung-cu-an,Dao & Dụng cụ ăn,dao-dung-cu-an,brand,,/dao-dung-cu-an/,0,,,,26,88,true
+cat-b-dao-dung-cu-an,Dụng cụ ăn,dao-dung-cu-an,brand,,/dao-dung-cu-an/,0,,,,26,88,true
 cat-b-binh-giu-nhiet,Bình giữ nhiệt,binh-giu-nhiet,brand,,/binh-giu-nhiet/,0,,,,3,89,true
 cat-b-ly-giu-nhiet,Ly giữ nhiệt,ly-giu-nhiet,brand,,/ly-giu-nhiet/,0,,,,2,90,true
