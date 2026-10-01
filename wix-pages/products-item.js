@@ -299,6 +299,10 @@ $w.onReady(async function () {
           const pTitleClean = pTitle.replace(/zwilling|staub|miyabi|ballarini/gi, '').replace(/\s+/g, ' ').trim();
           const pSlugClean = pSlug.replace(/-(zwilling|staub|miyabi|ballarini)-/gi, '-').replace(/^-(zwilling|staub|miyabi|ballarini)-/, '');
 
+          // Chuẩn hóa đồng nghĩa Set <-> Bộ
+          const pTitleSynonym = pTitleClean.replace(/\bset\b/gi, 'bộ');
+          const pSlugSynonym = pSlugClean.replace(/set-/g, 'bo-');
+
           let bestBlock = null;
           let maxScore = 0;
 
@@ -306,18 +310,50 @@ $w.onReady(async function () {
             let score = 0;
             const bId = (b.ID || b._id || '').toLowerCase().replace('block-', '');
             const bSt = (b.sourceTitle || '').toLowerCase();
+            const bStClean = bSt.replace(/\s*\/\s*storage/gi, '').replace(/\s*\(.*?\)/g, '').trim();
+            const bIdClean = bId.replace(/-\d+$/, '').replace(/-storage$/, '');
 
             // Loại trừ nếu block có đặc thù riêng không khớp sản phẩm
             if (bSt.includes('miệng rót') && !pTitle.includes('miệng rót') && !pSlug.includes('mieng-rot')) continue;
             if (bSt.includes('american grill') && !pTitle.includes('american grill') && !pSlug.includes('american-grill')) continue;
 
-            // Khớp chính xác cụm từ hoặc slug
-            if (bSt && (pTitle.includes(bSt) || pSlug.includes(bSt) || pTitleClean.includes(bSt) || pSlugClean.includes(bSt))) score += 20;
-            if (bId && (pSlug.includes(bId) || pTitle.includes(bId) || pSlugClean.includes(bId) || pTitleClean.includes(bId))) score += 20;
+            // Phân biệt nồi gang vs âu sứ khi có từ khóa trùng như bí ngô, cà chua
+            if (bSt.includes('âu sứ') && (pTitle.includes('nồi gang') || pSlug.includes('noi-gang'))) continue;
+            if ((bSt.includes('staub pumpkin') || bSt.includes('dáng bí ngô')) && (pTitle.includes('âu sứ') || pSlug.includes('au-su'))) continue;
 
-            // Khớp ID không tính số đuôi (-1, -2, -3)
-            const bIdClean = bId.replace(/-\d+$/, '');
-            if (bIdClean && (pSlug.includes(bIdClean) || pTitle.includes(bIdClean.replace(/-/g, ' ')) || pSlugClean.includes(bIdClean))) score += 25;
+            // Khớp chính xác cụm từ hoặc slug (bao gồm cả dạng đồng nghĩa bộ/set và bStClean)
+            if (bSt && (pTitle.includes(bSt) || pSlug.includes(bSt) || pTitleClean.includes(bSt) || pSlugClean.includes(bSt))) score += 20;
+            if (bStClean && bStClean !== bSt && (pTitle.includes(bStClean) || pSlug.includes(bStClean) || pTitleSynonym.includes(bStClean) || pSlugSynonym.includes(bStClean.replace(/\s+/g, '-')))) score += 20;
+
+            if (bId && (pSlug.includes(bId) || pTitle.includes(bId) || pSlugClean.includes(bId) || pTitleClean.includes(bId))) score += 20;
+            if (bIdClean && (pSlug.includes(bIdClean) || pTitle.includes(bIdClean.replace(/-/g, ' ')) || pSlugClean.includes(bIdClean) || pSlugSynonym.includes(bIdClean) || pTitleSynonym.includes(bIdClean.replace(/-/g, ' ')))) score += 25;
+
+            // Đặc thù: Bộ/Set đựng gia vị
+            if ((bIdClean.includes('dung-gia-vi') || bSt.includes('đựng gia vị')) && (pSlug.includes('dung-gia-vi') || pTitle.includes('đựng gia vị'))) {
+              score += 35;
+            }
+
+            // Đặc thù: Âu sứ Bí Ngô / Cà Chua / Ớt Chuông
+            if (bSt.includes('âu sứ') && bSt.includes('bí ngô') && (pSlug.includes('bi-ngo') || pTitle.includes('bí ngô')) && (pSlug.includes('au-su') || pTitle.includes('âu sứ'))) score += 35;
+            if (bSt.includes('âu sứ') && bSt.includes('cà chua') && (pSlug.includes('ca-chua') || pTitle.includes('cà chua')) && (pSlug.includes('au-su') || pTitle.includes('âu sứ'))) score += 35;
+            if (bSt.includes('ớt chuông') && (pSlug.includes('ot-chuong') || pTitle.includes('ớt chuông'))) score += 35;
+
+            // Đặc thù: Khay nướng sứ
+            if (bSt.includes('khay nướng sứ') && (pSlug.includes('khay-nuong') || pTitle.includes('khay nướng'))) score += 35;
+
+            // Đặc thù: Dụng cụ nấu ăn silicone
+            if (bSt.includes('silicone') && bSt.includes('dụng cụ nấu') && (pSlug.includes('silicone') || pTitle.includes('silicone')) && (pSlug.includes('xeng') || pSlug.includes('va-') || pSlug.includes('co-phet') || pTitle.includes('xẻng') || pTitle.includes('vá') || pTitle.includes('cọ phết'))) score += 35;
+
+            // Đặc thù: Thớt Ebony
+            if (bSt.includes('thớt ebony') && (pSlug.includes('thot') || pTitle.includes('thớt')) && (pSlug.includes('ebony') || pTitle.includes('ebony'))) score += 35;
+
+            // Đặc thù: Dinnerware sứ (Dĩa sứ, Tô sứ, Chén sứ, Cốc sứ)
+            if ((bSt.includes('dinnerware') || bIdClean.includes('dinnerware')) && (pSlug.includes('dia-su') || pSlug.includes('to-su') || pSlug.includes('chen-su') || pSlug.includes('chen-dia') || pSlug.includes('coc-') || pTitle.includes('dĩa sứ') || pTitle.includes('tô sứ') || pTitle.includes('chén sứ') || pTitle.includes('chén dĩa') || pTitle.includes('cốc'))) score += 35;
+
+            // Đặc thù: Fresh & Save Túi, Nắp, Bộ 27/40 món
+            if (bSt.includes('túi hút chân không') && (pSlug.includes('tui-bao-quan') || pTitle.includes('túi bảo quản') || pSlug.includes('tui-hut-chan-khong') || pTitle.includes('túi hút chân không'))) score += 35;
+            if (bSt.includes('nắp hút chân không') && (pSlug.includes('nap-hut-chan-khong') || pTitle.includes('nắp hút chân không'))) score += 35;
+            if (bSt.includes('hút chân không 27 / 40') && (pSlug.includes('27-mon') || pSlug.includes('40-mon') || pTitle.includes('27 món') || pTitle.includes('40 món'))) score += 35;
 
             // Xử lý dòng STAUB DÁNG TRÒN (Round Cocotte / Mini 10cm, 18-26cm)
             if (bSt.includes('dáng tròn') && (pTitle.includes('nồi gang') || pTitle.includes('mini') || pSlug.includes('mini') || pSlug.includes('dang-tron') || pTitle.includes('tròn') || pSlug.includes('tron'))) {
