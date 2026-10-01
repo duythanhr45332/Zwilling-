@@ -5,51 +5,45 @@ if (!globalThis.litPropertyMetadata) {
   globalThis.litPropertyMetadata = new WeakMap();
 }
 var litPropertyMetadata = globalThis.litPropertyMetadata;
-var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumerable: !0, configurable: !0, writable: !0, value: C }) : b[_] = C; var x = (b, _, C) => ht(b, typeof _ != "symbol" ? _ + "" : _, C); (function (b) {
-  "use strict";/**
+var pt=Object.defineProperty;var ht=(b,k,I)=>k in b?pt(b,k,{enumerable:!0,configurable:!0,writable:!0,value:I}):b[k]=I;var x=(b,k,I)=>ht(b,typeof k!="symbol"?k+"":k,I);(function(b){"use strict";/**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var Fe; const _ = globalThis, C = _.ShadowRoot && (_.ShadyCSS === void 0 || _.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, le = Symbol(), we = new WeakMap; let $e = class { constructor(e, t, s) { if (this._$cssResult$ = !0, s !== le) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead."); this.cssText = e, this.t = t } get styleSheet() { let e = this.o; const t = this.t; if (C && e === void 0) { const s = t !== void 0 && t.length === 1; s && (e = we.get(t)), e === void 0 && ((this.o = e = new CSSStyleSheet).replaceSync(this.cssText), s && we.set(t, e)) } return e } toString() { return this.cssText } }; const We = o => new $e(typeof o == "string" ? o : o + "", void 0, le), S = (o, ...e) => { const t = o.length === 1 ? o[0] : e.reduce((s, i, r) => s + (n => { if (n._$cssResult$ === !0) return n.cssText; if (typeof n == "number") return n; throw Error("Value passed to 'css' function must be a 'css' function result: " + n + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.") })(i) + o[r + 1], o[0]); return new $e(t, o, le) }, Ge = (o, e) => { if (C) o.adoptedStyleSheets = e.map(t => t instanceof CSSStyleSheet ? t : t.styleSheet); else for (const t of e) { const s = document.createElement("style"), i = _.litNonce; i !== void 0 && s.setAttribute("nonce", i), s.textContent = t.cssText, o.appendChild(s) } }, _e = C ? o => o : o => o instanceof CSSStyleSheet ? (e => { let t = ""; for (const s of e.cssRules) t += s.cssText; return We(t) })(o) : o;/**
+ */var Oe;const k=globalThis,I=k.ShadowRoot&&(k.ShadyCSS===void 0||k.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,le=Symbol(),we=new WeakMap;let $e=class{constructor(e,t,i){if(this._$cssResult$=!0,i!==le)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(I&&e===void 0){const i=t!==void 0&&t.length===1;i&&(e=we.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),i&&we.set(t,e))}return e}toString(){return this.cssText}};const We=o=>new $e(typeof o=="string"?o:o+"",void 0,le),S=(o,...e)=>{const t=o.length===1?o[0]:e.reduce((i,s,r)=>i+(n=>{if(n._$cssResult$===!0)return n.cssText;if(typeof n=="number")return n;throw Error("Value passed to 'css' function must be a 'css' function result: "+n+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(s)+o[r+1],o[0]);return new $e(t,o,le)},Ge=(o,e)=>{if(I)o.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const t of e){const i=document.createElement("style"),s=k.litNonce;s!==void 0&&i.setAttribute("nonce",s),i.textContent=t.cssText,o.appendChild(i)}},ke=I?o=>o:o=>o instanceof CSSStyleSheet?(e=>{let t="";for(const i of e.cssRules)t+=i.cssText;return We(t)})(o):o;/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const { is: Ye, defineProperty: qe, getOwnPropertyDescriptor: Ve, getOwnPropertyNames: Ke, getOwnPropertySymbols: Ze, getPrototypeOf: Xe } = Object, I = globalThis, ke = I.trustedTypes, Je = ke ? ke.emptyScript : "", ce = I.reactiveElementPolyfillSupport, O = (o, e) => o, de = { toAttribute(o, e) { switch (e) { case Boolean: o = o ? Je : null; break; case Object: case Array: o = o == null ? o : JSON.stringify(o) }return o }, fromAttribute(o, e) { let t = o; switch (e) { case Boolean: t = o !== null; break; case Number: t = o === null ? null : Number(o); break; case Object: case Array: try { t = JSON.parse(o) } catch { t = null } }return t } }, Se = (o, e) => !Ye(o, e), Ae = { attribute: !0, type: String, converter: de, reflect: !1, useDefault: !1, hasChanged: Se }; Symbol.metadata ?? (Symbol.metadata = Symbol("metadata")), I.litPropertyMetadata ?? (I.litPropertyMetadata = new WeakMap); let R = class extends HTMLElement { static addInitializer(e) { this._$Ei(), (this.l ?? (this.l = [])).push(e) } static get observedAttributes() { return this.finalize(), this._$Eh && [...this._$Eh.keys()] } static createProperty(e, t = Ae) { if (t.state && (t.attribute = !1), this._$Ei(), this.prototype.hasOwnProperty(e) && ((t = Object.create(t)).wrapped = !0), this.elementProperties.set(e, t), !t.noAccessor) { const s = Symbol(), i = this.getPropertyDescriptor(e, s, t); i !== void 0 && qe(this.prototype, e, i) } } static getPropertyDescriptor(e, t, s) { const { get: i, set: r } = Ve(this.prototype, e) ?? { get() { return this[t] }, set(n) { this[t] = n } }; return { get: i, set(n) { const a = i == null ? void 0 : i.call(this); r == null || r.call(this, n), this.requestUpdate(e, a, s) }, configurable: !0, enumerable: !0 } } static getPropertyOptions(e) { return this.elementProperties.get(e) ?? Ae } static _$Ei() { if (this.hasOwnProperty(O("elementProperties"))) return; const e = Xe(this); e.finalize(), e.l !== void 0 && (this.l = [...e.l]), this.elementProperties = new Map(e.elementProperties) } static finalize() { if (this.hasOwnProperty(O("finalized"))) return; if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(O("properties"))) { const t = this.properties, s = [...Ke(t), ...Ze(t)]; for (const i of s) this.createProperty(i, t[i]) } const e = this[Symbol.metadata]; if (e !== null) { const t = litPropertyMetadata.get(e); if (t !== void 0) for (const [s, i] of t) this.elementProperties.set(s, i) } this._$Eh = new Map; for (const [t, s] of this.elementProperties) { const i = this._$Eu(t, s); i !== void 0 && this._$Eh.set(i, t) } this.elementStyles = this.finalizeStyles(this.styles) } static finalizeStyles(e) { const t = []; if (Array.isArray(e)) { const s = new Set(e.flat(1 / 0).reverse()); for (const i of s) t.unshift(_e(i)) } else e !== void 0 && t.push(_e(e)); return t } static _$Eu(e, t) { const s = t.attribute; return s === !1 ? void 0 : typeof s == "string" ? s : typeof e == "string" ? e.toLowerCase() : void 0 } constructor() { super(), this._$Ep = void 0, this.isUpdatePending = !1, this.hasUpdated = !1, this._$Em = null, this._$Ev() } _$Ev() { var e; this._$ES = new Promise(t => this.enableUpdating = t), this._$AL = new Map, this._$E_(), this.requestUpdate(), (e = this.constructor.l) == null || e.forEach(t => t(this)) } addController(e) { var t; (this._$EO ?? (this._$EO = new Set)).add(e), this.renderRoot !== void 0 && this.isConnected && ((t = e.hostConnected) == null || t.call(e)) } removeController(e) { var t; (t = this._$EO) == null || t.delete(e) } _$E_() { const e = new Map, t = this.constructor.elementProperties; for (const s of t.keys()) this.hasOwnProperty(s) && (e.set(s, this[s]), delete this[s]); e.size > 0 && (this._$Ep = e) } createRenderRoot() { const e = this.shadowRoot ?? this.attachShadow(this.constructor.shadowRootOptions); return Ge(e, this.constructor.elementStyles), e } connectedCallback() { var e; this.renderRoot ?? (this.renderRoot = this.createRenderRoot()), this.enableUpdating(!0), (e = this._$EO) == null || e.forEach(t => { var s; return (s = t.hostConnected) == null ? void 0 : s.call(t) }) } enableUpdating(e) { } disconnectedCallback() { var e; (e = this._$EO) == null || e.forEach(t => { var s; return (s = t.hostDisconnected) == null ? void 0 : s.call(t) }) } attributeChangedCallback(e, t, s) { this._$AK(e, s) } _$ET(e, t) { var r; const s = this.constructor.elementProperties.get(e), i = this.constructor._$Eu(e, s); if (i !== void 0 && s.reflect === !0) { const n = (((r = s.converter) == null ? void 0 : r.toAttribute) !== void 0 ? s.converter : de).toAttribute(t, s.type); this._$Em = e, n == null ? this.removeAttribute(i) : this.setAttribute(i, n), this._$Em = null } } _$AK(e, t) { var r, n; const s = this.constructor, i = s._$Eh.get(e); if (i !== void 0 && this._$Em !== i) { const a = s.getPropertyOptions(i), c = typeof a.converter == "function" ? { fromAttribute: a.converter } : ((r = a.converter) == null ? void 0 : r.fromAttribute) !== void 0 ? a.converter : de; this._$Em = i; const p = c.fromAttribute(t, a.type); this[i] = p ?? ((n = this._$Ej) == null ? void 0 : n.get(i)) ?? p, this._$Em = null } } requestUpdate(e, t, s, i = !1, r) { var n; if (e !== void 0) { const a = this.constructor; if (i === !1 && (r = this[e]), s ?? (s = a.getPropertyOptions(e)), !((s.hasChanged ?? Se)(r, t) || s.useDefault && s.reflect && r === ((n = this._$Ej) == null ? void 0 : n.get(e)) && !this.hasAttribute(a._$Eu(e, s)))) return; this.C(e, t, s) } this.isUpdatePending === !1 && (this._$ES = this._$EP()) } C(e, t, { useDefault: s, reflect: i, wrapped: r }, n) { s && !(this._$Ej ?? (this._$Ej = new Map)).has(e) && (this._$Ej.set(e, n ?? t ?? this[e]), r !== !0 || n !== void 0) || (this._$AL.has(e) || (this.hasUpdated || s || (t = void 0), this._$AL.set(e, t)), i === !0 && this._$Em !== e && (this._$Eq ?? (this._$Eq = new Set)).add(e)) } async _$EP() { this.isUpdatePending = !0; try { await this._$ES } catch (t) { Promise.reject(t) } const e = this.scheduleUpdate(); return e != null && await e, !this.isUpdatePending } scheduleUpdate() { return this.performUpdate() } performUpdate() { var s; if (!this.isUpdatePending) return; if (!this.hasUpdated) { if (this.renderRoot ?? (this.renderRoot = this.createRenderRoot()), this._$Ep) { for (const [r, n] of this._$Ep) this[r] = n; this._$Ep = void 0 } const i = this.constructor.elementProperties; if (i.size > 0) for (const [r, n] of i) { const { wrapped: a } = n, c = this[r]; a !== !0 || this._$AL.has(r) || c === void 0 || this.C(r, void 0, n, c) } } let e = !1; const t = this._$AL; try { e = this.shouldUpdate(t), e ? (this.willUpdate(t), (s = this._$EO) == null || s.forEach(i => { var r; return (r = i.hostUpdate) == null ? void 0 : r.call(i) }), this.update(t)) : this._$EM() } catch (i) { throw e = !1, this._$EM(), i } e && this._$AE(t) } willUpdate(e) { } _$AE(e) { var t; (t = this._$EO) == null || t.forEach(s => { var i; return (i = s.hostUpdated) == null ? void 0 : i.call(s) }), this.hasUpdated || (this.hasUpdated = !0, this.firstUpdated(e)), this.updated(e) } _$EM() { this._$AL = new Map, this.isUpdatePending = !1 } get updateComplete() { return this.getUpdateComplete() } getUpdateComplete() { return this._$ES } shouldUpdate(e) { return !0 } update(e) { this._$Eq && (this._$Eq = this._$Eq.forEach(t => this._$ET(t, this[t]))), this._$EM() } updated(e) { } firstUpdated(e) { } }; R.elementStyles = [], R.shadowRootOptions = { mode: "open" }, R[O("elementProperties")] = new Map, R[O("finalized")] = new Map, ce == null || ce({ ReactiveElement: R }), (I.reactiveElementVersions ?? (I.reactiveElementVersions = [])).push("2.1.2");/**
+ */const{is:Ye,defineProperty:Ve,getOwnPropertyDescriptor:qe,getOwnPropertyNames:Ke,getOwnPropertySymbols:Ze,getPrototypeOf:Xe}=Object,P=globalThis,_e=P.trustedTypes,Je=_e?_e.emptyScript:"",ce=P.reactiveElementPolyfillSupport,D=(o,e)=>o,de={toAttribute(o,e){switch(e){case Boolean:o=o?Je:null;break;case Object:case Array:o=o==null?o:JSON.stringify(o)}return o},fromAttribute(o,e){let t=o;switch(e){case Boolean:t=o!==null;break;case Number:t=o===null?null:Number(o);break;case Object:case Array:try{t=JSON.parse(o)}catch{t=null}}return t}},Se=(o,e)=>!Ye(o,e),Ae={attribute:!0,type:String,converter:de,reflect:!1,useDefault:!1,hasChanged:Se};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),P.litPropertyMetadata??(P.litPropertyMetadata=new WeakMap);let U=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??(this.l=[])).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=Ae){if(t.state&&(t.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(e)&&((t=Object.create(t)).wrapped=!0),this.elementProperties.set(e,t),!t.noAccessor){const i=Symbol(),s=this.getPropertyDescriptor(e,i,t);s!==void 0&&Ve(this.prototype,e,s)}}static getPropertyDescriptor(e,t,i){const{get:s,set:r}=qe(this.prototype,e)??{get(){return this[t]},set(n){this[t]=n}};return{get:s,set(n){const a=s==null?void 0:s.call(this);r==null||r.call(this,n),this.requestUpdate(e,a,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??Ae}static _$Ei(){if(this.hasOwnProperty(D("elementProperties")))return;const e=Xe(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(D("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(D("properties"))){const t=this.properties,i=[...Ke(t),...Ze(t)];for(const s of i)this.createProperty(s,t[s])}const e=this[Symbol.metadata];if(e!==null){const t=litPropertyMetadata.get(e);if(t!==void 0)for(const[i,s]of t)this.elementProperties.set(i,s)}this._$Eh=new Map;for(const[t,i]of this.elementProperties){const s=this._$Eu(t,i);s!==void 0&&this._$Eh.set(s,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const i=new Set(e.flat(1/0).reverse());for(const s of i)t.unshift(ke(s))}else e!==void 0&&t.push(ke(e));return t}static _$Eu(e,t){const i=t.attribute;return i===!1?void 0:typeof i=="string"?i:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){var e;this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),(e=this.constructor.l)==null||e.forEach(t=>t(this))}addController(e){var t;(this._$EO??(this._$EO=new Set)).add(e),this.renderRoot!==void 0&&this.isConnected&&((t=e.hostConnected)==null||t.call(e))}removeController(e){var t;(t=this._$EO)==null||t.delete(e)}_$E_(){const e=new Map,t=this.constructor.elementProperties;for(const i of t.keys())this.hasOwnProperty(i)&&(e.set(i,this[i]),delete this[i]);e.size>0&&(this._$Ep=e)}createRenderRoot(){const e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return Ge(e,this.constructor.elementStyles),e}connectedCallback(){var e;this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$EO)==null||e.forEach(t=>{var i;return(i=t.hostConnected)==null?void 0:i.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$EO)==null||e.forEach(t=>{var i;return(i=t.hostDisconnected)==null?void 0:i.call(t)})}attributeChangedCallback(e,t,i){this._$AK(e,i)}_$ET(e,t){var r;const i=this.constructor.elementProperties.get(e),s=this.constructor._$Eu(e,i);if(s!==void 0&&i.reflect===!0){const n=(((r=i.converter)==null?void 0:r.toAttribute)!==void 0?i.converter:de).toAttribute(t,i.type);this._$Em=e,n==null?this.removeAttribute(s):this.setAttribute(s,n),this._$Em=null}}_$AK(e,t){var r,n;const i=this.constructor,s=i._$Eh.get(e);if(s!==void 0&&this._$Em!==s){const a=i.getPropertyOptions(s),c=typeof a.converter=="function"?{fromAttribute:a.converter}:((r=a.converter)==null?void 0:r.fromAttribute)!==void 0?a.converter:de;this._$Em=s;const p=c.fromAttribute(t,a.type);this[s]=p??((n=this._$Ej)==null?void 0:n.get(s))??p,this._$Em=null}}requestUpdate(e,t,i,s=!1,r){var n;if(e!==void 0){const a=this.constructor;if(s===!1&&(r=this[e]),i??(i=a.getPropertyOptions(e)),!((i.hasChanged??Se)(r,t)||i.useDefault&&i.reflect&&r===((n=this._$Ej)==null?void 0:n.get(e))&&!this.hasAttribute(a._$Eu(e,i))))return;this.C(e,t,i)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(e,t,{useDefault:i,reflect:s,wrapped:r},n){i&&!(this._$Ej??(this._$Ej=new Map)).has(e)&&(this._$Ej.set(e,n??t??this[e]),r!==!0||n!==void 0)||(this._$AL.has(e)||(this.hasUpdated||i||(t=void 0),this._$AL.set(e,t)),s===!0&&this._$Em!==e&&(this._$Eq??(this._$Eq=new Set)).add(e))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var i;if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[r,n]of this._$Ep)this[r]=n;this._$Ep=void 0}const s=this.constructor.elementProperties;if(s.size>0)for(const[r,n]of s){const{wrapped:a}=n,c=this[r];a!==!0||this._$AL.has(r)||c===void 0||this.C(r,void 0,n,c)}}let e=!1;const t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),(i=this._$EO)==null||i.forEach(s=>{var r;return(r=s.hostUpdate)==null?void 0:r.call(s)}),this.update(t)):this._$EM()}catch(s){throw e=!1,this._$EM(),s}e&&this._$AE(t)}willUpdate(e){}_$AE(e){var t;(t=this._$EO)==null||t.forEach(i=>{var s;return(s=i.hostUpdated)==null?void 0:s.call(i)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Eq&&(this._$Eq=this._$Eq.forEach(t=>this._$ET(t,this[t]))),this._$EM()}updated(e){}firstUpdated(e){}};U.elementStyles=[],U.shadowRootOptions={mode:"open"},U[D("elementProperties")]=new Map,U[D("finalized")]=new Map,ce==null||ce({ReactiveElement:U}),(P.reactiveElementVersions??(P.reactiveElementVersions=[])).push("2.1.2");/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const F = globalThis, Ce = o => o, J = F.trustedTypes, Ie = J ? J.createPolicy("lit-html", { createHTML: o => o }) : void 0, Pe = "$lit$", P = `lit$${Math.random().toFixed(9).slice(2)}$`, Te = "?" + P, Qe = `<${Te}>`, z = document, j = () => z.createComment(""), W = o => o === null || typeof o != "object" && typeof o != "function", pe = Array.isArray, et = o => pe(o) || typeof (o == null ? void 0 : o[Symbol.iterator]) == "function", he = `[ 	
-\f\r]`, G = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Ee = /-->/g, ze = />/g, N = RegExp(`>|${he}(?:([^\\s"'>=/]+)(${he}*=${he}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Ne = /'/g, Le = /"/g, Me = /^(?:script|style|textarea|title)$/i, tt = o => (e, ...t) => ({ _$litType$: o, strings: e, values: t }), l = tt(1), U = Symbol.for("lit-noChange"), y = Symbol.for("lit-nothing"), Be = new WeakMap, L = z.createTreeWalker(z, 129); function Re(o, e) { if (!pe(o) || !o.hasOwnProperty("raw")) throw Error("invalid template strings array"); return Ie !== void 0 ? Ie.createHTML(e) : e } const it = (o, e) => { const t = o.length - 1, s = []; let i, r = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", n = G; for (let a = 0; a < t; a++) { const c = o[a]; let p, u, g = -1, h = 0; for (; h < c.length && (n.lastIndex = h, u = n.exec(c), u !== null);)h = n.lastIndex, n === G ? u[1] === "!--" ? n = Ee : u[1] !== void 0 ? n = ze : u[2] !== void 0 ? (Me.test(u[2]) && (i = RegExp("</" + u[2], "g")), n = N) : u[3] !== void 0 && (n = N) : n === N ? u[0] === ">" ? (n = i ?? G, g = -1) : u[1] === void 0 ? g = -2 : (g = n.lastIndex - u[2].length, p = u[1], n = u[3] === void 0 ? N : u[3] === '"' ? Le : Ne) : n === Le || n === Ne ? n = N : n === Ee || n === ze ? n = G : (n = N, i = void 0); const f = n === N && o[a + 1].startsWith("/>") ? " " : ""; r += n === G ? c + Qe : g >= 0 ? (s.push(p), c.slice(0, g) + Pe + c.slice(g) + P + f) : c + P + (g === -2 ? a : f) } return [Re(o, r + (o[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), s] }; class Y { constructor({ strings: e, _$litType$: t }, s) { let i; this.parts = []; let r = 0, n = 0; const a = e.length - 1, c = this.parts, [p, u] = it(e, t); if (this.el = Y.createElement(p, s), L.currentNode = this.el.content, t === 2 || t === 3) { const g = this.el.content.firstChild; g.replaceWith(...g.childNodes) } for (; (i = L.nextNode()) !== null && c.length < a;) { if (i.nodeType === 1) { if (i.hasAttributes()) for (const g of i.getAttributeNames()) if (g.endsWith(Pe)) { const h = u[n++], f = i.getAttribute(g).split(P), m = /([.?@])?(.*)/.exec(h); c.push({ type: 1, index: r, name: m[2], strings: f, ctor: m[1] === "." ? rt : m[1] === "?" ? ot : m[1] === "@" ? nt : Q }), i.removeAttribute(g) } else g.startsWith(P) && (c.push({ type: 6, index: r }), i.removeAttribute(g)); if (Me.test(i.tagName)) { const g = i.textContent.split(P), h = g.length - 1; if (h > 0) { i.textContent = J ? J.emptyScript : ""; for (let f = 0; f < h; f++)i.append(g[f], j()), L.nextNode(), c.push({ type: 2, index: ++r }); i.append(g[h], j()) } } } else if (i.nodeType === 8) if (i.data === Te) c.push({ type: 2, index: r }); else { let g = -1; for (; (g = i.data.indexOf(P, g + 1)) !== -1;)c.push({ type: 7, index: r }), g += P.length - 1 } r++ } } static createElement(e, t) { const s = z.createElement("template"); return s.innerHTML = e, s } } function H(o, e, t = o, s) { var n, a; if (e === U) return e; let i = s !== void 0 ? (n = t._$Co) == null ? void 0 : n[s] : t._$Cl; const r = W(e) ? void 0 : e._$litDirective$; return (i == null ? void 0 : i.constructor) !== r && ((a = i == null ? void 0 : i._$AO) == null || a.call(i, !1), r === void 0 ? i = void 0 : (i = new r(o), i._$AT(o, t, s)), s !== void 0 ? (t._$Co ?? (t._$Co = []))[s] = i : t._$Cl = i), i !== void 0 && (e = H(o, i._$AS(o, e.values), i, s)), e } class st { constructor(e, t) { this._$AV = [], this._$AN = void 0, this._$AD = e, this._$AM = t } get parentNode() { return this._$AM.parentNode } get _$AU() { return this._$AM._$AU } u(e) { const { el: { content: t }, parts: s } = this._$AD, i = ((e == null ? void 0 : e.creationScope) ?? z).importNode(t, !0); L.currentNode = i; let r = L.nextNode(), n = 0, a = 0, c = s[0]; for (; c !== void 0;) { if (n === c.index) { let p; c.type === 2 ? p = new q(r, r.nextSibling, this, e) : c.type === 1 ? p = new c.ctor(r, c.name, c.strings, this, e) : c.type === 6 && (p = new at(r, this, e)), this._$AV.push(p), c = s[++a] } n !== (c == null ? void 0 : c.index) && (r = L.nextNode(), n++) } return L.currentNode = z, i } p(e) { let t = 0; for (const s of this._$AV) s !== void 0 && (s.strings !== void 0 ? (s._$AI(e, s, t), t += s.strings.length - 2) : s._$AI(e[t])), t++ } } class q { get _$AU() { var e; return ((e = this._$AM) == null ? void 0 : e._$AU) ?? this._$Cv } constructor(e, t, s, i) { this.type = 2, this._$AH = y, this._$AN = void 0, this._$AA = e, this._$AB = t, this._$AM = s, this.options = i, this._$Cv = (i == null ? void 0 : i.isConnected) ?? !0 } get parentNode() { let e = this._$AA.parentNode; const t = this._$AM; return t !== void 0 && (e == null ? void 0 : e.nodeType) === 11 && (e = t.parentNode), e } get startNode() { return this._$AA } get endNode() { return this._$AB } _$AI(e, t = this) { e = H(this, e, t), W(e) ? e === y || e == null || e === "" ? (this._$AH !== y && this._$AR(), this._$AH = y) : e !== this._$AH && e !== U && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : et(e) ? this.k(e) : this._(e) } O(e) { return this._$AA.parentNode.insertBefore(e, this._$AB) } T(e) { this._$AH !== e && (this._$AR(), this._$AH = this.O(e)) } _(e) { this._$AH !== y && W(this._$AH) ? this._$AA.nextSibling.data = e : this.T(z.createTextNode(e)), this._$AH = e } $(e) { var r; const { values: t, _$litType$: s } = e, i = typeof s == "number" ? this._$AC(e) : (s.el === void 0 && (s.el = Y.createElement(Re(s.h, s.h[0]), this.options)), s); if (((r = this._$AH) == null ? void 0 : r._$AD) === i) this._$AH.p(t); else { const n = new st(i, this), a = n.u(this.options); n.p(t), this.T(a), this._$AH = n } } _$AC(e) { let t = Be.get(e.strings); return t === void 0 && Be.set(e.strings, t = new Y(e)), t } k(e) { pe(this._$AH) || (this._$AH = [], this._$AR()); const t = this._$AH; let s, i = 0; for (const r of e) i === t.length ? t.push(s = new q(this.O(j()), this.O(j()), this, this.options)) : s = t[i], s._$AI(r), i++; i < t.length && (this._$AR(s && s._$AB.nextSibling, i), t.length = i) } _$AR(e = this._$AA.nextSibling, t) { var s; for ((s = this._$AP) == null ? void 0 : s.call(this, !1, !0, t); e !== this._$AB;) { const i = Ce(e).nextSibling; Ce(e).remove(), e = i } } setConnected(e) { var t; this._$AM === void 0 && (this._$Cv = e, (t = this._$AP) == null || t.call(this, e)) } } class Q { get tagName() { return this.element.tagName } get _$AU() { return this._$AM._$AU } constructor(e, t, s, i, r) { this.type = 1, this._$AH = y, this._$AN = void 0, this.element = e, this.name = t, this._$AM = i, this.options = r, s.length > 2 || s[0] !== "" || s[1] !== "" ? (this._$AH = Array(s.length - 1).fill(new String), this.strings = s) : this._$AH = y } _$AI(e, t = this, s, i) { const r = this.strings; let n = !1; if (r === void 0) e = H(this, e, t, 0), n = !W(e) || e !== this._$AH && e !== U, n && (this._$AH = e); else { const a = e; let c, p; for (e = r[0], c = 0; c < r.length - 1; c++)p = H(this, a[s + c], t, c), p === U && (p = this._$AH[c]), n || (n = !W(p) || p !== this._$AH[c]), p === y ? e = y : e !== y && (e += (p ?? "") + r[c + 1]), this._$AH[c] = p } n && !i && this.j(e) } j(e) { e === y ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "") } } class rt extends Q { constructor() { super(...arguments), this.type = 3 } j(e) { this.element[this.name] = e === y ? void 0 : e } } class ot extends Q { constructor() { super(...arguments), this.type = 4 } j(e) { this.element.toggleAttribute(this.name, !!e && e !== y) } } class nt extends Q { constructor(e, t, s, i, r) { super(e, t, s, i, r), this.type = 5 } _$AI(e, t = this) { if ((e = H(this, e, t, 0) ?? y) === U) return; const s = this._$AH, i = e === y && s !== y || e.capture !== s.capture || e.once !== s.once || e.passive !== s.passive, r = e !== y && (s === y || i); i && this.element.removeEventListener(this.name, this, s), r && this.element.addEventListener(this.name, this, e), this._$AH = e } handleEvent(e) { var t; typeof this._$AH == "function" ? this._$AH.call(((t = this.options) == null ? void 0 : t.host) ?? this.element, e) : this._$AH.handleEvent(e) } } class at { constructor(e, t, s) { this.element = e, this.type = 6, this._$AN = void 0, this._$AM = t, this.options = s } get _$AU() { return this._$AM._$AU } _$AI(e) { H(this, e) } } const ge = F.litHtmlPolyfillSupport; ge == null || ge(Y, q), (F.litHtmlVersions ?? (F.litHtmlVersions = [])).push("3.3.3"); const lt = (o, e, t) => { const s = (t == null ? void 0 : t.renderBefore) ?? e; let i = s._$litPart$; if (i === void 0) { const r = (t == null ? void 0 : t.renderBefore) ?? null; s._$litPart$ = i = new q(e.insertBefore(j(), r), r, void 0, t ?? {}) } return i._$AI(o), i };/**
+ */const O=globalThis,Ce=o=>o,J=O.trustedTypes,Ie=J?J.createPolicy("lit-html",{createHTML:o=>o}):void 0,Pe="$lit$",T=`lit$${Math.random().toFixed(9).slice(2)}$`,Te="?"+T,Qe=`<${Te}>`,M=document,j=()=>M.createComment(""),W=o=>o===null||typeof o!="object"&&typeof o!="function",pe=Array.isArray,et=o=>pe(o)||typeof(o==null?void 0:o[Symbol.iterator])=="function",he=`[ 	
+\f\r]`,G=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,Ee=/-->/g,ze=/>/g,N=RegExp(`>|${he}(?:([^\\s"'>=/]+)(${he}*=${he}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`,"g"),Me=/'/g,Ne=/"/g,Le=/^(?:script|style|textarea|title)$/i,tt=o=>(e,...t)=>({_$litType$:o,strings:e,values:t}),l=tt(1),F=Symbol.for("lit-noChange"),y=Symbol.for("lit-nothing"),Be=new WeakMap,L=M.createTreeWalker(M,129);function Ue(o,e){if(!pe(o)||!o.hasOwnProperty("raw"))throw Error("invalid template strings array");return Ie!==void 0?Ie.createHTML(e):e}const it=(o,e)=>{const t=o.length-1,i=[];let s,r=e===2?"<svg>":e===3?"<math>":"",n=G;for(let a=0;a<t;a++){const c=o[a];let p,u,g=-1,h=0;for(;h<c.length&&(n.lastIndex=h,u=n.exec(c),u!==null);)h=n.lastIndex,n===G?u[1]==="!--"?n=Ee:u[1]!==void 0?n=ze:u[2]!==void 0?(Le.test(u[2])&&(s=RegExp("</"+u[2],"g")),n=N):u[3]!==void 0&&(n=N):n===N?u[0]===">"?(n=s??G,g=-1):u[1]===void 0?g=-2:(g=n.lastIndex-u[2].length,p=u[1],n=u[3]===void 0?N:u[3]==='"'?Ne:Me):n===Ne||n===Me?n=N:n===Ee||n===ze?n=G:(n=N,s=void 0);const f=n===N&&o[a+1].startsWith("/>")?" ":"";r+=n===G?c+Qe:g>=0?(i.push(p),c.slice(0,g)+Pe+c.slice(g)+T+f):c+T+(g===-2?a:f)}return[Ue(o,r+(o[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),i]};class Y{constructor({strings:e,_$litType$:t},i){let s;this.parts=[];let r=0,n=0;const a=e.length-1,c=this.parts,[p,u]=it(e,t);if(this.el=Y.createElement(p,i),L.currentNode=this.el.content,t===2||t===3){const g=this.el.content.firstChild;g.replaceWith(...g.childNodes)}for(;(s=L.nextNode())!==null&&c.length<a;){if(s.nodeType===1){if(s.hasAttributes())for(const g of s.getAttributeNames())if(g.endsWith(Pe)){const h=u[n++],f=s.getAttribute(g).split(T),m=/([.?@])?(.*)/.exec(h);c.push({type:1,index:r,name:m[2],strings:f,ctor:m[1]==="."?rt:m[1]==="?"?ot:m[1]==="@"?nt:Q}),s.removeAttribute(g)}else g.startsWith(T)&&(c.push({type:6,index:r}),s.removeAttribute(g));if(Le.test(s.tagName)){const g=s.textContent.split(T),h=g.length-1;if(h>0){s.textContent=J?J.emptyScript:"";for(let f=0;f<h;f++)s.append(g[f],j()),L.nextNode(),c.push({type:2,index:++r});s.append(g[h],j())}}}else if(s.nodeType===8)if(s.data===Te)c.push({type:2,index:r});else{let g=-1;for(;(g=s.data.indexOf(T,g+1))!==-1;)c.push({type:7,index:r}),g+=T.length-1}r++}}static createElement(e,t){const i=M.createElement("template");return i.innerHTML=e,i}}function R(o,e,t=o,i){var n,a;if(e===F)return e;let s=i!==void 0?(n=t._$Co)==null?void 0:n[i]:t._$Cl;const r=W(e)?void 0:e._$litDirective$;return(s==null?void 0:s.constructor)!==r&&((a=s==null?void 0:s._$AO)==null||a.call(s,!1),r===void 0?s=void 0:(s=new r(o),s._$AT(o,t,i)),i!==void 0?(t._$Co??(t._$Co=[]))[i]=s:t._$Cl=s),s!==void 0&&(e=R(o,s._$AS(o,e.values),s,i)),e}class st{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){const{el:{content:t},parts:i}=this._$AD,s=((e==null?void 0:e.creationScope)??M).importNode(t,!0);L.currentNode=s;let r=L.nextNode(),n=0,a=0,c=i[0];for(;c!==void 0;){if(n===c.index){let p;c.type===2?p=new V(r,r.nextSibling,this,e):c.type===1?p=new c.ctor(r,c.name,c.strings,this,e):c.type===6&&(p=new at(r,this,e)),this._$AV.push(p),c=i[++a]}n!==(c==null?void 0:c.index)&&(r=L.nextNode(),n++)}return L.currentNode=M,s}p(e){let t=0;for(const i of this._$AV)i!==void 0&&(i.strings!==void 0?(i._$AI(e,i,t),t+=i.strings.length-2):i._$AI(e[t])),t++}}class V{get _$AU(){var e;return((e=this._$AM)==null?void 0:e._$AU)??this._$Cv}constructor(e,t,i,s){this.type=2,this._$AH=y,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=i,this.options=s,this._$Cv=(s==null?void 0:s.isConnected)??!0}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&(e==null?void 0:e.nodeType)===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=R(this,e,t),W(e)?e===y||e==null||e===""?(this._$AH!==y&&this._$AR(),this._$AH=y):e!==this._$AH&&e!==F&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):et(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==y&&W(this._$AH)?this._$AA.nextSibling.data=e:this.T(M.createTextNode(e)),this._$AH=e}$(e){var r;const{values:t,_$litType$:i}=e,s=typeof i=="number"?this._$AC(e):(i.el===void 0&&(i.el=Y.createElement(Ue(i.h,i.h[0]),this.options)),i);if(((r=this._$AH)==null?void 0:r._$AD)===s)this._$AH.p(t);else{const n=new st(s,this),a=n.u(this.options);n.p(t),this.T(a),this._$AH=n}}_$AC(e){let t=Be.get(e.strings);return t===void 0&&Be.set(e.strings,t=new Y(e)),t}k(e){pe(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let i,s=0;for(const r of e)s===t.length?t.push(i=new V(this.O(j()),this.O(j()),this,this.options)):i=t[s],i._$AI(r),s++;s<t.length&&(this._$AR(i&&i._$AB.nextSibling,s),t.length=s)}_$AR(e=this._$AA.nextSibling,t){var i;for((i=this._$AP)==null?void 0:i.call(this,!1,!0,t);e!==this._$AB;){const s=Ce(e).nextSibling;Ce(e).remove(),e=s}}setConnected(e){var t;this._$AM===void 0&&(this._$Cv=e,(t=this._$AP)==null||t.call(this,e))}}class Q{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,i,s,r){this.type=1,this._$AH=y,this._$AN=void 0,this.element=e,this.name=t,this._$AM=s,this.options=r,i.length>2||i[0]!==""||i[1]!==""?(this._$AH=Array(i.length-1).fill(new String),this.strings=i):this._$AH=y}_$AI(e,t=this,i,s){const r=this.strings;let n=!1;if(r===void 0)e=R(this,e,t,0),n=!W(e)||e!==this._$AH&&e!==F,n&&(this._$AH=e);else{const a=e;let c,p;for(e=r[0],c=0;c<r.length-1;c++)p=R(this,a[i+c],t,c),p===F&&(p=this._$AH[c]),n||(n=!W(p)||p!==this._$AH[c]),p===y?e=y:e!==y&&(e+=(p??"")+r[c+1]),this._$AH[c]=p}n&&!s&&this.j(e)}j(e){e===y?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class rt extends Q{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===y?void 0:e}}class ot extends Q{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==y)}}class nt extends Q{constructor(e,t,i,s,r){super(e,t,i,s,r),this.type=5}_$AI(e,t=this){if((e=R(this,e,t,0)??y)===F)return;const i=this._$AH,s=e===y&&i!==y||e.capture!==i.capture||e.once!==i.once||e.passive!==i.passive,r=e!==y&&(i===y||s);s&&this.element.removeEventListener(this.name,this,i),r&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t;typeof this._$AH=="function"?this._$AH.call(((t=this.options)==null?void 0:t.host)??this.element,e):this._$AH.handleEvent(e)}}class at{constructor(e,t,i){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=i}get _$AU(){return this._$AM._$AU}_$AI(e){R(this,e)}}const ge=O.litHtmlPolyfillSupport;ge==null||ge(Y,V),(O.litHtmlVersions??(O.litHtmlVersions=[])).push("3.3.3");const lt=(o,e,t)=>{const i=(t==null?void 0:t.renderBefore)??e;let s=i._$litPart$;if(s===void 0){const r=(t==null?void 0:t.renderBefore)??null;i._$litPart$=s=new V(e.insertBefore(j(),r),r,void 0,t??{})}return s._$AI(o),s};/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const M = globalThis; class $ extends R { constructor() { super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0 } createRenderRoot() { var t; const e = super.createRenderRoot(); return (t = this.renderOptions).renderBefore ?? (t.renderBefore = e.firstChild), e } update(e) { const t = this.render(); this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = lt(t, this.renderRoot, this.renderOptions) } connectedCallback() { var e; super.connectedCallback(), (e = this._$Do) == null || e.setConnected(!0) } disconnectedCallback() { var e; super.disconnectedCallback(), (e = this._$Do) == null || e.setConnected(!1) } render() { return U } } $._$litElement$ = !0, $.finalized = !0, (Fe = M.litElementHydrateSupport) == null || Fe.call(M, { LitElement: $ }); const ue = M.litElementPolyfillSupport; ue == null || ue({ LitElement: $ }), (M.litElementVersions ?? (M.litElementVersions = [])).push("4.2.2"); function w(o, e) { if (!(typeof window > "u" || !window.customElements || window.customElements.get(o))) try { window.customElements.define(o, e) } catch (s) { if (s.name === "NotSupportedError" && s.message.includes("constructor")) { class i extends e { } window.customElements.define(o, i) } else console.warn(`[my-wix-ui-lib] Không thể đăng ký ${o}:`, s) } } function B(o, e, t = {}) { const s = new CustomEvent(e, { detail: t, bubbles: !0, composed: !0, cancelable: !0 }); return o.dispatchEvent(s), s } function V(o) { if (o == null || o === "") return ""; if (typeof o == "string") { const e = Number(o.replace(/[^\d]/g, "")); !isNaN(e) && e > 0 && (o = e) } return isNaN(o) || Number(o) <= 0 ? "" : new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND", maximumFractionDigits: 0 }).format(o) } function fe(o) { if (!o || typeof o != "object") return 0; const e = [o.minPrice, o.price, o.min_price, o.regularPrice, o.unitPrice, o.gia, o.donGia, o.cost, o.maxPrice, o.max_price]; for (const t of e) if (t != null && t !== "") { if (typeof t == "number" && t > 0) return t; if (typeof t == "string") { const s = Number(t.replace(/[^\d]/g, "")); if (!isNaN(s) && s > 0) return s } } return 0 } function me(o) { if (!o || typeof o != "object") return { price: 0, comparePrice: null, discountPercent: null }; const e = a => { if (a == null || a === "") return 0; if (typeof a == "number") return isNaN(a) ? 0 : a; if (typeof a == "string") { const c = Number(a.replace(/[^\d]/g, "")); return isNaN(c) ? 0 : c } return 0 }, t = e(o.maxPrice) || e(o.max_price) || e(o.compareAtPrice) || e(o.regularPrice) || e(o.price), s = e(o.minPrice) || e(o.min_price) || e(o.discountedPrice); let i = 0, r = null, n = null; return t > 0 && s > 0 && t > s ? (i = s, r = t, n = Math.round((t - s) / t * 100)) : (i = t || s || e(o.price) || e(o.unitPrice), r = null, n = null), (!i || i <= 0) && typeof fe == "function" && (i = fe(o)), { price: i, comparePrice: r, discountPercent: n } } function ct(o) { if (!o || typeof o != "object") return 0; const { price: e } = me(o); if (typeof e == "number" && !isNaN(e) && e > 0) return e; const t = fe(o); return typeof t == "number" && !isNaN(t) && t > 0 ? t : 0 } function be(o, e = null) { if (!o) return e; if (typeof o == "object") return o; try { return JSON.parse(o) } catch { return e } } function T(o, e = "") { if (!o || (typeof o == "object" && o && (o = o.src || o.url || e), typeof o != "string")) return e; const t = o.trim(); if (!t) return e; if (t.startsWith("wix:image://")) { const s = t.split("/"); if (s.length >= 4) return `https://static.wixstatic.com/media/${s[3].split("#")[0]}` } return t } function xe(o) { if (!o) return []; if (typeof o == "string") { const e = o.trim(); if (e.startsWith("[") || e.startsWith("{")) try { const t = JSON.parse(e); t && (o = t) } catch { } } return Array.isArray(o) ? o.map(e => e ? typeof e == "object" ? e.src || e.url || "" : String(e) : "").filter(Boolean) : typeof o != "string" ? [] : o.split(";").map(e => e.trim()).filter(Boolean) } function Ue(o) { return typeof o != "string" ? "" : o.replace(/&quot;/g, '"').replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">") } const v = { fromAttribute(o) { if (!o) return []; if (typeof o == "object") return Array.isArray(o) ? o : [o]; try { let e = typeof o == "string" ? Ue(o.trim()) : ""; if (e.startsWith("[") || e.startsWith("{")) { const t = JSON.parse(e); return Array.isArray(t) ? t : [t] } if (e.includes(">") || e.includes(",")) { const t = e.includes(">") ? ">" : ","; return e.split(t).map(s => s.trim()).filter(Boolean).map((s, i, r) => ({ label: s, url: i === 0 ? "/" : i === r.length - 1 ? "#" : "" })) } return e ? [{ label: e, url: "#" }] : [] } catch (e) { return console.warn("[jsonArrayConverter] Lỗi parse JSON:", e, o), [] } }, toAttribute(o) { return JSON.stringify(o) } }, k = { fromAttribute(o) { if (!o) return null; if (typeof o == "object") return o; try { let e = typeof o == "string" ? Ue(o.trim()) : ""; return JSON.parse(e) } catch (e) { return console.warn("[jsonObjectConverter] Lỗi parse JSON:", e, o), null } }, toAttribute(o) { return JSON.stringify(o) } }, ye = { fromAttribute(o) { if (o == null) return !1; if (typeof o == "boolean") return o; const e = String(o).trim().toLowerCase(); return !(e === "false" || e === "0" || e === "" || e === "null" || e === "undefined") }, toAttribute(o) { return o ? "true" : null } }, ee = { vi: { resultsCount: o => `${o} sản phẩm`, sortBy: "Sắp xếp theo", sortPriceAsc: "Giá: Thấp đến Cao", sortPriceDesc: "Giá: Cao đến Thấp", sortTitleAsc: "Tên: A đến Z", filterCategory: "Danh mục", filterBrand: "Thương hiệu", filterSeries: "Dòng sản phẩm", filterPrice: "Mức giá", clearAll: "Xóa tất cả", emptyProducts: "Không có sản phẩm nào phù hợp với bộ lọc.", showingItems: (o, e) => `Đang hiển thị ${o} trên tổng số ${e} sản phẩm`, loadMore: "XEM THÊM SẢN PHẨM", searchFilters: "BỘ LỌC TÌM KIẾM", clear: "Xóa", categories: "DANH MỤC", allCategories: "Tất cả danh mục", noCategories: "Không có danh mục nào", brands: "THƯƠNG HIỆU", allBrands: "Tất cả thương hiệu", series: "DÒNG SẢN PHẨM", allSeries: "Tất cả dòng sản phẩm", noSeries: "Không có dòng sản phẩm nào", priceRange: "KHOẢNG GIÁ", allPrices: "Tất cả mức giá", priceUnder1m: "Dưới 1.000.000 ₫", price1mTo3m: "1.000.000 ₫ - 3.000.000 ₫", price3mTo5m: "3.000.000 ₫ - 5.000.000 ₫", priceOver5m: "Trên 5.000.000 ₫", reset: "Thiết lập lại", viewResults: o => `Xem ${o} sản phẩm`, close: "Đóng", productFilterAria: "Bộ lọc sản phẩm", contactUs: "Liên hệ", noImage: "Chưa có ảnh", prevImage: "Ảnh trước", nextImage: "Ảnh sau", seriesLabel: o => `Dòng sản phẩm: ${o}`, reviewsCount: o => `(${o} Đánh giá)`, highlights: "Đặc điểm nổi bật:", descriptionTab: "MÔ TẢ SẢN PHẨM", specsTab: "THÔNG SỐ KỸ THUẬT", instructionsTab: "HƯỚNG DẪN SỬ DỤNG & BẢO QUẢN", noDescription: "Chưa có thông tin mô tả cho sản phẩm này.", noSpecs: "Chưa có thông số kỹ thuật.", defaultInstructions: ["Vệ sinh bằng tay với nước ấm và xà phòng nhẹ sau khi sử dụng.", "Lau khô hoàn toàn trước khi cất giữ.", "Bảo quản nơi khô ráo, thoáng mát."], relatedProducts: "SẢN PHẨM LIÊN QUAN", toolbarResults: o => `${o} KẾT QUẢ`, allBrandsToolbar: "Tất cả Thương hiệu", allCategoriesToolbar: "Tất cả Danh mục", sortDefault: "Sắp xếp: Mặc định", clearFilters: "Xóa bộ lọc", brandSectionTitle: "THƯƠNG HIỆU", seriesSectionTitle: "DÒNG SẢN PHẨM", seriesTag: "Dòng sản phẩm", scrollLeft: "Cuộn sang trái", scrollRight: "Cuộn sang phải", home: "TRANG CHỦ", products: "SẢN PHẨM", brandsBreadcrumb: "THƯƠNG HIỆU", about: "GIỚI THIỆU", news: "TIN TỨC" }, en: { resultsCount: o => `${o} Results`, sortBy: "Sort by", sortPriceAsc: "Price: Low to High", sortPriceDesc: "Price: High to Low", sortTitleAsc: "Name: A to Z", filterCategory: "Category", filterBrand: "Brand", filterSeries: "Series", filterPrice: "Price", clearAll: "Clear All", emptyProducts: "No products found matching your filters.", showingItems: (o, e) => `Showing ${o} of ${e} items`, loadMore: "LOAD MORE", searchFilters: "SEARCH FILTERS", clear: "Clear", categories: "CATEGORIES", allCategories: "All Categories", noCategories: "No categories found", brands: "BRANDS", allBrands: "All Brands", series: "SERIES", allSeries: "All Series", noSeries: "No series found", priceRange: "PRICE RANGE", allPrices: "All Prices", priceUnder1m: "Under 1,000,000 ₫", price1mTo3m: "1,000,000 ₫ - 3,000,000 ₫", price3mTo5m: "3,000,000 ₫ - 5,000,000 ₫", priceOver5m: "Over 5,000,000 ₫", reset: "Reset", viewResults: o => `View ${o} products`, close: "Close", productFilterAria: "Product filters", contactUs: "Contact Us", noImage: "No image available", prevImage: "Previous image", nextImage: "Next image", seriesLabel: o => `Series: ${o}`, reviewsCount: o => `(${o} Reviews)`, highlights: "Highlights:", descriptionTab: "PRODUCT DESCRIPTION", specsTab: "SPECIFICATIONS", instructionsTab: "INSTRUCTIONS & CARE", noDescription: "No description available for this product.", noSpecs: "No specifications available.", defaultInstructions: ["Hand wash with warm water and mild soap after use.", "Dry completely before storage.", "Store in a cool, dry place."], relatedProducts: "RELATED PRODUCTS", toolbarResults: o => `${o} RESULTS`, allBrandsToolbar: "All Brands", allCategoriesToolbar: "All Categories", sortDefault: "Sort: Default", clearFilters: "Clear Filters", brandSectionTitle: "BRANDS", seriesSectionTitle: "SERIES", seriesTag: "Series", scrollLeft: "Scroll left", scrollRight: "Scroll right", home: "HOME", products: "PRODUCTS", brandsBreadcrumb: "BRANDS", about: "ABOUT US", news: "NEWS" } }; function d(o, e = "vi", ...t) { let s = "vi"; e && typeof e == "string" ? s = e.toLowerCase().startsWith("en") ? "en" : "vi" : typeof document < "u" && document.documentElement && document.documentElement.lang && (s = document.documentElement.lang.toLowerCase().startsWith("en") ? "en" : "vi"); const i = ee[s] || ee.vi, r = i[o] !== void 0 ? i[o] : ee.vi[o]; return typeof r == "function" ? r(...t) : r !== void 0 ? r : o } class te extends $ {
-    constructor() { super(), this.items = null, this.defaultItems = "", this.current = "", this.lang = "vi", this.loading = !1 } connectedCallback() { super.connectedCallback(), this._checkContext() } firstUpdated(e) { super.firstUpdated(e), this._checkContext(), setTimeout(() => this._checkContext(), 200), setTimeout(() => this._checkContext(), 600) } _checkContext() { if (!this.items || !this.items.length) { const e = this._getEffectiveItems(); e && e.length > 0 && (this.items = e, this.loading = !1, this.requestUpdate()) } } _getEffectiveItems() { if (this.items && Array.isArray(this.items) && this.items.length > 0) return this.items; if (this.defaultItems) { const e = v.fromAttribute(this.defaultItems); if (e && e.length > 0) return e } if (this.current) return [{ label: "TRANG CHỦ", url: "/" }, { label: this.current, url: "#" }]; if (typeof document < "u") { try { if (document.querySelector("wx-store-locator") || document.querySelector("[data-locator]")) return [{ label: "TRANG CHỦ", url: "/" }, { label: "CỬA HÀNG", url: "/stores" }] } catch { } try { const e = (window.location.href || "") + " " + (window.location.pathname || "") + " " + (document.title || ""); if (/store|cua-hang|cửa hàng/i.test(e)) return [{ label: "TRANG CHỦ", url: "/" }, { label: "CỬA HÀNG", url: "/stores" }] } catch { } } return null } _formatLabel(e) { if (!e || typeof e != "string") return ""; const t = e.trim().toUpperCase(); return t === "HOME" || t === "TRANG CHỦ" ? d("home", this.lang) : t === "PRODUCTS" || t === "SẢN PHẨM" ? d("products", this.lang) : t === "BRANDS" || t === "THƯƠNG HIỆU" ? d("brandsBreadcrumb", this.lang) : t === "ABOUT" || t === "ABOUT US" || t === "GIỚI THIỆU" || t === "VỀ CHÚNG TÔI" ? d("about", this.lang) : t === "BLOG" || t === "NEWS" || t === "BÀI VIẾT" || t === "TIN TỨC" ? d("news", this.lang) : e } _resolveUrl(e) { if (!e || e === "#" || e === "") return "#"; if (/^https?:\/\//i.test(e)) return e; if (typeof window < "u" && window.location) { const t = window.location.hostname || "", s = window.location.pathname || ""; if (t.includes("wixstudio.com") || t.includes("wixsite.com")) { const i = s.split("/").filter(Boolean); if (i.length > 0) { const r = "/" + i[0]; if (e === "/") return r + "/"; if (!e.startsWith(r)) return e.startsWith("/") ? `${r}${e}` : `${r}/${e}` } } } return e } _handleClick(e, t, s, i = this.items) { if (i && s === i.length - 1) return; e.preventDefault(), B(this, "breadcrumb-click", { item: t, index: s }); const r = t && (t.url || t.link || t.href); if (!r || r === "#" || r === "") return; const n = this._resolveUrl(r); setTimeout(() => { try { if (typeof window < "u" && window.location) { const a = (window.location.pathname || "").replace(/\/$/, ""), c = n.replace(/\/$/, ""); a !== c && (window.location.href = n) } } catch { } }, 150) } render() {
-      const e = this._getEffectiveItems(); if ((this.loading === !0 || this.loading === "true" || !e && this.items === null && this.loading !== !1) && !e) return l`
+ */const B=globalThis;class $ extends U{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=lt(t,this.renderRoot,this.renderOptions)}connectedCallback(){var e;super.connectedCallback(),(e=this._$Do)==null||e.setConnected(!0)}disconnectedCallback(){var e;super.disconnectedCallback(),(e=this._$Do)==null||e.setConnected(!1)}render(){return F}}$._$litElement$=!0,$.finalized=!0,(Oe=B.litElementHydrateSupport)==null||Oe.call(B,{LitElement:$});const ue=B.litElementPolyfillSupport;ue==null||ue({LitElement:$}),(B.litElementVersions??(B.litElementVersions=[])).push("4.2.2");function w(o,e){if(!(typeof window>"u"||!window.customElements||window.customElements.get(o)))try{window.customElements.define(o,e)}catch(i){if(i.name==="NotSupportedError"&&i.message.includes("constructor")){class s extends e{}window.customElements.define(o,s)}else console.warn(`[my-wix-ui-lib] Không thể đăng ký ${o}:`,i)}}function C(o,e,t={}){const i=new CustomEvent(e,{detail:t,bubbles:!0,composed:!0,cancelable:!0});return o.dispatchEvent(i),i}function q(o){if(o==null||o==="")return"";if(typeof o=="string"){const e=Number(o.replace(/[^\d]/g,""));!isNaN(e)&&e>0&&(o=e)}return isNaN(o)||Number(o)<=0?"":new Intl.NumberFormat("vi-VN",{style:"currency",currency:"VND",maximumFractionDigits:0}).format(o)}function fe(o){if(!o||typeof o!="object")return 0;const e=[o.minPrice,o.price,o.min_price,o.regularPrice,o.unitPrice,o.gia,o.donGia,o.cost,o.maxPrice,o.max_price];for(const t of e)if(t!=null&&t!==""){if(typeof t=="number"&&t>0)return t;if(typeof t=="string"){const i=Number(t.replace(/[^\d]/g,""));if(!isNaN(i)&&i>0)return i}}return 0}function me(o){if(!o||typeof o!="object")return{price:0,comparePrice:null,discountPercent:null};const e=a=>{if(a==null||a==="")return 0;if(typeof a=="number")return isNaN(a)?0:a;if(typeof a=="string"){const c=Number(a.replace(/[^\d]/g,""));return isNaN(c)?0:c}return 0},t=e(o.maxPrice)||e(o.max_price)||e(o.compareAtPrice)||e(o.regularPrice)||e(o.price),i=e(o.minPrice)||e(o.min_price)||e(o.discountedPrice);let s=0,r=null,n=null;return t>0&&i>0&&t>i?(s=i,r=t,n=Math.round((t-i)/t*100)):(s=t||i||e(o.price)||e(o.unitPrice),r=null,n=null),(!s||s<=0)&&typeof fe=="function"&&(s=fe(o)),{price:s,comparePrice:r,discountPercent:n}}function ct(o){if(!o||typeof o!="object")return 0;const{price:e}=me(o);if(typeof e=="number"&&!isNaN(e)&&e>0)return e;const t=fe(o);return typeof t=="number"&&!isNaN(t)&&t>0?t:0}function be(o,e=null){if(!o)return e;if(typeof o=="object")return o;try{return JSON.parse(o)}catch{return e}}function E(o,e=""){if(!o||(typeof o=="object"&&o&&(o=o.src||o.url||e),typeof o!="string"))return e;const t=o.trim();if(!t)return e;if(t.startsWith("wix:image://")){const i=t.split("/");if(i.length>=4)return`https://static.wixstatic.com/media/${i[3].split("#")[0]}`}return t}function xe(o){if(!o)return[];if(typeof o=="string"){const e=o.trim();if(e.startsWith("[")||e.startsWith("{"))try{const t=JSON.parse(e);t&&(o=t)}catch{}}return Array.isArray(o)?o.map(e=>e?typeof e=="object"?e.src||e.url||"":String(e):"").filter(Boolean):typeof o!="string"?[]:o.split(";").map(e=>e.trim()).filter(Boolean)}function Fe(o){return typeof o!="string"?"":o.replace(/&quot;/g,'"').replace(/&#34;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">")}const v={fromAttribute(o){if(!o)return[];if(typeof o=="object")return Array.isArray(o)?o:[o];try{let e=typeof o=="string"?Fe(o.trim()):"";if(e.startsWith("[")||e.startsWith("{")){const t=JSON.parse(e);return Array.isArray(t)?t:[t]}if(e.includes(">")||e.includes(",")){const t=e.includes(">")?">":",";return e.split(t).map(i=>i.trim()).filter(Boolean).map((i,s,r)=>({label:i,url:s===0?"/":s===r.length-1?"#":""}))}return e?[{label:e,url:"#"}]:[]}catch(e){return console.warn("[jsonArrayConverter] Lỗi parse JSON:",e,o),[]}},toAttribute(o){return JSON.stringify(o)}},_={fromAttribute(o){if(!o)return null;if(typeof o=="object")return o;try{let e=typeof o=="string"?Fe(o.trim()):"";return JSON.parse(e)}catch(e){return console.warn("[jsonObjectConverter] Lỗi parse JSON:",e,o),null}},toAttribute(o){return JSON.stringify(o)}},ye={fromAttribute(o){if(o==null)return!1;if(typeof o=="boolean")return o;const e=String(o).trim().toLowerCase();return!(e==="false"||e==="0"||e===""||e==="null"||e==="undefined")},toAttribute(o){return o?"true":null}},ee={vi:{resultsCount:o=>`${o} sản phẩm`,sortBy:"Sắp xếp theo",sortPriceAsc:"Giá: Thấp đến Cao",sortPriceDesc:"Giá: Cao đến Thấp",sortTitleAsc:"Tên: A đến Z",filterCategory:"Danh mục",filterBrand:"Thương hiệu",filterSeries:"Dòng sản phẩm",filterPrice:"Mức giá",clearAll:"Xóa tất cả",emptyProducts:"Không có sản phẩm nào phù hợp với bộ lọc.",showingItems:(o,e)=>`Đang hiển thị ${o} trên tổng số ${e} sản phẩm`,loadMore:"XEM THÊM SẢN PHẨM",searchFilters:"BỘ LỌC TÌM KIẾM",clear:"Xóa",categories:"DANH MỤC",allCategories:"Tất cả danh mục",noCategories:"Không có danh mục nào",brands:"THƯƠNG HIỆU",allBrands:"Tất cả thương hiệu",series:"DÒNG SẢN PHẨM",allSeries:"Tất cả dòng sản phẩm",noSeries:"Không có dòng sản phẩm nào",priceRange:"KHOẢNG GIÁ",allPrices:"Tất cả mức giá",priceUnder1m:"Dưới 1.000.000 ₫",price1mTo3m:"1.000.000 ₫ - 3.000.000 ₫",price3mTo5m:"3.000.000 ₫ - 5.000.000 ₫",priceOver5m:"Trên 5.000.000 ₫",reset:"Thiết lập lại",viewResults:o=>`Xem ${o} sản phẩm`,close:"Đóng",productFilterAria:"Bộ lọc sản phẩm",contactUs:"Liên hệ",noImage:"Chưa có ảnh",prevImage:"Ảnh trước",nextImage:"Ảnh sau",seriesLabel:o=>`Dòng sản phẩm: ${o}`,reviewsCount:o=>`(${o} Đánh giá)`,highlights:"Đặc điểm nổi bật:",descriptionTab:"MÔ TẢ SẢN PHẨM",specsTab:"THÔNG SỐ KỸ THUẬT",instructionsTab:"HƯỚNG DẪN SỬ DỤNG & BẢO QUẢN",noDescription:"Chưa có thông tin mô tả cho sản phẩm này.",noSpecs:"Chưa có thông số kỹ thuật.",defaultInstructions:["Vệ sinh bằng tay với nước ấm và xà phòng nhẹ sau khi sử dụng.","Lau khô hoàn toàn trước khi cất giữ.","Bảo quản nơi khô ráo, thoáng mát."],relatedProducts:"SẢN PHẨM LIÊN QUAN",toolbarResults:o=>`${o} KẾT QUẢ`,allBrandsToolbar:"Tất cả Thương hiệu",allCategoriesToolbar:"Tất cả Danh mục",sortDefault:"Sắp xếp: Mặc định",clearFilters:"Xóa bộ lọc",brandSectionTitle:"THƯƠNG HIỆU",seriesSectionTitle:"DÒNG SẢN PHẨM",seriesTag:"Dòng sản phẩm",scrollLeft:"Cuộn sang trái",scrollRight:"Cuộn sang phải",home:"TRANG CHỦ",products:"SẢN PHẨM",brandsBreadcrumb:"THƯƠNG HIỆU",about:"GIỚI THIỆU",news:"TIN TỨC"},en:{resultsCount:o=>`${o} Results`,sortBy:"Sort by",sortPriceAsc:"Price: Low to High",sortPriceDesc:"Price: High to Low",sortTitleAsc:"Name: A to Z",filterCategory:"Category",filterBrand:"Brand",filterSeries:"Series",filterPrice:"Price",clearAll:"Clear All",emptyProducts:"No products found matching your filters.",showingItems:(o,e)=>`Showing ${o} of ${e} items`,loadMore:"LOAD MORE",searchFilters:"SEARCH FILTERS",clear:"Clear",categories:"CATEGORIES",allCategories:"All Categories",noCategories:"No categories found",brands:"BRANDS",allBrands:"All Brands",series:"SERIES",allSeries:"All Series",noSeries:"No series found",priceRange:"PRICE RANGE",allPrices:"All Prices",priceUnder1m:"Under 1,000,000 ₫",price1mTo3m:"1,000,000 ₫ - 3,000,000 ₫",price3mTo5m:"3,000,000 ₫ - 5,000,000 ₫",priceOver5m:"Over 5,000,000 ₫",reset:"Reset",viewResults:o=>`View ${o} products`,close:"Close",productFilterAria:"Product filters",contactUs:"Contact Us",noImage:"No image available",prevImage:"Previous image",nextImage:"Next image",seriesLabel:o=>`Series: ${o}`,reviewsCount:o=>`(${o} Reviews)`,highlights:"Highlights:",descriptionTab:"PRODUCT DESCRIPTION",specsTab:"SPECIFICATIONS",instructionsTab:"INSTRUCTIONS & CARE",noDescription:"No description available for this product.",noSpecs:"No specifications available.",defaultInstructions:["Hand wash with warm water and mild soap after use.","Dry completely before storage.","Store in a cool, dry place."],relatedProducts:"RELATED PRODUCTS",toolbarResults:o=>`${o} RESULTS`,allBrandsToolbar:"All Brands",allCategoriesToolbar:"All Categories",sortDefault:"Sort: Default",clearFilters:"Clear Filters",brandSectionTitle:"BRANDS",seriesSectionTitle:"SERIES",seriesTag:"Series",scrollLeft:"Scroll left",scrollRight:"Scroll right",home:"HOME",products:"PRODUCTS",brandsBreadcrumb:"BRANDS",about:"ABOUT US",news:"NEWS"}};function d(o,e="vi",...t){let i="vi";e&&typeof e=="string"?i=e.toLowerCase().startsWith("en")?"en":"vi":typeof document<"u"&&document.documentElement&&document.documentElement.lang&&(i=document.documentElement.lang.toLowerCase().startsWith("en")?"en":"vi");const s=ee[i]||ee.vi,r=s[o]!==void 0?s[o]:ee.vi[o];return typeof r=="function"?r(...t):r!==void 0?r:o}class te extends ${constructor(){super(),this.items=null,this.defaultItems="",this.current="",this.lang="vi",this.loading=!1}connectedCallback(){super.connectedCallback(),this._checkContext()}firstUpdated(e){super.firstUpdated(e),this._checkContext(),setTimeout(()=>this._checkContext(),200),setTimeout(()=>this._checkContext(),600)}_checkContext(){if(!this.items||!this.items.length){const e=this._getEffectiveItems();e&&e.length>0&&(this.items=e,this.loading=!1,this.requestUpdate())}}_getEffectiveItems(){if(this.items&&Array.isArray(this.items)&&this.items.length>0)return this.items;if(this.defaultItems){const e=v.fromAttribute(this.defaultItems);if(e&&e.length>0)return e}if(this.current)return[{label:"TRANG CHỦ",url:"/"},{label:this.current,url:"#"}];if(typeof document<"u"){try{if(document.querySelector("wx-store-locator")||document.querySelector("[data-locator]"))return[{label:"TRANG CHỦ",url:"/"},{label:"CỬA HÀNG",url:"/stores"}]}catch{}try{const e=(window.location.href||"")+" "+(window.location.pathname||"")+" "+(document.title||"");if(/store|cua-hang|cửa hàng/i.test(e))return[{label:"TRANG CHỦ",url:"/"},{label:"CỬA HÀNG",url:"/stores"}]}catch{}}return null}_formatLabel(e){if(!e||typeof e!="string")return"";const t=e.trim().toUpperCase();return t==="HOME"||t==="TRANG CHỦ"?d("home",this.lang):t==="PRODUCTS"||t==="SẢN PHẨM"?d("products",this.lang):t==="BRANDS"||t==="THƯƠNG HIỆU"?d("brandsBreadcrumb",this.lang):t==="ABOUT"||t==="ABOUT US"||t==="GIỚI THIỆU"||t==="VỀ CHÚNG TÔI"?d("about",this.lang):t==="BLOG"||t==="NEWS"||t==="BÀI VIẾT"||t==="TIN TỨC"?d("news",this.lang):e}_resolveUrl(e){if(!e||e==="#"||e==="")return"#";if(/^https?:\/\//i.test(e))return e;if(typeof window<"u"&&window.location){const t=window.location.hostname||"",i=window.location.pathname||"";if(t.includes("wixstudio.com")||t.includes("wixsite.com")){const s=i.split("/").filter(Boolean);if(s.length>0){const r="/"+s[0];if(e==="/")return r+"/";if(!e.startsWith(r))return e.startsWith("/")?`${r}${e}`:`${r}/${e}`}}}return e}_handleClick(e,t,i,s=this.items){if(s&&i===s.length-1)return;e.preventDefault(),C(this,"breadcrumb-click",{item:t,index:i});const r=t&&(t.url||t.link||t.href);if(!r||r==="#"||r==="")return;const n=this._resolveUrl(r);setTimeout(()=>{try{if(typeof window<"u"&&window.location){const a=(window.location.pathname||"").replace(/\/$/,""),c=n.replace(/\/$/,"");a!==c&&(window.location.href=n)}}catch{}},150)}render(){const e=this._getEffectiveItems();if((this.loading===!0||this.loading==="true"||!e&&this.items===null&&this.loading!==!1)&&!e)return l`
         <nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px;">
           <div class="skeleton-box" style="width: 70px; height: 14px;"></div>
           <span class="separator" aria-hidden="true">&#x203A;</span>
           <div class="skeleton-box" style="width: 100px; height: 14px;"></div>
         </nav>
-      `; const i = e || []; return i.length ? l`
+      `;const s=e||[];return s.length?l`
       <nav aria-label="Breadcrumb">
-        ${i.map((r, n) => {
-        const a = n === 0, c = n === i.length - 1, p = typeof r == "string" ? r : r.label || r.title, u = this._formatLabel(p); return l`
-            ${n > 0 ? l`<span class="separator" aria-hidden="true">&#x203A;</span>` : ""}
+        ${s.map((r,n)=>{const a=n===0,c=n===s.length-1,p=typeof r=="string"?r:r.label||r.title,u=this._formatLabel(p);return l`
+            ${n>0?l`<span class="separator" aria-hidden="true">&#x203A;</span>`:""}
             <button
-              class="crumb-btn ${a ? "first" : ""} ${c ? "active" : ""}"
+              class="crumb-btn ${a?"first":""} ${c?"active":""}"
               ?disabled="${c}"
-              @click="${g => this._handleClick(g, r, n, i)}"
-              aria-current="${c ? "page" : "false"}"
+              @click="${g=>this._handleClick(g,r,n,s)}"
+              aria-current="${c?"page":"false"}"
             >
               ${u}
             </button>
           `})}
       </nav>
-    `: l``
-    }
-  } x(te, "properties", { items: { type: Array, converter: v }, defaultItems: { type: String, attribute: "default-items" }, current: { type: String }, lang: { type: String }, loading: { type: Boolean, converter: ye } }), x(te, "styles", S`
+    `:l``}}x(te,"properties",{items:{type:Array,converter:v},defaultItems:{type:String,attribute:"default-items"},current:{type:String},lang:{type:String},loading:{type:Boolean,converter:ye}}),x(te,"styles",S`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -133,12 +127,10 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       display: inline-flex;
       align-items: center;
     }
-  `), w("wx-breadcrumb", te); class K extends $ {
-    constructor() { super(), this.items = null, this.categories = null, this.data = null, this.selectedId = "", this.lang = "vi", this.loading = !1, this._progressLeft = 0, this._progressWidth = 30 } firstUpdated() { this._track = this.shadowRoot.querySelector(".track"), this._checkScroll() } updated(e) { (e.has("items") || e.has("categories") || e.has("data")) && this._checkScroll() } _checkScroll() { const e = this.categories || this.data || this.items || []; this._track && e.length >= 6 && (this._track.addEventListener("scroll", () => this._updateProgress()), this._updateProgress()) } _updateProgress() { if (!this._track) return; const { scrollLeft: e, scrollWidth: t, clientWidth: s } = this._track, i = t - s; if (i <= 0) this._progressWidth = 100, this._progressLeft = 0; else { this._progressWidth = Math.max(15, s / t * 100); const n = 100 - this._progressWidth; this._progressLeft = e / i * n } const r = this.shadowRoot.querySelector(".progress-thumb"); r && (r.style.width = `${this._progressWidth}%`, r.style.left = `${this._progressLeft}%`) } _scroll(e) { if (!this._track) return; const t = 300 * e; this._track.scrollBy({ left: t, behavior: "smooth" }) } _selectItem(e) { this.selectedId = e._id || e.ID || e.id || e.slug, B(this, "category-select", { category: e }) } render() {
-      const e = this.categories || this.data || this.items, t = e != null, s = Array.isArray(e) ? e : []; if (t && s.length === 0 && !this.loading) return this.removeAttribute("has-items"), l``; if (!s.length) return l`
+  `),w("wx-breadcrumb",te);class K extends ${constructor(){super(),this.items=null,this.categories=null,this.data=null,this.selectedId="",this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=30}firstUpdated(){this._track=this.shadowRoot.querySelector(".track"),this._checkScroll()}updated(e){(e.has("items")||e.has("categories")||e.has("data"))&&this._checkScroll()}_checkScroll(){const e=this.categories||this.data||this.items||[];this._track&&e.length>=6&&(this._track.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._track)return;const{scrollLeft:e,scrollWidth:t,clientWidth:i}=this._track,s=t-i;if(s<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(15,i/t*100);const n=100-this._progressWidth;this._progressLeft=e/s*n}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._track)return;const t=300*e;this._track.scrollBy({left:t,behavior:"smooth"})}_selectItem(e){this.selectedId=e._id||e.ID||e.id||e.slug,C(this,"category-select",{category:e})}render(){const e=this.categories||this.data||this.items,t=e!=null,i=Array.isArray(e)?e:[];if(t&&i.length===0&&!this.loading)return this.removeAttribute("has-items"),l``;if(!i.length)return l`
         <div class="carousel-wrapper">
           <div class="track static-grid" role="status" aria-label="Loading categories">
-            ${[1, 2, 3, 4, 5].map(() => l`
+            ${[1,2,3,4,5].map(()=>l`
               <div class="skeleton-card">
                 <div class="skeleton-box skeleton-img"></div>
                 <div class="skeleton-box skeleton-label"></div>
@@ -146,23 +138,22 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
             `)}
           </div>
         </div>
-      `; this.setAttribute("has-items", ""); const i = s.length >= 6; return l`
+      `;this.setAttribute("has-items","");const s=i.length>=6;return l`
       <div class="carousel-wrapper">
-        <div class="track ${i ? "" : "static-grid"}" role="list">
-          ${s.map(r => {
-        const n = r._id || r.ID || r.id || r.slug, a = this.selectedId === n, c = r.title || r.name || "", p = r.description || r.subtitle || r.desc || "", u = r.image || r.mainImage || r.bannerImage, g = u ? T(u) : ""; return l`
+        <div class="track ${s?"":"static-grid"}" role="list">
+          ${i.map(r=>{const n=r._id||r.ID||r.id||r.slug,a=this.selectedId===n,c=r.title||r.name||"",p=r.description||r.subtitle||r.desc||"",u=r.image||r.mainImage||r.bannerImage,g=u?E(u):"";return l`
               <button
-                class="item-card ${a ? "active" : ""}"
-                @click="${() => this._selectItem(r)}"
+                class="item-card ${a?"active":""}"
+                @click="${()=>this._selectItem(r)}"
                 role="listitem"
               >
                 <div class="image-box">
-                  ${g ? l`
+                  ${g?l`
                         <img
                           src="${g}"
                           alt="${c}"
                           loading="lazy"
-                          @error="${h => { h.target.style.display = "none"; const f = h.target.parentElement.querySelector(".placeholder-box"); f && (f.style.display = "flex") }}"
+                          @error="${h=>{h.target.style.display="none";const f=h.target.parentElement.querySelector(".placeholder-box");f&&(f.style.display="flex")}}"
                         />
                         <div class="placeholder-box" style="display: none;">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -170,37 +161,36 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
                             <circle cx="8.5" cy="8.5" r="1.5"></circle>
                             <polyline points="21 15 16 10 5 21"></polyline>
                           </svg>
-                          <span>${d("noImage", this.lang)}</span>
+                          <span>${d("noImage",this.lang)}</span>
                         </div>
-                      `: l`
+                      `:l`
                         <div class="placeholder-box">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                             <circle cx="8.5" cy="8.5" r="1.5"></circle>
                             <polyline points="21 15 16 10 5 21"></polyline>
                           </svg>
-                          <span>${d("noImage", this.lang)}</span>
+                          <span>${d("noImage",this.lang)}</span>
                         </div>
                       `}
                 </div>
                 <span class="item-label">${c}</span>
-                ${p ? l`<span class="item-description">${p}</span>` : ""}
+                ${p?l`<span class="item-description">${p}</span>`:""}
               </button>
             `})}
         </div>
 
-        ${i ? l`
+        ${s?l`
               <div class="controls-row">
-                <button class="nav-arrow-btn" @click="${() => this._scroll(-1)}" aria-label="${d("scrollLeft", this.lang)}">&#x2039;</button>
+                <button class="nav-arrow-btn" @click="${()=>this._scroll(-1)}" aria-label="${d("scrollLeft",this.lang)}">&#x2039;</button>
                 <div class="progress-track">
                   <div class="progress-thumb"></div>
                 </div>
-                <button class="nav-arrow-btn" @click="${() => this._scroll(1)}" aria-label="${d("scrollRight", this.lang)}">&#x203A;</button>
+                <button class="nav-arrow-btn" @click="${()=>this._scroll(1)}" aria-label="${d("scrollRight",this.lang)}">&#x203A;</button>
               </div>
-            `: ""}
+            `:""}
       </div>
-    `}
-  } x(K, "properties", { items: { type: Array, converter: v }, categories: { type: Array, converter: v }, data: { type: Array, converter: v }, selectedId: { type: String }, lang: { type: String }, loading: { type: Boolean } }), x(K, "styles", S`
+    `}}x(K,"properties",{items:{type:Array,converter:v},categories:{type:Array,converter:v},data:{type:Array,converter:v},selectedId:{type:String},lang:{type:String},loading:{type:Boolean}}),x(K,"styles",S`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -487,82 +477,79 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       width: 30%;
       transition: left 0.2s ease, width 0.2s ease;
     }
-  `), w("wx-category-carousel", K), w("wx-product-categories", class extends K { }); class ie extends $ {
-    constructor() { super(), this.product = null, this.activeImageIndex = 0, this.lang = "vi" } _getImages() { if (!this.product) return []; const e = this.product, t = []; if (e.mainImage) { const i = T(e.mainImage); i && t.push(i) } const s = e.gallery || e.media || e.images || e.mediaGallery; return s && xe(s).forEach(r => { const n = T(r); n && !t.includes(n) && t.push(n) }), t } _prevImage(e, t) { e.stopPropagation(), t.length && (this.activeImageIndex = (this.activeImageIndex - 1 + t.length) % t.length) } _nextImage(e, t) { e.stopPropagation(), t.length && (this.activeImageIndex = (this.activeImageIndex + 1) % t.length) } _onClick() { B(this, "product-click", { product: this.product }) } render() {
-      if (!this.product) return l``; const e = this.product, t = this._getImages(), s = t[this.activeImageIndex] || e.mainImage || (t.length ? t[0] : ""), { price: i, comparePrice: r, discountPercent: n } = me(e), a = e.brand ? e.brand.replace("brand-", "").toUpperCase() : ""; let c = []; if (Array.isArray(e.labels)) c = e.labels; else if (typeof e.labels == "string") { const m = be(e.labels); if (Array.isArray(m)) c = m; else if (e.labels.trim() && e.labels !== "[]") { const E = e.labels.replace(/[\[\]"']/g, "").trim(); E && (c = [E]) } } else e.label ? c = [e.label] : e.ribbon && (c = [e.ribbon]); if (e.isBestseller || e.bestseller) { const m = this.lang === "vi" ? "Bán chạy" : "Bestseller"; !c.includes(m) && !c.includes("Bestseller") && !c.includes("Bán chạy") && c.unshift(m) } const p = { "bán chạy": "Bestseller", mới: "New", "mới mở bán": "New to sale", "giảm giá": "On sale" }, u = { bestseller: "Bán chạy", "best seller": "Bán chạy", new: "Mới", "new to sale": "Mới mở bán", "on sale": "Giảm giá" }; c = c.filter(Boolean).map(m => { const E = String(m).trim().toLowerCase(); return this.lang === "en" ? p[E] || m : u[E] || m }); const g = t.length, h = g > 1 ? 100 / g : 100, f = g > 1 ? this.activeImageIndex / g * 100 : 0; return l`
+  `),w("wx-category-carousel",K),w("wx-product-categories",class extends K{});class ie extends ${constructor(){super(),this.product=null,this.activeImageIndex=0,this.lang="vi"}_getImages(){if(!this.product)return[];const e=this.product,t=[];if(e.mainImage){const s=E(e.mainImage);s&&t.push(s)}const i=e.gallery||e.media||e.images||e.mediaGallery;return i&&xe(i).forEach(r=>{const n=E(r);n&&!t.includes(n)&&t.push(n)}),t}_prevImage(e,t){e.stopPropagation(),t.length&&(this.activeImageIndex=(this.activeImageIndex-1+t.length)%t.length)}_nextImage(e,t){e.stopPropagation(),t.length&&(this.activeImageIndex=(this.activeImageIndex+1)%t.length)}_onClick(){C(this,"product-click",{product:this.product})}render(){if(!this.product)return l``;const e=this.product,t=this._getImages(),i=t[this.activeImageIndex]||e.mainImage||(t.length?t[0]:""),{price:s,comparePrice:r,discountPercent:n}=me(e),a=e.brand?e.brand.replace("brand-","").toUpperCase():"";let c=[];if(Array.isArray(e.labels))c=e.labels;else if(typeof e.labels=="string"){const m=be(e.labels);if(Array.isArray(m))c=m;else if(e.labels.trim()&&e.labels!=="[]"){const z=e.labels.replace(/[\[\]"']/g,"").trim();z&&(c=[z])}}else e.label?c=[e.label]:e.ribbon&&(c=[e.ribbon]);if(e.isBestseller||e.bestseller){const m=this.lang==="vi"?"Bán chạy":"Bestseller";!c.includes(m)&&!c.includes("Bestseller")&&!c.includes("Bán chạy")&&c.unshift(m)}const p={"bán chạy":"Bestseller",mới:"New","mới mở bán":"New to sale","giảm giá":"On sale"},u={bestseller:"Bán chạy","best seller":"Bán chạy",new:"Mới","new to sale":"Mới mở bán","on sale":"Giảm giá"};c=c.filter(Boolean).map(m=>{const z=String(m).trim().toLowerCase();return this.lang==="en"?p[z]||m:u[z]||m});const g=t.length,h=g>1?100/g:100,f=g>1?this.activeImageIndex/g*100:0;return l`
       <div class="card" @click="${this._onClick}">
         <!-- Top Bar: % Giảm giá + Labels (Đã bỏ icon heart) -->
         <div class="top-bar">
           <div class="badges-group">
-            ${n ? l`<span class="badge-pill badge-discount">-${n}%</span>` : ""}
-            ${c.map(m => l`<span class="badge-pill badge-label">${m}</span>`)}
+            ${n?l`<span class="badge-pill badge-discount">-${n}%</span>`:""}
+            ${c.map(m=>l`<span class="badge-pill badge-label">${m}</span>`)}
           </div>
         </div>
 
         <!-- Image Viewport với Nút Next/Back Gallery khi Hover -->
         <div class="image-viewport">
-          ${g > 1 ? l`
+          ${g>1?l`
                 <button
                   class="nav-arrow prev"
-                  @click="${m => this._prevImage(m, t)}"
-                  aria-label="${d("prevImage", this.lang)}"
+                  @click="${m=>this._prevImage(m,t)}"
+                  aria-label="${d("prevImage",this.lang)}"
                 >
                   &#x2039;
                 </button>
                 <button
                   class="nav-arrow next"
-                  @click="${m => this._nextImage(m, t)}"
-                  aria-label="${d("nextImage", this.lang)}"
+                  @click="${m=>this._nextImage(m,t)}"
+                  aria-label="${d("nextImage",this.lang)}"
                 >
                   &#x203A;
                 </button>
-              `: ""}
+              `:""}
 
-          ${s ? l`<img src="${s}" alt="${e.title}" loading="lazy" />` : l`
+          ${i?l`<img src="${i}" alt="${e.title}" loading="lazy" />`:l`
                 <div class="image-placeholder">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                     <circle cx="8.5" cy="8.5" r="1.5"></circle>
                     <polyline points="21 15 16 10 5 21"></polyline>
                   </svg>
-                  <span>${d("noImage", this.lang)}</span>
+                  <span>${d("noImage",this.lang)}</span>
                 </div>
               `}
         </div>
 
         <!-- Thanh chỉ báo ảnh hiện tại nếu có nhiều ảnh gallery -->
-        ${g > 1 ? l`
+        ${g>1?l`
               <div class="image-progress-bar">
                 <div
                   class="image-progress-thumb"
                   style="width: ${h}%; left: ${f}%;"
                 ></div>
               </div>
-            `: ""}
+            `:""}
 
         <div class="content-area">
-          ${a ? l`<div class="brand-title">${a}</div>` : ""}
+          ${a?l`<div class="brand-title">${a}</div>`:""}
           <h3 class="product-title" title="${e.title}">${e.title}</h3>
 
-          ${e.rating ? l`
+          ${e.rating?l`
                 <div class="rating-row">
                   <span class="stars">★★★★★</span>
-                  <span class="rating-text">${e.rating} ${e.reviewCount ? `(${e.reviewCount})` : ""}</span>
+                  <span class="rating-text">${e.rating} ${e.reviewCount?`(${e.reviewCount})`:""}</span>
                 </div>
-              `: ""}
+              `:""}
 
-          ${e.sizeLabel ? l`<div class="variant-sizes">${e.sizeLabel}</div>` : ""}
+          ${e.sizeLabel?l`<div class="variant-sizes">${e.sizeLabel}</div>`:""}
 
           <div class="footer-row">
             <div class="price-col">
-              ${r && r > i ? l`<span class="compare-price">${V(r)}</span>` : ""}
-              <span class="current-price">${i ? V(i) : d("contactUs", this.lang)}</span>
+              ${r&&r>s?l`<span class="compare-price">${q(r)}</span>`:""}
+              <span class="current-price">${s?q(s):d("contactUs",this.lang)}</span>
             </div>
           </div>
         </div>
       </div>
-    `}
-  } x(ie, "properties", { product: { type: Object, converter: k }, data: { type: Object, converter: k }, activeImageIndex: { type: Number }, lang: { type: String } }), x(ie, "styles", S`
+    `}}x(ie,"properties",{product:{type:Object,converter:_},data:{type:Object,converter:_},activeImageIndex:{type:Number},lang:{type:String}}),x(ie,"styles",S`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -828,16 +815,14 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       font-weight: 700;
       color: #111111;
     }
-  `), w("wx-product-card", ie); class Z extends $ {
-    constructor() { super(), this.title = "", this.products = null, this.items = null, this.data = null, this.lang = "vi", this.loading = !1, this._progressLeft = 0, this._progressWidth = 25 } firstUpdated() { this._track = this.shadowRoot.querySelector(".track"), this._initScroll() } updated(e) { (e.has("products") || e.has("items") || e.has("data")) && this._initScroll() } _initScroll() { this._track && (this._track.addEventListener("scroll", () => this._updateProgress()), this._updateProgress()) } _updateProgress() { if (!this._track) return; const { scrollLeft: e, scrollWidth: t, clientWidth: s } = this._track, i = t - s; if (i <= 0) this._progressWidth = 100, this._progressLeft = 0; else { this._progressWidth = Math.max(15, s / t * 100); const n = 100 - this._progressWidth; this._progressLeft = e / i * n } const r = this.shadowRoot.querySelector(".progress-thumb"); r && (r.style.width = `${this._progressWidth}%`, r.style.left = `${this._progressLeft}%`) } _scroll(e) { if (!this._track) return; const t = 320 * e; this._track.scrollBy({ left: t, behavior: "smooth" }) } _onProductClick(e) { B(this, "product-select", { product: e.detail.product }) } render() {
-      const e = this.data || this.items || this.products, t = e != null, s = Array.isArray(e) ? e : []; return t && s.length === 0 && !this.loading ? l`` : s.length ? l`
+  `),w("wx-product-card",ie);class Z extends ${constructor(){super(),this.title="",this.products=null,this.items=null,this.data=null,this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=25}firstUpdated(){this._track=this.shadowRoot.querySelector(".track"),this._initScroll()}updated(e){(e.has("products")||e.has("items")||e.has("data"))&&this._initScroll()}_initScroll(){this._track&&(this._track.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._track)return;const{scrollLeft:e,scrollWidth:t,clientWidth:i}=this._track,s=t-i;if(s<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(15,i/t*100);const n=100-this._progressWidth;this._progressLeft=e/s*n}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._track)return;const t=320*e;this._track.scrollBy({left:t,behavior:"smooth"})}_onProductClick(e){C(this,"product-select",{product:e.detail.product})}render(){const e=this.data||this.items||this.products,t=e!=null,i=Array.isArray(e)?e:[];return t&&i.length===0&&!this.loading?l``:i.length?l`
       <div class="carousel-wrapper">
-        ${this.title ? l`<div class="carousel-title">${this.title}</div>` : ""}
+        ${this.title?l`<div class="carousel-title">${this.title}</div>`:""}
         <div class="track" role="list">
-          ${s.map(i => l`
+          ${i.map(s=>l`
               <div class="card-item" role="listitem">
                 <wx-product-card
-                  .product="${i}"
+                  .product="${s}"
                   .lang="${this.lang}"
                   @product-click="${this._onProductClick}"
                 ></wx-product-card>
@@ -846,18 +831,18 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
         </div>
 
         <div class="controls-row">
-          <button class="nav-arrow-btn" @click="${() => this._scroll(-1)}" aria-label="${d("scrollLeft", this.lang)}">&#x2039;</button>
+          <button class="nav-arrow-btn" @click="${()=>this._scroll(-1)}" aria-label="${d("scrollLeft",this.lang)}">&#x2039;</button>
           <div class="progress-track">
             <div class="progress-thumb"></div>
           </div>
-          <button class="nav-arrow-btn" @click="${() => this._scroll(1)}" aria-label="${d("scrollRight", this.lang)}">&#x203A;</button>
+          <button class="nav-arrow-btn" @click="${()=>this._scroll(1)}" aria-label="${d("scrollRight",this.lang)}">&#x203A;</button>
         </div>
       </div>
-    `: l`
+    `:l`
         <div class="carousel-wrapper">
-          ${this.title ? l`<div class="carousel-title">${this.title}</div>` : ""}
+          ${this.title?l`<div class="carousel-title">${this.title}</div>`:""}
           <div class="track" role="status" aria-label="Loading products">
-            ${[1, 2, 3, 4].map(() => l`
+            ${[1,2,3,4].map(()=>l`
                 <div class="card-item skeleton-card">
                   <div class="skeleton-box skeleton-img"></div>
                   <div class="skeleton-box skeleton-brand"></div>
@@ -867,8 +852,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
               `)}
           </div>
         </div>
-      `}
-  } x(Z, "properties", { title: { type: String }, products: { type: Array, converter: v }, items: { type: Array, converter: v }, data: { type: Array, converter: v }, lang: { type: String }, loading: { type: Boolean } }), x(Z, "styles", S`
+      `}}x(Z,"properties",{title:{type:String},products:{type:Array,converter:v},items:{type:Array,converter:v},data:{type:Array,converter:v},lang:{type:String},loading:{type:Boolean}}),x(Z,"styles",S`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -1041,9 +1025,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       width: 25%;
       transition: left 0.2s ease, width 0.2s ease;
     }
-  `), w("wx-product-carousel", Z), w("wx-product", class extends Z { }); class se extends $ {
-    constructor() { super(), this.products = null, this.data = null, this.brands = [], this.categories = [], this.series = [], this.selectedCategory = "", this.selectedBrand = "", this.selectedSeries = "", this.selectedPriceRange = "", this.selectedSort = "default", this.sidebarOpen = !1, this.activeSidebarTab = "all", this.visibleCount = 32, this.pageSize = 32, this.lang = "vi", this.loading = !1 } _categoryMatchesProduct(e, t) { if (!e || !t) return !1; const s = e.ID || e._id, i = e.slug, r = e.path; return !!(s && (t.category === s || t.brandCategory === s) || i && (t.category === i || t.primaryCategorySlug === i) || t.category && s && t.category.includes(s) || t.categoryPath && (i && (t.categoryPath.includes(`/${i}/`) || t.categoryPath.endsWith(`/${i}`) || t.categoryPath.includes(i)) || s && t.categoryPath.includes(s) || r && t.categoryPath.startsWith(r)) || t.brandCategoryPath && i && t.brandCategoryPath.includes(i)) } _seriesMatchesProduct(e, t) { if (!e || !t) return !1; const s = e.ID || e._id, i = e.slug, r = e.title, n = t.series; if (!n) return !1; if (typeof n == "object") { const a = n.ID || n._id, c = n.slug; return !!(s && (a === s || c === s) || i && (a === i || c === i) || r && n.title === r) } return !!(typeof n == "string" && (s && (n === s || n.includes(s)) || i && (n === i || n.includes(i)) || r && n.toLowerCase().includes(r.toLowerCase()))) } _getAvailableCategories() { const e = this.data || this.products, t = Array.isArray(e) ? e : [], s = Array.isArray(this.categories) ? this.categories : []; return s.length ? t.length ? s.filter(i => t.some(r => this._categoryMatchesProduct(i, r))) : [] : [] } _getAvailableSeries() { const e = this.data || this.products, t = Array.isArray(e) ? e : []; let s = Array.isArray(this.series) ? [...this.series] : []; if (!s.length && t.length) { const i = new Map; for (const r of t) if (r.series) { let n = "", a = "", c = r.brand || ""; typeof r.series == "object" ? (n = r.series.ID || r.series._id || r.series.slug || "", a = r.series.title || n, c = r.series.brand || c) : typeof r.series == "string" && (n = r.series, a = n.replace(/^series-/, "").replace(/^brand-/, "").replace(/^[a-z]+-/, "").replace(/-/g, " ").toUpperCase()), n && !i.has(n) && i.set(n, { ID: n, title: a, brand: c }) } s = Array.from(i.values()) } if (!s.length || !t.length) return []; if (this.selectedBrand) { const i = this.selectedBrand.toLowerCase().replace(/^brand-/, ""); s = s.filter(r => { const n = (r.brand || "").toLowerCase().replace(/^brand-/, ""), a = (r.ID || r.slug || "").toLowerCase(); return n === i || n.includes(i) || i.includes(n) || a.includes(i) }) } return s.filter(i => t.some(r => this._seriesMatchesProduct(i, r))) } _getFilteredProducts() { const e = this.data || this.products; let s = Array.isArray(e) ? [...e] : []; if (this.selectedCategory) { const r = (Array.isArray(this.categories) ? this.categories : []).find(n => n.ID === this.selectedCategory || n._id === this.selectedCategory || n.slug === this.selectedCategory); r ? s = s.filter(n => this._categoryMatchesProduct(r, n)) : s = s.filter(n => { const a = this.selectedCategory; return n.category === a || n.categorySlug === a || n.brandCategory === a || n.category && n.category.includes(a) || n.categoryPath && n.categoryPath.includes(a) }) } if (this.selectedBrand && (s = s.filter(i => { const r = this.selectedBrand.toLowerCase(), n = (i.brand || "").toLowerCase(); return n === r || n.includes(r) || i.brandPath && i.brandPath.toLowerCase().includes(r) })), this.selectedSeries) { const r = (Array.isArray(this.series) ? this.series : []).find(n => n.ID === this.selectedSeries || n._id === this.selectedSeries || n.slug === this.selectedSeries); r ? s = s.filter(n => this._seriesMatchesProduct(r, n)) : s = s.filter(n => { const a = this.selectedSeries; return n.series ? typeof n.series == "object" ? n.series.ID === a || n.series._id === a || n.series.slug === a : n.series === a || n.series.includes(a) : !1 }) } return this.selectedPriceRange && (s = s.filter(i => { const r = this._getProductPrice(i); switch (this.selectedPriceRange) { case "under-1m": return r > 0 && r < 1e6; case "1m-3m": return r >= 1e6 && r <= 3e6; case "3m-5m": return r >= 3e6 && r <= 5e6; case "over-5m": return r > 5e6; default: return !0 } })), this.selectedSort === "price-asc" ? s.sort((i, r) => this._getProductPrice(i) - this._getProductPrice(r)) : this.selectedSort === "price-desc" ? s.sort((i, r) => this._getProductPrice(r) - this._getProductPrice(i)) : this.selectedSort === "title-asc" && s.sort((i, r) => (i.title || "").localeCompare(r.title || "")), s } _getProductPrice(e) { return ct(e) } _openSidebar(e = "all") { this.activeSidebarTab = e, this.sidebarOpen = !0 } _closeSidebar() { this.sidebarOpen = !1 } _clearAllFilters(e) { e && e.preventDefault(), this.selectedCategory = "", this.selectedBrand = "", this.selectedSeries = "", this.selectedPriceRange = "", this.selectedSort = "default", this.visibleCount = this.pageSize || 32, this.requestUpdate() } _clearCategoryFilter(e) { e && (e.preventDefault(), e.stopPropagation()), this.selectedCategory = "", this.requestUpdate() } _clearBrandFilter(e) { e && (e.preventDefault(), e.stopPropagation()), this.selectedBrand = "", this.requestUpdate() } _clearSeriesFilter(e) { e && (e.preventDefault(), e.stopPropagation()), this.selectedSeries = "", this.requestUpdate() } _clearPriceFilter(e) { e && (e.preventDefault(), e.stopPropagation()), this.selectedPriceRange = "", this.requestUpdate() } _loadMore() { this.visibleCount += this.pageSize } updated(e) { (e.has("selectedCategory") || e.has("selectedBrand") || e.has("selectedSeries") || e.has("selectedPriceRange") || e.has("selectedSort") || e.has("products") || e.has("data")) && (this.visibleCount = this.pageSize || 32) } _onProductCardClick(e) { B(this, "product-select", { product: e.detail.product }) } render() {
-      const e = this.data || this.products, t = Array.isArray(e) ? e.length > 0 : e != null; if (this.loading === !0 || this.loading === "true" || this.products === null && !t) return l`
+  `),w("wx-product-carousel",Z),w("wx-product",class extends Z{});class se extends ${constructor(){super(),this.products=null,this.data=null,this.brands=[],this.categories=[],this.series=[],this.selectedCategory="",this.selectedBrand="",this.selectedSeries="",this.selectedPriceRange="",this.selectedSort="default",this.sidebarOpen=!1,this.activeSidebarTab="all",this.visibleCount=32,this.pageSize=32,this.lang="vi",this.loading=!1}_categoryMatchesProduct(e,t){if(!e||!t)return!1;const i=e.ID||e._id,s=e.slug,r=e.path;return!!(i&&(t.category===i||t.brandCategory===i)||s&&(t.category===s||t.primaryCategorySlug===s)||t.category&&i&&t.category.includes(i)||t.categoryPath&&(s&&(t.categoryPath.includes(`/${s}/`)||t.categoryPath.endsWith(`/${s}`)||t.categoryPath.includes(s))||i&&t.categoryPath.includes(i)||r&&t.categoryPath.startsWith(r))||t.brandCategoryPath&&s&&t.brandCategoryPath.includes(s))}_seriesMatchesProduct(e,t){if(!e||!t)return!1;const i=e.ID||e._id,s=e.slug,r=e.title,n=t.series;if(!n)return!1;if(typeof n=="object"){const a=n.ID||n._id,c=n.slug;return!!(i&&(a===i||c===i)||s&&(a===s||c===s)||r&&n.title===r)}return!!(typeof n=="string"&&(i&&(n===i||n.includes(i))||s&&(n===s||n.includes(s))||r&&n.toLowerCase().includes(r.toLowerCase())))}_getAvailableCategories(){const e=this.data||this.products,t=Array.isArray(e)?e:[],i=Array.isArray(this.categories)?this.categories:[];return i.length?t.length?i.filter(s=>t.some(r=>this._categoryMatchesProduct(s,r))):[]:[]}_getAvailableSeries(){const e=this.data||this.products,t=Array.isArray(e)?e:[];let i=Array.isArray(this.series)?[...this.series]:[];if(!i.length&&t.length){const s=new Map;for(const r of t)if(r.series){let n="",a="",c=r.brand||"";typeof r.series=="object"?(n=r.series.ID||r.series._id||r.series.slug||"",a=r.series.title||n,c=r.series.brand||c):typeof r.series=="string"&&(n=r.series,a=n.replace(/^series-/,"").replace(/^brand-/,"").replace(/^[a-z]+-/,"").replace(/-/g," ").toUpperCase()),n&&!s.has(n)&&s.set(n,{ID:n,title:a,brand:c})}i=Array.from(s.values())}if(!i.length||!t.length)return[];if(this.selectedBrand){const s=this.selectedBrand.toLowerCase().replace(/^brand-/,"");i=i.filter(r=>{const n=(r.brand||"").toLowerCase().replace(/^brand-/,""),a=(r.ID||r.slug||"").toLowerCase();return n===s||n.includes(s)||s.includes(n)||a.includes(s)})}return i.filter(s=>t.some(r=>this._seriesMatchesProduct(s,r)))}_getFilteredProducts(){const e=this.data||this.products;let i=Array.isArray(e)?[...e]:[];if(this.selectedCategory){const r=(Array.isArray(this.categories)?this.categories:[]).find(n=>n.ID===this.selectedCategory||n._id===this.selectedCategory||n.slug===this.selectedCategory);r?i=i.filter(n=>this._categoryMatchesProduct(r,n)):i=i.filter(n=>{const a=this.selectedCategory;return n.category===a||n.categorySlug===a||n.brandCategory===a||n.category&&n.category.includes(a)||n.categoryPath&&n.categoryPath.includes(a)})}if(this.selectedBrand&&(i=i.filter(s=>{const r=this.selectedBrand.toLowerCase(),n=(s.brand||"").toLowerCase();return n===r||n.includes(r)||s.brandPath&&s.brandPath.toLowerCase().includes(r)})),this.selectedSeries){const r=(Array.isArray(this.series)?this.series:[]).find(n=>n.ID===this.selectedSeries||n._id===this.selectedSeries||n.slug===this.selectedSeries);r?i=i.filter(n=>this._seriesMatchesProduct(r,n)):i=i.filter(n=>{const a=this.selectedSeries;return n.series?typeof n.series=="object"?n.series.ID===a||n.series._id===a||n.series.slug===a:n.series===a||n.series.includes(a):!1})}return this.selectedPriceRange&&(i=i.filter(s=>{const r=this._getProductPrice(s);switch(this.selectedPriceRange){case"under-1m":return r>0&&r<1e6;case"1m-3m":return r>=1e6&&r<=3e6;case"3m-5m":return r>=3e6&&r<=5e6;case"over-5m":return r>5e6;default:return!0}})),this.selectedSort==="price-asc"?i.sort((s,r)=>this._getProductPrice(s)-this._getProductPrice(r)):this.selectedSort==="price-desc"?i.sort((s,r)=>this._getProductPrice(r)-this._getProductPrice(s)):this.selectedSort==="title-asc"&&i.sort((s,r)=>(s.title||"").localeCompare(r.title||"")),i}_getProductPrice(e){return ct(e)}_openSidebar(e="all"){this.activeSidebarTab=e,this.sidebarOpen=!0}_closeSidebar(){this.sidebarOpen=!1}_clearAllFilters(e){e&&e.preventDefault(),this.selectedCategory="",this.selectedBrand="",this.selectedSeries="",this.selectedPriceRange="",this.selectedSort="default",this.visibleCount=this.pageSize||32,this.requestUpdate()}_clearCategoryFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedCategory="",this.requestUpdate()}_clearBrandFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedBrand="",this.requestUpdate()}_clearSeriesFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedSeries="",this.requestUpdate()}_clearPriceFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedPriceRange="",this.requestUpdate()}_loadMore(){this.visibleCount+=this.pageSize}updated(e){(e.has("selectedCategory")||e.has("selectedBrand")||e.has("selectedSeries")||e.has("selectedPriceRange")||e.has("selectedSort")||e.has("products")||e.has("data"))&&(this.visibleCount=this.pageSize||32)}_onProductCardClick(e){C(this,"product-select",{product:e.detail.product})}render(){const e=this.data||this.products,t=Array.isArray(e)?e.length>0:e!=null;if(this.loading===!0||this.loading==="true"||this.products===null&&!t)return l`
         <div>
           <div class="filter-toolbar">
             <div class="skeleton-box" style="width: 130px; height: 18px;"></div>
@@ -1052,7 +1034,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
             <div class="skeleton-box" style="width: 100px; height: 34px; border-radius: 4px;"></div>
           </div>
           <div class="product-grid" role="status" aria-label="Loading products">
-            ${[1, 2, 3, 4, 5, 6, 7, 8].map(() => l`
+            ${[1,2,3,4,5,6,7,8].map(()=>l`
                 <div class="skeleton-card">
                   <div style="height: 38px; padding: 8px 16px; display: flex; align-items: center;">
                     <div class="skeleton-box" style="width: 50px; height: 18px; border-radius: 2px;"></div>
@@ -1067,21 +1049,21 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
               `)}
           </div>
         </div>
-      `; const r = this._getFilteredProducts(), n = this._getAvailableCategories(), a = this._getAvailableSeries(), c = this.selectedCategory || this.selectedBrand || this.selectedSeries || this.selectedPriceRange, p = r.length, u = r.slice(0, this.visibleCount), g = p > 0 ? Math.min(100, u.length / p * 100) : 0; return l`
+      `;const r=this._getFilteredProducts(),n=this._getAvailableCategories(),a=this._getAvailableSeries(),c=this.selectedCategory||this.selectedBrand||this.selectedSeries||this.selectedPriceRange,p=r.length,u=r.slice(0,this.visibleCount),g=p>0?Math.min(100,u.length/p*100):0;return l`
       <div>
         <div class="filter-toolbar">
-          <span class="results-text">${d("resultsCount", this.lang, r.length)}</span>
+          <span class="results-text">${d("resultsCount",this.lang,r.length)}</span>
 
           <div class="sort-select-wrap">
             <select
               class="sort-select"
-              @change="${h => this.selectedSort = h.target.value}"
+              @change="${h=>this.selectedSort=h.target.value}"
               .value="${this.selectedSort}"
             >
-              <option value="default">${d("sortBy", this.lang)}</option>
-              <option value="price-asc">${d("sortPriceAsc", this.lang)}</option>
-              <option value="price-desc">${d("sortPriceDesc", this.lang)}</option>
-              <option value="title-asc">${d("sortTitleAsc", this.lang)}</option>
+              <option value="default">${d("sortBy",this.lang)}</option>
+              <option value="price-asc">${d("sortPriceAsc",this.lang)}</option>
+              <option value="price-desc">${d("sortPriceDesc",this.lang)}</option>
+              <option value="title-asc">${d("sortTitleAsc",this.lang)}</option>
             </select>
             <span class="sort-arrow">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1092,40 +1074,40 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
 
           <div class="filter-buttons-group">
             <button
-              class="filter-trigger-btn ${this.selectedBrand ? "has-value" : ""}"
-              @click="${() => this._openSidebar("brand")}"
+              class="filter-trigger-btn ${this.selectedBrand?"has-value":""}"
+              @click="${()=>this._openSidebar("brand")}"
             >
-              <span>${d("filterBrand", this.lang)}</span>
+              <span>${d("filterBrand",this.lang)}</span>
             </button>
 
             <button
-              class="filter-trigger-btn ${this.selectedSeries ? "has-value" : ""}"
-              @click="${() => this._openSidebar("series")}"
+              class="filter-trigger-btn ${this.selectedSeries?"has-value":""}"
+              @click="${()=>this._openSidebar("series")}"
             >
-              <span>${d("filterSeries", this.lang)}</span>
+              <span>${d("filterSeries",this.lang)}</span>
             </button>
 
             <button
-              class="filter-trigger-btn ${this.selectedPriceRange ? "has-value" : ""}"
-              @click="${() => this._openSidebar("price")}"
+              class="filter-trigger-btn ${this.selectedPriceRange?"has-value":""}"
+              @click="${()=>this._openSidebar("price")}"
             >
-              <span>${d("filterPrice", this.lang)}</span>
+              <span>${d("filterPrice",this.lang)}</span>
             </button>
 
             <button
-              class="filter-trigger-btn ${this.selectedCategory ? "has-value" : ""}"
-              @click="${() => this._openSidebar("category")}"
+              class="filter-trigger-btn ${this.selectedCategory?"has-value":""}"
+              @click="${()=>this._openSidebar("category")}"
             >
-              <span>${d("filterCategory", this.lang)}</span>
+              <span>${d("filterCategory",this.lang)}</span>
             </button>
 
-            ${c ? l`<button class="reset-link" @click="${this._clearAllFilters}">${d("clearAll", this.lang)}</button>` : ""}
+            ${c?l`<button class="reset-link" @click="${this._clearAllFilters}">${d("clearAll",this.lang)}</button>`:""}
 
             <button
               class="filter-trigger-btn all-filters-btn"
-              @click="${() => this._openSidebar("all")}"
+              @click="${()=>this._openSidebar("all")}"
             >
-              <span>${this.lang === "vi" ? "Tất cả bộ lọc" : "All Filters"}</span>
+              <span>${this.lang==="vi"?"Tất cả bộ lọc":"All Filters"}</span>
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm12 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 8.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm5 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm3 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 13.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm10 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
               </svg>
@@ -1134,51 +1116,51 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
         </div>
 
         <div class="product-grid">
-          ${u.length > 0 ? u.map(h => l`
+          ${u.length>0?u.map(h=>l`
                   <wx-product-card
                     .product="${h}"
                     .lang="${this.lang}"
                     @product-click="${this._onProductCardClick}"
                   ></wx-product-card>
-                `) : l`
+                `):l`
                 <div class="empty-state">
-                  <p>${d("emptyProducts", this.lang)}</p>
+                  <p>${d("emptyProducts",this.lang)}</p>
                 </div>
               `}
         </div>
 
-        ${p > this.pageSize ? l`
+        ${p>this.pageSize?l`
               <div class="pagination-wrapper">
                 <div class="showing-text">
-                  ${d("showingItems", this.lang, u.length, p)}
+                  ${d("showingItems",this.lang,u.length,p)}
                 </div>
                 <div class="progress-bar-container">
                   <div class="progress-bar-fill" style="width: ${g}%;"></div>
                 </div>
-                ${u.length < p ? l`
+                ${u.length<p?l`
                       <button class="btn-load-more" @click="${this._loadMore}">
-                        ${d("loadMore", this.lang)}
+                        ${d("loadMore",this.lang)}
                       </button>
-                    `: ""}
+                    `:""}
               </div>
-            `: ""}
+            `:""}
 
         <div
-          class="drawer-overlay ${this.sidebarOpen ? "open" : ""}"
+          class="drawer-overlay ${this.sidebarOpen?"open":""}"
           @click="${this._closeSidebar}"
         ></div>
 
-        <aside class="filter-sidebar ${this.sidebarOpen ? "open" : ""}" aria-label="${d("productFilterAria", this.lang)}">
+        <aside class="filter-sidebar ${this.sidebarOpen?"open":""}" aria-label="${d("productFilterAria",this.lang)}">
           <div class="sidebar-header">
-            <h3 class="sidebar-title">${d("searchFilters", this.lang)}</h3>
-            <button class="close-btn" @click="${this._closeSidebar}" aria-label="${d("close", this.lang)}">✕</button>
+            <h3 class="sidebar-title">${d("searchFilters",this.lang)}</h3>
+            <button class="close-btn" @click="${this._closeSidebar}" aria-label="${d("close",this.lang)}">✕</button>
           </div>
 
           <div class="sidebar-content">
             <div class="filter-section">
               <div class="filter-group-title">
-                <span>${d("categories", this.lang)}</span>
-                ${this.selectedCategory ? l`<button type="button" class="clear-section-btn" @click="${this._clearCategoryFilter}">${d("clear", this.lang)}</button>` : ""}
+                <span>${d("categories",this.lang)}</span>
+                ${this.selectedCategory?l`<button type="button" class="clear-section-btn" @click="${this._clearCategoryFilter}">${d("clear",this.lang)}</button>`:""}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -1187,31 +1169,31 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
                     name="cat_filter"
                     value=""
                     .checked="${!this.selectedCategory}"
-                    @change="${() => this.selectedCategory = ""}"
+                    @change="${()=>this.selectedCategory=""}"
                   />
-                  <span>${d("allCategories", this.lang)}</span>
+                  <span>${d("allCategories",this.lang)}</span>
                 </label>
                 <div class="filter-options-scrollable">
-                  ${n && n.length > 0 ? n.map(h => l`
+                  ${n&&n.length>0?n.map(h=>l`
                           <label class="filter-option-label">
                             <input
                               type="radio"
                               name="cat_filter"
-                              value="${h.ID || h.slug || h._id}"
-                              .checked="${this.selectedCategory === (h.ID || h.slug || h._id)}"
-                              @change="${() => this.selectedCategory = h.ID || h.slug || h._id}"
+                              value="${h.ID||h.slug||h._id}"
+                              .checked="${this.selectedCategory===(h.ID||h.slug||h._id)}"
+                              @change="${()=>this.selectedCategory=h.ID||h.slug||h._id}"
                             />
                             <span>${h.title}</span>
                           </label>
-                        `) : l`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${d("noCategories", this.lang)}</span>`}
+                        `):l`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${d("noCategories",this.lang)}</span>`}
                 </div>
               </div>
             </div>
 
             <div class="filter-section">
               <div class="filter-group-title">
-                <span>${d("brands", this.lang)}</span>
-                ${this.selectedBrand ? l`<button type="button" class="clear-section-btn" @click="${this._clearBrandFilter}">${d("clear", this.lang)}</button>` : ""}
+                <span>${d("brands",this.lang)}</span>
+                ${this.selectedBrand?l`<button type="button" class="clear-section-btn" @click="${this._clearBrandFilter}">${d("clear",this.lang)}</button>`:""}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -1220,29 +1202,29 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
                     name="brand_filter"
                     value=""
                     .checked="${!this.selectedBrand}"
-                    @change="${() => this.selectedBrand = ""}"
+                    @change="${()=>this.selectedBrand=""}"
                   />
-                  <span>${d("allBrands", this.lang)}</span>
+                  <span>${d("allBrands",this.lang)}</span>
                 </label>
-                ${this.brands && this.brands.length > 0 ? this.brands.map(h => l`
+                ${this.brands&&this.brands.length>0?this.brands.map(h=>l`
                         <label class="filter-option-label">
                           <input
                             type="radio"
                             name="brand_filter"
-                            value="${h.ID || h.slug || h._id}"
-                            .checked="${this.selectedBrand === (h.ID || h.slug || h._id)}"
-                            @change="${() => this.selectedBrand = h.ID || h.slug || h._id}"
+                            value="${h.ID||h.slug||h._id}"
+                            .checked="${this.selectedBrand===(h.ID||h.slug||h._id)}"
+                            @change="${()=>this.selectedBrand=h.ID||h.slug||h._id}"
                           />
                           <span>${h.title}</span>
                         </label>
-                      `) : ""}
+                      `):""}
               </div>
             </div>
 
             <div class="filter-section">
               <div class="filter-group-title">
-                <span>${d("series", this.lang)}</span>
-                ${this.selectedSeries ? l`<button type="button" class="clear-section-btn" @click="${this._clearSeriesFilter}">${d("clear", this.lang)}</button>` : ""}
+                <span>${d("series",this.lang)}</span>
+                ${this.selectedSeries?l`<button type="button" class="clear-section-btn" @click="${this._clearSeriesFilter}">${d("clear",this.lang)}</button>`:""}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -1251,31 +1233,31 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
                     name="series_filter"
                     value=""
                     .checked="${!this.selectedSeries}"
-                    @change="${() => this.selectedSeries = ""}"
+                    @change="${()=>this.selectedSeries=""}"
                   />
-                  <span>${d("allSeries", this.lang)}</span>
+                  <span>${d("allSeries",this.lang)}</span>
                 </label>
                 <div class="filter-options-scrollable">
-                  ${a && a.length > 0 ? a.map(h => l`
+                  ${a&&a.length>0?a.map(h=>l`
                           <label class="filter-option-label">
                             <input
                               type="radio"
                               name="series_filter"
-                              value="${h.ID || h.slug || h._id}"
-                              .checked="${this.selectedSeries === (h.ID || h.slug || h._id)}"
-                              @change="${() => this.selectedSeries = h.ID || h.slug || h._id}"
+                              value="${h.ID||h.slug||h._id}"
+                              .checked="${this.selectedSeries===(h.ID||h.slug||h._id)}"
+                              @change="${()=>this.selectedSeries=h.ID||h.slug||h._id}"
                             />
                             <span>${h.title}</span>
                           </label>
-                        `) : l`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${d("noSeries", this.lang)}</span>`}
+                        `):l`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${d("noSeries",this.lang)}</span>`}
                 </div>
               </div>
             </div>
 
             <div class="filter-section">
               <div class="filter-group-title">
-                <span>${d("priceRange", this.lang)}</span>
-                ${this.selectedPriceRange ? l`<button type="button" class="clear-section-btn" @click="${this._clearPriceFilter}">${d("clear", this.lang)}</button>` : ""}
+                <span>${d("priceRange",this.lang)}</span>
+                ${this.selectedPriceRange?l`<button type="button" class="clear-section-btn" @click="${this._clearPriceFilter}">${d("clear",this.lang)}</button>`:""}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -1284,62 +1266,61 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
                     name="price_filter"
                     value=""
                     .checked="${!this.selectedPriceRange}"
-                    @change="${() => this.selectedPriceRange = ""}"
+                    @change="${()=>this.selectedPriceRange=""}"
                   />
-                  <span>${d("allPrices", this.lang)}</span>
+                  <span>${d("allPrices",this.lang)}</span>
                 </label>
                 <label class="filter-option-label">
                   <input
                     type="radio"
                     name="price_filter"
                     value="under-1m"
-                    .checked="${this.selectedPriceRange === "under-1m"}"
-                    @change="${() => this.selectedPriceRange = "under-1m"}"
+                    .checked="${this.selectedPriceRange==="under-1m"}"
+                    @change="${()=>this.selectedPriceRange="under-1m"}"
                   />
-                  <span>${d("priceUnder1m", this.lang)}</span>
+                  <span>${d("priceUnder1m",this.lang)}</span>
                 </label>
                 <label class="filter-option-label">
                   <input
                     type="radio"
                     name="price_filter"
                     value="1m-3m"
-                    .checked="${this.selectedPriceRange === "1m-3m"}"
-                    @change="${() => this.selectedPriceRange = "1m-3m"}"
+                    .checked="${this.selectedPriceRange==="1m-3m"}"
+                    @change="${()=>this.selectedPriceRange="1m-3m"}"
                   />
-                  <span>${d("price1mTo3m", this.lang)}</span>
+                  <span>${d("price1mTo3m",this.lang)}</span>
                 </label>
                 <label class="filter-option-label">
                   <input
                     type="radio"
                     name="price_filter"
                     value="3m-5m"
-                    .checked="${this.selectedPriceRange === "3m-5m"}"
-                    @change="${() => this.selectedPriceRange = "3m-5m"}"
+                    .checked="${this.selectedPriceRange==="3m-5m"}"
+                    @change="${()=>this.selectedPriceRange="3m-5m"}"
                   />
-                  <span>${d("price3mTo5m", this.lang)}</span>
+                  <span>${d("price3mTo5m",this.lang)}</span>
                 </label>
                 <label class="filter-option-label">
                   <input
                     type="radio"
                     name="price_filter"
                     value="over-5m"
-                    .checked="${this.selectedPriceRange === "over-5m"}"
-                    @change="${() => this.selectedPriceRange = "over-5m"}"
+                    .checked="${this.selectedPriceRange==="over-5m"}"
+                    @change="${()=>this.selectedPriceRange="over-5m"}"
                   />
-                  <span>${d("priceOver5m", this.lang)}</span>
+                  <span>${d("priceOver5m",this.lang)}</span>
                 </label>
               </div>
             </div>
           </div>
 
           <div class="sidebar-footer">
-            <button class="btn-clear" @click="${this._clearAllFilters}">${d("reset", this.lang)}</button>
-            <button class="btn-apply" @click="${this._closeSidebar}">${d("viewResults", this.lang, r.length)}</button>
+            <button class="btn-clear" @click="${this._clearAllFilters}">${d("reset",this.lang)}</button>
+            <button class="btn-apply" @click="${this._closeSidebar}">${d("viewResults",this.lang,r.length)}</button>
           </div>
         </aside>
       </div>
-    `}
-  } x(se, "properties", { products: { type: Array, converter: v }, data: { type: Array, converter: v }, brands: { type: Array, converter: v }, categories: { type: Array, converter: v }, series: { type: Array, converter: v }, selectedCategory: { type: String }, selectedBrand: { type: String }, selectedSeries: { type: String }, selectedPriceRange: { type: String }, selectedSort: { type: String }, sidebarOpen: { type: Boolean }, activeSidebarTab: { type: String }, visibleCount: { type: Number }, pageSize: { type: Number }, lang: { type: String }, loading: { type: Boolean, converter: ye } }), x(se, "styles", S`
+    `}}x(se,"properties",{products:{type:Array,converter:v},data:{type:Array,converter:v},brands:{type:Array,converter:v},categories:{type:Array,converter:v},series:{type:Array,converter:v},selectedCategory:{type:String},selectedBrand:{type:String},selectedSeries:{type:String},selectedPriceRange:{type:String},selectedSort:{type:String},sidebarOpen:{type:Boolean},activeSidebarTab:{type:String},visibleCount:{type:Number},pageSize:{type:Number},lang:{type:String},loading:{type:Boolean,converter:ye}}),x(se,"styles",S`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -1878,29 +1859,90 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
     .btn-load-more:active {
       transform: translateY(0);
     }
-  `), w("wx-product-listing", se); class re extends $ {
-    constructor() { super(), this.product = null, this.data = null, this.selectedImageIndex = 0, this.lang = "vi", this.loading = !1, this.openSections = { description: !0, specifications: !1, instructions: !1 }, this.isZoomed = !1, this.zoomX = 50, this.zoomY = 50 } _onMouseMove(e) { const t = e.currentTarget.getBoundingClientRect(); if (!t.width || !t.height) return; const s = (e.clientX - t.left) / t.width * 100, i = (e.clientY - t.top) / t.height * 100; this.zoomX = Math.max(0, Math.min(100, s)), this.zoomY = Math.max(0, Math.min(100, i)), this.isZoomed = !0 } _onMouseLeave() { this.isZoomed = !1, this.zoomX = 50, this.zoomY = 50 } _getImages() { const e = [], t = this.data || this.product; if (!t) return e; if (t.mainImage) { const i = T(t.mainImage); i && e.push(i) } const s = t.gallery || t.media || t.images || t.mediaGallery; return s && xe(s).forEach(r => { const n = T(r); n && !e.includes(n) && e.push(n) }), e } _prevImage(e) { e.length && (this.selectedImageIndex = (this.selectedImageIndex - 1 + e.length) % e.length) } _nextImage(e) { e.length && (this.selectedImageIndex = (this.selectedImageIndex + 1) % e.length) } _toggleSection(e) { this.openSections = { ...this.openSections, [e]: !this.openSections[e] } } _renderHighlights(e) {
-      if (!e || typeof e != "string") return l``; const t = e.split(`
-`).map(n => n.trim()).filter(Boolean), s = [], i = [], r = /^[-–—*•·]\s*/; for (const n of t) r.test(n) ? i.push(n.replace(r, "")) : i.length === 0 ? s.push(n) : i.push(n); return l`
-      ${s.length ? l`<div class="highlights-heading">${s.join(" ")}</div>` : ""}
-      ${i.length ? l`<ul class="highlights-list">
-            ${i.map(n => l`<li>${n}</li>`)}
-          </ul>`: ""}
-    `} _renderDescription(e) {
-      if (!e || typeof e != "string") return l``; const t = e.split(/\n\s*\n/).map(r => r.trim()).filter(Boolean), s = [], i = /^[-–—*•·]\s*/; for (const r of t) {
-        const n = r.split(`
-`).map(c => c.trim()).filter(Boolean); if (n.every(c => i.test(c))) {
-          const c = n.map(p => p.replace(i, "")); s.push(l`<ul class="desc-bullets">
-          ${c.map(p => l`<li>${p}</li>`)}
-        </ul>`)
-        } else {
-          const c = [], p = []; for (const u of n) i.test(u) ? p.push(u.replace(i, "")) : c.push(u); c.length && s.push(l`<p class="desc-paragraph">${c.join(" ")}</p>`), p.length && s.push(l`<ul class="desc-bullets">
-            ${p.map(u => l`<li>${u}</li>`)}
-          </ul>`)
-        }
-      } return l`<div class="desc-formatted">${s}</div>`
-    } render() {
-      const e = this.data || this.product; if (this.loading === !0 || this.loading === "true" || !e && this.product === null) return l`
+  `),w("wx-product-listing",se);class re extends ${constructor(){super(),this.product=null,this.data=null,this.selectedImageIndex=0,this.lang="vi",this.loading=!1,this.shopeeUrl="",this.tiktokUrl="",this.messUrl="",this.openSections={description:!0,specifications:!1,instructions:!1},this.isZoomed=!1,this.zoomX=50,this.zoomY=50}_onMouseMove(e){const t=e.currentTarget.getBoundingClientRect();if(!t.width||!t.height)return;const i=(e.clientX-t.left)/t.width*100,s=(e.clientY-t.top)/t.height*100;this.zoomX=Math.max(0,Math.min(100,i)),this.zoomY=Math.max(0,Math.min(100,s)),this.isZoomed=!0}_onMouseLeave(){this.isZoomed=!1,this.zoomX=50,this.zoomY=50}_getImages(){const e=[],t=this.data||this.product;if(!t)return e;if(t.mainImage){const s=E(t.mainImage);s&&e.push(s)}const i=t.gallery||t.media||t.images||t.mediaGallery;return i&&xe(i).forEach(r=>{const n=E(r);n&&!e.includes(n)&&e.push(n)}),e}_prevImage(e){e.length&&(this.selectedImageIndex=(this.selectedImageIndex-1+e.length)%e.length)}_nextImage(e){e.length&&(this.selectedImageIndex=(this.selectedImageIndex+1)%e.length)}_toggleSection(e){this.openSections={...this.openSections,[e]:!this.openSections[e]}}_renderHighlights(e){if(!e||typeof e!="string")return l``;const t=e.split(`
+`).map(n=>n.trim()).filter(Boolean),i=[],s=[],r=/^[-–—*•·]\s*/;for(const n of t)r.test(n)?s.push(n.replace(r,"")):s.length===0?i.push(n):s.push(n);return l`
+      ${i.length?l`<div class="highlights-heading">${i.join(" ")}</div>`:""}
+      ${s.length?l`<ul class="highlights-list">
+            ${s.map(n=>l`<li>${n}</li>`)}
+          </ul>`:""}
+    `}_getSocialUrl(e,t){if(e==="shopee"){const i=this.shopeeUrl||t&&t.shopeeUrl;return i&&typeof i=="string"&&i.trim()&&i.trim()!=="#"?i.trim():""}if(e==="tiktok"){const i=this.tiktokUrl||t&&t.tiktokUrl;return i&&typeof i=="string"&&i.trim()&&i.trim()!=="#"?i.trim():""}if(e==="mess"){const i="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0",s=this.messUrl||t&&(t.messUrl||t.messengerUrl)||i;return s&&typeof s=="string"&&s.trim()&&s.trim()!=="#"?s.trim():i}return""}_onSocialClick(e,t){const i=this.product||this.data||{},s=this._getSocialUrl(e,i);C(this,"social-click",{channel:e,url:s,product:i}),C(this,`${e}-click`,{url:s,product:i})}_renderSocialActions(e){const t=this._getSocialUrl("shopee",e),i=this._getSocialUrl("tiktok",e),s=this._getSocialUrl("mess",e);return!t&&!i&&!s?"":l`
+      <div class="social-actions-group" aria-label="Kênh liên hệ và mua hàng">
+        <!-- Button 1: Shopee (Icon 1) - Chỉ hiển thị khi sản phẩm có link Shopee -->
+        ${t?l`
+              <a
+                class="social-btn shopee"
+                href="${t}"
+                target="_blank"
+                rel="noopener noreferrer"
+                @click="${r=>this._onSocialClick("shopee",r)}"
+                title="Mua trên Shopee"
+              >
+                <svg viewBox="0 0 512 512" width="22" height="22" style="flex-shrink:0;">
+                  <!-- Quai túi cam -->
+                  <path fill="#EE4D2D" d="M344 144c0-48.6-39.4-88-88-88s-88 39.4-88 88v16h36v-16c0-28.7 23.3-52 52-52s52 23.3 52 52v16h36v-16z"/>
+                  <!-- Thân túi cam -->
+                  <path fill="#EE4D2D" d="M56 156l24 290c2 24.2 22.2 43 46.5 43h259c24.3 0 44.5-18.8 46.5-43l24-290H56z"/>
+                  <!-- Chữ S trắng nét cong mềm mại -->
+                  <path fill="none" stroke="#FFFFFF" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" d="M312 245c-14-25-33-35-56-35-32 0-56 22-56 50 0 46 112 36 112 94 0 32-26 56-56 56-28 0-48-15-58-40"/>
+                </svg>
+                <span>Shopee</span>
+              </a>
+            `:""}
+
+        <!-- Button 2: TikTok - Chỉ hiển thị khi sản phẩm có link TikTok -->
+        ${i?l`
+              <a
+                class="social-btn tiktok"
+                href="${i}"
+                target="_blank"
+                rel="noopener noreferrer"
+                @click="${r=>this._onSocialClick("tiktok",r)}"
+                title="Xem trên TikTok"
+              >
+                <svg viewBox="0 0 512 512" width="20" height="20" style="flex-shrink:0;">
+                  <path fill="#25F4EE" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z" transform="translate(-4, -4)"/>
+                  <path fill="#FE2C55" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z" transform="translate(4, 4)"/>
+                  <path fill="#010101" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z"/>
+                </svg>
+                <span>TikTok</span>
+              </a>
+            `:""}
+
+        <!-- Button 3: Messenger (Icon 2) -->
+        ${s?l`
+              <a
+                class="social-btn mess"
+                href="${s}"
+                target="_blank"
+                rel="noopener noreferrer"
+                @click="${r=>this._onSocialClick("mess",r)}"
+                title="Nhắn tin qua Messenger"
+              >
+                <svg viewBox="0 0 512 512" width="22" height="22" style="flex-shrink:0;">
+                  <defs>
+                    <linearGradient id="wx-msg-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#0078FF"/>
+                      <stop offset="30%" stop-color="#0099FF"/>
+                      <stop offset="60%" stop-color="#A033FF"/>
+                      <stop offset="85%" stop-color="#FF5277"/>
+                      <stop offset="100%" stop-color="#FF6969"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Khung bong bóng chat gradient -->
+                  <path fill="url(#wx-msg-gradient)" d="M256 20C132.3 20 32 113.8 32 229.4c0 65.5 32.8 122.2 84.4 159.2 4.4 3.1 7.1 8.2 6.9 13.6l-3.2 42.4c-.9 12 11.2 20.8 22 15.3l48.8-24.6c4.1-2.1 8.9-2.5 13.3-1.2 16.5 4.9 34.1 7.6 52.3 7.6 123.7 0 224-93.8 224-209.4C480 113.8 379.7 20 256 20z"/>
+                  <!-- Tia sét trắng bo góc mềm mại -->
+                  <path fill="#FFFFFF" d="M142 328l76.5-121.2c8.9-14.1 28.7-16.4 40.6-4.8l60.8 59.1c4.3 4.2 11.1 4.2 15.4 0l81.8-62c11-8.4 25.4 5.4 17.9 17.2l-76.5 121.2c-8.9 14.1-28.7 16.4-40.6 4.8l-60.8-59.1c-4.3-4.2-11.1-4.2-15.4 0l-81.8 62c-11 8.4-25.4-5.4-17.9-17.2z"/>
+                </svg>
+                <span>Mess</span>
+              </a>
+            `:""}
+      </div>
+    `}_renderDescription(e){if(!e||typeof e!="string")return l``;const t=e.split(/\n\s*\n/).map(r=>r.trim()).filter(Boolean),i=[],s=/^[-–—*•·]\s*/;for(const r of t){const n=r.split(`
+`).map(c=>c.trim()).filter(Boolean);if(n.every(c=>s.test(c))){const c=n.map(p=>p.replace(s,""));i.push(l`<ul class="desc-bullets">
+          ${c.map(p=>l`<li>${p}</li>`)}
+        </ul>`)}else{const c=[],p=[];for(const u of n)s.test(u)?p.push(u.replace(s,"")):c.push(u);c.length&&i.push(l`<p class="desc-paragraph">${c.join(" ")}</p>`),p.length&&i.push(l`<ul class="desc-bullets">
+            ${p.map(u=>l`<li>${u}</li>`)}
+          </ul>`)}}return l`<div class="desc-formatted">${i}</div>`}render(){const e=this.data||this.product;if(this.loading===!0||this.loading==="true"||!e&&this.product===null)return l`
         <div class="pdp-grid" role="status" aria-label="Loading product details">
           <!-- Cột Gallery Skeleton -->
           <div class="gallery-col">
@@ -1925,21 +1967,21 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
             </div>
           </div>
         </div>
-      `; if (!e) return l``; const i = e, r = this._getImages(), n = r[this.selectedImageIndex] || r[0], a = i.brand ? i.brand.replace("brand-", "").toUpperCase() : "", c = i.series ? i.series.replace("series-", "").replace(/--.+/, "").toUpperCase() : "", { price: p, comparePrice: u, discountPercent: g } = me(i), h = be(i.specs, []); return l`
+      `;if(!e)return l``;const s=e,r=this._getImages(),n=r[this.selectedImageIndex]||r[0],a=s.brand?s.brand.replace("brand-","").toUpperCase():"",c=s.series?s.series.replace("series-","").replace(/--.+/,"").toUpperCase():"",{price:p,comparePrice:u,discountPercent:g}=me(s),h=be(s.specs,[]);return l`
       <div class="pdp-grid">
         <!-- Cột Gallery bên trái -->
         <div class="gallery-col">
           <div
-            class="main-viewport-box ${this.isZoomed ? "zoomed" : ""}"
+            class="main-viewport-box ${this.isZoomed?"zoomed":""}"
             @mousemove="${this._onMouseMove}"
             @mouseleave="${this._onMouseLeave}"
           >
-            ${i.labels && i.labels.length ? l`<span class="badge-top-left">${Array.isArray(i.labels) ? i.labels[0] : i.labels}</span>` : ""}
+            ${s.labels&&s.labels.length?l`<span class="badge-top-left">${Array.isArray(s.labels)?s.labels[0]:s.labels}</span>`:""}
             
-            ${r.length > 1 ? l`
-                  <button class="nav-arrow prev" @click="${f => { f.stopPropagation(), this._prevImage(r) }}" aria-label="${d("prevImage", this.lang)}">&#x2039;</button>
-                  <button class="nav-arrow next" @click="${f => { f.stopPropagation(), this._nextImage(r) }}" aria-label="${d("nextImage", this.lang)}">&#x203A;</button>
-                `: ""}
+            ${r.length>1?l`
+                  <button class="nav-arrow prev" @click="${f=>{f.stopPropagation(),this._prevImage(r)}}" aria-label="${d("prevImage",this.lang)}">&#x2039;</button>
+                  <button class="nav-arrow next" @click="${f=>{f.stopPropagation(),this._nextImage(r)}}" aria-label="${d("nextImage",this.lang)}">&#x203A;</button>
+                `:""}
 
             <!-- Icon kính lúp có dấu + góc dưới phải -->
             <div class="zoom-badge" aria-hidden="true" title="Phóng to chi tiết">
@@ -1951,132 +1993,136 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
               </svg>
             </div>
 
-            ${n ? l`
+            ${n?l`
                   <img
                     class="main-img"
                     src="${n}"
-                    alt="${i.title}"
-                    style="${this.isZoomed ? `transform-origin: ${this.zoomX}% ${this.zoomY}%; transform: scale(2.4);` : "transform-origin: center center; transform: scale(1);"}"
+                    alt="${s.title}"
+                    style="${this.isZoomed?`transform-origin: ${this.zoomX}% ${this.zoomY}%; transform: scale(2.4);`:"transform-origin: center center; transform: scale(1);"}"
                   />
-                `: l`
+                `:l`
                   <div style="width: 100%; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f9f9f9; border: 1px dashed #d5d5d5; border-radius: 4px; color: #999; gap: 8px;">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                       <circle cx="8.5" cy="8.5" r="1.5"></circle>
                       <polyline points="21 15 16 10 5 21"></polyline>
                     </svg>
-                    <span style="font-size: 12px;">${d("noImage", this.lang)}</span>
+                    <span style="font-size: 12px;">${d("noImage",this.lang)}</span>
                   </div>
                 `}
           </div>
 
           <!-- Thumbnail Matrix -->
-          ${r.length > 1 ? l`
+          ${r.length>1?l`
                 <div class="thumbnails-grid">
-                  ${r.map((f, m) => l`
+                  ${r.map((f,m)=>l`
                     <div
-                      class="thumb-cell ${m === this.selectedImageIndex ? "active" : ""}"
-                      @click="${() => this.selectedImageIndex = m}"
+                      class="thumb-cell ${m===this.selectedImageIndex?"active":""}"
+                      @click="${()=>this.selectedImageIndex=m}"
                     >
-                      <img src="${f}" alt="Thumbnail ${m + 1}" />
+                      <img src="${f}" alt="Thumbnail ${m+1}" />
                     </div>
                   `)}
                 </div>
-              `: ""}
+              `:""}
         </div>
 
         <!-- Cột Thông tin bên phải -->
         <div class="info-col">
-          ${a ? l`<div class="brand-row">${a}</div>` : ""}
+          ${a?l`<div class="brand-row">${a}</div>`:""}
 
-          <h1 class="product-title">${i.title}</h1>
+          <h1 class="product-title">${s.title}</h1>
 
-          ${c ? l`<div class="series-name">${d("seriesLabel", this.lang, c)}</div>` : ""}
+          ${c?l`<div class="series-name">${d("seriesLabel",this.lang,c)}</div>`:""}
 
           <!-- Price Row -->
           <div class="price-row">
-            ${u && u > p ? l`<span class="compare-price">${V(u)}</span>` : ""}
-            <span class="sale-price">${p ? V(p) : d("contactUs", this.lang)}</span>
-            ${g ? l`<span class="discount-box">-${g}%</span>` : ""}
+            ${u&&u>p?l`<span class="compare-price">${q(u)}</span>`:""}
+            <span class="sale-price">${p?q(p):d("contactUs",this.lang)}</span>
+            ${g?l`<span class="discount-box">-${g}%</span>`:""}
           </div>
 
           <!-- Ratings nếu có -->
-          ${i.rating ? l`
+          ${s.rating?l`
                 <div class="rating-row">
                   <span class="stars">★★★★★</span>
-                  <span>${i.rating}</span>
-                  ${i.reviewCount ? l`<span class="rating-link">${d("reviewsCount", this.lang, i.reviewCount)}</span>` : ""}
+                  <span>${s.rating}</span>
+                  ${s.reviewCount?l`<span class="rating-link">${d("reviewsCount",this.lang,s.reviewCount)}</span>`:""}
                 </div>
-              `: ""}
+              `:""}
 
-          <!-- Highlights Bullet list nếu có shortDescription -->
-          ${i.shortDescription ? l`
+          <!-- Highlights Bullet list nếu có shortDescription & 3 Buttons: Facebook, TikTok, Mess -->
+          ${s.shortDescription?l`
                 <div class="highlights-box">
-                  <div class="highlights-title">${d("highlights", this.lang)}</div>
-                  ${this._renderHighlights(i.shortDescription)}
+                  <div class="highlights-title">${d("highlights",this.lang)}</div>
+                  ${this._renderHighlights(s.shortDescription)}
+                  ${this._renderSocialActions(s)}
                 </div>
-              `: ""}
+              `:l`
+                <div class="highlights-box empty-highlights">
+                  ${this._renderSocialActions(s)}
+                </div>
+              `}
 
           <!-- Accordion Sections -->
           <div class="accordion-section">
             <!-- 1. Description -->
             <div class="accordion-item">
-              <button class="accordion-header" @click="${() => this._toggleSection("description")}">
-                <span>${d("descriptionTab", this.lang)}</span>
-                <span class="accordion-icon">${this.openSections.description ? "▲" : "▼"}</span>
+              <button class="accordion-header" @click="${()=>this._toggleSection("description")}">
+                <span>${d("descriptionTab",this.lang)}</span>
+                <span class="accordion-icon">${this.openSections.description?"▲":"▼"}</span>
               </button>
-              ${this.openSections.description ? l`
+              ${this.openSections.description?l`
                     <div class="accordion-body">
-                      ${this._renderDescription(i.description || i.shortDescription || d("noDescription", this.lang))}
+                      ${this._renderDescription(s.description||s.shortDescription||d("noDescription",this.lang))}
                     </div>
-                  `: ""}
+                  `:""}
             </div>
 
             <!-- 2. Specifications -->
             <div class="accordion-item">
-              <button class="accordion-header" @click="${() => this._toggleSection("specifications")}">
-                <span>${d("specsTab", this.lang)}</span>
-                <span class="accordion-icon">${this.openSections.specifications ? "▲" : "▼"}</span>
+              <button class="accordion-header" @click="${()=>this._toggleSection("specifications")}">
+                <span>${d("specsTab",this.lang)}</span>
+                <span class="accordion-icon">${this.openSections.specifications?"▲":"▼"}</span>
               </button>
-              ${this.openSections.specifications ? l`
+              ${this.openSections.specifications?l`
                     <div class="accordion-body">
-                      ${h && h.length > 0 ? l`
+                      ${h&&h.length>0?l`
                             <table class="specs-table">
                               <tbody>
-                                ${h.map(f => l`
+                                ${h.map(f=>l`
                                     <tr>
-                                      <td>${f.name || f.key}</td>
+                                      <td>${f.name||f.key}</td>
                                       <td>${f.value}</td>
                                     </tr>
                                   `)}
                               </tbody>
                             </table>
-                          `: l`<p>${d("noSpecs", this.lang)}</p>`}
+                          `:l`<p>${d("noSpecs",this.lang)}</p>`}
                     </div>
-                  `: ""}
+                  `:""}
             </div>
 
             <!-- 3. Manual and Safety Instructions -->
             <div class="accordion-item">
-              <button class="accordion-header" @click="${() => this._toggleSection("instructions")}">
-                <span>${d("instructionsTab", this.lang)}</span>
-                <span class="accordion-icon">${this.openSections.instructions ? "▲" : "▼"}</span>
+              <button class="accordion-header" @click="${()=>this._toggleSection("instructions")}">
+                <span>${d("instructionsTab",this.lang)}</span>
+                <span class="accordion-icon">${this.openSections.instructions?"▲":"▼"}</span>
               </button>
-              ${this.openSections.instructions ? l`
+              ${this.openSections.instructions?l`
                     <div class="accordion-body">
-                      ${i.instructions || i.manual || l`
+                      ${s.instructions||s.manual||l`
                         <ul>
-                          ${(d("defaultInstructions", this.lang) || []).map(f => l`<li>${f}</li>`)}
+                          ${(d("defaultInstructions",this.lang)||[]).map(f=>l`<li>${f}</li>`)}
                         </ul>
                       `}
                     </div>
-                  `: ""}
+                  `:""}
             </div>
           </div>
         </div>
       </div>
-    `}
-  } x(re, "properties", { product: { type: Object, converter: k }, data: { type: Object, converter: k }, selectedImageIndex: { type: Number }, openSections: { type: Object }, lang: { type: String }, loading: { type: Boolean, converter: ye }, isZoomed: { state: !0 }, zoomX: { state: !0 }, zoomY: { state: !0 } }), x(re, "styles", S`
+    `}}x(re,"properties",{product:{type:Object,converter:_},data:{type:Object,converter:_},selectedImageIndex:{type:Number},openSections:{type:Object},lang:{type:String},loading:{type:Boolean,converter:ye},shopeeUrl:{type:String,attribute:"shopee-url"},tiktokUrl:{type:String,attribute:"tiktok-url"},messUrl:{type:String,attribute:"mess-url"},isZoomed:{state:!0},zoomX:{state:!0},zoomY:{state:!0}}),x(re,"styles",S`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -2474,6 +2520,108 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       margin-bottom: 12px;
     }
 
+    /* 3 Action Buttons: Shopee, TikTok, Mess */
+    .social-actions-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      flex: 1;
+      min-width: 105px;
+      height: 42px;
+      padding: 0 14px;
+      border: 1.5px solid transparent;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+      box-sizing: border-box;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .social-btn svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .social-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Shopee Button */
+    .social-btn.shopee {
+      border-color: #EE4D2D;
+      color: #EE4D2D;
+    }
+
+    .social-btn.shopee:hover {
+      background: #FFF5F2;
+      border-color: #d73211;
+      color: #d73211;
+      box-shadow: 0 4px 14px rgba(238, 77, 45, 0.25);
+    }
+
+    /* TikTok Button */
+    .social-btn.tiktok {
+      border-color: #111111;
+      color: #111111;
+    }
+
+    .social-btn.tiktok:hover {
+      background: #F7F7F7;
+      border-color: #000000;
+      color: #000000;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+    }
+
+    /* Mess (Messenger) Button */
+    .social-btn.mess {
+      border-color: #0084FF;
+      color: #0084FF;
+    }
+
+    .social-btn.mess:hover {
+      background: #F2F8FF;
+      border-color: #0066d6;
+      color: #0066d6;
+      box-shadow: 0 4px 14px rgba(0, 132, 255, 0.25);
+    }
+
+    @media (max-width: 480px) {
+      .social-actions-group {
+        gap: 8px;
+      }
+      .social-btn {
+        min-width: 95px;
+        height: 38px;
+        font-size: 13px;
+        padding: 0 10px;
+        gap: 6px;
+      }
+      .social-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
     /* Accordions */
     .accordion-section {
       border-top: 1px solid #e5e5e5;
@@ -2600,13 +2748,11 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       color: #333333;
       border-bottom: 1px solid #ffffff;
     }
-  `), w("wx-product-detail", re); class X extends $ {
-    constructor() { super(), this.title = "", this.products = null, this.items = null, this.data = null, this.currentProduct = null, this.product = null, this.category = "", this.limit = 4, this.lang = "vi", this.loading = !1, this._progressLeft = 0, this._progressWidth = 25 } firstUpdated() { this._grid = this.shadowRoot.querySelector(".related-grid"), this._initScroll() } updated(e) { (e.has("products") || e.has("items") || e.has("data")) && this._initScroll() } _initScroll() { this._grid && (this._grid.addEventListener("scroll", () => this._updateProgress()), this._updateProgress()) } _updateProgress() { if (!this._grid) return; const { scrollLeft: e, scrollWidth: t, clientWidth: s } = this._grid, i = t - s; if (i <= 0) this._progressWidth = 100, this._progressLeft = 0; else { this._progressWidth = Math.max(25, s / t * 100); const n = 100 - this._progressWidth; this._progressLeft = e / i * n } const r = this.shadowRoot.querySelector(".progress-thumb"); r && (r.style.width = `${this._progressWidth}%`, r.style.left = `${this._progressLeft}%`) } _scroll(e) { if (!this._grid) return; const t = 260 * e; this._grid.scrollBy({ left: t, behavior: "smooth" }) } _getEffectiveProducts() { const e = this.data || this.items || this.products; if (!e || !Array.isArray(e)) return []; const t = this.currentProduct || this.product, s = t ? t.ID || t.id || t._id || t.slug : ""; let i = s ? e.filter(u => (u.ID || u.id || u._id || u.slug) !== s) : [...e], r = this.category, n = "", a = "", c = ""; if (t && (r || (typeof t.category == "object" && t.category !== null ? r = t.category._id || t.category.ID || t.category.slug || "" : r = t.category || ""), n = t.categoryPath || "", a = t.brandCategory || "", c = t.brand || ""), r || n || a) { const u = (r || "").toLowerCase().trim(), g = (a || "").toLowerCase().trim(), h = (n || "").split("/").filter(Boolean), f = h.length > 0 ? h[0].toLowerCase().trim() : "", m = i.filter(A => { const ne = String(A.category || "").toLowerCase().trim(), ae = String(A.brandCategory || "").toLowerCase().trim(); return u && (ne === u || ae === u) || g && (ne === g || ae === g) }), E = i.filter(A => { if (m.includes(A)) return !1; const ne = String(A.categoryPath || "").toLowerCase(), ae = String(A.category || "").toLowerCase(); return f && (ne.includes(`/${f}/`) || ae.includes(f)) }), dt = i.filter(A => m.includes(A) || E.includes(A) ? !1 : c && A.brand === c), je = [...m, ...E, ...dt]; je.length > 0 && (i = je) } const p = Number(this.limit) > 0 ? Number(this.limit) : 4; return i.slice(0, p) } _onProductClick(e) { B(this, "product-select", { product: e.detail.product }) } render() {
-      const e = this._getEffectiveProducts(), t = this.title || d("relatedProducts", this.lang), s = Number(this.limit) > 0 ? Number(this.limit) : 4; return this.loading || this.products === null && this.items === null && this.data === null ? l`
+  `),w("wx-product-detail",re);class X extends ${constructor(){super(),this.title="",this.products=null,this.items=null,this.data=null,this.currentProduct=null,this.product=null,this.category="",this.limit=4,this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=25}firstUpdated(){this._grid=this.shadowRoot.querySelector(".related-grid"),this._initScroll()}updated(e){(e.has("products")||e.has("items")||e.has("data"))&&this._initScroll()}_initScroll(){this._grid&&(this._grid.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._grid)return;const{scrollLeft:e,scrollWidth:t,clientWidth:i}=this._grid,s=t-i;if(s<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(25,i/t*100);const n=100-this._progressWidth;this._progressLeft=e/s*n}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._grid)return;const t=260*e;this._grid.scrollBy({left:t,behavior:"smooth"})}_getEffectiveProducts(){const e=this.data||this.items||this.products;if(!e||!Array.isArray(e))return[];const t=this.currentProduct||this.product,i=t?t.ID||t.id||t._id||t.slug:"";let s=i?e.filter(u=>(u.ID||u.id||u._id||u.slug)!==i):[...e],r=this.category,n="",a="",c="";if(t&&(r||(typeof t.category=="object"&&t.category!==null?r=t.category._id||t.category.ID||t.category.slug||"":r=t.category||""),n=t.categoryPath||"",a=t.brandCategory||"",c=t.brand||""),r||n||a){const u=(r||"").toLowerCase().trim(),g=(a||"").toLowerCase().trim(),h=(n||"").split("/").filter(Boolean),f=h.length>0?h[0].toLowerCase().trim():"",m=s.filter(A=>{const ne=String(A.category||"").toLowerCase().trim(),ae=String(A.brandCategory||"").toLowerCase().trim();return u&&(ne===u||ae===u)||g&&(ne===g||ae===g)}),z=s.filter(A=>{if(m.includes(A))return!1;const ne=String(A.categoryPath||"").toLowerCase(),ae=String(A.category||"").toLowerCase();return f&&(ne.includes(`/${f}/`)||ae.includes(f))}),dt=s.filter(A=>m.includes(A)||z.includes(A)?!1:c&&A.brand===c),je=[...m,...z,...dt];je.length>0&&(s=je)}const p=Number(this.limit)>0?Number(this.limit):4;return s.slice(0,p)}_onProductClick(e){C(this,"product-select",{product:e.detail.product})}render(){const e=this._getEffectiveProducts(),t=this.title||d("relatedProducts",this.lang),i=Number(this.limit)>0?Number(this.limit):4;return this.loading||this.products===null&&this.items===null&&this.data===null?l`
         <div class="related-container">
           <div class="related-title">${t}</div>
           <div class="related-grid" role="status" aria-label="Loading related products">
-            ${Array.from({ length: s }).map(() => l`
+            ${Array.from({length:i}).map(()=>l`
                 <div class="card-item skeleton-card">
                   <div class="skeleton-box skeleton-img"></div>
                   <div class="skeleton-box skeleton-brand"></div>
@@ -2616,14 +2762,14 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
               `)}
           </div>
         </div>
-      `: e.length ? l`
+      `:e.length?l`
       <div class="related-container">
         <div class="related-title">${t}</div>
         <div class="related-grid" role="list">
-          ${e.map(i => l`
+          ${e.map(s=>l`
               <div class="card-item" role="listitem">
                 <wx-product-card
-                  .product="${i}"
+                  .product="${s}"
                   .lang="${this.lang}"
                   @product-click="${this._onProductClick}"
                 ></wx-product-card>
@@ -2632,16 +2778,14 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
         </div>
 
         <div class="controls-row">
-          <button class="nav-arrow-btn" @click="${() => this._scroll(-1)}" aria-label="${d("scrollLeft", this.lang)}">&#x2039;</button>
+          <button class="nav-arrow-btn" @click="${()=>this._scroll(-1)}" aria-label="${d("scrollLeft",this.lang)}">&#x2039;</button>
           <div class="progress-track">
             <div class="progress-thumb"></div>
           </div>
-          <button class="nav-arrow-btn" @click="${() => this._scroll(1)}" aria-label="${d("scrollRight", this.lang)}">&#x203A;</button>
+          <button class="nav-arrow-btn" @click="${()=>this._scroll(1)}" aria-label="${d("scrollRight",this.lang)}">&#x203A;</button>
         </div>
       </div>
-    `: l``
-    }
-  } x(X, "properties", { title: { type: String }, products: { type: Array, converter: v }, items: { type: Array, converter: v }, data: { type: Array, converter: v }, currentProduct: { type: Object, converter: k }, product: { type: Object, converter: k }, category: { type: String }, limit: { type: Number }, lang: { type: String }, loading: { type: Boolean } }), x(X, "styles", S`
+    `:l``}}x(X,"properties",{title:{type:String},products:{type:Array,converter:v},items:{type:Array,converter:v},data:{type:Array,converter:v},currentProduct:{type:Object,converter:_},product:{type:Object,converter:_},category:{type:String},limit:{type:Number},lang:{type:String},loading:{type:Boolean}}),x(X,"styles",S`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -2687,6 +2831,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       width: 100%;
       position: relative;
       background-color: #EFECEA;
+      padding: 44px 32px 48px;
       border-radius: 4px;
       box-sizing: border-box;
     }
@@ -2867,7 +3012,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
         padding: 0;
       }
     }
-  `), w("wx-related-products", X), w("wx-related", class extends X { }); const ve = S`
+  `),w("wx-related-products",X),w("wx-related",class extends X{});const ve=S`
   :host {
     --wx-font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --wx-color-primary: #d40026;
@@ -2912,85 +3057,78 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
   button, input, select, textarea, optgroup {
     font-family: inherit;
   }
-`; class D extends $ {
-    constructor() { super(), this.blocks = [], this.items = [], this.data = null, this.type = "all", this.lang = "vi", this.activeHotspotIndex = 0, this.failedImages = new Set } updated(e) { super.updated(e); const t = this._getFilteredBlocks(); this.hidden = !t || t.length === 0 } _getFilteredBlocks() { const e = this._getEffectiveBlocks(); return !e || e.length === 0 ? [] : e.filter(t => { const s = t.component || "story"; return s === "intro" ? !1 : !this.type || this.type === "all" ? s === "story" || s === "highlights" : s === this.type }) } _getEffectiveBlocks() { return this.block && typeof this.block == "object" ? [this.block] : this.data && Array.isArray(this.data.blocks) ? this.data.blocks : this.data && this.data.block && typeof this.data.block == "object" ? [this.data.block] : Array.isArray(this.blocks) ? this.blocks : [] } _getEffectiveItems() { return this.data && Array.isArray(this.data.items) ? this.data.items : Array.isArray(this.items) ? this.items : [] } _getItemsForBlock(e) { const t = this._getEffectiveItems(); if (!t || t.length === 0) return []; if (t.length <= 10) return t.slice().sort((n, a) => (Number(n.position) || 0) - (Number(a.position) || 0)); const s = typeof e == "object" && e ? e._id || "" : e, i = typeof e == "object" && e ? e.ID || "" : e, r = typeof e == "object" && e && e.title || ""; return t.filter(n => { const a = n.block; if (!a) return !0; if (typeof a == "object" && a !== null) { const c = a._id || "", p = a.ID || "", u = a.title || ""; return s && (c === s || p === s) || i && (c === i || p === i) || r && (c === r || p === r || u === r) } return s && a === s || i && a === i || r && a === r }).sort((n, a) => (Number(n.position) || 0) - (Number(a.position) || 0)) } _onImageError(e) { if (e) { const t = new Set(this.failedImages); t.add(e), this.failedImages = t } } _isImageAvailable(e) { return !e || typeof e != "string" || !e.trim() ? !1 : !this.failedImages.has(e) } _renderPlaceholder(e = "220px", t = null) {
-      const s = t || d("noImage", this.lang) || "Chưa có ảnh"; return l`
+`;class H extends ${constructor(){super(),this.blocks=[],this.items=[],this.data=null,this.type="all",this.lang="vi",this.activeHotspotIndex=0,this.failedImages=new Set}updated(e){super.updated(e);const t=this._getFilteredBlocks();this.hidden=!t||t.length===0}_getFilteredBlocks(){const e=this._getEffectiveBlocks();return!e||e.length===0?[]:e.filter(t=>{const i=t.component||"story";return i==="intro"?!1:!this.type||this.type==="all"?i==="story"||i==="highlights":i===this.type})}_getEffectiveBlocks(){return this.block&&typeof this.block=="object"?[this.block]:this.data&&Array.isArray(this.data.blocks)?this.data.blocks:this.data&&this.data.block&&typeof this.data.block=="object"?[this.data.block]:Array.isArray(this.blocks)?this.blocks:[]}_getEffectiveItems(){return this.data&&Array.isArray(this.data.items)?this.data.items:Array.isArray(this.items)?this.items:[]}_getItemsForBlock(e){const t=this._getEffectiveItems();if(!t||t.length===0)return[];if(t.length<=10)return t.slice().sort((n,a)=>(Number(n.position)||0)-(Number(a.position)||0));const i=typeof e=="object"&&e?e._id||"":e,s=typeof e=="object"&&e?e.ID||"":e,r=typeof e=="object"&&e&&e.title||"";return t.filter(n=>{const a=n.block;if(!a)return!0;if(typeof a=="object"&&a!==null){const c=a._id||"",p=a.ID||"",u=a.title||"";return i&&(c===i||p===i)||s&&(c===s||p===s)||r&&(c===r||p===r||u===r)}return i&&a===i||s&&a===s||r&&a===r}).sort((n,a)=>(Number(n.position)||0)-(Number(a.position)||0))}_onImageError(e){if(e){const t=new Set(this.failedImages);t.add(e),this.failedImages=t}}_isImageAvailable(e){return!e||typeof e!="string"||!e.trim()?!1:!this.failedImages.has(e)}_renderPlaceholder(e="220px",t=null){const i=t||d("noImage",this.lang)||"Chưa có ảnh";return l`
       <div class="no-image-placeholder" style="min-height: ${e};">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
           <circle cx="8.5" cy="8.5" r="1.5"></circle>
           <polyline points="21 15 16 10 5 21"></polyline>
         </svg>
-        <span>${s}</span>
+        <span>${i}</span>
       </div>
-    `} _renderMedia(e, t = "", s = "220px") {
-      const i = T(e); return this._isImageAvailable(i) ? l`
+    `}_renderMedia(e,t="",i="220px"){const s=E(e);return this._isImageAvailable(s)?l`
         <img
-          src="${i}"
+          src="${s}"
           alt="${t}"
           loading="lazy"
-          @error="${() => this._onImageError(i)}"
+          @error="${()=>this._onImageError(s)}"
         />
-      `: this._renderPlaceholder(s)
-    } _renderStoryBlock(e, t) {
-      let s = e.heading || e.title, i = e.body || "", r = t, n = e.image || ""; if (t && t.length > 0) { const a = t[0]; s = a.title || s, i = a.body || i, n = a.image || n, r = t.slice(1) } return l`
+      `:this._renderPlaceholder(i)}_renderStoryBlock(e,t){let i=e.heading||e.title,s=e.body||"",r=t,n=e.image||"";if(t&&t.length>0){const a=t[0];i=a.title||i,s=a.body||s,n=a.image||n,r=t.slice(1)}return l`
       <div class="story-section">
         <!-- Banner 50/50 -->
         <div class="story-banner">
           <div class="story-media">
-            ${this._renderMedia(n, s, "320px")}
+            ${this._renderMedia(n,i,"320px")}
           </div>
 
           <div class="story-content">
-            <h2 class="story-heading">${s}</h2>
-            ${i ? l`<div class="story-body">${i}</div>` : ""}
+            <h2 class="story-heading">${i}</h2>
+            ${s?l`<div class="story-body">${s}</div>`:""}
           </div>
         </div>
 
         <!-- 3-Column Feature Cards bên dưới -->
-        ${r.length > 0 ? l`
+        ${r.length>0?l`
               <div class="cards-grid">
-                ${r.map(a => l`
+                ${r.map(a=>l`
                     <div class="feature-card">
                       <div class="card-media">
-                        ${this._renderMedia(a.image, a.title, "180px")}
+                        ${this._renderMedia(a.image,a.title,"180px")}
                       </div>
                       <h3 class="card-title">${a.title}</h3>
-                      ${a.body ? l`<p class="card-body">${a.body}</p>` : ""}
+                      ${a.body?l`<p class="card-body">${a.body}</p>`:""}
                     </div>
                   `)}
               </div>
-            `: ""}
+            `:""}
       </div>
-    `} _toggleAccordion(e) { this.activeHotspotIndex === e ? this.activeHotspotIndex = -1 : this.activeHotspotIndex = e } _selectHotspot(e) { this.activeHotspotIndex = e } _renderHighlightsBlock(e, t) {
-      const s = t.length > 0 ? t : [], i = e.image || (e.ID ? `/images/${e.ID}.png` : e._id ? `/images/${e._id}.png` : ""), r = T(i), n = this._isImageAvailable(r); return l`
+    `}_toggleAccordion(e){this.activeHotspotIndex===e?this.activeHotspotIndex=-1:this.activeHotspotIndex=e}_selectHotspot(e){this.activeHotspotIndex=e}_renderHighlightsBlock(e,t){const i=t.length>0?t:[],s=e.image||(e.ID?`/images/${e.ID}.png`:e._id?`/images/${e._id}.png`:""),r=E(s),n=this._isImageAvailable(r);return l`
       <div class="hotspot-section">
         <!-- Cột Trái: Ảnh Dao -->
         <div class="knife-viewport">
-          ${n ? l`
+          ${n?l`
                 <div class="knife-media-wrapper">
                   <img
                     src="${r}"
-                    alt="${e.title || "Dao chi tiết"}"
+                    alt="${e.title||"Dao chi tiết"}"
                     loading="lazy"
-                    @error="${() => this._onImageError(r)}"
+                    @error="${()=>this._onImageError(r)}"
                   />
-                  ${s.map((a, c) => {
-        const p = a.coordX !== void 0 && a.coordX !== null && a.coordX !== "" ? a.coordX : a.x ?? a.hotspotX, u = a.coordY !== void 0 && a.coordY !== null && a.coordY !== "" ? a.coordY : a.y ?? a.hotspotY; if (p == null || p === "") return ""; const g = parseFloat(p), h = parseFloat(u); if (isNaN(g) || isNaN(h)) return ""; const f = this.activeHotspotIndex === c; return l`
+                  ${i.map((a,c)=>{const p=a.coordX!==void 0&&a.coordX!==null&&a.coordX!==""?a.coordX:a.x??a.hotspotX,u=a.coordY!==void 0&&a.coordY!==null&&a.coordY!==""?a.coordY:a.y??a.hotspotY;if(p==null||p==="")return"";const g=parseFloat(p),h=parseFloat(u);if(isNaN(g)||isNaN(h))return"";const f=this.activeHotspotIndex===c;return l`
                       <button
                         type="button"
-                        class="hotspot-pin ${f ? "active" : ""}"
+                        class="hotspot-pin ${f?"active":""}"
                         style="left: ${g}%; top: ${h}%;"
-                        @click="${m => { m.stopPropagation(), this._selectHotspot(c) }}"
-                        title="${a.title || `Điểm #${c + 1}`}"
-                        aria-label="${a.title || `Điểm #${c + 1}`}"
+                        @click="${m=>{m.stopPropagation(),this._selectHotspot(c)}}"
+                        title="${a.title||`Điểm #${c+1}`}"
+                        aria-label="${a.title||`Điểm #${c+1}`}"
                       >
                         <span class="hotspot-pin-pulse"></span>
                         <span class="hotspot-pin-inner"></span>
                       </button>
                     `})}
                 </div>
-              `: l`
+              `:l`
                 <div style="width: 100%;">
                   ${this._renderPlaceholder("260px")}
                 </div>
@@ -2999,41 +3137,37 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
 
         <!-- Cột Phải: Danh sách Accordion tương tác -->
         <div class="accordion-col">
-          ${s.map((a, c) => {
-          const p = this.activeHotspotIndex === c; return l`
-              <div class="accordion-row ${p ? "active" : ""}">
+          ${i.map((a,c)=>{const p=this.activeHotspotIndex===c;return l`
+              <div class="accordion-row ${p?"active":""}">
                 <button
                   class="accordion-btn"
-                  @click="${() => this._toggleAccordion(c)}"
+                  @click="${()=>this._toggleAccordion(c)}"
                   aria-expanded="${p}"
                 >
                   <span class="accordion-title">${a.title}</span>
-                  <span class="accordion-icon">${p ? "▲" : "▼"}</span>
+                  <span class="accordion-icon">${p?"▲":"▼"}</span>
                 </button>
 
-                ${p ? l`
+                ${p?l`
                       <div class="accordion-details">
                         ${a.body}
                       </div>
-                    `: ""}
+                    `:""}
               </div>
             `})}
         </div>
       </div>
-    `} _renderIntroBlock(e) {
-      return l`
+    `}_renderIntroBlock(e){return l`
       <div class="intro-banner">
-        <h2 class="intro-heading">${e.heading || e.title}</h2>
-        ${e.body ? l`<div class="intro-body">${e.body}</div>` : ""}
-        ${e.ctaLabel ? l`<button class="story-cta-btn" type="button">${e.ctaLabel}</button>` : ""}
+        <h2 class="intro-heading">${e.heading||e.title}</h2>
+        ${e.body?l`<div class="intro-body">${e.body}</div>`:""}
+        ${e.ctaLabel?l`<button class="story-cta-btn" type="button">${e.ctaLabel}</button>`:""}
       </div>
-    `} render() {
-      const e = this._getFilteredBlocks(); return e.length === 0 ? l`` : l`
+    `}render(){const e=this._getFilteredBlocks();return e.length===0?l``:l`
       <div class="feature-blocks-container">
-        ${e.map(t => { const s = this._getItemsForBlock(t), i = t.component || "story"; return i === "highlights" ? this._renderHighlightsBlock(t, s) : i === "story" ? this._renderStoryBlock(t, s) : "" })}
+        ${e.map(t=>{const i=this._getItemsForBlock(t),s=t.component||"story";return s==="highlights"?this._renderHighlightsBlock(t,i):s==="story"?this._renderStoryBlock(t,i):""})}
       </div>
-    `}
-  } x(D, "properties", { blocks: { type: Array, converter: k }, block: { type: Object, converter: k }, items: { type: Array, converter: k }, data: { type: Object, converter: k }, type: { type: String }, lang: { type: String }, activeHotspotIndex: { state: !0 }, failedImages: { state: !0 } }), x(D, "styles", [ve, S`
+    `}}x(H,"properties",{blocks:{type:Array,converter:_},block:{type:Object,converter:_},items:{type:Array,converter:_},data:{type:Object,converter:_},type:{type:String},lang:{type:String},activeHotspotIndex:{state:!0},failedImages:{state:!0}}),x(H,"styles",[ve,S`
       :host {
         display: block;
         width: 100%;
@@ -3503,9 +3637,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
         line-height: 1.7;
         color: #555555;
       }
-    `]), w("wx-feature-blocks", D); class He extends D { constructor() { super(), this.type = "story" } } w("wx-story-section", He); class De extends D { constructor() { super(), this.type = "highlights" } } w("wx-hotspot-section", De); const Oe = [{ id: "store-crescent-mall", ID: "store-crescent-mall", title: "ZWILLING CRESCENT MALL", address: "Tầng 4F - 33, Crescent Mall, 101 Tôn Dật Tiên, Phường Tân Phú, Quận 7, TP.HCM", city: "TP. Hồ Chí Minh", hotline: "028 399 07010", openHours: "10:00 - 22:00", latitude: 10.7293, longitude: 106.7198, googleMapsUrl: "https://maps.google.com/?q=Crescent+Mall+101+Ton+Dat+Tien+Tan+Phu+Quan+7+TPHCM", image: "/images/store-crescent-mall.jpg", position: 1 }, { id: "store-estella-place", ID: "store-estella-place", title: "ZWILLING ESTELLA PLACE", address: "Tầng 3 - Estella Place, 88 Song Hành, Phường An Phú, TP. Thủ Đức, TP.HCM", city: "TP. Hồ Chí Minh", hotline: "0283 519 3209", openHours: "09:30 - 22:00", latitude: 10.8016, longitude: 106.7431, googleMapsUrl: "https://maps.google.com/?q=Estella+Place+88+Song+Hanh+An+Phu+TP+Thu+Duc+TPHCM", image: "/images/store-estella.jpg", position: 2 }, { id: "store-lotte-lieu-giai", ID: "store-lotte-lieu-giai", title: "ZWILLING LOTTE DEPARTMENT STORE", address: "Tầng 5 - Lotte Department Store, 54 Liễu Giai, Phường Cống Vị, Ba Đình, Hà Nội", city: "Hà Nội", hotline: "0243 212 1177", openHours: "09:30 - 22:00", latitude: 21.0318, longitude: 105.8142, googleMapsUrl: "https://maps.google.com/?q=Lotte+Department+Store+54+Lieu+Giai+Ba+Dinh+Ha+Noi", image: "/images/store-lotte.jpg", position: 3 }]; class oe extends $ {
-    constructor() { super(), this.stores = [], this.data = null, this.selectedStoreId = "", this.searchQuery = "", this.selectedCity = "all", this.onlyOpen = !1, this.activeTab = "list", this.lang = "vi", this._boundOnMessage = null, this._lastStoresKey = "", this._cachedSrcDoc = "" } connectedCallback() { super.connectedCallback(), this._boundOnMessage = this._onWindowMessage.bind(this), window.addEventListener("message", this._boundOnMessage) } disconnectedCallback() { super.disconnectedCallback(), this._boundOnMessage && window.removeEventListener("message", this._boundOnMessage) } _onWindowMessage(e) { if (e.data && e.data.type === "STORE_MARKER_CLICK") { const t = String(e.data.id || ""); if (t) { this.selectedStoreId = t; const s = this.shadowRoot.querySelector(`[data-store-id="${t}"]`); s && s.scrollIntoView({ behavior: "smooth", block: "nearest" }) } } else if (e.data && e.data.type === "MAP_READY" && this.selectedStoreId) { const t = this.shadowRoot.getElementById("storeMapFrame"); t && t.contentWindow && t.contentWindow.postMessage({ type: "FLY_TO_STORE", id: this.selectedStoreId }, "*") } } firstUpdated() { this._initStoreSelection() } updated(e) { (e.has("stores") || e.has("data")) && this._initStoreSelection() } _getStoreId(e, t = 0) { return !e || typeof e != "object" ? `store-${t}` : String(e._id || e.id || e.ID || e.storeId || e.title || `store-${t}`) } _getEffectiveStores() { let e = []; return Array.isArray(this.stores) && this.stores.length > 0 ? e = this.stores : this.data && Array.isArray(this.data.stores) && this.data.stores.length > 0 ? e = this.data.stores : e = Oe, e.map((t, s) => { const i = this._getStoreId(t, s), r = Number(t.latitude || t.lat || t.Latitude) || 0, n = Number(t.longitude || t.lng || t.Longitude) || 0, a = t.title || t.name || "ZWILLING Store", c = t.address || t.diaChi || ""; return { ...t, id: i, _id: i, ID: i, title: a, address: c, city: t.city || t.thanhPho || "", hotline: t.hotline || t.phone || t.soDienThoai || "", openHours: t.openHours || t.gioMoCua || "09:30 - 22:00", latitude: r, longitude: n, googleMapsUrl: t.googleMapsUrl || t.mapUrl || (r && n ? `https://www.google.com/maps?q=${r},${n}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a + " " + c)}`), image: t.image || t.hinhAnh || t.thumbnail || "" } }) } _isCityMatch(e, t) { if (!t || t === "all") return !0; if (!e) return !1; const s = e.trim().toLowerCase(), i = t.trim().toLowerCase(); if (s.includes(i) || i.includes(s)) return !0; const r = ["tp.hcm", "hcm", "tp. hcm", "hồ chí minh", "ho chi minh", "tp. hồ chí minh", "tp hồ chí minh"], n = r.some(g => s.includes(g)), a = r.some(g => i.includes(g)); if (n && a) return !0; const c = ["hà nội", "ha noi", "hn"], p = c.some(g => s.includes(g)), u = c.some(g => i.includes(g)); return !!(p && u) } _initStoreSelection() { const e = this._getFilteredStores(); e.length > 0 && (!this.selectedStoreId || !e.some(t => t.id === this.selectedStoreId)) && (this.selectedStoreId = e[0].id) } _getFilteredStores() { const e = this._getEffectiveStores(), t = (this.searchQuery || "").trim().toLowerCase(), s = this.selectedCity; return e.filter(i => !(!this._isCityMatch(i.city, s) || t && ![i.title, i.name, i.address, i.city, i.hotline].filter(Boolean).join(" ").toLowerCase().includes(t))) } _getCitiesList() { const e = this._getEffectiveStores(), t = new Map; return e.forEach(s => { const i = (s.city || "").trim(); if (!i) return; let r = i, n = i; const a = i.toLowerCase(); a.includes("hồ chí minh") || a.includes("hcm") ? (r = "TP.HCM", n = "TP.HCM") : (a.includes("hà nội") || a.includes("hn")) && (r = "Hà Nội", n = "Hà Nội"); const c = t.get(n) || { label: r, filterValue: n, count: 0 }; c.count += 1, t.set(n, c) }), Array.from(t.values()) } _isCityActive(e) { return this.selectedCity === "all" ? !1 : this._isCityMatch(e, this.selectedCity) } _onSearchInput(e) { this.searchQuery = e.target.value } _onSelectCity(e) { this.selectedCity = e, this._initStoreSelection(); const s = this._getFilteredStores().map(r => r.id), i = this.shadowRoot.getElementById("storeMapFrame"); i && i.contentWindow && i.contentWindow.postMessage({ type: "FIT_BOUNDS", ids: s }, "*") } _selectStore(e) { const t = this._getStoreId(e); this.selectedStoreId = t, this.activeTab = "map"; const s = this.shadowRoot.getElementById("storeMapFrame"); s && s.contentWindow && s.contentWindow.postMessage({ type: "FLY_TO_STORE", id: t }, "*") } _getMapIframeSrcDoc(e) {
-      const t = e.map(i => `${i.id}:${i.latitude}:${i.longitude}`).join("|"); if (this._lastStoresKey === t && this._cachedSrcDoc) return this._cachedSrcDoc; this._lastStoresKey = t; const s = JSON.stringify(e.map(i => ({ id: String(i.id), title: i.title || "", address: i.address || "", hotline: i.hotline || "", openHours: i.openHours || "09:30 - 22:00", latitude: Number(i.latitude) || 0, longitude: Number(i.longitude) || 0, googleMapsUrl: i.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((i.title || "") + " " + (i.address || ""))}` }))); return this._cachedSrcDoc = `<!DOCTYPE html>
+    `]),w("wx-feature-blocks",H);class Re extends H{constructor(){super(),this.type="story"}}w("wx-story-section",Re);class He extends H{constructor(){super(),this.type="highlights"}}w("wx-hotspot-section",He);const De=[{id:"store-crescent-mall",ID:"store-crescent-mall",title:"ZWILLING CRESCENT MALL",address:"Tầng 4F - 33, Crescent Mall, 101 Tôn Dật Tiên, Phường Tân Phú, Quận 7, TP.HCM",city:"TP. Hồ Chí Minh",hotline:"028 399 07010",openHours:"10:00 - 22:00",latitude:10.7293,longitude:106.7198,googleMapsUrl:"https://maps.google.com/?q=Crescent+Mall+101+Ton+Dat+Tien+Tan+Phu+Quan+7+TPHCM",image:"/images/store-crescent-mall.jpg",position:1},{id:"store-estella-place",ID:"store-estella-place",title:"ZWILLING ESTELLA PLACE",address:"Tầng 3 - Estella Place, 88 Song Hành, Phường An Phú, TP. Thủ Đức, TP.HCM",city:"TP. Hồ Chí Minh",hotline:"0283 519 3209",openHours:"09:30 - 22:00",latitude:10.8016,longitude:106.7431,googleMapsUrl:"https://maps.google.com/?q=Estella+Place+88+Song+Hanh+An+Phu+TP+Thu+Duc+TPHCM",image:"/images/store-estella.jpg",position:2},{id:"store-lotte-lieu-giai",ID:"store-lotte-lieu-giai",title:"ZWILLING LOTTE DEPARTMENT STORE",address:"Tầng 5 - Lotte Department Store, 54 Liễu Giai, Phường Cống Vị, Ba Đình, Hà Nội",city:"Hà Nội",hotline:"0243 212 1177",openHours:"09:30 - 22:00",latitude:21.0318,longitude:105.8142,googleMapsUrl:"https://maps.google.com/?q=Lotte+Department+Store+54+Lieu+Giai+Ba+Dinh+Ha+Noi",image:"/images/store-lotte.jpg",position:3}];class oe extends ${constructor(){super(),this.stores=[],this.data=null,this.selectedStoreId="",this.searchQuery="",this.selectedCity="all",this.onlyOpen=!1,this.activeTab="list",this.lang="vi",this._boundOnMessage=null,this._lastStoresKey="",this._cachedSrcDoc=""}connectedCallback(){super.connectedCallback(),this._boundOnMessage=this._onWindowMessage.bind(this),window.addEventListener("message",this._boundOnMessage)}disconnectedCallback(){super.disconnectedCallback(),this._boundOnMessage&&window.removeEventListener("message",this._boundOnMessage)}_onWindowMessage(e){if(e.data&&e.data.type==="STORE_MARKER_CLICK"){const t=String(e.data.id||"");if(t){this.selectedStoreId=t;const i=this.shadowRoot.querySelector(`[data-store-id="${t}"]`);i&&i.scrollIntoView({behavior:"smooth",block:"nearest"})}}else if(e.data&&e.data.type==="MAP_READY"&&this.selectedStoreId){const t=this.shadowRoot.getElementById("storeMapFrame");t&&t.contentWindow&&t.contentWindow.postMessage({type:"FLY_TO_STORE",id:this.selectedStoreId},"*")}}firstUpdated(){this._initStoreSelection()}updated(e){(e.has("stores")||e.has("data"))&&this._initStoreSelection()}_getStoreId(e,t=0){return!e||typeof e!="object"?`store-${t}`:String(e._id||e.id||e.ID||e.storeId||e.title||`store-${t}`)}_getEffectiveStores(){let e=[];return Array.isArray(this.stores)&&this.stores.length>0?e=this.stores:this.data&&Array.isArray(this.data.stores)&&this.data.stores.length>0?e=this.data.stores:e=De,e.map((t,i)=>{const s=this._getStoreId(t,i),r=Number(t.latitude||t.lat||t.Latitude)||0,n=Number(t.longitude||t.lng||t.Longitude)||0,a=t.title||t.name||"ZWILLING Store",c=t.address||t.diaChi||"";return{...t,id:s,_id:s,ID:s,title:a,address:c,city:t.city||t.thanhPho||"",hotline:t.hotline||t.phone||t.soDienThoai||"",openHours:t.openHours||t.gioMoCua||"09:30 - 22:00",latitude:r,longitude:n,googleMapsUrl:t.googleMapsUrl||t.mapUrl||(r&&n?`https://www.google.com/maps?q=${r},${n}`:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+" "+c)}`),image:t.image||t.hinhAnh||t.thumbnail||""}})}_isCityMatch(e,t){if(!t||t==="all")return!0;if(!e)return!1;const i=e.trim().toLowerCase(),s=t.trim().toLowerCase();if(i.includes(s)||s.includes(i))return!0;const r=["tp.hcm","hcm","tp. hcm","hồ chí minh","ho chi minh","tp. hồ chí minh","tp hồ chí minh"],n=r.some(g=>i.includes(g)),a=r.some(g=>s.includes(g));if(n&&a)return!0;const c=["hà nội","ha noi","hn"],p=c.some(g=>i.includes(g)),u=c.some(g=>s.includes(g));return!!(p&&u)}_initStoreSelection(){const e=this._getFilteredStores();e.length>0&&(!this.selectedStoreId||!e.some(t=>t.id===this.selectedStoreId))&&(this.selectedStoreId=e[0].id)}_getFilteredStores(){const e=this._getEffectiveStores(),t=(this.searchQuery||"").trim().toLowerCase(),i=this.selectedCity;return e.filter(s=>!(!this._isCityMatch(s.city,i)||t&&![s.title,s.name,s.address,s.city,s.hotline].filter(Boolean).join(" ").toLowerCase().includes(t)))}_getCitiesList(){const e=this._getEffectiveStores(),t=new Map;return e.forEach(i=>{const s=(i.city||"").trim();if(!s)return;let r=s,n=s;const a=s.toLowerCase();a.includes("hồ chí minh")||a.includes("hcm")?(r="TP.HCM",n="TP.HCM"):(a.includes("hà nội")||a.includes("hn"))&&(r="Hà Nội",n="Hà Nội");const c=t.get(n)||{label:r,filterValue:n,count:0};c.count+=1,t.set(n,c)}),Array.from(t.values())}_isCityActive(e){return this.selectedCity==="all"?!1:this._isCityMatch(e,this.selectedCity)}_onSearchInput(e){this.searchQuery=e.target.value}_onSelectCity(e){this.selectedCity=e,this._initStoreSelection();const i=this._getFilteredStores().map(r=>r.id),s=this.shadowRoot.getElementById("storeMapFrame");s&&s.contentWindow&&s.contentWindow.postMessage({type:"FIT_BOUNDS",ids:i},"*")}_selectStore(e){const t=this._getStoreId(e);this.selectedStoreId=t,this.activeTab="map";const i=this.shadowRoot.getElementById("storeMapFrame");i&&i.contentWindow&&i.contentWindow.postMessage({type:"FLY_TO_STORE",id:t},"*")}_getMapIframeSrcDoc(e){const t=e.map(s=>`${s.id}:${s.latitude}:${s.longitude}`).join("|");if(this._lastStoresKey===t&&this._cachedSrcDoc)return this._cachedSrcDoc;this._lastStoresKey=t;const i=JSON.stringify(e.map(s=>({id:String(s.id),title:s.title||"",address:s.address||"",hotline:s.hotline||"",openHours:s.openHours||"09:30 - 22:00",latitude:Number(s.latitude)||0,longitude:Number(s.longitude)||0,googleMapsUrl:s.googleMapsUrl||`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((s.title||"")+" "+(s.address||""))}`})));return this._cachedSrcDoc=`<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
@@ -3579,7 +3711,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
 <body>
   <div id="map"></div>
   <script>
-    const stores = ${s};
+    const stores = ${i};
 
     const map = L.map('map', {
       center: [16.0471, 107.8443],
@@ -3676,20 +3808,18 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
     });
   <\/script>
 </body>
-</html>`, this._cachedSrcDoc
-    } render() {
-      const e = this._getFilteredStores(), t = this._getCitiesList(); return l`
+</html>`,this._cachedSrcDoc}render(){const e=this._getFilteredStores(),t=this._getCitiesList();return l`
       <!-- Mobile Toggle Tabs (Danh sách / Bản đồ) -->
       <div class="mobile-view-toggle">
         <button
-          class="toggle-btn ${this.activeTab === "list" ? "active" : ""}"
-          @click="${() => { this.activeTab = "list" }}"
+          class="toggle-btn ${this.activeTab==="list"?"active":""}"
+          @click="${()=>{this.activeTab="list"}}"
         >
           Danh sách (${e.length})
         </button>
         <button
-          class="toggle-btn ${this.activeTab === "map" ? "active" : ""}"
-          @click="${() => { this.activeTab = "map" }}"
+          class="toggle-btn ${this.activeTab==="map"?"active":""}"
+          @click="${()=>{this.activeTab="map"}}"
         >
           Bản đồ
         </button>
@@ -3698,7 +3828,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
       <!-- Main Layout -->
       <div class="locator-layout">
         <!-- Cột trái: Tìm kiếm & Danh sách Showroom -->
-        <aside class="sidebar ${this.activeTab === "map" ? "mobile-hide" : ""}">
+        <aside class="sidebar ${this.activeTab==="map"?"mobile-hide":""}">
           <div class="search-box">
             <input
               type="text"
@@ -3713,17 +3843,17 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
           <div class="filter-bar">
             <div class="city-pills">
               <button
-                class="city-pill ${this.selectedCity === "all" ? "active" : ""}"
-                @click="${() => this._onSelectCity("all")}"
+                class="city-pill ${this.selectedCity==="all"?"active":""}"
+                @click="${()=>this._onSelectCity("all")}"
               >
                 Tất cả (${this._getEffectiveStores().length})
               </button>
-              ${t.map(s => l`
+              ${t.map(i=>l`
                 <button
-                  class="city-pill ${this._isCityActive(s.filterValue) ? "active" : ""}"
-                  @click="${() => this._onSelectCity(s.filterValue)}"
+                  class="city-pill ${this._isCityActive(i.filterValue)?"active":""}"
+                  @click="${()=>this._onSelectCity(i.filterValue)}"
                 >
-                  ${s.label} (${s.count})
+                  ${i.label} (${i.count})
                 </button>
               `)}
             </div>
@@ -3732,61 +3862,60 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
               <input
                 type="checkbox"
                 .checked="${this.onlyOpen}"
-                @change="${s => { this.onlyOpen = s.target.checked }}"
+                @change="${i=>{this.onlyOpen=i.target.checked}}"
               />
               Only open locations
             </label>
           </div>
 
           <ul class="store-list">
-            ${e.length === 0 ? l`<li class="empty-state">Không tìm thấy cửa hàng phù hợp.</li>` : e.map(s => {
-        const i = s.id, r = i === this.selectedStoreId; return l`
+            ${e.length===0?l`<li class="empty-state">Không tìm thấy cửa hàng phù hợp.</li>`:e.map(i=>{const s=i.id,r=s===this.selectedStoreId;return l`
                     <li
-                      class="store-card ${r ? "active" : ""}"
-                      data-store-id="${i}"
-                      @click="${() => this._selectStore(s)}"
+                      class="store-card ${r?"active":""}"
+                      data-store-id="${s}"
+                      @click="${()=>this._selectStore(i)}"
                     >
                       <div class="store-info">
-                        <h3 class="store-name">${s.title}</h3>
-                        <p class="store-address">${s.address}</p>
+                        <h3 class="store-name">${i.title}</h3>
+                        <p class="store-address">${i.address}</p>
                         <div class="store-hotline">
                           Hotline:
-                          <a href="tel:${(s.hotline || "").replace(/\s+/g, "")}">
-                            ${s.hotline}
+                          <a href="tel:${(i.hotline||"").replace(/\s+/g,"")}">
+                            ${i.hotline}
                           </a>
                         </div>
                         <div class="store-status">
                           <span class="status-dot"></span>
-                          <span>Open now ${s.openHours || "09:30 - 22:00"}</span>
+                          <span>Open now ${i.openHours||"09:30 - 22:00"}</span>
                         </div>
                         <div class="store-actions">
                           <a
-                            href="${s.googleMapsUrl || "#"}"
+                            href="${i.googleMapsUrl||"#"}"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="direction-link"
-                            @click="${n => n.stopPropagation()}"
+                            @click="${n=>n.stopPropagation()}"
                           >
                             Chỉ đường ↗
                           </a>
                         </div>
                       </div>
 
-                      ${s.image ? l`
+                      ${i.image?l`
                             <img
-                              src="${T(s.image)}"
-                              alt="${s.title}"
+                              src="${E(i.image)}"
+                              alt="${i.title}"
                               class="store-thumb"
                               loading="lazy"
                             />
-                          `: ""}
+                          `:""}
                     </li>
                   `})}
           </ul>
         </aside>
 
         <!-- Cột phải: Bản đồ tương tác -->
-        <main class="map-wrapper ${this.activeTab === "list" ? "mobile-hide" : ""}">
+        <main class="map-wrapper ${this.activeTab==="list"?"mobile-hide":""}">
           <iframe
             id="storeMapFrame"
             class="map-iframe"
@@ -3795,8 +3924,7 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
           ></iframe>
         </main>
       </div>
-    `}
-  } x(oe, "properties", { stores: { type: Array, converter: k }, data: { type: Object, converter: k }, selectedStoreId: { state: !0 }, searchQuery: { state: !0 }, selectedCity: { state: !0 }, onlyOpen: { state: !0 }, activeTab: { state: !0 }, lang: { type: String } }), x(oe, "styles", [ve, S`
+    `}}x(oe,"properties",{stores:{type:Array,converter:_},data:{type:Object,converter:_},selectedStoreId:{state:!0},searchQuery:{state:!0},selectedCity:{state:!0},onlyOpen:{state:!0},activeTab:{state:!0},lang:{type:String}}),x(oe,"styles",[ve,S`
       :host {
         display: block;
         width: 100%;
@@ -4154,5 +4282,4 @@ var pt = Object.defineProperty; var ht = (b, _, C) => _ in b ? pt(b, _, { enumer
         border: none;
         display: block;
       }
-    `]), w("wx-store-locator", oe), console.log("[my-wix-ui-lib] Đã đăng ký thành công 5 Web Components tái sử dụng (Lit 3)"), b.DEFAULT_STORES = Oe, b.WxBreadcrumb = te, b.WxCategoryCarousel = K, b.WxFeatureBlocks = D, b.WxHotspotSection = De, b.WxProductCard = ie, b.WxProductCarousel = Z, b.WxProductDetail = re, b.WxProductListing = se, b.WxRelatedProducts = X, b.WxStoreLocator = oe, b.WxStorySection = He, b.dispatchCustomEvent = B, b.formatCurrencyVND = V, b.parseGallery = xe, b.safeDefine = w, b.safeJsonParse = be, b.t = d, b.themeStyles = ve, b.translations = ee, Object.defineProperty(b, Symbol.toStringTag, { value: "Module" })
-})(this.MyWixUiLib = this.MyWixUiLib || {});
+    `]),w("wx-store-locator",oe),console.log("[my-wix-ui-lib] Đã đăng ký thành công 5 Web Components tái sử dụng (Lit 3)"),b.DEFAULT_STORES=De,b.WxBreadcrumb=te,b.WxCategoryCarousel=K,b.WxFeatureBlocks=H,b.WxHotspotSection=He,b.WxProductCard=ie,b.WxProductCarousel=Z,b.WxProductDetail=re,b.WxProductListing=se,b.WxRelatedProducts=X,b.WxStoreLocator=oe,b.WxStorySection=Re,b.dispatchCustomEvent=C,b.formatCurrencyVND=q,b.parseGallery=xe,b.safeDefine=w,b.safeJsonParse=be,b.t=d,b.themeStyles=ve,b.translations=ee,Object.defineProperty(b,Symbol.toStringTag,{value:"Module"})})(this.MyWixUiLib=this.MyWixUiLib||{});
