@@ -2831,7 +2831,7 @@ var pt=Object.defineProperty;var ht=(b,k,I)=>k in b?pt(b,k,{enumerable:!0,config
       width: 100%;
       position: relative;
       background-color: #EFECEA;
-      padding: 44px 32px 48px;
+      padding: 0;
       border-radius: 4px;
       box-sizing: border-box;
     }
@@ -3003,7 +3003,7 @@ var pt=Object.defineProperty;var ht=(b,k,I)=>k in b?pt(b,k,{enumerable:!0,config
       }
 
       .related-container {
-        padding: 28px 16px 32px;
+        padding: 0;
       }
 
       .related-title {
@@ -3236,13 +3236,13 @@ var pt=Object.defineProperty;var ht=(b,k,I)=>k in b?pt(b,k,{enumerable:!0,config
         flex-direction: column;
         gap: 32px;
         background: #EFECEA;
-        padding: 40px;
+        padding: 0;
         border-radius: 4px;
       }
 
       @media (max-width: 768px) {
         .story-section {
-          padding: 20px 16px;
+          padding: 0;
           gap: 20px;
         }
       }

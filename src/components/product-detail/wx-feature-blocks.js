@@ -87,13 +87,13 @@ export class WxFeatureBlocks extends LitElement {
         flex-direction: column;
         gap: 32px;
         background: #EFECEA;
-        padding: 40px;
+        padding: 0;
         border-radius: 4px;
       }
 
       @media (max-width: 768px) {
         .story-section {
-          padding: 20px 16px;
+          padding: 0;
           gap: 20px;
         }
       }

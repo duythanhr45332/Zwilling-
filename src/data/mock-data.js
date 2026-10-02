@@ -1484,17 +1484,6 @@ export const SERIES = [
     "isActive": true
   },
   {
-    "ID": "series-staub-staub-twister-cocotte",
-    "title": "STAUB Twister Cocotte",
-    "slug": "staub-twister-cocotte",
-    "brand": "brand-staub",
-    "description": "",
-    "image": "",
-    "bannerImage": "",
-    "sortOrder": 9,
-    "isActive": true
-  },
-  {
     "ID": "series-staub-staub-chistera",
     "title": "STAUB Chistera",
     "slug": "staub-chistera",
@@ -1503,17 +1492,6 @@ export const SERIES = [
     "image": "",
     "bannerImage": "",
     "sortOrder": 10,
-    "isActive": true
-  },
-  {
-    "ID": "series-staub-staub-snowflake",
-    "title": "STAUB Snowflake",
-    "slug": "staub-snowflake",
-    "brand": "brand-staub",
-    "description": "",
-    "image": "",
-    "bannerImage": "",
-    "sortOrder": 11,
     "isActive": true
   },
   {
@@ -3306,7 +3284,7 @@ export const PRODUCTS = [
     "title": "Nồi gang STAUB Twister 24cm (Xanh Lamer)",
     "slug": "noi-gang-staub-twister-24cm-xanh-lamer",
     "brand": "brand-staub",
-    "series": "series-staub-staub-twister-cocotte",
+    "series": "series-staub-staub-artshape",
     "category": "cat-p-noi-chao--noi-gang",
     "brandCategory": "cat-b-noi-chao-gang--noi-gang",
     "materialCategory": "cat-m-gang-duc",
@@ -3432,7 +3410,7 @@ export const PRODUCTS = [
     "title": "Nồi gang STAUB Họa tiết bông tuyết 24cm (Trắng Truffle)",
     "slug": "noi-gang-staub-hoa-tiet-bong-tuyet-24cm-trang-truffle",
     "brand": "brand-staub",
-    "series": "series-staub-staub-snowflake",
+    "series": "series-staub-staub-artshape",
     "category": "cat-p-noi-chao--noi-gang",
     "brandCategory": "cat-b-noi-chao-gang--noi-gang",
     "materialCategory": "cat-m-gang-duc",
