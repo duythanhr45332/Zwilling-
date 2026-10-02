@@ -5,45 +5,45 @@ if (!globalThis.litPropertyMetadata) {
   globalThis.litPropertyMetadata = new WeakMap();
 }
 var litPropertyMetadata = globalThis.litPropertyMetadata;
-var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,configurable:!0,writable:!0,value:I}):m[$]=I;var x=(m,$,I)=>dt(m,typeof $!="symbol"?$+"":$,I);(function(m){"use strict";/**
+var ht=Object.defineProperty;var gt=(m,A,B)=>A in m?ht(m,A,{enumerable:!0,configurable:!0,writable:!0,value:B}):m[A]=B;var x=(m,A,B)=>gt(m,typeof A!="symbol"?A+"":A,B);(function(m){"use strict";/**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var De;const $=globalThis,I=$.ShadowRoot&&($.ShadyCSS===void 0||$.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,le=Symbol(),ye=new WeakMap;let ve=class{constructor(e,t,s){if(this._$cssResult$=!0,s!==le)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(I&&e===void 0){const s=t!==void 0&&t.length===1;s&&(e=ye.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),s&&ye.set(t,e))}return e}toString(){return this.cssText}};const je=o=>new ve(typeof o=="string"?o:o+"",void 0,le),S=(o,...e)=>{const t=o.length===1?o[0]:e.reduce((s,i,r)=>s+(n=>{if(n._$cssResult$===!0)return n.cssText;if(typeof n=="number")return n;throw Error("Value passed to 'css' function must be a 'css' function result: "+n+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+o[r+1],o[0]);return new ve(t,o,le)},We=(o,e)=>{if(I)o.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const t of e){const s=document.createElement("style"),i=$.litNonce;i!==void 0&&s.setAttribute("nonce",i),s.textContent=t.cssText,o.appendChild(s)}},we=I?o=>o:o=>o instanceof CSSStyleSheet?(e=>{let t="";for(const s of e.cssRules)t+=s.cssText;return je(t)})(o):o;/**
+ */var He;const A=globalThis,B=A.ShadowRoot&&(A.ShadyCSS===void 0||A.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,le=Symbol(),ye=new WeakMap;let ve=class{constructor(e,t,s){if(this._$cssResult$=!0,s!==le)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(B&&e===void 0){const s=t!==void 0&&t.length===1;s&&(e=ye.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),s&&ye.set(t,e))}return e}toString(){return this.cssText}};const Ye=o=>new ve(typeof o=="string"?o:o+"",void 0,le),C=(o,...e)=>{const t=o.length===1?o[0]:e.reduce((s,i,r)=>s+(a=>{if(a._$cssResult$===!0)return a.cssText;if(typeof a=="number")return a;throw Error("Value passed to 'css' function must be a 'css' function result: "+a+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+o[r+1],o[0]);return new ve(t,o,le)},We=(o,e)=>{if(B)o.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const t of e){const s=document.createElement("style"),i=A.litNonce;i!==void 0&&s.setAttribute("nonce",i),s.textContent=t.cssText,o.appendChild(s)}},we=B?o=>o:o=>o instanceof CSSStyleSheet?(e=>{let t="";for(const s of e.cssRules)t+=s.cssText;return Ye(t)})(o):o;/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const{is:Ge,defineProperty:Ye,getOwnPropertyDescriptor:Ve,getOwnPropertyNames:qe,getOwnPropertySymbols:Ke,getPrototypeOf:Xe}=Object,T=globalThis,ke=T.trustedTypes,Ze=ke?ke.emptyScript:"",ce=T.reactiveElementPolyfillSupport,D=(o,e)=>o,de={toAttribute(o,e){switch(e){case Boolean:o=o?Ze:null;break;case Object:case Array:o=o==null?o:JSON.stringify(o)}return o},fromAttribute(o,e){let t=o;switch(e){case Boolean:t=o!==null;break;case Number:t=o===null?null:Number(o);break;case Object:case Array:try{t=JSON.parse(o)}catch{t=null}}return t}},$e=(o,e)=>!Ge(o,e),_e={attribute:!0,type:String,converter:de,reflect:!1,useDefault:!1,hasChanged:$e};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),T.litPropertyMetadata??(T.litPropertyMetadata=new WeakMap);let F=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??(this.l=[])).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=_e){if(t.state&&(t.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(e)&&((t=Object.create(t)).wrapped=!0),this.elementProperties.set(e,t),!t.noAccessor){const s=Symbol(),i=this.getPropertyDescriptor(e,s,t);i!==void 0&&Ye(this.prototype,e,i)}}static getPropertyDescriptor(e,t,s){const{get:i,set:r}=Ve(this.prototype,e)??{get(){return this[t]},set(n){this[t]=n}};return{get:i,set(n){const l=i==null?void 0:i.call(this);r==null||r.call(this,n),this.requestUpdate(e,l,s)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??_e}static _$Ei(){if(this.hasOwnProperty(D("elementProperties")))return;const e=Xe(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(D("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(D("properties"))){const t=this.properties,s=[...qe(t),...Ke(t)];for(const i of s)this.createProperty(i,t[i])}const e=this[Symbol.metadata];if(e!==null){const t=litPropertyMetadata.get(e);if(t!==void 0)for(const[s,i]of t)this.elementProperties.set(s,i)}this._$Eh=new Map;for(const[t,s]of this.elementProperties){const i=this._$Eu(t,s);i!==void 0&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const s=new Set(e.flat(1/0).reverse());for(const i of s)t.unshift(we(i))}else e!==void 0&&t.push(we(e));return t}static _$Eu(e,t){const s=t.attribute;return s===!1?void 0:typeof s=="string"?s:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){var e;this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),(e=this.constructor.l)==null||e.forEach(t=>t(this))}addController(e){var t;(this._$EO??(this._$EO=new Set)).add(e),this.renderRoot!==void 0&&this.isConnected&&((t=e.hostConnected)==null||t.call(e))}removeController(e){var t;(t=this._$EO)==null||t.delete(e)}_$E_(){const e=new Map,t=this.constructor.elementProperties;for(const s of t.keys())this.hasOwnProperty(s)&&(e.set(s,this[s]),delete this[s]);e.size>0&&(this._$Ep=e)}createRenderRoot(){const e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return We(e,this.constructor.elementStyles),e}connectedCallback(){var e;this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostConnected)==null?void 0:s.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostDisconnected)==null?void 0:s.call(t)})}attributeChangedCallback(e,t,s){this._$AK(e,s)}_$ET(e,t){var r;const s=this.constructor.elementProperties.get(e),i=this.constructor._$Eu(e,s);if(i!==void 0&&s.reflect===!0){const n=(((r=s.converter)==null?void 0:r.toAttribute)!==void 0?s.converter:de).toAttribute(t,s.type);this._$Em=e,n==null?this.removeAttribute(i):this.setAttribute(i,n),this._$Em=null}}_$AK(e,t){var r,n;const s=this.constructor,i=s._$Eh.get(e);if(i!==void 0&&this._$Em!==i){const l=s.getPropertyOptions(i),c=typeof l.converter=="function"?{fromAttribute:l.converter}:((r=l.converter)==null?void 0:r.fromAttribute)!==void 0?l.converter:de;this._$Em=i;const h=c.fromAttribute(t,l.type);this[i]=h??((n=this._$Ej)==null?void 0:n.get(i))??h,this._$Em=null}}requestUpdate(e,t,s,i=!1,r){var n;if(e!==void 0){const l=this.constructor;if(i===!1&&(r=this[e]),s??(s=l.getPropertyOptions(e)),!((s.hasChanged??$e)(r,t)||s.useDefault&&s.reflect&&r===((n=this._$Ej)==null?void 0:n.get(e))&&!this.hasAttribute(l._$Eu(e,s))))return;this.C(e,t,s)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(e,t,{useDefault:s,reflect:i,wrapped:r},n){s&&!(this._$Ej??(this._$Ej=new Map)).has(e)&&(this._$Ej.set(e,n??t??this[e]),r!==!0||n!==void 0)||(this._$AL.has(e)||(this.hasUpdated||s||(t=void 0),this._$AL.set(e,t)),i===!0&&this._$Em!==e&&(this._$Eq??(this._$Eq=new Set)).add(e))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var s;if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[r,n]of this._$Ep)this[r]=n;this._$Ep=void 0}const i=this.constructor.elementProperties;if(i.size>0)for(const[r,n]of i){const{wrapped:l}=n,c=this[r];l!==!0||this._$AL.has(r)||c===void 0||this.C(r,void 0,n,c)}}let e=!1;const t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),(s=this._$EO)==null||s.forEach(i=>{var r;return(r=i.hostUpdate)==null?void 0:r.call(i)}),this.update(t)):this._$EM()}catch(i){throw e=!1,this._$EM(),i}e&&this._$AE(t)}willUpdate(e){}_$AE(e){var t;(t=this._$EO)==null||t.forEach(s=>{var i;return(i=s.hostUpdated)==null?void 0:i.call(s)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Eq&&(this._$Eq=this._$Eq.forEach(t=>this._$ET(t,this[t]))),this._$EM()}updated(e){}firstUpdated(e){}};F.elementStyles=[],F.shadowRootOptions={mode:"open"},F[D("elementProperties")]=new Map,F[D("finalized")]=new Map,ce==null||ce({ReactiveElement:F}),(T.reactiveElementVersions??(T.reactiveElementVersions=[])).push("2.1.2");/**
+ */const{is:je,defineProperty:Qe,getOwnPropertyDescriptor:Ke,getOwnPropertyNames:Ve,getOwnPropertySymbols:Ge,getPrototypeOf:qe}=Object,_=globalThis,ke=_.trustedTypes,Je=ke?ke.emptyScript:"",ce=_.reactiveElementPolyfillSupport,H=(o,e)=>o,de={toAttribute(o,e){switch(e){case Boolean:o=o?Je:null;break;case Object:case Array:o=o==null?o:JSON.stringify(o)}return o},fromAttribute(o,e){let t=o;switch(e){case Boolean:t=o!==null;break;case Number:t=o===null?null:Number(o);break;case Object:case Array:try{t=JSON.parse(o)}catch{t=null}}return t}},Ae=(o,e)=>!je(o,e),Se={attribute:!0,type:String,converter:de,reflect:!1,useDefault:!1,hasChanged:Ae};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),_.litPropertyMetadata??(_.litPropertyMetadata=new WeakMap);let N=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??(this.l=[])).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=Se){if(t.state&&(t.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(e)&&((t=Object.create(t)).wrapped=!0),this.elementProperties.set(e,t),!t.noAccessor){const s=Symbol(),i=this.getPropertyDescriptor(e,s,t);i!==void 0&&Qe(this.prototype,e,i)}}static getPropertyDescriptor(e,t,s){const{get:i,set:r}=Ke(this.prototype,e)??{get(){return this[t]},set(a){this[t]=a}};return{get:i,set(a){const l=i==null?void 0:i.call(this);r==null||r.call(this,a),this.requestUpdate(e,l,s)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??Se}static _$Ei(){if(this.hasOwnProperty(H("elementProperties")))return;const e=qe(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(H("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(H("properties"))){const t=this.properties,s=[...Ve(t),...Ge(t)];for(const i of s)this.createProperty(i,t[i])}const e=this[Symbol.metadata];if(e!==null){const t=litPropertyMetadata.get(e);if(t!==void 0)for(const[s,i]of t)this.elementProperties.set(s,i)}this._$Eh=new Map;for(const[t,s]of this.elementProperties){const i=this._$Eu(t,s);i!==void 0&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const s=new Set(e.flat(1/0).reverse());for(const i of s)t.unshift(we(i))}else e!==void 0&&t.push(we(e));return t}static _$Eu(e,t){const s=t.attribute;return s===!1?void 0:typeof s=="string"?s:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){var e;this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),(e=this.constructor.l)==null||e.forEach(t=>t(this))}addController(e){var t;(this._$EO??(this._$EO=new Set)).add(e),this.renderRoot!==void 0&&this.isConnected&&((t=e.hostConnected)==null||t.call(e))}removeController(e){var t;(t=this._$EO)==null||t.delete(e)}_$E_(){const e=new Map,t=this.constructor.elementProperties;for(const s of t.keys())this.hasOwnProperty(s)&&(e.set(s,this[s]),delete this[s]);e.size>0&&(this._$Ep=e)}createRenderRoot(){const e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return We(e,this.constructor.elementStyles),e}connectedCallback(){var e;this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostConnected)==null?void 0:s.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostDisconnected)==null?void 0:s.call(t)})}attributeChangedCallback(e,t,s){this._$AK(e,s)}_$ET(e,t){var r;const s=this.constructor.elementProperties.get(e),i=this.constructor._$Eu(e,s);if(i!==void 0&&s.reflect===!0){const a=(((r=s.converter)==null?void 0:r.toAttribute)!==void 0?s.converter:de).toAttribute(t,s.type);this._$Em=e,a==null?this.removeAttribute(i):this.setAttribute(i,a),this._$Em=null}}_$AK(e,t){var r,a;const s=this.constructor,i=s._$Eh.get(e);if(i!==void 0&&this._$Em!==i){const l=s.getPropertyOptions(i),c=typeof l.converter=="function"?{fromAttribute:l.converter}:((r=l.converter)==null?void 0:r.fromAttribute)!==void 0?l.converter:de;this._$Em=i;const h=c.fromAttribute(t,l.type);this[i]=h??((a=this._$Ej)==null?void 0:a.get(i))??h,this._$Em=null}}requestUpdate(e,t,s,i=!1,r){var a;if(e!==void 0){const l=this.constructor;if(i===!1&&(r=this[e]),s??(s=l.getPropertyOptions(e)),!((s.hasChanged??Ae)(r,t)||s.useDefault&&s.reflect&&r===((a=this._$Ej)==null?void 0:a.get(e))&&!this.hasAttribute(l._$Eu(e,s))))return;this.C(e,t,s)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(e,t,{useDefault:s,reflect:i,wrapped:r},a){s&&!(this._$Ej??(this._$Ej=new Map)).has(e)&&(this._$Ej.set(e,a??t??this[e]),r!==!0||a!==void 0)||(this._$AL.has(e)||(this.hasUpdated||s||(t=void 0),this._$AL.set(e,t)),i===!0&&this._$Em!==e&&(this._$Eq??(this._$Eq=new Set)).add(e))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var s;if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[r,a]of this._$Ep)this[r]=a;this._$Ep=void 0}const i=this.constructor.elementProperties;if(i.size>0)for(const[r,a]of i){const{wrapped:l}=a,c=this[r];l!==!0||this._$AL.has(r)||c===void 0||this.C(r,void 0,a,c)}}let e=!1;const t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),(s=this._$EO)==null||s.forEach(i=>{var r;return(r=i.hostUpdate)==null?void 0:r.call(i)}),this.update(t)):this._$EM()}catch(i){throw e=!1,this._$EM(),i}e&&this._$AE(t)}willUpdate(e){}_$AE(e){var t;(t=this._$EO)==null||t.forEach(s=>{var i;return(i=s.hostUpdated)==null?void 0:i.call(s)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Eq&&(this._$Eq=this._$Eq.forEach(t=>this._$ET(t,this[t]))),this._$EM()}updated(e){}firstUpdated(e){}};N.elementStyles=[],N.shadowRootOptions={mode:"open"},N[H("elementProperties")]=new Map,N[H("finalized")]=new Map,ce==null||ce({ReactiveElement:N}),(_.reactiveElementVersions??(_.reactiveElementVersions=[])).push("2.1.2");/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const O=globalThis,Se=o=>o,J=O.trustedTypes,Ae=J?J.createPolicy("lit-html",{createHTML:o=>o}):void 0,Ce="$lit$",P=`lit$${Math.random().toFixed(9).slice(2)}$`,Ie="?"+P,Je=`<${Ie}>`,N=document,j=()=>N.createComment(""),W=o=>o===null||typeof o!="object"&&typeof o!="function",pe=Array.isArray,Qe=o=>pe(o)||typeof(o==null?void 0:o[Symbol.iterator])=="function",he=`[ 	
-\f\r]`,G=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,Te=/-->/g,Pe=/>/g,M=RegExp(`>|${he}(?:([^\\s"'>=/]+)(${he}*=${he}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`,"g"),ze=/'/g,Ee=/"/g,Ne=/^(?:script|style|textarea|title)$/i,et=o=>(e,...t)=>({_$litType$:o,strings:e,values:t}),a=et(1),U=Symbol.for("lit-noChange"),y=Symbol.for("lit-nothing"),Me=new WeakMap,L=N.createTreeWalker(N,129);function Le(o,e){if(!pe(o)||!o.hasOwnProperty("raw"))throw Error("invalid template strings array");return Ae!==void 0?Ae.createHTML(e):e}const tt=(o,e)=>{const t=o.length-1,s=[];let i,r=e===2?"<svg>":e===3?"<math>":"",n=G;for(let l=0;l<t;l++){const c=o[l];let h,g,d=-1,b=0;for(;b<c.length&&(n.lastIndex=b,g=n.exec(c),g!==null);)b=n.lastIndex,n===G?g[1]==="!--"?n=Te:g[1]!==void 0?n=Pe:g[2]!==void 0?(Ne.test(g[2])&&(i=RegExp("</"+g[2],"g")),n=M):g[3]!==void 0&&(n=M):n===M?g[0]===">"?(n=i??G,d=-1):g[1]===void 0?d=-2:(d=n.lastIndex-g[2].length,h=g[1],n=g[3]===void 0?M:g[3]==='"'?Ee:ze):n===Ee||n===ze?n=M:n===Te||n===Pe?n=G:(n=M,i=void 0);const f=n===M&&o[l+1].startsWith("/>")?" ":"";r+=n===G?c+Je:d>=0?(s.push(h),c.slice(0,d)+Ce+c.slice(d)+P+f):c+P+(d===-2?l:f)}return[Le(o,r+(o[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),s]};class Y{constructor({strings:e,_$litType$:t},s){let i;this.parts=[];let r=0,n=0;const l=e.length-1,c=this.parts,[h,g]=tt(e,t);if(this.el=Y.createElement(h,s),L.currentNode=this.el.content,t===2||t===3){const d=this.el.content.firstChild;d.replaceWith(...d.childNodes)}for(;(i=L.nextNode())!==null&&c.length<l;){if(i.nodeType===1){if(i.hasAttributes())for(const d of i.getAttributeNames())if(d.endsWith(Ce)){const b=g[n++],f=i.getAttribute(d).split(P),u=/([.?@])?(.*)/.exec(b);c.push({type:1,index:r,name:u[2],strings:f,ctor:u[1]==="."?st:u[1]==="?"?rt:u[1]==="@"?ot:Q}),i.removeAttribute(d)}else d.startsWith(P)&&(c.push({type:6,index:r}),i.removeAttribute(d));if(Ne.test(i.tagName)){const d=i.textContent.split(P),b=d.length-1;if(b>0){i.textContent=J?J.emptyScript:"";for(let f=0;f<b;f++)i.append(d[f],j()),L.nextNode(),c.push({type:2,index:++r});i.append(d[b],j())}}}else if(i.nodeType===8)if(i.data===Ie)c.push({type:2,index:r});else{let d=-1;for(;(d=i.data.indexOf(P,d+1))!==-1;)c.push({type:7,index:r}),d+=P.length-1}r++}}static createElement(e,t){const s=N.createElement("template");return s.innerHTML=e,s}}function R(o,e,t=o,s){var n,l;if(e===U)return e;let i=s!==void 0?(n=t._$Co)==null?void 0:n[s]:t._$Cl;const r=W(e)?void 0:e._$litDirective$;return(i==null?void 0:i.constructor)!==r&&((l=i==null?void 0:i._$AO)==null||l.call(i,!1),r===void 0?i=void 0:(i=new r(o),i._$AT(o,t,s)),s!==void 0?(t._$Co??(t._$Co=[]))[s]=i:t._$Cl=i),i!==void 0&&(e=R(o,i._$AS(o,e.values),i,s)),e}class it{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){const{el:{content:t},parts:s}=this._$AD,i=((e==null?void 0:e.creationScope)??N).importNode(t,!0);L.currentNode=i;let r=L.nextNode(),n=0,l=0,c=s[0];for(;c!==void 0;){if(n===c.index){let h;c.type===2?h=new V(r,r.nextSibling,this,e):c.type===1?h=new c.ctor(r,c.name,c.strings,this,e):c.type===6&&(h=new nt(r,this,e)),this._$AV.push(h),c=s[++l]}n!==(c==null?void 0:c.index)&&(r=L.nextNode(),n++)}return L.currentNode=N,i}p(e){let t=0;for(const s of this._$AV)s!==void 0&&(s.strings!==void 0?(s._$AI(e,s,t),t+=s.strings.length-2):s._$AI(e[t])),t++}}class V{get _$AU(){var e;return((e=this._$AM)==null?void 0:e._$AU)??this._$Cv}constructor(e,t,s,i){this.type=2,this._$AH=y,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=s,this.options=i,this._$Cv=(i==null?void 0:i.isConnected)??!0}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&(e==null?void 0:e.nodeType)===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=R(this,e,t),W(e)?e===y||e==null||e===""?(this._$AH!==y&&this._$AR(),this._$AH=y):e!==this._$AH&&e!==U&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):Qe(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==y&&W(this._$AH)?this._$AA.nextSibling.data=e:this.T(N.createTextNode(e)),this._$AH=e}$(e){var r;const{values:t,_$litType$:s}=e,i=typeof s=="number"?this._$AC(e):(s.el===void 0&&(s.el=Y.createElement(Le(s.h,s.h[0]),this.options)),s);if(((r=this._$AH)==null?void 0:r._$AD)===i)this._$AH.p(t);else{const n=new it(i,this),l=n.u(this.options);n.p(t),this.T(l),this._$AH=n}}_$AC(e){let t=Me.get(e.strings);return t===void 0&&Me.set(e.strings,t=new Y(e)),t}k(e){pe(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let s,i=0;for(const r of e)i===t.length?t.push(s=new V(this.O(j()),this.O(j()),this,this.options)):s=t[i],s._$AI(r),i++;i<t.length&&(this._$AR(s&&s._$AB.nextSibling,i),t.length=i)}_$AR(e=this._$AA.nextSibling,t){var s;for((s=this._$AP)==null?void 0:s.call(this,!1,!0,t);e!==this._$AB;){const i=Se(e).nextSibling;Se(e).remove(),e=i}}setConnected(e){var t;this._$AM===void 0&&(this._$Cv=e,(t=this._$AP)==null||t.call(this,e))}}class Q{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,s,i,r){this.type=1,this._$AH=y,this._$AN=void 0,this.element=e,this.name=t,this._$AM=i,this.options=r,s.length>2||s[0]!==""||s[1]!==""?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=y}_$AI(e,t=this,s,i){const r=this.strings;let n=!1;if(r===void 0)e=R(this,e,t,0),n=!W(e)||e!==this._$AH&&e!==U,n&&(this._$AH=e);else{const l=e;let c,h;for(e=r[0],c=0;c<r.length-1;c++)h=R(this,l[s+c],t,c),h===U&&(h=this._$AH[c]),n||(n=!W(h)||h!==this._$AH[c]),h===y?e=y:e!==y&&(e+=(h??"")+r[c+1]),this._$AH[c]=h}n&&!i&&this.j(e)}j(e){e===y?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class st extends Q{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===y?void 0:e}}class rt extends Q{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==y)}}class ot extends Q{constructor(e,t,s,i,r){super(e,t,s,i,r),this.type=5}_$AI(e,t=this){if((e=R(this,e,t,0)??y)===U)return;const s=this._$AH,i=e===y&&s!==y||e.capture!==s.capture||e.once!==s.once||e.passive!==s.passive,r=e!==y&&(s===y||i);i&&this.element.removeEventListener(this.name,this,s),r&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t;typeof this._$AH=="function"?this._$AH.call(((t=this.options)==null?void 0:t.host)??this.element,e):this._$AH.handleEvent(e)}}class nt{constructor(e,t,s){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=s}get _$AU(){return this._$AM._$AU}_$AI(e){R(this,e)}}const ge=O.litHtmlPolyfillSupport;ge==null||ge(Y,V),(O.litHtmlVersions??(O.litHtmlVersions=[])).push("3.3.3");const at=(o,e,t)=>{const s=(t==null?void 0:t.renderBefore)??e;let i=s._$litPart$;if(i===void 0){const r=(t==null?void 0:t.renderBefore)??null;s._$litPart$=i=new V(e.insertBefore(j(),r),r,void 0,t??{})}return i._$AI(o),i};/**
+ */const O=globalThis,Ce=o=>o,Z=O.trustedTypes,Ie=Z?Z.createPolicy("lit-html",{createHTML:o=>o}):void 0,$e="$lit$",E=`lit$${Math.random().toFixed(9).slice(2)}$`,Be="?"+E,Ze=`<${Be}>`,P=document,Y=()=>P.createComment(""),W=o=>o===null||typeof o!="object"&&typeof o!="function",pe=Array.isArray,Xe=o=>pe(o)||typeof(o==null?void 0:o[Symbol.iterator])=="function",he=`[ 	
+\f\r]`,j=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,_e=/-->/g,Ee=/>/g,F=RegExp(`>|${he}(?:([^\\s"'>=/]+)(${he}*=${he}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`,"g"),Te=/'/g,Re=/"/g,Pe=/^(?:script|style|textarea|title)$/i,et=o=>(e,...t)=>({_$litType$:o,strings:e,values:t}),n=et(1),D=Symbol.for("lit-noChange"),y=Symbol.for("lit-nothing"),Fe=new WeakMap,U=P.createTreeWalker(P,129);function Ue(o,e){if(!pe(o)||!o.hasOwnProperty("raw"))throw Error("invalid template strings array");return Ie!==void 0?Ie.createHTML(e):e}const tt=(o,e)=>{const t=o.length-1,s=[];let i,r=e===2?"<svg>":e===3?"<math>":"",a=j;for(let l=0;l<t;l++){const c=o[l];let h,g,d=-1,b=0;for(;b<c.length&&(a.lastIndex=b,g=a.exec(c),g!==null);)b=a.lastIndex,a===j?g[1]==="!--"?a=_e:g[1]!==void 0?a=Ee:g[2]!==void 0?(Pe.test(g[2])&&(i=RegExp("</"+g[2],"g")),a=F):g[3]!==void 0&&(a=F):a===F?g[0]===">"?(a=i??j,d=-1):g[1]===void 0?d=-2:(d=a.lastIndex-g[2].length,h=g[1],a=g[3]===void 0?F:g[3]==='"'?Re:Te):a===Re||a===Te?a=F:a===_e||a===Ee?a=j:(a=F,i=void 0);const u=a===F&&o[l+1].startsWith("/>")?" ":"";r+=a===j?c+Ze:d>=0?(s.push(h),c.slice(0,d)+$e+c.slice(d)+E+u):c+E+(d===-2?l:u)}return[Ue(o,r+(o[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),s]};class Q{constructor({strings:e,_$litType$:t},s){let i;this.parts=[];let r=0,a=0;const l=e.length-1,c=this.parts,[h,g]=tt(e,t);if(this.el=Q.createElement(h,s),U.currentNode=this.el.content,t===2||t===3){const d=this.el.content.firstChild;d.replaceWith(...d.childNodes)}for(;(i=U.nextNode())!==null&&c.length<l;){if(i.nodeType===1){if(i.hasAttributes())for(const d of i.getAttributeNames())if(d.endsWith($e)){const b=g[a++],u=i.getAttribute(d).split(E),f=/([.?@])?(.*)/.exec(b);c.push({type:1,index:r,name:f[2],strings:u,ctor:f[1]==="."?st:f[1]==="?"?rt:f[1]==="@"?ot:X}),i.removeAttribute(d)}else d.startsWith(E)&&(c.push({type:6,index:r}),i.removeAttribute(d));if(Pe.test(i.tagName)){const d=i.textContent.split(E),b=d.length-1;if(b>0){i.textContent=Z?Z.emptyScript:"";for(let u=0;u<b;u++)i.append(d[u],Y()),U.nextNode(),c.push({type:2,index:++r});i.append(d[b],Y())}}}else if(i.nodeType===8)if(i.data===Be)c.push({type:2,index:r});else{let d=-1;for(;(d=i.data.indexOf(E,d+1))!==-1;)c.push({type:7,index:r}),d+=E.length-1}r++}}static createElement(e,t){const s=P.createElement("template");return s.innerHTML=e,s}}function L(o,e,t=o,s){var a,l;if(e===D)return e;let i=s!==void 0?(a=t._$Co)==null?void 0:a[s]:t._$Cl;const r=W(e)?void 0:e._$litDirective$;return(i==null?void 0:i.constructor)!==r&&((l=i==null?void 0:i._$AO)==null||l.call(i,!1),r===void 0?i=void 0:(i=new r(o),i._$AT(o,t,s)),s!==void 0?(t._$Co??(t._$Co=[]))[s]=i:t._$Cl=i),i!==void 0&&(e=L(o,i._$AS(o,e.values),i,s)),e}class it{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){const{el:{content:t},parts:s}=this._$AD,i=((e==null?void 0:e.creationScope)??P).importNode(t,!0);U.currentNode=i;let r=U.nextNode(),a=0,l=0,c=s[0];for(;c!==void 0;){if(a===c.index){let h;c.type===2?h=new K(r,r.nextSibling,this,e):c.type===1?h=new c.ctor(r,c.name,c.strings,this,e):c.type===6&&(h=new at(r,this,e)),this._$AV.push(h),c=s[++l]}a!==(c==null?void 0:c.index)&&(r=U.nextNode(),a++)}return U.currentNode=P,i}p(e){let t=0;for(const s of this._$AV)s!==void 0&&(s.strings!==void 0?(s._$AI(e,s,t),t+=s.strings.length-2):s._$AI(e[t])),t++}}class K{get _$AU(){var e;return((e=this._$AM)==null?void 0:e._$AU)??this._$Cv}constructor(e,t,s,i){this.type=2,this._$AH=y,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=s,this.options=i,this._$Cv=(i==null?void 0:i.isConnected)??!0}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&(e==null?void 0:e.nodeType)===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=L(this,e,t),W(e)?e===y||e==null||e===""?(this._$AH!==y&&this._$AR(),this._$AH=y):e!==this._$AH&&e!==D&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):Xe(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==y&&W(this._$AH)?this._$AA.nextSibling.data=e:this.T(P.createTextNode(e)),this._$AH=e}$(e){var r;const{values:t,_$litType$:s}=e,i=typeof s=="number"?this._$AC(e):(s.el===void 0&&(s.el=Q.createElement(Ue(s.h,s.h[0]),this.options)),s);if(((r=this._$AH)==null?void 0:r._$AD)===i)this._$AH.p(t);else{const a=new it(i,this),l=a.u(this.options);a.p(t),this.T(l),this._$AH=a}}_$AC(e){let t=Fe.get(e.strings);return t===void 0&&Fe.set(e.strings,t=new Q(e)),t}k(e){pe(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let s,i=0;for(const r of e)i===t.length?t.push(s=new K(this.O(Y()),this.O(Y()),this,this.options)):s=t[i],s._$AI(r),i++;i<t.length&&(this._$AR(s&&s._$AB.nextSibling,i),t.length=i)}_$AR(e=this._$AA.nextSibling,t){var s;for((s=this._$AP)==null?void 0:s.call(this,!1,!0,t);e!==this._$AB;){const i=Ce(e).nextSibling;Ce(e).remove(),e=i}}setConnected(e){var t;this._$AM===void 0&&(this._$Cv=e,(t=this._$AP)==null||t.call(this,e))}}class X{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,s,i,r){this.type=1,this._$AH=y,this._$AN=void 0,this.element=e,this.name=t,this._$AM=i,this.options=r,s.length>2||s[0]!==""||s[1]!==""?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=y}_$AI(e,t=this,s,i){const r=this.strings;let a=!1;if(r===void 0)e=L(this,e,t,0),a=!W(e)||e!==this._$AH&&e!==D,a&&(this._$AH=e);else{const l=e;let c,h;for(e=r[0],c=0;c<r.length-1;c++)h=L(this,l[s+c],t,c),h===D&&(h=this._$AH[c]),a||(a=!W(h)||h!==this._$AH[c]),h===y?e=y:e!==y&&(e+=(h??"")+r[c+1]),this._$AH[c]=h}a&&!i&&this.j(e)}j(e){e===y?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class st extends X{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===y?void 0:e}}class rt extends X{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==y)}}class ot extends X{constructor(e,t,s,i,r){super(e,t,s,i,r),this.type=5}_$AI(e,t=this){if((e=L(this,e,t,0)??y)===D)return;const s=this._$AH,i=e===y&&s!==y||e.capture!==s.capture||e.once!==s.once||e.passive!==s.passive,r=e!==y&&(s===y||i);i&&this.element.removeEventListener(this.name,this,s),r&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t;typeof this._$AH=="function"?this._$AH.call(((t=this.options)==null?void 0:t.host)??this.element,e):this._$AH.handleEvent(e)}}class at{constructor(e,t,s){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=s}get _$AU(){return this._$AM._$AU}_$AI(e){L(this,e)}}const ge=O.litHtmlPolyfillSupport;ge==null||ge(Q,K),(O.litHtmlVersions??(O.litHtmlVersions=[])).push("3.3.3");const nt=(o,e,t)=>{const s=(t==null?void 0:t.renderBefore)??e;let i=s._$litPart$;if(i===void 0){const r=(t==null?void 0:t.renderBefore)??null;s._$litPart$=i=new K(e.insertBefore(Y(),r),r,void 0,t??{})}return i._$AI(o),i};/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const B=globalThis;class k extends F{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=at(t,this.renderRoot,this.renderOptions)}connectedCallback(){var e;super.connectedCallback(),(e=this._$Do)==null||e.setConnected(!0)}disconnectedCallback(){var e;super.disconnectedCallback(),(e=this._$Do)==null||e.setConnected(!1)}render(){return U}}k._$litElement$=!0,k.finalized=!0,(De=B.litElementHydrateSupport)==null||De.call(B,{LitElement:k});const fe=B.litElementPolyfillSupport;fe==null||fe({LitElement:k}),(B.litElementVersions??(B.litElementVersions=[])).push("4.2.2");function v(o,e){if(!(typeof window>"u"||!window.customElements||window.customElements.get(o)))try{window.customElements.define(o,e)}catch(s){if(s.name==="NotSupportedError"&&s.message.includes("constructor")){class i extends e{}window.customElements.define(o,i)}else console.warn(`[my-wix-ui-lib] Không thể đăng ký ${o}:`,s)}}function C(o,e,t={}){const s=new CustomEvent(e,{detail:t,bubbles:!0,composed:!0,cancelable:!0});return o.dispatchEvent(s),s}function q(o){if(o==null||o==="")return"";if(typeof o=="string"){const e=Number(o.replace(/[^\d]/g,""));!isNaN(e)&&e>0&&(o=e)}return isNaN(o)||Number(o)<=0?"":new Intl.NumberFormat("vi-VN",{style:"currency",currency:"VND",maximumFractionDigits:0}).format(o)}function Be(o){if(!o||typeof o!="object")return{price:0,comparePrice:null,discountPercent:null};const e=l=>{if(l==null||l==="")return 0;if(typeof l=="number")return isNaN(l)?0:l;if(typeof l=="string"){const c=Number(l.replace(/[^\d]/g,""));return isNaN(c)?0:c}return 0},t=e(o.maxPrice)||e(o.compareAtPrice)||e(o.price),s=e(o.minPrice);let i=0,r=null,n=null;return t>0&&s>0&&t>s?(i=s,r=t,n=Math.round((t-s)/t*100)):(i=t||s||e(o.price),r=null,n=null),{price:i,comparePrice:r,discountPercent:n}}function ue(o,e=null){if(!o)return e;if(typeof o=="object")return o;try{return JSON.parse(o)}catch{return e}}function z(o,e=""){if(!o||(typeof o=="object"&&o&&(o=o.src||o.url||e),typeof o!="string"))return e;const t=o.trim();if(!t)return e;if(t.startsWith("wix:image://")){const s=t.split("/");if(s.length>=4)return`https://static.wixstatic.com/media/${s[3].split("#")[0]}`}return t}function me(o){if(!o)return[];if(typeof o=="string"){const e=o.trim();if(e.startsWith("[")||e.startsWith("{"))try{const t=JSON.parse(e);t&&(o=t)}catch{}}return Array.isArray(o)?o.map(e=>e?typeof e=="object"?e.src||e.url||"":String(e):"").filter(Boolean):typeof o!="string"?[]:o.split(";").map(e=>e.trim()).filter(Boolean)}function Fe(o){return typeof o!="string"?"":o.replace(/&quot;/g,'"').replace(/&#34;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">")}const w={fromAttribute(o){if(!o)return[];if(typeof o=="object")return Array.isArray(o)?o:[o];try{let e=typeof o=="string"?Fe(o.trim()):"";if(e.startsWith("[")||e.startsWith("{")){const t=JSON.parse(e);return Array.isArray(t)?t:[t]}if(e.includes(">")||e.includes(",")){const t=e.includes(">")?">":",";return e.split(t).map(s=>s.trim()).filter(Boolean).map((s,i,r)=>({label:s,url:i===0?"/":i===r.length-1?"#":""}))}return e?[{label:e,url:"#"}]:[]}catch(e){return console.warn("[jsonArrayConverter] Lỗi parse JSON:",e,o),[]}},toAttribute(o){return JSON.stringify(o)}},_={fromAttribute(o){if(!o)return null;if(typeof o=="object")return o;try{let e=typeof o=="string"?Fe(o.trim()):"";return JSON.parse(e)}catch(e){return console.warn("[jsonObjectConverter] Lỗi parse JSON:",e,o),null}},toAttribute(o){return JSON.stringify(o)}},be={fromAttribute(o){if(o==null)return!1;if(typeof o=="boolean")return o;const e=String(o).trim().toLowerCase();return!(e==="false"||e==="0"||e===""||e==="null"||e==="undefined")},toAttribute(o){return o?"true":null}},ee={vi:{resultsCount:o=>`${o} sản phẩm`,sortBy:"Sắp xếp theo",sortPriceAsc:"Giá: Thấp đến Cao",sortPriceDesc:"Giá: Cao đến Thấp",sortTitleAsc:"Tên: A đến Z",filterCategory:"Danh mục",filterBrand:"Thương hiệu",filterPrice:"Mức giá",clearAll:"Xóa tất cả",emptyProducts:"Không có sản phẩm nào phù hợp với bộ lọc.",showingItems:(o,e)=>`Đang hiển thị ${o} trên tổng số ${e} sản phẩm`,loadMore:"XEM THÊM SẢN PHẨM",searchFilters:"BỘ LỌC TÌM KIẾM",clear:"Xóa",categories:"DANH MỤC",allCategories:"Tất cả danh mục",noCategories:"Không có danh mục nào",brands:"THƯƠNG HIỆU",allBrands:"Tất cả thương hiệu",priceRange:"KHOẢNG GIÁ",allPrices:"Tất cả mức giá",priceUnder1m:"Dưới 1.000.000 ₫",price1mTo3m:"1.000.000 ₫ - 3.000.000 ₫",price3mTo5m:"3.000.000 ₫ - 5.000.000 ₫",priceOver5m:"Trên 5.000.000 ₫",reset:"Thiết lập lại",viewResults:o=>`Xem ${o} sản phẩm`,close:"Đóng",productFilterAria:"Bộ lọc sản phẩm",contactUs:"Liên hệ",noImage:"Chưa có ảnh",prevImage:"Ảnh trước",nextImage:"Ảnh sau",seriesLabel:o=>`Dòng sản phẩm: ${o}`,reviewsCount:o=>`(${o} Đánh giá)`,highlights:"Đặc điểm nổi bật:",descriptionTab:"MÔ TẢ SẢN PHẨM",specsTab:"THÔNG SỐ KỸ THUẬT",instructionsTab:"HƯỚNG DẪN SỬ DỤNG & BẢO QUẢN",noDescription:"Chưa có thông tin mô tả cho sản phẩm này.",noSpecs:"Chưa có thông số kỹ thuật.",defaultInstructions:["Vệ sinh bằng tay với nước ấm và xà phòng nhẹ sau khi sử dụng.","Lau khô hoàn toàn trước khi cất giữ.","Bảo quản nơi khô ráo, thoáng mát."],relatedProducts:"SẢN PHẨM LIÊN QUAN",toolbarResults:o=>`${o} KẾT QUẢ`,allBrandsToolbar:"Tất cả Thương hiệu",allCategoriesToolbar:"Tất cả Danh mục",sortDefault:"Sắp xếp: Mặc định",clearFilters:"Xóa bộ lọc",brandSectionTitle:"THƯƠNG HIỆU",seriesSectionTitle:"DÒNG SẢN PHẨM",seriesTag:"Dòng sản phẩm",scrollLeft:"Cuộn sang trái",scrollRight:"Cuộn sang phải",home:"TRANG CHỦ",products:"SẢN PHẨM",brandsBreadcrumb:"THƯƠNG HIỆU",about:"GIỚI THIỆU",news:"TIN TỨC"},en:{resultsCount:o=>`${o} Results`,sortBy:"Sort by",sortPriceAsc:"Price: Low to High",sortPriceDesc:"Price: High to Low",sortTitleAsc:"Name: A to Z",filterCategory:"Category",filterBrand:"Brand",filterPrice:"Price",clearAll:"Clear All",emptyProducts:"No products found matching your filters.",showingItems:(o,e)=>`Showing ${o} of ${e} items`,loadMore:"LOAD MORE",searchFilters:"SEARCH FILTERS",clear:"Clear",categories:"CATEGORIES",allCategories:"All Categories",noCategories:"No categories found",brands:"BRANDS",allBrands:"All Brands",priceRange:"PRICE RANGE",allPrices:"All Prices",priceUnder1m:"Under 1,000,000 ₫",price1mTo3m:"1,000,000 ₫ - 3,000,000 ₫",price3mTo5m:"3,000,000 ₫ - 5,000,000 ₫",priceOver5m:"Over 5,000,000 ₫",reset:"Reset",viewResults:o=>`View ${o} products`,close:"Close",productFilterAria:"Product filters",contactUs:"Contact Us",noImage:"No image available",prevImage:"Previous image",nextImage:"Next image",seriesLabel:o=>`Series: ${o}`,reviewsCount:o=>`(${o} Reviews)`,highlights:"Highlights:",descriptionTab:"PRODUCT DESCRIPTION",specsTab:"SPECIFICATIONS",instructionsTab:"INSTRUCTIONS & CARE",noDescription:"No description available for this product.",noSpecs:"No specifications available.",defaultInstructions:["Hand wash with warm water and mild soap after use.","Dry completely before storage.","Store in a cool, dry place."],relatedProducts:"RELATED PRODUCTS",toolbarResults:o=>`${o} RESULTS`,allBrandsToolbar:"All Brands",allCategoriesToolbar:"All Categories",sortDefault:"Sort: Default",clearFilters:"Clear Filters",brandSectionTitle:"BRANDS",seriesSectionTitle:"SERIES",seriesTag:"Series",scrollLeft:"Scroll left",scrollRight:"Scroll right",home:"HOME",products:"PRODUCTS",brandsBreadcrumb:"BRANDS",about:"ABOUT US",news:"NEWS"}};function p(o,e="vi",...t){let s="vi";e&&typeof e=="string"?s=e.toLowerCase().startsWith("en")?"en":"vi":typeof document<"u"&&document.documentElement&&document.documentElement.lang&&(s=document.documentElement.lang.toLowerCase().startsWith("en")?"en":"vi");const i=ee[s]||ee.vi,r=i[o]!==void 0?i[o]:ee.vi[o];return typeof r=="function"?r(...t):r!==void 0?r:o}class te extends k{constructor(){super(),this.items=null,this.defaultItems="",this.current="",this.lang="vi",this.loading=!1}connectedCallback(){super.connectedCallback(),this._checkContext()}firstUpdated(e){super.firstUpdated(e),this._checkContext(),setTimeout(()=>this._checkContext(),200),setTimeout(()=>this._checkContext(),600)}_checkContext(){if(!this.items||!this.items.length){const e=this._getEffectiveItems();e&&e.length>0&&(this.items=e,this.loading=!1,this.requestUpdate())}}_getEffectiveItems(){if(this.items&&Array.isArray(this.items)&&this.items.length>0)return this.items;if(this.defaultItems){const e=w.fromAttribute(this.defaultItems);if(e&&e.length>0)return e}if(this.current)return[{label:"TRANG CHỦ",url:"/"},{label:this.current,url:"#"}];if(typeof document<"u"){try{if(document.querySelector("wx-store-locator")||document.querySelector("[data-locator]"))return[{label:"TRANG CHỦ",url:"/"},{label:"CỬA HÀNG",url:"/stores"}]}catch{}try{const e=(window.location.href||"")+" "+(window.location.pathname||"")+" "+(document.title||"");if(/store|cua-hang|cửa hàng/i.test(e))return[{label:"TRANG CHỦ",url:"/"},{label:"CỬA HÀNG",url:"/stores"}]}catch{}}return null}_formatLabel(e){if(!e||typeof e!="string")return"";const t=e.trim().toUpperCase();return t==="HOME"||t==="TRANG CHỦ"?p("home",this.lang):t==="PRODUCTS"||t==="SẢN PHẨM"?p("products",this.lang):t==="BRANDS"||t==="THƯƠNG HIỆU"?p("brandsBreadcrumb",this.lang):t==="ABOUT"||t==="ABOUT US"||t==="GIỚI THIỆU"||t==="VỀ CHÚNG TÔI"?p("about",this.lang):t==="BLOG"||t==="NEWS"||t==="BÀI VIẾT"||t==="TIN TỨC"?p("news",this.lang):e}_resolveUrl(e){if(!e||e==="#"||e==="")return"#";if(/^https?:\/\//i.test(e))return e;if(typeof window<"u"&&window.location){const t=window.location.hostname||"",s=window.location.pathname||"";if(t.includes("wixstudio.com")||t.includes("wixsite.com")){const i=s.split("/").filter(Boolean);if(i.length>0){const r="/"+i[0];if(e==="/")return r+"/";if(!e.startsWith(r))return e.startsWith("/")?`${r}${e}`:`${r}/${e}`}}}return e}_handleClick(e,t,s,i=this.items){if(i&&s===i.length-1)return;e.preventDefault(),C(this,"breadcrumb-click",{item:t,index:s});const r=t&&(t.url||t.link||t.href);if(!r||r==="#"||r==="")return;const n=this._resolveUrl(r);setTimeout(()=>{try{if(typeof window<"u"&&window.location){const l=(window.location.pathname||"").replace(/\/$/,""),c=n.replace(/\/$/,"");l!==c&&(window.location.href=n)}}catch{}},150)}render(){const e=this._getEffectiveItems();if((this.loading===!0||this.loading==="true"||!e&&this.items===null&&this.loading!==!1)&&!e)return a`
+ */const z=globalThis;class k extends N{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=nt(t,this.renderRoot,this.renderOptions)}connectedCallback(){var e;super.connectedCallback(),(e=this._$Do)==null||e.setConnected(!0)}disconnectedCallback(){var e;super.disconnectedCallback(),(e=this._$Do)==null||e.setConnected(!1)}render(){return D}}k._$litElement$=!0,k.finalized=!0,(He=z.litElementHydrateSupport)==null||He.call(z,{LitElement:k});const ue=z.litElementPolyfillSupport;ue==null||ue({LitElement:k}),(z.litElementVersions??(z.litElementVersions=[])).push("4.2.2");function v(o,e){if(!(typeof window>"u"||!window.customElements||window.customElements.get(o)))try{window.customElements.define(o,e)}catch(s){if(s.name==="NotSupportedError"&&s.message.includes("constructor")){class i extends e{}window.customElements.define(o,i)}else console.warn(`[my-wix-ui-lib] Không thể đăng ký ${o}:`,s)}}function $(o,e,t={}){const s=new CustomEvent(e,{detail:t,bubbles:!0,composed:!0,cancelable:!0});return o.dispatchEvent(s),s}function V(o){if(o==null||o==="")return"";if(typeof o=="string"){const e=Number(o.replace(/[^\d]/g,""));!isNaN(e)&&e>0&&(o=e)}return isNaN(o)||Number(o)<=0?"":new Intl.NumberFormat("vi-VN",{style:"currency",currency:"VND",maximumFractionDigits:0}).format(o)}function ze(o){if(!o||typeof o!="object")return{price:0,comparePrice:null,discountPercent:null};const e=l=>{if(l==null||l==="")return 0;if(typeof l=="number")return isNaN(l)?0:l;if(typeof l=="string"){const c=Number(l.replace(/[^\d]/g,""));return isNaN(c)?0:c}return 0},t=e(o.maxPrice)||e(o.compareAtPrice)||e(o.price),s=e(o.minPrice);let i=0,r=null,a=null;return t>0&&s>0&&t>s?(i=s,r=t,a=Math.round((t-s)/t*100)):(i=t||s||e(o.price),r=null,a=null),{price:i,comparePrice:r,discountPercent:a}}function fe(o,e=null){if(!o)return e;if(typeof o=="object")return o;try{return JSON.parse(o)}catch{return e}}function T(o,e=""){if(!o||(typeof o=="object"&&o&&(o=o.src||o.url||e),typeof o!="string"))return e;const t=o.trim();if(!t)return e;if(t.startsWith("wix:image://")){const s=t.split("/");if(s.length>=4)return`https://static.wixstatic.com/media/${s[3].split("#")[0]}`}return t}function me(o){if(!o)return[];if(typeof o=="string"){const e=o.trim();if(e.startsWith("[")||e.startsWith("{"))try{const t=JSON.parse(e);t&&(o=t)}catch{}}return Array.isArray(o)?o.map(e=>e?typeof e=="object"?e.src||e.url||"":String(e):"").filter(Boolean):typeof o!="string"?[]:o.split(";").map(e=>e.trim()).filter(Boolean)}function Ne(o){return typeof o!="string"?"":o.replace(/&quot;/g,'"').replace(/&#34;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">")}const w={fromAttribute(o){if(!o)return[];if(typeof o=="object")return Array.isArray(o)?o:[o];try{let e=typeof o=="string"?Ne(o.trim()):"";if(e.startsWith("[")||e.startsWith("{")){const t=JSON.parse(e);return Array.isArray(t)?t:[t]}if(e.includes(">")||e.includes(",")){const t=e.includes(">")?">":",";return e.split(t).map(s=>s.trim()).filter(Boolean).map((s,i,r)=>({label:s,url:i===0?"/":i===r.length-1?"#":""}))}return e?[{label:e,url:"#"}]:[]}catch(e){return console.warn("[jsonArrayConverter] Lỗi parse JSON:",e,o),[]}},toAttribute(o){return JSON.stringify(o)}},S={fromAttribute(o){if(!o)return null;if(typeof o=="object")return o;try{let e=typeof o=="string"?Ne(o.trim()):"";return JSON.parse(e)}catch(e){return console.warn("[jsonObjectConverter] Lỗi parse JSON:",e,o),null}},toAttribute(o){return JSON.stringify(o)}},be={fromAttribute(o){if(o==null)return!1;if(typeof o=="boolean")return o;const e=String(o).trim().toLowerCase();return!(e==="false"||e==="0"||e===""||e==="null"||e==="undefined")},toAttribute(o){return o?"true":null}},ee={vi:{resultsCount:o=>`${o} sản phẩm`,sortBy:"Sắp xếp theo",sortPriceAsc:"Giá: Thấp đến Cao",sortPriceDesc:"Giá: Cao đến Thấp",sortTitleAsc:"Tên: A đến Z",filterCategory:"Danh mục",filterBrand:"Thương hiệu",filterPrice:"Mức giá",clearAll:"Xóa tất cả",emptyProducts:"Không có sản phẩm nào phù hợp với bộ lọc.",showingItems:(o,e)=>`Đang hiển thị ${o} trên tổng số ${e} sản phẩm`,loadMore:"XEM THÊM SẢN PHẨM",searchFilters:"BỘ LỌC TÌM KIẾM",clear:"Xóa",categories:"DANH MỤC",allCategories:"Tất cả danh mục",noCategories:"Không có danh mục nào",brands:"THƯƠNG HIỆU",allBrands:"Tất cả thương hiệu",priceRange:"KHOẢNG GIÁ",allPrices:"Tất cả mức giá",priceUnder1m:"Dưới 1.000.000 ₫",price1mTo3m:"1.000.000 ₫ - 3.000.000 ₫",price3mTo5m:"3.000.000 ₫ - 5.000.000 ₫",priceOver5m:"Trên 5.000.000 ₫",reset:"Thiết lập lại",viewResults:o=>`Xem ${o} sản phẩm`,close:"Đóng",productFilterAria:"Bộ lọc sản phẩm",contactUs:"Liên hệ",noImage:"Chưa có ảnh",prevImage:"Ảnh trước",nextImage:"Ảnh sau",seriesLabel:o=>`Dòng sản phẩm: ${o}`,reviewsCount:o=>`(${o} Đánh giá)`,highlights:"Đặc điểm nổi bật:",descriptionTab:"MÔ TẢ SẢN PHẨM",specsTab:"THÔNG SỐ KỸ THUẬT",instructionsTab:"HƯỚNG DẪN SỬ DỤNG & BẢO QUẢN",noDescription:"Chưa có thông tin mô tả cho sản phẩm này.",noSpecs:"Chưa có thông số kỹ thuật.",defaultInstructions:["Vệ sinh bằng tay với nước ấm và xà phòng nhẹ sau khi sử dụng.","Lau khô hoàn toàn trước khi cất giữ.","Bảo quản nơi khô ráo, thoáng mát."],relatedProducts:"SẢN PHẨM LIÊN QUAN",toolbarResults:o=>`${o} KẾT QUẢ`,allBrandsToolbar:"Tất cả Thương hiệu",allCategoriesToolbar:"Tất cả Danh mục",sortDefault:"Sắp xếp: Mặc định",clearFilters:"Xóa bộ lọc",brandSectionTitle:"THƯƠNG HIỆU",seriesSectionTitle:"DÒNG SẢN PHẨM",seriesTag:"Dòng sản phẩm",scrollLeft:"Cuộn sang trái",scrollRight:"Cuộn sang phải",home:"TRANG CHỦ",products:"SẢN PHẨM",brandsBreadcrumb:"THƯƠNG HIỆU",about:"GIỚI THIỆU",news:"TIN TỨC"},en:{resultsCount:o=>`${o} Results`,sortBy:"Sort by",sortPriceAsc:"Price: Low to High",sortPriceDesc:"Price: High to Low",sortTitleAsc:"Name: A to Z",filterCategory:"Category",filterBrand:"Brand",filterPrice:"Price",clearAll:"Clear All",emptyProducts:"No products found matching your filters.",showingItems:(o,e)=>`Showing ${o} of ${e} items`,loadMore:"LOAD MORE",searchFilters:"SEARCH FILTERS",clear:"Clear",categories:"CATEGORIES",allCategories:"All Categories",noCategories:"No categories found",brands:"BRANDS",allBrands:"All Brands",priceRange:"PRICE RANGE",allPrices:"All Prices",priceUnder1m:"Under 1,000,000 ₫",price1mTo3m:"1,000,000 ₫ - 3,000,000 ₫",price3mTo5m:"3,000,000 ₫ - 5,000,000 ₫",priceOver5m:"Over 5,000,000 ₫",reset:"Reset",viewResults:o=>`View ${o} products`,close:"Close",productFilterAria:"Product filters",contactUs:"Contact Us",noImage:"No image available",prevImage:"Previous image",nextImage:"Next image",seriesLabel:o=>`Series: ${o}`,reviewsCount:o=>`(${o} Reviews)`,highlights:"Highlights:",descriptionTab:"PRODUCT DESCRIPTION",specsTab:"SPECIFICATIONS",instructionsTab:"INSTRUCTIONS & CARE",noDescription:"No description available for this product.",noSpecs:"No specifications available.",defaultInstructions:["Hand wash with warm water and mild soap after use.","Dry completely before storage.","Store in a cool, dry place."],relatedProducts:"RELATED PRODUCTS",toolbarResults:o=>`${o} RESULTS`,allBrandsToolbar:"All Brands",allCategoriesToolbar:"All Categories",sortDefault:"Sort: Default",clearFilters:"Clear Filters",brandSectionTitle:"BRANDS",seriesSectionTitle:"SERIES",seriesTag:"Series",scrollLeft:"Scroll left",scrollRight:"Scroll right",home:"HOME",products:"PRODUCTS",brandsBreadcrumb:"BRANDS",about:"ABOUT US",news:"NEWS"}};function p(o,e="vi",...t){let s="vi";e&&typeof e=="string"?s=e.toLowerCase().startsWith("en")?"en":"vi":typeof document<"u"&&document.documentElement&&document.documentElement.lang&&(s=document.documentElement.lang.toLowerCase().startsWith("en")?"en":"vi");const i=ee[s]||ee.vi,r=i[o]!==void 0?i[o]:ee.vi[o];return typeof r=="function"?r(...t):r!==void 0?r:o}class te extends k{constructor(){super(),this.items=null,this.defaultItems="",this.current="",this.lang="vi",this.loading=!1}connectedCallback(){super.connectedCallback(),this._checkContext()}firstUpdated(e){super.firstUpdated(e),this._checkContext(),setTimeout(()=>this._checkContext(),200),setTimeout(()=>this._checkContext(),600)}_checkContext(){if(!this.items||!this.items.length){const e=this._getEffectiveItems();e&&e.length>0&&(this.items=e,this.loading=!1,this.requestUpdate())}}_getEffectiveItems(){if(this.items&&Array.isArray(this.items)&&this.items.length>0)return this.items;if(this.defaultItems){const e=w.fromAttribute(this.defaultItems);if(e&&e.length>0)return e}if(this.current)return[{label:"TRANG CHỦ",url:"/"},{label:this.current,url:"#"}];if(typeof document<"u"){try{if(document.querySelector("wx-store-locator")||document.querySelector("[data-locator]"))return[{label:"TRANG CHỦ",url:"/"},{label:"CỬA HÀNG",url:"/stores"}]}catch{}try{const e=(window.location.href||"")+" "+(window.location.pathname||"")+" "+(document.title||"");if(/store|cua-hang|cửa hàng/i.test(e))return[{label:"TRANG CHỦ",url:"/"},{label:"CỬA HÀNG",url:"/stores"}]}catch{}}return null}_formatLabel(e){if(!e||typeof e!="string")return"";const t=e.trim().toUpperCase();return t==="HOME"||t==="TRANG CHỦ"?p("home",this.lang):t==="PRODUCTS"||t==="SẢN PHẨM"?p("products",this.lang):t==="BRANDS"||t==="THƯƠNG HIỆU"?p("brandsBreadcrumb",this.lang):t==="ABOUT"||t==="ABOUT US"||t==="GIỚI THIỆU"||t==="VỀ CHÚNG TÔI"?p("about",this.lang):t==="BLOG"||t==="NEWS"||t==="BÀI VIẾT"||t==="TIN TỨC"?p("news",this.lang):e}_resolveUrl(e){if(!e||e==="#"||e==="")return"#";if(/^https?:\/\//i.test(e))return e;if(typeof window<"u"&&window.location){const t=window.location.hostname||"",s=window.location.pathname||"";if(t.includes("wixstudio.com")||t.includes("wixsite.com")){const i=s.split("/").filter(Boolean);if(i.length>0){const r="/"+i[0];if(e==="/")return r+"/";if(!e.startsWith(r))return e.startsWith("/")?`${r}${e}`:`${r}/${e}`}}}return e}_handleClick(e,t,s,i=this.items){if(i&&s===i.length-1)return;e.preventDefault(),$(this,"breadcrumb-click",{item:t,index:s});const r=t&&(t.url||t.link||t.href);if(!r||r==="#"||r==="")return;const a=this._resolveUrl(r);setTimeout(()=>{try{if(typeof window<"u"&&window.location){const l=(window.location.pathname||"").replace(/\/$/,""),c=a.replace(/\/$/,"");l!==c&&(window.location.href=a)}}catch{}},150)}render(){const e=this._getEffectiveItems();if((this.loading===!0||this.loading==="true"||!e&&this.items===null&&this.loading!==!1)&&!e)return n`
         <nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px;">
           <div class="skeleton-box" style="width: 70px; height: 14px;"></div>
           <span class="separator" aria-hidden="true">&#x203A;</span>
           <div class="skeleton-box" style="width: 100px; height: 14px;"></div>
         </nav>
-      `;const i=e||[];return i.length?a`
+      `;const i=e||[];return i.length?n`
       <nav aria-label="Breadcrumb">
-        ${i.map((r,n)=>{const l=n===0,c=n===i.length-1,h=typeof r=="string"?r:r.label||r.title,g=this._formatLabel(h);return a`
-            ${n>0?a`<span class="separator" aria-hidden="true">&#x203A;</span>`:""}
+        ${i.map((r,a)=>{const l=a===0,c=a===i.length-1,h=typeof r=="string"?r:r.label||r.title,g=this._formatLabel(h);return n`
+            ${a>0?n`<span class="separator" aria-hidden="true">&#x203A;</span>`:""}
             <button
               class="crumb-btn ${l?"first":""} ${c?"active":""}"
               ?disabled="${c}"
-              @click="${d=>this._handleClick(d,r,n,i)}"
+              @click="${d=>this._handleClick(d,r,a,i)}"
               aria-current="${c?"page":"false"}"
             >
               ${g}
             </button>
           `})}
       </nav>
-    `:a``}}x(te,"properties",{items:{type:Array,converter:w},defaultItems:{type:String,attribute:"default-items"},current:{type:String},lang:{type:String},loading:{type:Boolean,converter:be}}),x(te,"styles",S`
+    `:n``}}x(te,"properties",{items:{type:Array,converter:w},defaultItems:{type:String,attribute:"default-items"},current:{type:String},lang:{type:String},loading:{type:Boolean,converter:be}}),x(te,"styles",C`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -127,10 +127,10 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
       display: inline-flex;
       align-items: center;
     }
-  `),v("wx-breadcrumb",te);class K extends k{constructor(){super(),this.items=null,this.categories=null,this.data=null,this.selectedId="",this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=30}firstUpdated(){this._track=this.shadowRoot.querySelector(".track"),this._checkScroll()}updated(e){(e.has("items")||e.has("categories")||e.has("data"))&&this._checkScroll()}_checkScroll(){const e=this.categories||this.data||this.items||[];this._track&&e.length>=6&&(this._track.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._track)return;const{scrollLeft:e,scrollWidth:t,clientWidth:s}=this._track,i=t-s;if(i<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(15,s/t*100);const n=100-this._progressWidth;this._progressLeft=e/i*n}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._track)return;const t=300*e;this._track.scrollBy({left:t,behavior:"smooth"})}_selectItem(e){this.selectedId=e._id||e.ID||e.id||e.slug,C(this,"category-select",{category:e})}render(){const e=this.categories||this.data||this.items,t=e!=null,s=Array.isArray(e)?e:[];if(t&&s.length===0&&!this.loading)return this.removeAttribute("has-items"),a``;if(!s.length)return a`
+  `),v("wx-breadcrumb",te);class G extends k{constructor(){super(),this.items=null,this.categories=null,this.data=null,this.selectedId="",this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=30}firstUpdated(){this._track=this.shadowRoot.querySelector(".track"),this._checkScroll()}updated(e){(e.has("items")||e.has("categories")||e.has("data"))&&this._checkScroll()}_checkScroll(){const e=this.categories||this.data||this.items||[];this._track&&e.length>=6&&(this._track.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._track)return;const{scrollLeft:e,scrollWidth:t,clientWidth:s}=this._track,i=t-s;if(i<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(15,s/t*100);const a=100-this._progressWidth;this._progressLeft=e/i*a}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._track)return;const t=300*e;this._track.scrollBy({left:t,behavior:"smooth"})}_selectItem(e){this.selectedId=e._id||e.ID||e.id||e.slug,$(this,"category-select",{category:e})}render(){const e=this.categories||this.data||this.items,t=e!=null,s=Array.isArray(e)?e:[];if(t&&s.length===0&&!this.loading)return this.removeAttribute("has-items"),n``;if(!s.length)return n`
         <div class="carousel-wrapper">
           <div class="track static-grid" role="status" aria-label="Loading categories">
-            ${[1,2,3,4,5].map(()=>a`
+            ${[1,2,3,4,5].map(()=>n`
               <div class="skeleton-card">
                 <div class="skeleton-box skeleton-img"></div>
                 <div class="skeleton-box skeleton-label"></div>
@@ -138,22 +138,22 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             `)}
           </div>
         </div>
-      `;this.setAttribute("has-items","");const i=s.length>=6;return a`
+      `;this.setAttribute("has-items","");const i=s.length>=6;return n`
       <div class="carousel-wrapper">
         <div class="track ${i?"":"static-grid"}" role="list">
-          ${s.map(r=>{const n=r._id||r.ID||r.id||r.slug,l=this.selectedId===n,c=r.title||r.name||"",h=r.description||r.subtitle||r.desc||"",g=r.image||r.mainImage||r.bannerImage,d=g?z(g):"";return a`
+          ${s.map(r=>{const a=r._id||r.ID||r.id||r.slug,l=this.selectedId===a,c=r.title||r.name||"",h=r.description||r.subtitle||r.desc||"",g=r.image||r.mainImage||r.bannerImage,d=g?T(g):"";return n`
               <button
                 class="item-card ${l?"active":""}"
                 @click="${()=>this._selectItem(r)}"
                 role="listitem"
               >
                 <div class="image-box">
-                  ${d?a`
+                  ${d?n`
                         <img
                           src="${d}"
                           alt="${c}"
                           loading="lazy"
-                          @error="${b=>{b.target.style.display="none";const f=b.target.parentElement.querySelector(".placeholder-box");f&&(f.style.display="flex")}}"
+                          @error="${b=>{b.target.style.display="none";const u=b.target.parentElement.querySelector(".placeholder-box");u&&(u.style.display="flex")}}"
                         />
                         <div class="placeholder-box" style="display: none;">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -163,7 +163,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                           </svg>
                           <span>${p("noImage",this.lang)}</span>
                         </div>
-                      `:a`
+                      `:n`
                         <div class="placeholder-box">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -175,12 +175,12 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                       `}
                 </div>
                 <span class="item-label">${c}</span>
-                ${h?a`<span class="item-description">${h}</span>`:""}
+                ${h?n`<span class="item-description">${h}</span>`:""}
               </button>
             `})}
         </div>
 
-        ${i?a`
+        ${i?n`
               <div class="controls-row">
                 <button class="nav-arrow-btn" @click="${()=>this._scroll(-1)}" aria-label="${p("scrollLeft",this.lang)}">&#x2039;</button>
                 <div class="progress-track">
@@ -190,7 +190,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
               </div>
             `:""}
       </div>
-    `}}x(K,"properties",{items:{type:Array,converter:w},categories:{type:Array,converter:w},data:{type:Array,converter:w},selectedId:{type:String},lang:{type:String},loading:{type:Boolean}}),x(K,"styles",S`
+    `}}x(G,"properties",{items:{type:Array,converter:w},categories:{type:Array,converter:w},data:{type:Array,converter:w},selectedId:{type:String},lang:{type:String},loading:{type:Boolean}}),x(G,"styles",C`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -477,36 +477,36 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
       width: 30%;
       transition: left 0.2s ease, width 0.2s ease;
     }
-  `),v("wx-category-carousel",K),v("wx-product-categories",class extends K{});class ie extends k{constructor(){super(),this.product=null,this.activeImageIndex=0,this.lang="vi"}_getImages(){if(!this.product)return[];const e=this.product,t=[];if(e.mainImage){const i=z(e.mainImage);i&&t.push(i)}const s=e.gallery||e.media||e.images||e.mediaGallery;return s&&me(s).forEach(r=>{const n=z(r);n&&!t.includes(n)&&t.push(n)}),t}_prevImage(e,t){e.stopPropagation(),t.length&&(this.activeImageIndex=(this.activeImageIndex-1+t.length)%t.length)}_nextImage(e,t){e.stopPropagation(),t.length&&(this.activeImageIndex=(this.activeImageIndex+1)%t.length)}_onClick(){C(this,"product-click",{product:this.product})}render(){if(!this.product)return a``;const e=this.product,t=this._getImages(),s=t[this.activeImageIndex]||e.mainImage||(t.length?t[0]:""),{price:i,comparePrice:r,discountPercent:n}=Be(e),l=e.brand?e.brand.replace("brand-","").toUpperCase():"";let c=[];if(Array.isArray(e.labels))c=e.labels;else if(typeof e.labels=="string"){const u=ue(e.labels);if(Array.isArray(u))c=u;else if(e.labels.trim()&&e.labels!=="[]"){const E=e.labels.replace(/[\[\]"']/g,"").trim();E&&(c=[E])}}else e.label?c=[e.label]:e.ribbon&&(c=[e.ribbon]);if(e.isBestseller||e.bestseller){const u=this.lang==="vi"?"Bán chạy":"Bestseller";!c.includes(u)&&!c.includes("Bestseller")&&!c.includes("Bán chạy")&&c.unshift(u)}const h={"bán chạy":"Bestseller",mới:"New","mới mở bán":"New to sale","giảm giá":"On sale"},g={bestseller:"Bán chạy","best seller":"Bán chạy",new:"Mới","new to sale":"Mới mở bán","on sale":"Giảm giá"};c=c.filter(Boolean).map(u=>{const E=String(u).trim().toLowerCase();return this.lang==="en"?h[E]||u:g[E]||u});const d=t.length,b=d>1?100/d:100,f=d>1?this.activeImageIndex/d*100:0;return a`
+  `),v("wx-category-carousel",G),v("wx-product-categories",class extends G{});class ie extends k{constructor(){super(),this.product=null,this.activeImageIndex=0,this.lang="vi"}_getImages(){if(!this.product)return[];const e=this.product,t=[];if(e.mainImage){const i=T(e.mainImage);i&&t.push(i)}const s=e.gallery||e.media||e.images||e.mediaGallery;return s&&me(s).forEach(r=>{const a=T(r);a&&!t.includes(a)&&t.push(a)}),t}_prevImage(e,t){e.stopPropagation(),t.length&&(this.activeImageIndex=(this.activeImageIndex-1+t.length)%t.length)}_nextImage(e,t){e.stopPropagation(),t.length&&(this.activeImageIndex=(this.activeImageIndex+1)%t.length)}_onClick(){$(this,"product-click",{product:this.product})}render(){if(!this.product)return n``;const e=this.product,t=this._getImages(),s=t[this.activeImageIndex]||e.mainImage||(t.length?t[0]:""),{price:i,comparePrice:r,discountPercent:a}=ze(e),l=e.brand?e.brand.replace("brand-","").toUpperCase():"";let c=[];if(Array.isArray(e.labels))c=e.labels;else if(typeof e.labels=="string"){const f=fe(e.labels);if(Array.isArray(f))c=f;else if(e.labels.trim()&&e.labels!=="[]"){const R=e.labels.replace(/[\[\]"']/g,"").trim();R&&(c=[R])}}else e.label?c=[e.label]:e.ribbon&&(c=[e.ribbon]);if(e.isBestseller||e.bestseller){const f=this.lang==="vi"?"Bán chạy":"Bestseller";!c.includes(f)&&!c.includes("Bestseller")&&!c.includes("Bán chạy")&&c.unshift(f)}const h={"bán chạy":"Bestseller",mới:"New","mới mở bán":"New to sale","giảm giá":"On sale"},g={bestseller:"Bán chạy","best seller":"Bán chạy",new:"Mới","new to sale":"Mới mở bán","on sale":"Giảm giá"};c=c.filter(Boolean).map(f=>{const R=String(f).trim().toLowerCase();return this.lang==="en"?h[R]||f:g[R]||f});const d=t.length,b=d>1?100/d:100,u=d>1?this.activeImageIndex/d*100:0;return n`
       <div class="card" @click="${this._onClick}">
         <!-- Top Bar: % Giảm giá + Labels (Đã bỏ icon heart) -->
         <div class="top-bar">
           <div class="badges-group">
-            ${n?a`<span class="badge-pill badge-discount">-${n}%</span>`:""}
-            ${c.map(u=>a`<span class="badge-pill badge-label">${u}</span>`)}
+            ${a?n`<span class="badge-pill badge-discount">-${a}%</span>`:""}
+            ${c.map(f=>n`<span class="badge-pill badge-label">${f}</span>`)}
           </div>
         </div>
 
         <!-- Image Viewport với Nút Next/Back Gallery khi Hover -->
         <div class="image-viewport">
-          ${d>1?a`
+          ${d>1?n`
                 <button
                   class="nav-arrow prev"
-                  @click="${u=>this._prevImage(u,t)}"
+                  @click="${f=>this._prevImage(f,t)}"
                   aria-label="${p("prevImage",this.lang)}"
                 >
                   &#x2039;
                 </button>
                 <button
                   class="nav-arrow next"
-                  @click="${u=>this._nextImage(u,t)}"
+                  @click="${f=>this._nextImage(f,t)}"
                   aria-label="${p("nextImage",this.lang)}"
                 >
                   &#x203A;
                 </button>
               `:""}
 
-          ${s?a`<img src="${s}" alt="${e.title}" loading="lazy" />`:a`
+          ${s?n`<img src="${s}" alt="${e.title}" loading="lazy" />`:n`
                 <div class="image-placeholder">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -519,37 +519,37 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
         </div>
 
         <!-- Thanh chỉ báo ảnh hiện tại nếu có nhiều ảnh gallery -->
-        ${d>1?a`
+        ${d>1?n`
               <div class="image-progress-bar">
                 <div
                   class="image-progress-thumb"
-                  style="width: ${b}%; left: ${f}%;"
+                  style="width: ${b}%; left: ${u}%;"
                 ></div>
               </div>
             `:""}
 
         <div class="content-area">
-          ${l?a`<div class="brand-title">${l}</div>`:""}
+          ${l?n`<div class="brand-title">${l}</div>`:""}
           <h3 class="product-title" title="${e.title}">${e.title}</h3>
 
-          ${e.rating?a`
+          ${e.rating?n`
                 <div class="rating-row">
                   <span class="stars">★★★★★</span>
                   <span class="rating-text">${e.rating} ${e.reviewCount?`(${e.reviewCount})`:""}</span>
                 </div>
               `:""}
 
-          ${e.sizeLabel?a`<div class="variant-sizes">${e.sizeLabel}</div>`:""}
+          ${e.sizeLabel?n`<div class="variant-sizes">${e.sizeLabel}</div>`:""}
 
           <div class="footer-row">
             <div class="price-col">
-              ${r&&r>i?a`<span class="compare-price">${q(r)}</span>`:""}
-              <span class="current-price">${i?q(i):p("contactUs",this.lang)}</span>
+              ${r&&r>i?n`<span class="compare-price">${V(r)}</span>`:""}
+              <span class="current-price">${i?V(i):p("contactUs",this.lang)}</span>
             </div>
           </div>
         </div>
       </div>
-    `}}x(ie,"properties",{product:{type:Object,converter:_},data:{type:Object,converter:_},activeImageIndex:{type:Number},lang:{type:String}}),x(ie,"styles",S`
+    `}}x(ie,"properties",{product:{type:Object,converter:S},data:{type:Object,converter:S},activeImageIndex:{type:Number},lang:{type:String}}),x(ie,"styles",C`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -815,11 +815,11 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
       font-weight: 700;
       color: #111111;
     }
-  `),v("wx-product-card",ie);class X extends k{constructor(){super(),this.title="",this.products=null,this.items=null,this.data=null,this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=25}firstUpdated(){this._track=this.shadowRoot.querySelector(".track"),this._initScroll()}updated(e){(e.has("products")||e.has("items")||e.has("data"))&&this._initScroll()}_initScroll(){this._track&&(this._track.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._track)return;const{scrollLeft:e,scrollWidth:t,clientWidth:s}=this._track,i=t-s;if(i<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(15,s/t*100);const n=100-this._progressWidth;this._progressLeft=e/i*n}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._track)return;const t=320*e;this._track.scrollBy({left:t,behavior:"smooth"})}_onProductClick(e){C(this,"product-select",{product:e.detail.product})}render(){const e=this.data||this.items||this.products,t=e!=null,s=Array.isArray(e)?e:[];return t&&s.length===0&&!this.loading?a``:s.length?a`
+  `),v("wx-product-card",ie);class q extends k{constructor(){super(),this.title="",this.products=null,this.items=null,this.data=null,this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=25}firstUpdated(){this._track=this.shadowRoot.querySelector(".track"),this._initScroll()}updated(e){(e.has("products")||e.has("items")||e.has("data"))&&this._initScroll()}_initScroll(){this._track&&(this._track.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._track)return;const{scrollLeft:e,scrollWidth:t,clientWidth:s}=this._track,i=t-s;if(i<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(15,s/t*100);const a=100-this._progressWidth;this._progressLeft=e/i*a}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._track)return;const t=320*e;this._track.scrollBy({left:t,behavior:"smooth"})}_onProductClick(e){$(this,"product-select",{product:e.detail.product})}render(){const e=this.data||this.items||this.products,t=e!=null,s=Array.isArray(e)?e:[];return t&&s.length===0&&!this.loading?n``:s.length?n`
       <div class="carousel-wrapper">
-        ${this.title?a`<div class="carousel-title">${this.title}</div>`:""}
+        ${this.title?n`<div class="carousel-title">${this.title}</div>`:""}
         <div class="track" role="list">
-          ${s.map(i=>a`
+          ${s.map(i=>n`
               <div class="card-item" role="listitem">
                 <wx-product-card
                   .product="${i}"
@@ -838,11 +838,11 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
           <button class="nav-arrow-btn" @click="${()=>this._scroll(1)}" aria-label="${p("scrollRight",this.lang)}">&#x203A;</button>
         </div>
       </div>
-    `:a`
+    `:n`
         <div class="carousel-wrapper">
-          ${this.title?a`<div class="carousel-title">${this.title}</div>`:""}
+          ${this.title?n`<div class="carousel-title">${this.title}</div>`:""}
           <div class="track" role="status" aria-label="Loading products">
-            ${[1,2,3,4].map(()=>a`
+            ${[1,2,3,4].map(()=>n`
                 <div class="card-item skeleton-card">
                   <div class="skeleton-box skeleton-img"></div>
                   <div class="skeleton-box skeleton-brand"></div>
@@ -852,7 +852,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
               `)}
           </div>
         </div>
-      `}}x(X,"properties",{title:{type:String},products:{type:Array,converter:w},items:{type:Array,converter:w},data:{type:Array,converter:w},lang:{type:String},loading:{type:Boolean}}),x(X,"styles",S`
+      `}}x(q,"properties",{title:{type:String},products:{type:Array,converter:w},items:{type:Array,converter:w},data:{type:Array,converter:w},lang:{type:String},loading:{type:Boolean}}),x(q,"styles",C`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -1025,7 +1025,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
       width: 25%;
       transition: left 0.2s ease, width 0.2s ease;
     }
-  `),v("wx-product-carousel",X),v("wx-product",class extends X{});class se extends k{constructor(){super(),this.products=null,this.data=null,this.brands=[],this.categories=[],this.selectedCategory="",this.selectedBrand="",this.selectedPriceRange="",this.selectedSort="default",this.sidebarOpen=!1,this.activeSidebarTab="all",this.visibleCount=32,this.pageSize=32,this.lang="vi",this.loading=!1}_categoryMatchesProduct(e,t){if(!e||!t)return!1;const s=e.ID||e._id,i=e.slug,r=e.path;return!!(s&&(t.category===s||t.brandCategory===s)||i&&(t.category===i||t.primaryCategorySlug===i)||t.category&&s&&t.category.includes(s)||t.categoryPath&&(i&&(t.categoryPath.includes(`/${i}/`)||t.categoryPath.endsWith(`/${i}`)||t.categoryPath.includes(i))||s&&t.categoryPath.includes(s)||r&&t.categoryPath.startsWith(r))||t.brandCategoryPath&&i&&t.brandCategoryPath.includes(i))}_getAvailableCategories(){const e=this.data||this.products,t=Array.isArray(e)?e:[],s=Array.isArray(this.categories)?this.categories:[];return s.length?t.length?s.filter(i=>t.some(r=>this._categoryMatchesProduct(i,r))):[]:[]}_getFilteredProducts(){const e=this.data||this.products;let s=Array.isArray(e)?[...e]:[];if(this.selectedCategory){const r=(Array.isArray(this.categories)?this.categories:[]).find(n=>n.ID===this.selectedCategory||n._id===this.selectedCategory||n.slug===this.selectedCategory);r?s=s.filter(n=>this._categoryMatchesProduct(r,n)):s=s.filter(n=>{const l=this.selectedCategory;return n.category===l||n.categorySlug===l||n.brandCategory===l||n.category&&n.category.includes(l)||n.categoryPath&&n.categoryPath.includes(l)})}return this.selectedBrand&&(s=s.filter(i=>{const r=this.selectedBrand.toLowerCase(),n=(i.brand||"").toLowerCase();return n===r||n.includes(r)||i.brandPath&&i.brandPath.toLowerCase().includes(r)})),this.selectedPriceRange&&(s=s.filter(i=>{const r=Number(i.minPrice||i.price||0);switch(this.selectedPriceRange){case"under-1m":return r<1e6;case"1m-3m":return r>=1e6&&r<=3e6;case"3m-5m":return r>=3e6&&r<=5e6;case"over-5m":return r>5e6;default:return!0}})),this.selectedSort==="price-asc"?s.sort((i,r)=>Number(i.minPrice||i.price||0)-Number(r.minPrice||r.price||0)):this.selectedSort==="price-desc"?s.sort((i,r)=>Number(r.minPrice||r.price||0)-Number(i.minPrice||i.price||0)):this.selectedSort==="title-asc"&&s.sort((i,r)=>(i.title||"").localeCompare(r.title||"")),s}_openSidebar(e="all"){this.activeSidebarTab=e,this.sidebarOpen=!0}_closeSidebar(){this.sidebarOpen=!1}_clearAllFilters(e){e&&e.preventDefault(),this.selectedCategory="",this.selectedBrand="",this.selectedPriceRange="",this.selectedSort="default",this.visibleCount=this.pageSize||32,this.requestUpdate()}_clearCategoryFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedCategory="",this.requestUpdate()}_clearBrandFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedBrand="",this.requestUpdate()}_clearPriceFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedPriceRange="",this.requestUpdate()}_loadMore(){this.visibleCount+=this.pageSize}updated(e){(e.has("selectedCategory")||e.has("selectedBrand")||e.has("selectedPriceRange")||e.has("selectedSort")||e.has("products")||e.has("data"))&&(this.visibleCount=this.pageSize||32)}_onProductCardClick(e){C(this,"product-select",{product:e.detail.product})}render(){const e=this.data||this.products,t=Array.isArray(e)?e.length>0:e!=null;if(this.loading===!0||this.loading==="true"||this.products===null&&!t)return a`
+  `),v("wx-product-carousel",q),v("wx-product",class extends q{});class se extends k{constructor(){super(),this.products=null,this.data=null,this.brands=[],this.categories=[],this.selectedCategory="",this.selectedBrand="",this.selectedPriceRange="",this.selectedSort="default",this.sidebarOpen=!1,this.activeSidebarTab="all",this.visibleCount=32,this.pageSize=32,this.lang="vi",this.loading=!1}_categoryMatchesProduct(e,t){if(!e||!t)return!1;const s=e.ID||e._id,i=e.slug,r=e.path;return!!(s&&(t.category===s||t.brandCategory===s)||i&&(t.category===i||t.primaryCategorySlug===i)||t.category&&s&&t.category.includes(s)||t.categoryPath&&(i&&(t.categoryPath.includes(`/${i}/`)||t.categoryPath.endsWith(`/${i}`)||t.categoryPath.includes(i))||s&&t.categoryPath.includes(s)||r&&t.categoryPath.startsWith(r))||t.brandCategoryPath&&i&&t.brandCategoryPath.includes(i))}_getAvailableCategories(){const e=this.data||this.products,t=Array.isArray(e)?e:[],s=Array.isArray(this.categories)?this.categories:[];return s.length?t.length?s.filter(i=>t.some(r=>this._categoryMatchesProduct(i,r))):[]:[]}_getFilteredProducts(){const e=this.data||this.products;let s=Array.isArray(e)?[...e]:[];if(this.selectedCategory){const r=(Array.isArray(this.categories)?this.categories:[]).find(a=>a.ID===this.selectedCategory||a._id===this.selectedCategory||a.slug===this.selectedCategory);r?s=s.filter(a=>this._categoryMatchesProduct(r,a)):s=s.filter(a=>{const l=this.selectedCategory;return a.category===l||a.categorySlug===l||a.brandCategory===l||a.category&&a.category.includes(l)||a.categoryPath&&a.categoryPath.includes(l)})}return this.selectedBrand&&(s=s.filter(i=>{const r=this.selectedBrand.toLowerCase(),a=(i.brand||"").toLowerCase();return a===r||a.includes(r)||i.brandPath&&i.brandPath.toLowerCase().includes(r)})),this.selectedPriceRange&&(s=s.filter(i=>{const r=Number(i.minPrice||i.price||0);switch(this.selectedPriceRange){case"under-1m":return r<1e6;case"1m-3m":return r>=1e6&&r<=3e6;case"3m-5m":return r>=3e6&&r<=5e6;case"over-5m":return r>5e6;default:return!0}})),this.selectedSort==="price-asc"?s.sort((i,r)=>Number(i.minPrice||i.price||0)-Number(r.minPrice||r.price||0)):this.selectedSort==="price-desc"?s.sort((i,r)=>Number(r.minPrice||r.price||0)-Number(i.minPrice||i.price||0)):this.selectedSort==="title-asc"&&s.sort((i,r)=>(i.title||"").localeCompare(r.title||"")),s}_openSidebar(e="all"){this.activeSidebarTab=e,this.sidebarOpen=!0}_closeSidebar(){this.sidebarOpen=!1}_clearAllFilters(e){e&&e.preventDefault(),this.selectedCategory="",this.selectedBrand="",this.selectedPriceRange="",this.selectedSort="default",this.visibleCount=this.pageSize||32,this.requestUpdate()}_clearCategoryFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedCategory="",this.requestUpdate()}_clearBrandFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedBrand="",this.requestUpdate()}_clearPriceFilter(e){e&&(e.preventDefault(),e.stopPropagation()),this.selectedPriceRange="",this.requestUpdate()}_loadMore(){this.visibleCount+=this.pageSize}updated(e){(e.has("selectedCategory")||e.has("selectedBrand")||e.has("selectedPriceRange")||e.has("selectedSort")||e.has("products")||e.has("data"))&&(this.visibleCount=this.pageSize||32)}_onProductCardClick(e){$(this,"product-select",{product:e.detail.product})}render(){const e=this.data||this.products,t=Array.isArray(e)?e.length>0:e!=null;if(this.loading===!0||this.loading==="true"||this.products===null&&!t)return n`
         <div>
           <div class="filter-toolbar">
             <div class="skeleton-box" style="width: 130px; height: 18px;"></div>
@@ -1034,7 +1034,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             <div class="skeleton-box" style="width: 100px; height: 34px; border-radius: 4px;"></div>
           </div>
           <div class="product-grid" role="status" aria-label="Loading products">
-            ${[1,2,3,4,5,6,7,8].map(()=>a`
+            ${[1,2,3,4,5,6,7,8].map(()=>n`
                 <div class="skeleton-card">
                   <div style="height: 38px; padding: 8px 16px; display: flex; align-items: center;">
                     <div class="skeleton-box" style="width: 50px; height: 18px; border-radius: 2px;"></div>
@@ -1049,7 +1049,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
               `)}
           </div>
         </div>
-      `;const r=this._getFilteredProducts(),n=this._getAvailableCategories(),l=this.selectedCategory||this.selectedBrand||this.selectedPriceRange,c=r.length,h=r.slice(0,this.visibleCount),g=c>0?Math.min(100,h.length/c*100):0;return a`
+      `;const r=this._getFilteredProducts(),a=this._getAvailableCategories(),l=this.selectedCategory||this.selectedBrand||this.selectedPriceRange,c=r.length,h=r.slice(0,this.visibleCount),g=c>0?Math.min(100,h.length/c*100):0;return n`
       <div>
         <div class="filter-toolbar">
           <span class="results-text">${p("resultsCount",this.lang,r.length)}</span>
@@ -1094,7 +1094,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
               <span>${p("filterCategory",this.lang)}</span>
             </button>
 
-            ${l?a`<button class="reset-link" @click="${this._clearAllFilters}">${p("clearAll",this.lang)}</button>`:""}
+            ${l?n`<button class="reset-link" @click="${this._clearAllFilters}">${p("clearAll",this.lang)}</button>`:""}
 
             <button
               class="filter-trigger-btn all-filters-btn"
@@ -1109,20 +1109,20 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
         </div>
 
         <div class="product-grid">
-          ${h.length>0?h.map(d=>a`
+          ${h.length>0?h.map(d=>n`
                   <wx-product-card
                     .product="${d}"
                     .lang="${this.lang}"
                     @product-click="${this._onProductCardClick}"
                   ></wx-product-card>
-                `):a`
+                `):n`
                 <div class="empty-state">
                   <p>${p("emptyProducts",this.lang)}</p>
                 </div>
               `}
         </div>
 
-        ${c>this.pageSize?a`
+        ${c>this.pageSize?n`
               <div class="pagination-wrapper">
                 <div class="showing-text">
                   ${p("showingItems",this.lang,h.length,c)}
@@ -1130,7 +1130,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                 <div class="progress-bar-container">
                   <div class="progress-bar-fill" style="width: ${g}%;"></div>
                 </div>
-                ${h.length<c?a`
+                ${h.length<c?n`
                       <button class="btn-load-more" @click="${this._loadMore}">
                         ${p("loadMore",this.lang)}
                       </button>
@@ -1153,7 +1153,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             <div class="filter-section">
               <div class="filter-group-title">
                 <span>${p("categories",this.lang)}</span>
-                ${this.selectedCategory?a`<button type="button" class="clear-section-btn" @click="${this._clearCategoryFilter}">${p("clear",this.lang)}</button>`:""}
+                ${this.selectedCategory?n`<button type="button" class="clear-section-btn" @click="${this._clearCategoryFilter}">${p("clear",this.lang)}</button>`:""}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -1167,7 +1167,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                   <span>${p("allCategories",this.lang)}</span>
                 </label>
                 <div class="filter-options-scrollable">
-                  ${n&&n.length>0?n.map(d=>a`
+                  ${a&&a.length>0?a.map(d=>n`
                           <label class="filter-option-label">
                             <input
                               type="radio"
@@ -1178,7 +1178,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                             />
                             <span>${d.title}</span>
                           </label>
-                        `):a`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${p("noCategories",this.lang)}</span>`}
+                        `):n`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${p("noCategories",this.lang)}</span>`}
                 </div>
               </div>
             </div>
@@ -1186,7 +1186,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             <div class="filter-section">
               <div class="filter-group-title">
                 <span>${p("brands",this.lang)}</span>
-                ${this.selectedBrand?a`<button type="button" class="clear-section-btn" @click="${this._clearBrandFilter}">${p("clear",this.lang)}</button>`:""}
+                ${this.selectedBrand?n`<button type="button" class="clear-section-btn" @click="${this._clearBrandFilter}">${p("clear",this.lang)}</button>`:""}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -1199,7 +1199,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                   />
                   <span>${p("allBrands",this.lang)}</span>
                 </label>
-                ${this.brands&&this.brands.length>0?this.brands.map(d=>a`
+                ${this.brands&&this.brands.length>0?this.brands.map(d=>n`
                         <label class="filter-option-label">
                           <input
                             type="radio"
@@ -1217,7 +1217,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             <div class="filter-section">
               <div class="filter-group-title">
                 <span>${p("priceRange",this.lang)}</span>
-                ${this.selectedPriceRange?a`<button type="button" class="clear-section-btn" @click="${this._clearPriceFilter}">${p("clear",this.lang)}</button>`:""}
+                ${this.selectedPriceRange?n`<button type="button" class="clear-section-btn" @click="${this._clearPriceFilter}">${p("clear",this.lang)}</button>`:""}
               </div>
               <div class="filter-options-list">
                 <label class="filter-option-label">
@@ -1280,7 +1280,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
           </div>
         </aside>
       </div>
-    `}}x(se,"properties",{products:{type:Array,converter:w},data:{type:Array,converter:w},brands:{type:Array,converter:w},categories:{type:Array,converter:w},selectedCategory:{type:String},selectedBrand:{type:String},selectedPriceRange:{type:String},selectedSort:{type:String},sidebarOpen:{type:Boolean},activeSidebarTab:{type:String},visibleCount:{type:Number},pageSize:{type:Number},lang:{type:String},loading:{type:Boolean,converter:be}}),x(se,"styles",S`
+    `}}x(se,"properties",{products:{type:Array,converter:w},data:{type:Array,converter:w},brands:{type:Array,converter:w},categories:{type:Array,converter:w},selectedCategory:{type:String},selectedBrand:{type:String},selectedPriceRange:{type:String},selectedSort:{type:String},sidebarOpen:{type:Boolean},activeSidebarTab:{type:String},visibleCount:{type:Number},pageSize:{type:Number},lang:{type:String},loading:{type:Boolean,converter:be}}),x(se,"styles",C`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -1819,90 +1819,65 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
     .btn-load-more:active {
       transform: translateY(0);
     }
-  `),v("wx-product-listing",se);class re extends k{constructor(){super(),this.product=null,this.data=null,this.selectedImageIndex=0,this.lang="vi",this.loading=!1,this.shopeeUrl="",this.tiktokUrl="",this.messUrl="",this.openSections={description:!0,specifications:!1,instructions:!1},this.isZoomed=!1,this.zoomX=50,this.zoomY=50}_onMouseMove(e){const t=e.currentTarget.getBoundingClientRect();if(!t.width||!t.height)return;const s=(e.clientX-t.left)/t.width*100,i=(e.clientY-t.top)/t.height*100;this.zoomX=Math.max(0,Math.min(100,s)),this.zoomY=Math.max(0,Math.min(100,i)),this.isZoomed=!0}_onMouseLeave(){this.isZoomed=!1,this.zoomX=50,this.zoomY=50}_getImages(){const e=[],t=this.data||this.product;if(!t)return e;if(t.mainImage){const i=z(t.mainImage);i&&e.push(i)}const s=t.gallery||t.media||t.images||t.mediaGallery;return s&&me(s).forEach(r=>{const n=z(r);n&&!e.includes(n)&&e.push(n)}),e}_prevImage(e){e.length&&(this.selectedImageIndex=(this.selectedImageIndex-1+e.length)%e.length)}_nextImage(e){e.length&&(this.selectedImageIndex=(this.selectedImageIndex+1)%e.length)}_toggleSection(e){this.openSections={...this.openSections,[e]:!this.openSections[e]}}_renderHighlights(e){if(!e||typeof e!="string")return a``;const t=e.split(`
-`).map(n=>n.trim()).filter(Boolean),s=[],i=[],r=/^[-–—*•·]\s*/;for(const n of t)r.test(n)?i.push(n.replace(r,"")):i.length===0?s.push(n):i.push(n);return a`
-      ${s.length?a`<div class="highlights-heading">${s.join(" ")}</div>`:""}
-      ${i.length?a`<ul class="highlights-list">
-            ${i.map(n=>a`<li>${n}</li>`)}
+  `),v("wx-product-listing",se);const lt="data:image/png;base64,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",ct="data:image/png;base64,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",dt="data:image/png;base64,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";class re extends k{constructor(){super(),this.product=null,this.data=null,this.selectedImageIndex=0,this.lang="vi",this.loading=!1,this.shopeeUrl="",this.tiktokUrl="",this.messUrl="",this.shopeeIcon="",this.tiktokIcon="",this.messIcon="",this.openSections={description:!0,specifications:!1,instructions:!1},this.isZoomed=!1,this.zoomX=50,this.zoomY=50}_onMouseMove(e){const t=e.currentTarget.getBoundingClientRect();if(!t.width||!t.height)return;const s=(e.clientX-t.left)/t.width*100,i=(e.clientY-t.top)/t.height*100;this.zoomX=Math.max(0,Math.min(100,s)),this.zoomY=Math.max(0,Math.min(100,i)),this.isZoomed=!0}_onMouseLeave(){this.isZoomed=!1,this.zoomX=50,this.zoomY=50}_getImages(){const e=[],t=this.data||this.product;if(!t)return e;if(t.mainImage){const i=T(t.mainImage);i&&e.push(i)}const s=t.gallery||t.media||t.images||t.mediaGallery;return s&&me(s).forEach(r=>{const a=T(r);a&&!e.includes(a)&&e.push(a)}),e}_prevImage(e){e.length&&(this.selectedImageIndex=(this.selectedImageIndex-1+e.length)%e.length)}_nextImage(e){e.length&&(this.selectedImageIndex=(this.selectedImageIndex+1)%e.length)}_toggleSection(e){this.openSections={...this.openSections,[e]:!this.openSections[e]}}_renderHighlights(e){if(!e||typeof e!="string")return n``;const t=e.split(`
+`).map(a=>a.trim()).filter(Boolean),s=[],i=[],r=/^[-–—*•·]\s*/;for(const a of t)r.test(a)?i.push(a.replace(r,"")):i.length===0?s.push(a):i.push(a);return n`
+      ${s.length?n`<div class="highlights-heading">${s.join(" ")}</div>`:""}
+      ${i.length?n`<ul class="highlights-list">
+            ${i.map(a=>n`<li>${a}</li>`)}
           </ul>`:""}
-    `}_getSocialUrl(e,t){if(e==="shopee"){const s=this.shopeeUrl||t&&t.shopeeUrl;return s&&typeof s=="string"&&s.trim()&&s.trim()!=="#"?s.trim():""}if(e==="tiktok"){const s=this.tiktokUrl||t&&t.tiktokUrl;return s&&typeof s=="string"&&s.trim()&&s.trim()!=="#"?s.trim():""}if(e==="mess"){const s="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0",i=this.messUrl||t&&(t.messUrl||t.messengerUrl)||s;return i&&typeof i=="string"&&i.trim()&&i.trim()!=="#"?i.trim():s}return""}_onSocialClick(e,t){const s=this.product||this.data||{},i=this._getSocialUrl(e,s);C(this,"social-click",{channel:e,url:i,product:s}),C(this,`${e}-click`,{url:i,product:s})}_renderSocialActions(e){const t=this._getSocialUrl("shopee",e),s=this._getSocialUrl("tiktok",e),i=this._getSocialUrl("mess",e);return!t&&!s&&!i?"":a`
+    `}_getSocialUrl(e,t){if(e==="shopee"){const s=this.shopeeUrl||t&&t.shopeeUrl;return s&&typeof s=="string"&&s.trim()&&s.trim()!=="#"?s.trim():""}if(e==="tiktok"){const s=this.tiktokUrl||t&&t.tiktokUrl;return s&&typeof s=="string"&&s.trim()&&s.trim()!=="#"?s.trim():""}if(e==="mess"){const s="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0",i=this.messUrl||t&&(t.messUrl||t.messengerUrl)||s;return i&&typeof i=="string"&&i.trim()&&i.trim()!=="#"?i.trim():s}return""}_onSocialClick(e,t){const s=this.product||this.data||{},i=this._getSocialUrl(e,s);$(this,"social-click",{channel:e,url:i,product:s}),$(this,`${e}-click`,{url:i,product:s})}_renderSocialActions(e){const t=this._getSocialUrl("shopee",e),s=this._getSocialUrl("tiktok",e),i=this._getSocialUrl("mess",e);if(!t&&!s&&!i)return"";const r=this.shopeeIcon||e&&e.shopeeIcon||lt,a=this.tiktokIcon||e&&e.tiktokIcon||ct,l=this.messIcon||e&&e.messIcon||dt;return n`
       <div class="social-actions-group" aria-label="Kênh liên hệ và mua hàng">
-        <!-- Button 1: Shopee (Icon 1) - Chỉ hiển thị khi sản phẩm có link Shopee -->
-        ${t?a`
+        <!-- Button 1: Shopee (Ảnh 1) - Chỉ hiển thị khi sản phẩm có link Shopee -->
+        ${t?n`
               <a
                 class="social-btn shopee"
                 href="${t}"
                 target="_blank"
                 rel="noopener noreferrer"
-                @click="${r=>this._onSocialClick("shopee",r)}"
+                @click="${c=>this._onSocialClick("shopee",c)}"
                 title="Mua trên Shopee"
               >
-                <svg viewBox="0 0 512 512" width="22" height="22" style="flex-shrink:0;">
-                  <!-- Quai túi cam -->
-                  <path fill="#EE4D2D" d="M344 144c0-48.6-39.4-88-88-88s-88 39.4-88 88v16h36v-16c0-28.7 23.3-52 52-52s52 23.3 52 52v16h36v-16z"/>
-                  <!-- Thân túi cam -->
-                  <path fill="#EE4D2D" d="M56 156l24 290c2 24.2 22.2 43 46.5 43h259c24.3 0 44.5-18.8 46.5-43l24-290H56z"/>
-                  <!-- Chữ S trắng nét cong mềm mại -->
-                  <path fill="none" stroke="#FFFFFF" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" d="M312 245c-14-25-33-35-56-35-32 0-56 22-56 50 0 46 112 36 112 94 0 32-26 56-56 56-28 0-48-15-58-40"/>
-                </svg>
+                <img src="${r}" alt="Shopee" width="22" height="22" loading="lazy" decoding="async" />
                 <span>Shopee</span>
               </a>
             `:""}
 
-        <!-- Button 2: TikTok - Chỉ hiển thị khi sản phẩm có link TikTok -->
-        ${s?a`
+        <!-- Button 2: TikTok (Ảnh 2) - Chỉ hiển thị khi sản phẩm có link TikTok -->
+        ${s?n`
               <a
                 class="social-btn tiktok"
                 href="${s}"
                 target="_blank"
                 rel="noopener noreferrer"
-                @click="${r=>this._onSocialClick("tiktok",r)}"
+                @click="${c=>this._onSocialClick("tiktok",c)}"
                 title="Xem trên TikTok"
               >
-                <svg viewBox="0 0 512 512" width="20" height="20" style="flex-shrink:0;">
-                  <path fill="#25F4EE" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z" transform="translate(-4, -4)"/>
-                  <path fill="#FE2C55" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z" transform="translate(4, 4)"/>
-                  <path fill="#010101" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z"/>
-                </svg>
+                <img src="${a}" alt="TikTok" width="22" height="22" loading="lazy" decoding="async" />
                 <span>TikTok</span>
               </a>
             `:""}
 
-        <!-- Button 3: Messenger (Icon 2) -->
-        ${i?a`
+        <!-- Button 3: Messenger (Ảnh 3) -->
+        ${i?n`
               <a
                 class="social-btn mess"
                 href="${i}"
                 target="_blank"
                 rel="noopener noreferrer"
-                @click="${r=>this._onSocialClick("mess",r)}"
+                @click="${c=>this._onSocialClick("mess",c)}"
                 title="Nhắn tin qua Messenger"
               >
-                <svg viewBox="0 0 512 512" width="22" height="22" style="flex-shrink:0;">
-                  <defs>
-                    <linearGradient id="wx-msg-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#0078FF"/>
-                      <stop offset="30%" stop-color="#0099FF"/>
-                      <stop offset="60%" stop-color="#A033FF"/>
-                      <stop offset="85%" stop-color="#FF5277"/>
-                      <stop offset="100%" stop-color="#FF6969"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- Khung bong bóng chat gradient -->
-                  <path fill="url(#wx-msg-gradient)" d="M256 20C132.3 20 32 113.8 32 229.4c0 65.5 32.8 122.2 84.4 159.2 4.4 3.1 7.1 8.2 6.9 13.6l-3.2 42.4c-.9 12 11.2 20.8 22 15.3l48.8-24.6c4.1-2.1 8.9-2.5 13.3-1.2 16.5 4.9 34.1 7.6 52.3 7.6 123.7 0 224-93.8 224-209.4C480 113.8 379.7 20 256 20z"/>
-                  <!-- Tia sét trắng bo góc mềm mại -->
-                  <path fill="#FFFFFF" d="M142 328l76.5-121.2c8.9-14.1 28.7-16.4 40.6-4.8l60.8 59.1c4.3 4.2 11.1 4.2 15.4 0l81.8-62c11-8.4 25.4 5.4 17.9 17.2l-76.5 121.2c-8.9 14.1-28.7 16.4-40.6 4.8l-60.8-59.1c-4.3-4.2-11.1-4.2-15.4 0l-81.8 62c-11 8.4-25.4-5.4-17.9-17.2z"/>
-                </svg>
+                <img src="${l}" alt="Mess" width="22" height="22" loading="lazy" decoding="async" />
                 <span>Mess</span>
               </a>
             `:""}
       </div>
-    `}_renderDescription(e){if(!e||typeof e!="string")return a``;const t=e.split(/\n\s*\n/).map(r=>r.trim()).filter(Boolean),s=[],i=/^[-–—*•·]\s*/;for(const r of t){const n=r.split(`
-`).map(c=>c.trim()).filter(Boolean);if(n.every(c=>i.test(c))){const c=n.map(h=>h.replace(i,""));s.push(a`<ul class="desc-bullets">
-          ${c.map(h=>a`<li>${h}</li>`)}
-        </ul>`)}else{const c=[],h=[];for(const g of n)i.test(g)?h.push(g.replace(i,"")):c.push(g);c.length&&s.push(a`<p class="desc-paragraph">${c.join(" ")}</p>`),h.length&&s.push(a`<ul class="desc-bullets">
-            ${h.map(g=>a`<li>${g}</li>`)}
-          </ul>`)}}return a`<div class="desc-formatted">${s}</div>`}render(){const e=this.data||this.product;if(this.loading===!0||this.loading==="true"||!e&&this.product===null)return a`
+    `}_renderDescription(e){if(!e||typeof e!="string")return n``;const t=e.split(/\n\s*\n/).map(r=>r.trim()).filter(Boolean),s=[],i=/^[-–—*•·]\s*/;for(const r of t){const a=r.split(`
+`).map(c=>c.trim()).filter(Boolean);if(a.every(c=>i.test(c))){const c=a.map(h=>h.replace(i,""));s.push(n`<ul class="desc-bullets">
+          ${c.map(h=>n`<li>${h}</li>`)}
+        </ul>`)}else{const c=[],h=[];for(const g of a)i.test(g)?h.push(g.replace(i,"")):c.push(g);c.length&&s.push(n`<p class="desc-paragraph">${c.join(" ")}</p>`),h.length&&s.push(n`<ul class="desc-bullets">
+            ${h.map(g=>n`<li>${g}</li>`)}
+          </ul>`)}}return n`<div class="desc-formatted">${s}</div>`}render(){const e=this.data||this.product;if(this.loading===!0||this.loading==="true"||!e&&this.product===null)return n`
         <div class="pdp-grid" role="status" aria-label="Loading product details">
           <!-- Cột Gallery Skeleton -->
           <div class="gallery-col">
@@ -1927,7 +1902,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             </div>
           </div>
         </div>
-      `;if(!e)return a``;const i=e,r=this._getImages(),n=r[this.selectedImageIndex]||r[0],l=i.brand?i.brand.replace("brand-","").toUpperCase():"",c=i.series?i.series.replace("series-","").replace(/--.+/,"").toUpperCase():"",{price:h,comparePrice:g,discountPercent:d}=Be(i),b=ue(i.specs,[]);return a`
+      `;if(!e)return n``;const i=e,r=this._getImages(),a=r[this.selectedImageIndex]||r[0],l=i.brand?i.brand.replace("brand-","").toUpperCase():"",c=i.series?i.series.replace("series-","").replace(/--.+/,"").toUpperCase():"",{price:h,comparePrice:g,discountPercent:d}=ze(i),b=fe(i.specs,[]);return n`
       <div class="pdp-grid">
         <!-- Cột Gallery bên trái -->
         <div class="gallery-col">
@@ -1936,11 +1911,11 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             @mousemove="${this._onMouseMove}"
             @mouseleave="${this._onMouseLeave}"
           >
-            ${i.labels&&i.labels.length?a`<span class="badge-top-left">${Array.isArray(i.labels)?i.labels[0]:i.labels}</span>`:""}
+            ${i.labels&&i.labels.length?n`<span class="badge-top-left">${Array.isArray(i.labels)?i.labels[0]:i.labels}</span>`:""}
             
-            ${r.length>1?a`
-                  <button class="nav-arrow prev" @click="${f=>{f.stopPropagation(),this._prevImage(r)}}" aria-label="${p("prevImage",this.lang)}">&#x2039;</button>
-                  <button class="nav-arrow next" @click="${f=>{f.stopPropagation(),this._nextImage(r)}}" aria-label="${p("nextImage",this.lang)}">&#x203A;</button>
+            ${r.length>1?n`
+                  <button class="nav-arrow prev" @click="${u=>{u.stopPropagation(),this._prevImage(r)}}" aria-label="${p("prevImage",this.lang)}">&#x2039;</button>
+                  <button class="nav-arrow next" @click="${u=>{u.stopPropagation(),this._nextImage(r)}}" aria-label="${p("nextImage",this.lang)}">&#x203A;</button>
                 `:""}
 
             <!-- Icon kính lúp có dấu + góc dưới phải -->
@@ -1953,14 +1928,14 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
               </svg>
             </div>
 
-            ${n?a`
+            ${a?n`
                   <img
                     class="main-img"
-                    src="${n}"
+                    src="${a}"
                     alt="${i.title}"
                     style="${this.isZoomed?`transform-origin: ${this.zoomX}% ${this.zoomY}%; transform: scale(2.4);`:"transform-origin: center center; transform: scale(1);"}"
                   />
-                `:a`
+                `:n`
                   <div style="width: 100%; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f9f9f9; border: 1px dashed #d5d5d5; border-radius: 4px; color: #999; gap: 8px;">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -1973,14 +1948,14 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
           </div>
 
           <!-- Thumbnail Matrix -->
-          ${r.length>1?a`
+          ${r.length>1?n`
                 <div class="thumbnails-grid">
-                  ${r.map((f,u)=>a`
+                  ${r.map((u,f)=>n`
                     <div
-                      class="thumb-cell ${u===this.selectedImageIndex?"active":""}"
-                      @click="${()=>this.selectedImageIndex=u}"
+                      class="thumb-cell ${f===this.selectedImageIndex?"active":""}"
+                      @click="${()=>this.selectedImageIndex=f}"
                     >
-                      <img src="${f}" alt="Thumbnail ${u+1}" />
+                      <img src="${u}" alt="Thumbnail ${f+1}" />
                     </div>
                   `)}
                 </div>
@@ -1989,36 +1964,36 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
 
         <!-- Cột Thông tin bên phải -->
         <div class="info-col">
-          ${l?a`<div class="brand-row">${l}</div>`:""}
+          ${l?n`<div class="brand-row">${l}</div>`:""}
 
           <h1 class="product-title">${i.title}</h1>
 
-          ${c?a`<div class="series-name">${p("seriesLabel",this.lang,c)}</div>`:""}
+          ${c?n`<div class="series-name">${p("seriesLabel",this.lang,c)}</div>`:""}
 
           <!-- Price Row -->
           <div class="price-row">
-            ${g&&g>h?a`<span class="compare-price">${q(g)}</span>`:""}
-            <span class="sale-price">${h?q(h):p("contactUs",this.lang)}</span>
-            ${d?a`<span class="discount-box">-${d}%</span>`:""}
+            ${g&&g>h?n`<span class="compare-price">${V(g)}</span>`:""}
+            <span class="sale-price">${h?V(h):p("contactUs",this.lang)}</span>
+            ${d?n`<span class="discount-box">-${d}%</span>`:""}
           </div>
 
           <!-- Ratings nếu có -->
-          ${i.rating?a`
+          ${i.rating?n`
                 <div class="rating-row">
                   <span class="stars">★★★★★</span>
                   <span>${i.rating}</span>
-                  ${i.reviewCount?a`<span class="rating-link">${p("reviewsCount",this.lang,i.reviewCount)}</span>`:""}
+                  ${i.reviewCount?n`<span class="rating-link">${p("reviewsCount",this.lang,i.reviewCount)}</span>`:""}
                 </div>
               `:""}
 
           <!-- Highlights Bullet list nếu có shortDescription & 3 Buttons: Facebook, TikTok, Mess -->
-          ${i.shortDescription?a`
+          ${i.shortDescription?n`
                 <div class="highlights-box">
                   <div class="highlights-title">${p("highlights",this.lang)}</div>
                   ${this._renderHighlights(i.shortDescription)}
                   ${this._renderSocialActions(i)}
                 </div>
-              `:a`
+              `:n`
                 <div class="highlights-box empty-highlights">
                   ${this._renderSocialActions(i)}
                 </div>
@@ -2032,7 +2007,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                 <span>${p("descriptionTab",this.lang)}</span>
                 <span class="accordion-icon">${this.openSections.description?"▲":"▼"}</span>
               </button>
-              ${this.openSections.description?a`
+              ${this.openSections.description?n`
                     <div class="accordion-body">
                       ${this._renderDescription(i.description||i.shortDescription||p("noDescription",this.lang))}
                     </div>
@@ -2045,20 +2020,20 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                 <span>${p("specsTab",this.lang)}</span>
                 <span class="accordion-icon">${this.openSections.specifications?"▲":"▼"}</span>
               </button>
-              ${this.openSections.specifications?a`
+              ${this.openSections.specifications?n`
                     <div class="accordion-body">
-                      ${b&&b.length>0?a`
+                      ${b&&b.length>0?n`
                             <table class="specs-table">
                               <tbody>
-                                ${b.map(f=>a`
+                                ${b.map(u=>n`
                                     <tr>
-                                      <td>${f.name||f.key}</td>
-                                      <td>${f.value}</td>
+                                      <td>${u.name||u.key}</td>
+                                      <td>${u.value}</td>
                                     </tr>
                                   `)}
                               </tbody>
                             </table>
-                          `:a`<p>${p("noSpecs",this.lang)}</p>`}
+                          `:n`<p>${p("noSpecs",this.lang)}</p>`}
                     </div>
                   `:""}
             </div>
@@ -2069,11 +2044,11 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                 <span>${p("instructionsTab",this.lang)}</span>
                 <span class="accordion-icon">${this.openSections.instructions?"▲":"▼"}</span>
               </button>
-              ${this.openSections.instructions?a`
+              ${this.openSections.instructions?n`
                     <div class="accordion-body">
-                      ${i.instructions||i.manual||a`
+                      ${i.instructions||i.manual||n`
                         <ul>
-                          ${(p("defaultInstructions",this.lang)||[]).map(f=>a`<li>${f}</li>`)}
+                          ${(p("defaultInstructions",this.lang)||[]).map(u=>n`<li>${u}</li>`)}
                         </ul>
                       `}
                     </div>
@@ -2082,7 +2057,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
           </div>
         </div>
       </div>
-    `}}x(re,"properties",{product:{type:Object,converter:_},data:{type:Object,converter:_},selectedImageIndex:{type:Number},openSections:{type:Object},lang:{type:String},loading:{type:Boolean,converter:be},shopeeUrl:{type:String,attribute:"shopee-url"},tiktokUrl:{type:String,attribute:"tiktok-url"},messUrl:{type:String,attribute:"mess-url"},isZoomed:{state:!0},zoomX:{state:!0},zoomY:{state:!0}}),x(re,"styles",S`
+    `}}x(re,"properties",{product:{type:Object,converter:S},data:{type:Object,converter:S},selectedImageIndex:{type:Number},openSections:{type:Object},lang:{type:String},loading:{type:Boolean,converter:be},shopeeUrl:{type:String,attribute:"shopee-url"},tiktokUrl:{type:String,attribute:"tiktok-url"},messUrl:{type:String,attribute:"mess-url"},shopeeIcon:{type:String,attribute:"shopee-icon"},tiktokIcon:{type:String,attribute:"tiktok-icon"},messIcon:{type:String,attribute:"mess-icon"},isZoomed:{state:!0},zoomX:{state:!0},zoomY:{state:!0}}),x(re,"styles",C`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -2512,10 +2487,14 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
-    .social-btn svg {
+    .social-btn svg,
+    .social-btn img {
       width: 22px;
       height: 22px;
+      object-fit: contain;
       flex-shrink: 0;
+      display: block;
+      pointer-events: none;
     }
 
     .social-btn:hover {
@@ -2576,7 +2555,8 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
         padding: 0 10px;
         gap: 6px;
       }
-      .social-btn svg {
+      .social-btn svg,
+      .social-btn img {
         width: 18px;
         height: 18px;
       }
@@ -2708,11 +2688,11 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
       color: #333333;
       border-bottom: 1px solid #ffffff;
     }
-  `),v("wx-product-detail",re);class Z extends k{constructor(){super(),this.title="",this.products=null,this.items=null,this.data=null,this.currentProduct=null,this.product=null,this.category="",this.limit=4,this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=25}firstUpdated(){this._grid=this.shadowRoot.querySelector(".related-grid"),this._initScroll()}updated(e){(e.has("products")||e.has("items")||e.has("data"))&&this._initScroll()}_initScroll(){this._grid&&(this._grid.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._grid)return;const{scrollLeft:e,scrollWidth:t,clientWidth:s}=this._grid,i=t-s;if(i<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(25,s/t*100);const n=100-this._progressWidth;this._progressLeft=e/i*n}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._grid)return;const t=260*e;this._grid.scrollBy({left:t,behavior:"smooth"})}_getEffectiveProducts(){const e=this.data||this.items||this.products;if(!e||!Array.isArray(e))return[];const t=this.currentProduct||this.product,s=t?t.ID||t.id||t._id||t.slug:"";let i=s?e.filter(g=>(g.ID||g.id||g._id||g.slug)!==s):[...e],r=this.category,n="",l="",c="";if(t&&(r||(typeof t.category=="object"&&t.category!==null?r=t.category._id||t.category.ID||t.category.slug||"":r=t.category||""),n=t.categoryPath||"",l=t.brandCategory||"",c=t.brand||""),r||n||l){const g=(r||"").toLowerCase().trim(),d=(l||"").toLowerCase().trim(),b=(n||"").split("/").filter(Boolean),f=b.length>0?b[0].toLowerCase().trim():"",u=i.filter(A=>{const ne=String(A.category||"").toLowerCase().trim(),ae=String(A.brandCategory||"").toLowerCase().trim();return g&&(ne===g||ae===g)||d&&(ne===d||ae===d)}),E=i.filter(A=>{if(u.includes(A))return!1;const ne=String(A.categoryPath||"").toLowerCase(),ae=String(A.category||"").toLowerCase();return f&&(ne.includes(`/${f}/`)||ae.includes(f))}),lt=i.filter(A=>u.includes(A)||E.includes(A)?!1:c&&A.brand===c),Oe=[...u,...E,...lt];Oe.length>0&&(i=Oe)}const h=Number(this.limit)>0?Number(this.limit):4;return i.slice(0,h)}_onProductClick(e){C(this,"product-select",{product:e.detail.product})}render(){const e=this._getEffectiveProducts(),t=this.title||p("relatedProducts",this.lang),s=Number(this.limit)>0?Number(this.limit):4;return this.loading||this.products===null&&this.items===null&&this.data===null?a`
+  `),v("wx-product-detail",re);class J extends k{constructor(){super(),this.title="",this.products=null,this.items=null,this.data=null,this.currentProduct=null,this.product=null,this.category="",this.limit=4,this.lang="vi",this.loading=!1,this._progressLeft=0,this._progressWidth=25}firstUpdated(){this._grid=this.shadowRoot.querySelector(".related-grid"),this._initScroll()}updated(e){(e.has("products")||e.has("items")||e.has("data"))&&this._initScroll()}_initScroll(){this._grid&&(this._grid.addEventListener("scroll",()=>this._updateProgress()),this._updateProgress())}_updateProgress(){if(!this._grid)return;const{scrollLeft:e,scrollWidth:t,clientWidth:s}=this._grid,i=t-s;if(i<=0)this._progressWidth=100,this._progressLeft=0;else{this._progressWidth=Math.max(25,s/t*100);const a=100-this._progressWidth;this._progressLeft=e/i*a}const r=this.shadowRoot.querySelector(".progress-thumb");r&&(r.style.width=`${this._progressWidth}%`,r.style.left=`${this._progressLeft}%`)}_scroll(e){if(!this._grid)return;const t=260*e;this._grid.scrollBy({left:t,behavior:"smooth"})}_getEffectiveProducts(){const e=this.data||this.items||this.products;if(!e||!Array.isArray(e))return[];const t=this.currentProduct||this.product,s=t?t.ID||t.id||t._id||t.slug:"";let i=s?e.filter(g=>(g.ID||g.id||g._id||g.slug)!==s):[...e],r=this.category,a="",l="",c="";if(t&&(r||(typeof t.category=="object"&&t.category!==null?r=t.category._id||t.category.ID||t.category.slug||"":r=t.category||""),a=t.categoryPath||"",l=t.brandCategory||"",c=t.brand||""),r||a||l){const g=(r||"").toLowerCase().trim(),d=(l||"").toLowerCase().trim(),b=(a||"").split("/").filter(Boolean),u=b.length>0?b[0].toLowerCase().trim():"",f=i.filter(I=>{const ae=String(I.category||"").toLowerCase().trim(),ne=String(I.brandCategory||"").toLowerCase().trim();return g&&(ae===g||ne===g)||d&&(ae===d||ne===d)}),R=i.filter(I=>{if(f.includes(I))return!1;const ae=String(I.categoryPath||"").toLowerCase(),ne=String(I.category||"").toLowerCase();return u&&(ae.includes(`/${u}/`)||ne.includes(u))}),pt=i.filter(I=>f.includes(I)||R.includes(I)?!1:c&&I.brand===c),Oe=[...f,...R,...pt];Oe.length>0&&(i=Oe)}const h=Number(this.limit)>0?Number(this.limit):4;return i.slice(0,h)}_onProductClick(e){$(this,"product-select",{product:e.detail.product})}render(){const e=this._getEffectiveProducts(),t=this.title||p("relatedProducts",this.lang),s=Number(this.limit)>0?Number(this.limit):4;return this.loading||this.products===null&&this.items===null&&this.data===null?n`
         <div class="related-container">
           <div class="related-title">${t}</div>
           <div class="related-grid" role="status" aria-label="Loading related products">
-            ${Array.from({length:s}).map(()=>a`
+            ${Array.from({length:s}).map(()=>n`
                 <div class="card-item skeleton-card">
                   <div class="skeleton-box skeleton-img"></div>
                   <div class="skeleton-box skeleton-brand"></div>
@@ -2722,11 +2702,11 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
               `)}
           </div>
         </div>
-      `:e.length?a`
+      `:e.length?n`
       <div class="related-container">
         <div class="related-title">${t}</div>
         <div class="related-grid" role="list">
-          ${e.map(i=>a`
+          ${e.map(i=>n`
               <div class="card-item" role="listitem">
                 <wx-product-card
                   .product="${i}"
@@ -2745,7 +2725,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
           <button class="nav-arrow-btn" @click="${()=>this._scroll(1)}" aria-label="${p("scrollRight",this.lang)}">&#x203A;</button>
         </div>
       </div>
-    `:a``}}x(Z,"properties",{title:{type:String},products:{type:Array,converter:w},items:{type:Array,converter:w},data:{type:Array,converter:w},currentProduct:{type:Object,converter:_},product:{type:Object,converter:_},category:{type:String},limit:{type:Number},lang:{type:String},loading:{type:Boolean}}),x(Z,"styles",S`
+    `:n``}}x(J,"properties",{title:{type:String},products:{type:Array,converter:w},items:{type:Array,converter:w},data:{type:Array,converter:w},currentProduct:{type:Object,converter:S},product:{type:Object,converter:S},category:{type:String},limit:{type:Number},lang:{type:String},loading:{type:Boolean}}),x(J,"styles",C`
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -2972,7 +2952,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
         padding: 0;
       }
     }
-  `),v("wx-related-products",Z),v("wx-related",class extends Z{});const xe=S`
+  `),v("wx-related-products",J),v("wx-related",class extends J{});const xe=C`
   :host {
     --wx-font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --wx-color-primary: #d40026;
@@ -3017,7 +2997,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
   button, input, select, textarea, optgroup {
     font-family: inherit;
   }
-`;class H extends k{constructor(){super(),this.blocks=[],this.items=[],this.data=null,this.type="all",this.lang="vi",this.activeHotspotIndex=0,this.failedImages=new Set}updated(e){super.updated(e);const t=this._getFilteredBlocks();this.hidden=!t||t.length===0}_getFilteredBlocks(){const e=this._getEffectiveBlocks();return!e||e.length===0?[]:e.filter(t=>{const s=t.component||"story";return s==="intro"?!1:!this.type||this.type==="all"?s==="story"||s==="highlights":s===this.type})}_getEffectiveBlocks(){return this.block&&typeof this.block=="object"?[this.block]:this.data&&Array.isArray(this.data.blocks)?this.data.blocks:this.data&&this.data.block&&typeof this.data.block=="object"?[this.data.block]:Array.isArray(this.blocks)?this.blocks:[]}_getEffectiveItems(){return this.data&&Array.isArray(this.data.items)?this.data.items:Array.isArray(this.items)?this.items:[]}_getItemsForBlock(e){const t=this._getEffectiveItems();if(!t||t.length===0)return[];if(t.length<=10)return t.slice().sort((n,l)=>(Number(n.position)||0)-(Number(l.position)||0));const s=typeof e=="object"&&e?e._id||"":e,i=typeof e=="object"&&e?e.ID||"":e,r=typeof e=="object"&&e&&e.title||"";return t.filter(n=>{const l=n.block;if(!l)return!0;if(typeof l=="object"&&l!==null){const c=l._id||"",h=l.ID||"",g=l.title||"";return s&&(c===s||h===s)||i&&(c===i||h===i)||r&&(c===r||h===r||g===r)}return s&&l===s||i&&l===i||r&&l===r}).sort((n,l)=>(Number(n.position)||0)-(Number(l.position)||0))}_onImageError(e){if(e){const t=new Set(this.failedImages);t.add(e),this.failedImages=t}}_isImageAvailable(e){return!e||typeof e!="string"||!e.trim()?!1:!this.failedImages.has(e)}_renderPlaceholder(e="220px",t=null){const s=t||p("noImage",this.lang)||"Chưa có ảnh";return a`
+`;class M extends k{constructor(){super(),this.blocks=[],this.items=[],this.data=null,this.type="all",this.lang="vi",this.activeHotspotIndex=0,this.failedImages=new Set}updated(e){super.updated(e);const t=this._getFilteredBlocks();this.hidden=!t||t.length===0}_getFilteredBlocks(){const e=this._getEffectiveBlocks();return!e||e.length===0?[]:e.filter(t=>{const s=t.component||"story";return s==="intro"?!1:!this.type||this.type==="all"?s==="story"||s==="highlights":s===this.type})}_getEffectiveBlocks(){return this.block&&typeof this.block=="object"?[this.block]:this.data&&Array.isArray(this.data.blocks)?this.data.blocks:this.data&&this.data.block&&typeof this.data.block=="object"?[this.data.block]:Array.isArray(this.blocks)?this.blocks:[]}_getEffectiveItems(){return this.data&&Array.isArray(this.data.items)?this.data.items:Array.isArray(this.items)?this.items:[]}_getItemsForBlock(e){const t=this._getEffectiveItems();if(!t||t.length===0)return[];if(t.length<=10)return t.slice().sort((a,l)=>(Number(a.position)||0)-(Number(l.position)||0));const s=typeof e=="object"&&e?e._id||"":e,i=typeof e=="object"&&e?e.ID||"":e,r=typeof e=="object"&&e&&e.title||"";return t.filter(a=>{const l=a.block;if(!l)return!0;if(typeof l=="object"&&l!==null){const c=l._id||"",h=l.ID||"",g=l.title||"";return s&&(c===s||h===s)||i&&(c===i||h===i)||r&&(c===r||h===r||g===r)}return s&&l===s||i&&l===i||r&&l===r}).sort((a,l)=>(Number(a.position)||0)-(Number(l.position)||0))}_onImageError(e){if(e){const t=new Set(this.failedImages);t.add(e),this.failedImages=t}}_isImageAvailable(e){return!e||typeof e!="string"||!e.trim()?!1:!this.failedImages.has(e)}_renderPlaceholder(e="220px",t=null){const s=t||p("noImage",this.lang)||"Chưa có ảnh";return n`
       <div class="no-image-placeholder" style="min-height: ${e};">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -3026,47 +3006,47 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
         </svg>
         <span>${s}</span>
       </div>
-    `}_renderMedia(e,t="",s="220px"){const i=z(e);return this._isImageAvailable(i)?a`
+    `}_renderMedia(e,t="",s="220px"){const i=T(e);return this._isImageAvailable(i)?n`
         <img
           src="${i}"
           alt="${t}"
           loading="lazy"
           @error="${()=>this._onImageError(i)}"
         />
-      `:this._renderPlaceholder(s)}_renderStoryBlock(e,t){let s=e.heading||e.title,i=e.body||"",r=t,n=e.image||"";if(t&&t.length>0){const l=t[0];s=l.title||s,i=l.body||i,n=l.image||n,r=t.slice(1)}return a`
+      `:this._renderPlaceholder(s)}_renderStoryBlock(e,t){let s=e.heading||e.title,i=e.body||"",r=t,a=e.image||"";if(t&&t.length>0){const l=t[0];s=l.title||s,i=l.body||i,a=l.image||a,r=t.slice(1)}return n`
       <div class="story-section">
         <!-- Banner 50/50 -->
         <div class="story-banner">
           <div class="story-media">
-            ${this._renderMedia(n,s,"320px")}
+            ${this._renderMedia(a,s,"320px")}
           </div>
 
           <div class="story-content">
             <h2 class="story-heading">${s}</h2>
-            ${i?a`<div class="story-body">${i}</div>`:""}
+            ${i?n`<div class="story-body">${i}</div>`:""}
           </div>
         </div>
 
         <!-- 3-Column Feature Cards bên dưới -->
-        ${r.length>0?a`
+        ${r.length>0?n`
               <div class="cards-grid">
-                ${r.map(l=>a`
+                ${r.map(l=>n`
                     <div class="feature-card">
                       <div class="card-media">
                         ${this._renderMedia(l.image,l.title,"180px")}
                       </div>
                       <h3 class="card-title">${l.title}</h3>
-                      ${l.body?a`<p class="card-body">${l.body}</p>`:""}
+                      ${l.body?n`<p class="card-body">${l.body}</p>`:""}
                     </div>
                   `)}
               </div>
             `:""}
       </div>
-    `}_toggleAccordion(e){this.activeHotspotIndex===e?this.activeHotspotIndex=-1:this.activeHotspotIndex=e}_selectHotspot(e){this.activeHotspotIndex=e}_renderHighlightsBlock(e,t){const s=t.length>0?t:[],i=e.image||(e.ID?`/images/${e.ID}.png`:e._id?`/images/${e._id}.png`:""),r=z(i),n=this._isImageAvailable(r);return a`
+    `}_toggleAccordion(e){this.activeHotspotIndex===e?this.activeHotspotIndex=-1:this.activeHotspotIndex=e}_selectHotspot(e){this.activeHotspotIndex=e}_renderHighlightsBlock(e,t){const s=t.length>0?t:[],i=e.image||(e.ID?`/images/${e.ID}.png`:e._id?`/images/${e._id}.png`:""),r=T(i),a=this._isImageAvailable(r);return n`
       <div class="hotspot-section">
         <!-- Cột Trái: Ảnh Dao -->
         <div class="knife-viewport">
-          ${n?a`
+          ${a?n`
                 <div class="knife-media-wrapper">
                   <img
                     src="${r}"
@@ -3074,12 +3054,12 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                     loading="lazy"
                     @error="${()=>this._onImageError(r)}"
                   />
-                  ${s.map((l,c)=>{const h=l.coordX!==void 0&&l.coordX!==null&&l.coordX!==""?l.coordX:l.x??l.hotspotX,g=l.coordY!==void 0&&l.coordY!==null&&l.coordY!==""?l.coordY:l.y??l.hotspotY;if(h==null||h==="")return"";const d=parseFloat(h),b=parseFloat(g);if(isNaN(d)||isNaN(b))return"";const f=this.activeHotspotIndex===c;return a`
+                  ${s.map((l,c)=>{const h=l.coordX!==void 0&&l.coordX!==null&&l.coordX!==""?l.coordX:l.x??l.hotspotX,g=l.coordY!==void 0&&l.coordY!==null&&l.coordY!==""?l.coordY:l.y??l.hotspotY;if(h==null||h==="")return"";const d=parseFloat(h),b=parseFloat(g);if(isNaN(d)||isNaN(b))return"";const u=this.activeHotspotIndex===c;return n`
                       <button
                         type="button"
-                        class="hotspot-pin ${f?"active":""}"
+                        class="hotspot-pin ${u?"active":""}"
                         style="left: ${d}%; top: ${b}%;"
-                        @click="${u=>{u.stopPropagation(),this._selectHotspot(c)}}"
+                        @click="${f=>{f.stopPropagation(),this._selectHotspot(c)}}"
                         title="${l.title||`Điểm #${c+1}`}"
                         aria-label="${l.title||`Điểm #${c+1}`}"
                       >
@@ -3088,7 +3068,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                       </button>
                     `})}
                 </div>
-              `:a`
+              `:n`
                 <div style="width: 100%;">
                   ${this._renderPlaceholder("260px")}
                 </div>
@@ -3097,7 +3077,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
 
         <!-- Cột Phải: Danh sách Accordion tương tác -->
         <div class="accordion-col">
-          ${s.map((l,c)=>{const h=this.activeHotspotIndex===c;return a`
+          ${s.map((l,c)=>{const h=this.activeHotspotIndex===c;return n`
               <div class="accordion-row ${h?"active":""}">
                 <button
                   class="accordion-btn"
@@ -3108,7 +3088,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                   <span class="accordion-icon">${h?"▲":"▼"}</span>
                 </button>
 
-                ${h?a`
+                ${h?n`
                       <div class="accordion-details">
                         ${l.body}
                       </div>
@@ -3117,17 +3097,17 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
             `})}
         </div>
       </div>
-    `}_renderIntroBlock(e){return a`
+    `}_renderIntroBlock(e){return n`
       <div class="intro-banner">
         <h2 class="intro-heading">${e.heading||e.title}</h2>
-        ${e.body?a`<div class="intro-body">${e.body}</div>`:""}
-        ${e.ctaLabel?a`<button class="story-cta-btn" type="button">${e.ctaLabel}</button>`:""}
+        ${e.body?n`<div class="intro-body">${e.body}</div>`:""}
+        ${e.ctaLabel?n`<button class="story-cta-btn" type="button">${e.ctaLabel}</button>`:""}
       </div>
-    `}render(){const e=this._getFilteredBlocks();return e.length===0?a``:a`
+    `}render(){const e=this._getFilteredBlocks();return e.length===0?n``:n`
       <div class="feature-blocks-container">
         ${e.map(t=>{const s=this._getItemsForBlock(t),i=t.component||"story";return i==="highlights"?this._renderHighlightsBlock(t,s):i==="story"?this._renderStoryBlock(t,s):""})}
       </div>
-    `}}x(H,"properties",{blocks:{type:Array,converter:_},block:{type:Object,converter:_},items:{type:Array,converter:_},data:{type:Object,converter:_},type:{type:String},lang:{type:String},activeHotspotIndex:{state:!0},failedImages:{state:!0}}),x(H,"styles",[xe,S`
+    `}}x(M,"properties",{blocks:{type:Array,converter:S},block:{type:Object,converter:S},items:{type:Array,converter:S},data:{type:Object,converter:S},type:{type:String},lang:{type:String},activeHotspotIndex:{state:!0},failedImages:{state:!0}}),x(M,"styles",[xe,C`
       :host {
         display: block;
         width: 100%;
@@ -3597,7 +3577,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
         line-height: 1.7;
         color: #555555;
       }
-    `]),v("wx-feature-blocks",H);class Ue extends H{constructor(){super(),this.type="story"}}v("wx-story-section",Ue);class Re extends H{constructor(){super(),this.type="highlights"}}v("wx-hotspot-section",Re);const He=[{id:"store-crescent-mall",ID:"store-crescent-mall",title:"ZWILLING CRESCENT MALL",address:"Tầng 4F - 33, Crescent Mall, 101 Tôn Dật Tiên, Phường Tân Phú, Quận 7, TP.HCM",city:"TP. Hồ Chí Minh",hotline:"028 399 07010",openHours:"10:00 - 22:00",latitude:10.7293,longitude:106.7198,googleMapsUrl:"https://maps.google.com/?q=Crescent+Mall+101+Ton+Dat+Tien+Tan+Phu+Quan+7+TPHCM",image:"/images/store-crescent-mall.jpg",position:1},{id:"store-estella-place",ID:"store-estella-place",title:"ZWILLING ESTELLA PLACE",address:"Tầng 3 - Estella Place, 88 Song Hành, Phường An Phú, TP. Thủ Đức, TP.HCM",city:"TP. Hồ Chí Minh",hotline:"0283 519 3209",openHours:"09:30 - 22:00",latitude:10.8016,longitude:106.7431,googleMapsUrl:"https://maps.google.com/?q=Estella+Place+88+Song+Hanh+An+Phu+TP+Thu+Duc+TPHCM",image:"/images/store-estella.jpg",position:2},{id:"store-lotte-lieu-giai",ID:"store-lotte-lieu-giai",title:"ZWILLING LOTTE DEPARTMENT STORE",address:"Tầng 5 - Lotte Department Store, 54 Liễu Giai, Phường Cống Vị, Ba Đình, Hà Nội",city:"Hà Nội",hotline:"0243 212 1177",openHours:"09:30 - 22:00",latitude:21.0318,longitude:105.8142,googleMapsUrl:"https://maps.google.com/?q=Lotte+Department+Store+54+Lieu+Giai+Ba+Dinh+Ha+Noi",image:"/images/store-lotte.jpg",position:3}];class oe extends k{constructor(){super(),this.stores=[],this.data=null,this.selectedStoreId="",this.searchQuery="",this.selectedCity="all",this.onlyOpen=!1,this.activeTab="list",this.lang="vi",this._boundOnMessage=null}connectedCallback(){super.connectedCallback(),this._boundOnMessage=this._onWindowMessage.bind(this),window.addEventListener("message",this._boundOnMessage)}disconnectedCallback(){super.disconnectedCallback(),this._boundOnMessage&&window.removeEventListener("message",this._boundOnMessage)}_onWindowMessage(e){if(e.data&&e.data.type==="STORE_MARKER_CLICK"){const t=e.data.id;if(t){this.selectedStoreId=t;const s=this.shadowRoot.querySelector(`[data-store-id="${t}"]`);s&&s.scrollIntoView({behavior:"smooth",block:"nearest"})}}}firstUpdated(){this._initStoreSelection()}updated(e){(e.has("stores")||e.has("data"))&&this._initStoreSelection()}_getEffectiveStores(){return Array.isArray(this.stores)&&this.stores.length>0?this.stores:this.data&&Array.isArray(this.data.stores)&&this.data.stores.length>0?this.data.stores:He}_initStoreSelection(){const e=this._getFilteredStores();e.length>0&&(!this.selectedStoreId||!e.some(t=>(t.id||t.ID)===this.selectedStoreId))&&(this.selectedStoreId=e[0].id||e[0].ID)}_getFilteredStores(){const e=this._getEffectiveStores(),t=(this.searchQuery||"").trim().toLowerCase(),s=this.selectedCity;return e.filter(i=>!(s!=="all"&&i.city&&!i.city.toLowerCase().includes(s.toLowerCase())||t&&![i.title,i.name,i.address,i.city,i.hotline].filter(Boolean).join(" ").toLowerCase().includes(t)))}_onSearchInput(e){this.searchQuery=e.target.value}_onSelectCity(e){this.selectedCity=e,this._initStoreSelection();const s=this._getFilteredStores().map(r=>r.id||r.ID),i=this.shadowRoot.getElementById("storeMapFrame");i&&i.contentWindow&&i.contentWindow.postMessage({type:"FIT_BOUNDS",ids:s},"*")}_selectStore(e){const t=e.id||e.ID;this.selectedStoreId=t,this.activeTab="map";const s=this.shadowRoot.getElementById("storeMapFrame");s&&s.contentWindow&&s.contentWindow.postMessage({type:"FLY_TO_STORE",id:t},"*")}_getMapIframeSrcDoc(e,t){return`<!DOCTYPE html>
+    `]),v("wx-feature-blocks",M);class De extends M{constructor(){super(),this.type="story"}}v("wx-story-section",De);class Le extends M{constructor(){super(),this.type="highlights"}}v("wx-hotspot-section",Le);const Me=[{id:"store-crescent-mall",ID:"store-crescent-mall",title:"ZWILLING CRESCENT MALL",address:"Tầng 4F - 33, Crescent Mall, 101 Tôn Dật Tiên, Phường Tân Phú, Quận 7, TP.HCM",city:"TP. Hồ Chí Minh",hotline:"028 399 07010",openHours:"10:00 - 22:00",latitude:10.7293,longitude:106.7198,googleMapsUrl:"https://maps.google.com/?q=Crescent+Mall+101+Ton+Dat+Tien+Tan+Phu+Quan+7+TPHCM",image:"/images/store-crescent-mall.jpg",position:1},{id:"store-estella-place",ID:"store-estella-place",title:"ZWILLING ESTELLA PLACE",address:"Tầng 3 - Estella Place, 88 Song Hành, Phường An Phú, TP. Thủ Đức, TP.HCM",city:"TP. Hồ Chí Minh",hotline:"0283 519 3209",openHours:"09:30 - 22:00",latitude:10.8016,longitude:106.7431,googleMapsUrl:"https://maps.google.com/?q=Estella+Place+88+Song+Hanh+An+Phu+TP+Thu+Duc+TPHCM",image:"/images/store-estella.jpg",position:2},{id:"store-lotte-lieu-giai",ID:"store-lotte-lieu-giai",title:"ZWILLING LOTTE DEPARTMENT STORE",address:"Tầng 5 - Lotte Department Store, 54 Liễu Giai, Phường Cống Vị, Ba Đình, Hà Nội",city:"Hà Nội",hotline:"0243 212 1177",openHours:"09:30 - 22:00",latitude:21.0318,longitude:105.8142,googleMapsUrl:"https://maps.google.com/?q=Lotte+Department+Store+54+Lieu+Giai+Ba+Dinh+Ha+Noi",image:"/images/store-lotte.jpg",position:3}];class oe extends k{constructor(){super(),this.stores=[],this.data=null,this.selectedStoreId="",this.searchQuery="",this.selectedCity="all",this.onlyOpen=!1,this.activeTab="list",this.lang="vi",this._boundOnMessage=null}connectedCallback(){super.connectedCallback(),this._boundOnMessage=this._onWindowMessage.bind(this),window.addEventListener("message",this._boundOnMessage)}disconnectedCallback(){super.disconnectedCallback(),this._boundOnMessage&&window.removeEventListener("message",this._boundOnMessage)}_onWindowMessage(e){if(e.data&&e.data.type==="STORE_MARKER_CLICK"){const t=e.data.id;if(t){this.selectedStoreId=t;const s=this.shadowRoot.querySelector(`[data-store-id="${t}"]`);s&&s.scrollIntoView({behavior:"smooth",block:"nearest"})}}}firstUpdated(){this._initStoreSelection()}updated(e){(e.has("stores")||e.has("data"))&&this._initStoreSelection()}_getEffectiveStores(){return Array.isArray(this.stores)&&this.stores.length>0?this.stores:this.data&&Array.isArray(this.data.stores)&&this.data.stores.length>0?this.data.stores:Me}_initStoreSelection(){const e=this._getFilteredStores();e.length>0&&(!this.selectedStoreId||!e.some(t=>(t.id||t.ID)===this.selectedStoreId))&&(this.selectedStoreId=e[0].id||e[0].ID)}_getFilteredStores(){const e=this._getEffectiveStores(),t=(this.searchQuery||"").trim().toLowerCase(),s=this.selectedCity;return e.filter(i=>!(s!=="all"&&i.city&&!i.city.toLowerCase().includes(s.toLowerCase())||t&&![i.title,i.name,i.address,i.city,i.hotline].filter(Boolean).join(" ").toLowerCase().includes(t)))}_onSearchInput(e){this.searchQuery=e.target.value}_onSelectCity(e){this.selectedCity=e,this._initStoreSelection();const s=this._getFilteredStores().map(r=>r.id||r.ID),i=this.shadowRoot.getElementById("storeMapFrame");i&&i.contentWindow&&i.contentWindow.postMessage({type:"FIT_BOUNDS",ids:s},"*")}_selectStore(e){const t=e.id||e.ID;this.selectedStoreId=t,this.activeTab="map";const s=this.shadowRoot.getElementById("storeMapFrame");s&&s.contentWindow&&s.contentWindow.postMessage({type:"FLY_TO_STORE",id:t},"*")}_getMapIframeSrcDoc(e,t){return`<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
@@ -3758,7 +3738,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
     });
   <\/script>
 </body>
-</html>`}render(){const e=this._getFilteredStores();return a`
+</html>`}render(){const e=this._getFilteredStores();return n`
       <!-- Mobile Toggle Tabs (Danh sách / Bản đồ) -->
       <div class="mobile-view-toggle">
         <button
@@ -3823,7 +3803,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
           </div>
 
           <ul class="store-list">
-            ${e.length===0?a`<li class="empty-state">Không tìm thấy cửa hàng phù hợp.</li>`:e.map(t=>{const s=t.id||t.ID,i=s===this.selectedStoreId;return a`
+            ${e.length===0?n`<li class="empty-state">Không tìm thấy cửa hàng phù hợp.</li>`:e.map(t=>{const s=t.id||t.ID,i=s===this.selectedStoreId;return n`
                     <li
                       class="store-card ${i?"active":""}"
                       data-store-id="${s}"
@@ -3855,9 +3835,9 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
                         </div>
                       </div>
 
-                      ${t.image?a`
+                      ${t.image?n`
                             <img
-                              src="${z(t.image)}"
+                              src="${T(t.image)}"
                               alt="${t.title}"
                               class="store-thumb"
                               loading="lazy"
@@ -3878,7 +3858,7 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
           ></iframe>
         </main>
       </div>
-    `}}x(oe,"properties",{stores:{type:Array,converter:_},data:{type:Object,converter:_},selectedStoreId:{state:!0},searchQuery:{state:!0},selectedCity:{state:!0},onlyOpen:{state:!0},activeTab:{state:!0},lang:{type:String}}),x(oe,"styles",[xe,S`
+    `}}x(oe,"properties",{stores:{type:Array,converter:S},data:{type:Object,converter:S},selectedStoreId:{state:!0},searchQuery:{state:!0},selectedCity:{state:!0},onlyOpen:{state:!0},activeTab:{state:!0},lang:{type:String}}),x(oe,"styles",[xe,C`
       :host {
         display: block;
         width: 100%;
@@ -4236,4 +4216,4 @@ var ct=Object.defineProperty;var dt=(m,$,I)=>$ in m?ct(m,$,{enumerable:!0,config
         border: none;
         display: block;
       }
-    `]),v("wx-store-locator",oe),console.log("[my-wix-ui-lib] Đã đăng ký thành công 5 Web Components tái sử dụng (Lit 3)"),m.DEFAULT_STORES=He,m.WxBreadcrumb=te,m.WxCategoryCarousel=K,m.WxFeatureBlocks=H,m.WxHotspotSection=Re,m.WxProductCard=ie,m.WxProductCarousel=X,m.WxProductDetail=re,m.WxProductListing=se,m.WxRelatedProducts=Z,m.WxStoreLocator=oe,m.WxStorySection=Ue,m.dispatchCustomEvent=C,m.formatCurrencyVND=q,m.parseGallery=me,m.safeDefine=v,m.safeJsonParse=ue,m.t=p,m.themeStyles=xe,m.translations=ee,Object.defineProperty(m,Symbol.toStringTag,{value:"Module"})})(this.MyWixUiLib=this.MyWixUiLib||{});
+    `]),v("wx-store-locator",oe),console.log("[my-wix-ui-lib] Đã đăng ký thành công 5 Web Components tái sử dụng (Lit 3)"),m.DEFAULT_STORES=Me,m.WxBreadcrumb=te,m.WxCategoryCarousel=G,m.WxFeatureBlocks=M,m.WxHotspotSection=Le,m.WxProductCard=ie,m.WxProductCarousel=q,m.WxProductDetail=re,m.WxProductListing=se,m.WxRelatedProducts=J,m.WxStoreLocator=oe,m.WxStorySection=De,m.dispatchCustomEvent=$,m.formatCurrencyVND=V,m.parseGallery=me,m.safeDefine=v,m.safeJsonParse=fe,m.t=p,m.themeStyles=xe,m.translations=ee,Object.defineProperty(m,Symbol.toStringTag,{value:"Module"})})(this.MyWixUiLib=this.MyWixUiLib||{});
