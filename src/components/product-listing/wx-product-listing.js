@@ -254,17 +254,55 @@ export class WxProductListing extends LitElement {
 
     @media (max-width: 768px) {
       .filter-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
       }
-      .filter-trigger-btn {
-        height: 38px;
-        padding: 8px 14px;
-        font-size: 12px;
+      .results-text {
+        font-size: 13px;
+        margin-right: auto;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .sort-select-wrap {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
       }
       .sort-select {
         height: 38px;
-        padding: 8px 30px 8px 12px;
+        padding: 8px 26px 8px 10px;
         font-size: 12px;
+      }
+      .sort-arrow {
+        right: 8px;
+      }
+      .filter-buttons-group {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        margin-left: 0;
+        gap: 8px;
+      }
+      /* On mobile, ONLY display results count, sort dropdown, and all filters button */
+      .filter-buttons-group .filter-trigger-btn:not(.all-filters-btn),
+      .filter-buttons-group .reset-link {
+        display: none !important;
+      }
+      .filter-trigger-btn {
+        height: 38px;
+        padding: 8px 12px;
+        font-size: 12px;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      .all-filters-btn {
+        margin-left: 0;
       }
     }
 
@@ -963,10 +1001,11 @@ export class WxProductListing extends LitElement {
               : ''}
 
             <button
-              class="filter-trigger-btn all-filters-btn"
+              class="filter-trigger-btn all-filters-btn ${hasActiveFilters ? 'has-value' : ''}"
               @click="${() => this._openSidebar('all')}"
             >
               <span>${this.lang === 'vi' ? 'Tất cả bộ lọc' : 'All Filters'}</span>
+              ${hasActiveFilters ? html`<span class="active-dot"></span>` : ''}
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm12 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 8.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm5 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm3 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 13.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm10 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
               </svg>
