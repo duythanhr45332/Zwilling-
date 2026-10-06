@@ -1048,37 +1048,39 @@ $w.onReady(async function () {
     });
     safeSet(breadcrumbEl, 'items', breadcrumbItems);
 
-    // 4. Truy vấn biến thể (ProductVariants) để lấy thông số kỹ thuật (specs), mô tả chi tiết, ảnh gallery
-    let variant = null;
+    // 4. Truy vấn toàn bộ các biến thể màu (ProductVariants) của sản phẩm này
+    let variants = [];
     try {
       const variantRes = await wixData.query('ProductVariants')
         .hasSome('product', [currentProduct._id, currentProduct.ID].filter(Boolean))
+        .ascending('sortOrder')
         .find();
-      if (variantRes.items.length > 0) {
-        variant = variantRes.items[0];
-      }
+      variants = variantRes.items;
     } catch (err) {
       console.warn('[Wix Velo] Không thể truy vấn ProductVariants:', err);
     }
 
-    // 5. Gộp dữ liệu đầy đủ từ Products và ProductVariants
+    const defaultVariant = variants[0] || null;
+
+    // 5. Gộp dữ liệu đầy đủ từ Products và toàn bộ danh sách variants (Colour Swatches & Size)
     const fullProduct = {
       ...currentProduct,
-      ...(variant || {}),
-      title: currentProduct.title || (variant && variant.title),
+      ...(defaultVariant || {}),
+      title: currentProduct.title,
       brand: currentProduct.brand,
       series: currentProduct.series,
-      minPrice: currentProduct.minPrice || (variant && variant.price),
+      minPrice: currentProduct.minPrice,
       maxPrice: currentProduct.maxPrice,
-      compareAtPrice: currentProduct.compareAtPrice || (variant && variant.compareAtPrice),
+      sizeLabel: currentProduct.sizeLabel || defaultVariant?.sizeLabel,
+      variants: variants, // Rất quan trọng: mảng toàn bộ biến thể màu để PDP hiển thị swatches
       labels: currentProduct.labels,
-      specs: (variant && variant.specs) ? variant.specs : currentProduct.specs,
-      description: (variant && variant.description) ? variant.description : currentProduct.description,
-      shortDescription: (variant && variant.shortDescription) ? variant.shortDescription : currentProduct.shortDescription,
-      mainImage: (variant && variant.mainImage) ? variant.mainImage : currentProduct.mainImage,
-      gallery: (variant && variant.gallery) ? variant.gallery : currentProduct.gallery,
-      shopeeUrl: (variant && variant.shopeeUrl) ? variant.shopeeUrl : currentProduct.shopeeUrl,
-      tiktokUrl: (variant && variant.tiktokUrl) ? variant.tiktokUrl : currentProduct.tiktokUrl
+      specs: defaultVariant?.specs || currentProduct.specs,
+      description: defaultVariant?.description || currentProduct.description,
+      shortDescription: defaultVariant?.shortDescription || currentProduct.shortDescription,
+      mainImage: defaultVariant?.mainImage || currentProduct.mainImage,
+      gallery: defaultVariant?.gallery || currentProduct.gallery,
+      shopeeUrl: defaultVariant?.shopeeUrl || currentProduct.shopeeUrl,
+      tiktokUrl: defaultVariant?.tiktokUrl || currentProduct.tiktokUrl
     };
 
     // Gán dữ liệu vào Custom Element <wx-product-detail>
