@@ -3,6 +3,7 @@ import { safeDefine } from '../../utils/element.js';
 import { formatCurrencyVND, calculateProductPricing, parseGallery, safeJsonParse, jsonObjectConverter, resolveImageUrl, booleanConverter } from '../../utils/formatters.js';
 import { dispatchCustomEvent } from '../../utils/events.js';
 import { t } from '../../utils/i18n.js';
+import { DEFAULT_SHOPEE_ICON, DEFAULT_TIKTOK_ICON, DEFAULT_MESS_ICON } from '../../utils/social-icons.js';
 
 export class WxProductDetail extends LitElement {
   static properties = {
@@ -16,6 +17,9 @@ export class WxProductDetail extends LitElement {
     shopeeUrl: { type: String, attribute: 'shopee-url' },
     tiktokUrl: { type: String, attribute: 'tiktok-url' },
     messUrl: { type: String, attribute: 'mess-url' },
+    shopeeIcon: { type: String, attribute: 'shopee-icon' },
+    tiktokIcon: { type: String, attribute: 'tiktok-icon' },
+    messIcon: { type: String, attribute: 'mess-icon' },
     isZoomed: { state: true },
     zoomX: { state: true },
     zoomY: { state: true }
@@ -451,10 +455,14 @@ export class WxProductDetail extends LitElement {
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
-    .social-btn svg {
+    .social-btn svg,
+    .social-btn img {
       width: 22px;
       height: 22px;
+      object-fit: contain;
       flex-shrink: 0;
+      display: block;
+      pointer-events: none;
     }
 
     .social-btn:hover {
@@ -515,7 +523,8 @@ export class WxProductDetail extends LitElement {
         padding: 0 10px;
         gap: 6px;
       }
-      .social-btn svg {
+      .social-btn svg,
+      .social-btn img {
         width: 18px;
         height: 18px;
       }
@@ -812,6 +821,9 @@ export class WxProductDetail extends LitElement {
     this.shopeeUrl = '';
     this.tiktokUrl = '';
     this.messUrl = '';
+    this.shopeeIcon = '';
+    this.tiktokIcon = '';
+    this.messIcon = '';
     this.openSections = {
       description: true,
       specifications: false,
@@ -1025,9 +1037,13 @@ export class WxProductDetail extends LitElement {
       return '';
     }
 
+    const shopeeIcon = this.shopeeIcon || (p && p.shopeeIcon) || DEFAULT_SHOPEE_ICON;
+    const tiktokIcon = this.tiktokIcon || (p && p.tiktokIcon) || DEFAULT_TIKTOK_ICON;
+    const messIcon = this.messIcon || (p && p.messIcon) || DEFAULT_MESS_ICON;
+
     return html`
       <div class="social-actions-group" aria-label="Kênh liên hệ và mua hàng">
-        <!-- Button 1: Shopee (Icon 1) - Chỉ hiển thị khi sản phẩm có link Shopee -->
+        <!-- Button 1: Shopee (Ảnh 1) - Chỉ hiển thị khi sản phẩm có link Shopee -->
         ${shopeeUrl
           ? html`
               <a
@@ -1038,20 +1054,13 @@ export class WxProductDetail extends LitElement {
                 @click="${(e) => this._onSocialClick('shopee', e)}"
                 title="Mua trên Shopee"
               >
-                <svg viewBox="0 0 512 512" width="22" height="22" style="flex-shrink:0;">
-                  <!-- Quai túi cam -->
-                  <path fill="#EE4D2D" d="M344 144c0-48.6-39.4-88-88-88s-88 39.4-88 88v16h36v-16c0-28.7 23.3-52 52-52s52 23.3 52 52v16h36v-16z"/>
-                  <!-- Thân túi cam -->
-                  <path fill="#EE4D2D" d="M56 156l24 290c2 24.2 22.2 43 46.5 43h259c24.3 0 44.5-18.8 46.5-43l24-290H56z"/>
-                  <!-- Chữ S trắng nét cong mềm mại -->
-                  <path fill="none" stroke="#FFFFFF" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" d="M312 245c-14-25-33-35-56-35-32 0-56 22-56 50 0 46 112 36 112 94 0 32-26 56-56 56-28 0-48-15-58-40"/>
-                </svg>
+                <img src="${shopeeIcon}" alt="Shopee" width="22" height="22" loading="lazy" decoding="async" />
                 <span>Shopee</span>
               </a>
             `
           : ''}
 
-        <!-- Button 2: TikTok - Chỉ hiển thị khi sản phẩm có link TikTok -->
+        <!-- Button 2: TikTok (Ảnh 2) - Chỉ hiển thị khi sản phẩm có link TikTok -->
         ${tiktokUrl
           ? html`
               <a
@@ -1062,17 +1071,13 @@ export class WxProductDetail extends LitElement {
                 @click="${(e) => this._onSocialClick('tiktok', e)}"
                 title="Xem trên TikTok"
               >
-                <svg viewBox="0 0 512 512" width="20" height="20" style="flex-shrink:0;">
-                  <path fill="#25F4EE" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z" transform="translate(-4, -4)"/>
-                  <path fill="#FE2C55" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z" transform="translate(4, 4)"/>
-                  <path fill="#010101" d="M352 144c-35-15-58-48-60-88h-40v268c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64c8 0 15.7 1.5 22.8 4.2V178c-7.3-1.3-14.9-2-22.8-2-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112V180c35 25 78 40 124 40v-40c-30 0-58-13-72-36z"/>
-                </svg>
+                <img src="${tiktokIcon}" alt="TikTok" width="22" height="22" loading="lazy" decoding="async" />
                 <span>TikTok</span>
               </a>
             `
           : ''}
 
-        <!-- Button 3: Messenger (Icon 2) -->
+        <!-- Button 3: Messenger (Ảnh 3) -->
         ${messUrl
           ? html`
               <a
@@ -1083,21 +1088,7 @@ export class WxProductDetail extends LitElement {
                 @click="${(e) => this._onSocialClick('mess', e)}"
                 title="Nhắn tin qua Messenger"
               >
-                <svg viewBox="0 0 512 512" width="22" height="22" style="flex-shrink:0;">
-                  <defs>
-                    <linearGradient id="wx-msg-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#0078FF"/>
-                      <stop offset="30%" stop-color="#0099FF"/>
-                      <stop offset="60%" stop-color="#A033FF"/>
-                      <stop offset="85%" stop-color="#FF5277"/>
-                      <stop offset="100%" stop-color="#FF6969"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- Khung bong bóng chat gradient -->
-                  <path fill="url(#wx-msg-gradient)" d="M256 20C132.3 20 32 113.8 32 229.4c0 65.5 32.8 122.2 84.4 159.2 4.4 3.1 7.1 8.2 6.9 13.6l-3.2 42.4c-.9 12 11.2 20.8 22 15.3l48.8-24.6c4.1-2.1 8.9-2.5 13.3-1.2 16.5 4.9 34.1 7.6 52.3 7.6 123.7 0 224-93.8 224-209.4C480 113.8 379.7 20 256 20z"/>
-                  <!-- Tia sét trắng bo góc mềm mại -->
-                  <path fill="#FFFFFF" d="M142 328l76.5-121.2c8.9-14.1 28.7-16.4 40.6-4.8l60.8 59.1c4.3 4.2 11.1 4.2 15.4 0l81.8-62c11-8.4 25.4 5.4 17.9 17.2l-76.5 121.2c-8.9 14.1-28.7 16.4-40.6 4.8l-60.8-59.1c-4.3-4.2-11.1-4.2-15.4 0l-81.8 62c-11 8.4-25.4-5.4-17.9-17.2z"/>
-                </svg>
+                <img src="${messIcon}" alt="Mess" width="22" height="22" loading="lazy" decoding="async" />
                 <span>Mess</span>
               </a>
             `
