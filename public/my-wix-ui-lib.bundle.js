@@ -2277,6 +2277,8 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
       margin: 0;
       padding: 0;
       background: #ffffff;
@@ -2544,12 +2546,14 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
       margin-bottom: 8px;
     }
 
+    .brand-row,
     .brand-name {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #444444;
+      color: #555555;
+      margin-bottom: 8px;
     }
 
     .brand-logo-sq {
@@ -2566,11 +2570,20 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
     }
 
     .product-title {
-      font-size: 24px;
+      font-size: 28px;
       font-weight: 800;
-      line-height: 1.3;
-      margin: 0 0 14px 0;
+      line-height: 1.25;
+      margin: 0 0 12px 0;
       color: #111111;
+      letter-spacing: -0.01em;
+    }
+
+    .series-name {
+      font-size: 14px;
+      color: #666666;
+      margin: 0 0 16px 0;
+      font-weight: 500;
+      letter-spacing: 0.01em;
     }
 
     /* Price Row */
@@ -2578,19 +2591,20 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
       display: flex;
       align-items: baseline;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .compare-price {
-      font-size: 16px;
+      font-size: 18px;
       color: #888888;
       text-decoration: line-through;
     }
 
     .sale-price {
-      font-size: 26px;
+      font-size: 30px;
       font-weight: 800;
       color: #111111;
+      letter-spacing: -0.02em;
     }
 
     .discount-box {
@@ -2598,7 +2612,7 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
       color: #d40026;
       font-size: 12px;
       font-weight: 700;
-      padding: 2px 6px;
+      padding: 2px 8px;
       border-radius: 2px;
     }
 
@@ -2924,8 +2938,8 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
     .variant-header-row {
       display: flex;
       align-items: baseline;
-      gap: 6px;
-      font-size: 14px;
+      gap: 8px;
+      font-size: 15px;
     }
 
     .variant-header-row .variant-label {
@@ -3002,7 +3016,7 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
 
     .swatch-price {
       margin-top: 6px;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       color: #222222;
       text-align: center;
@@ -3017,7 +3031,7 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
 
     .swatch-price.not-available {
       color: #888888;
-      font-size: 10px;
+      font-size: 11px;
     }
 
     .size-pills-list {
@@ -3028,15 +3042,15 @@ var mt=Object.defineProperty;var bt=(m,$,E)=>$ in m?mt(m,$,{enumerable:!0,config
     }
 
     .size-pill {
-      min-width: 68px;
-      height: 40px;
-      padding: 0 16px;
+      min-width: 76px;
+      height: 42px;
+      padding: 0 18px;
       border-radius: 4px;
-      border: 1px solid #d0d0d0;
+      border: 1.5px solid #d0d0d0;
       background: #efecea;
       color: #222222;
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
