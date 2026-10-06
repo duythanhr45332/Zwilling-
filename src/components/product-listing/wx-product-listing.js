@@ -15,6 +15,7 @@ export class WxProductListing extends LitElement {
     selectedCategory: { type: String },
     selectedBrand: { type: String },
     selectedSeries: { type: String },
+    selectedColor: { type: String },
     selectedPriceRange: { type: String },
     selectedSort: { type: String },
     sidebarOpen: { type: Boolean },
@@ -465,6 +466,15 @@ export class WxProductListing extends LitElement {
       background: #9ca3af;
     }
 
+    .color-swatch-circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+      display: inline-block;
+    }
+
     .filter-option-label {
       display: flex;
       align-items: center;
@@ -614,6 +624,7 @@ export class WxProductListing extends LitElement {
     this.selectedCategory = '';
     this.selectedBrand = '';
     this.selectedSeries = '';
+    this.selectedColor = '';
     this.selectedPriceRange = '';
     this.selectedSort = 'default';
     this.sidebarOpen = false;
@@ -735,6 +746,167 @@ export class WxProductListing extends LitElement {
     });
   }
 
+  _getProductColor(p) {
+    if (!p) return '';
+    let color = p.color || '';
+    if (!color && p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
+      color = p.variants[0].color || '';
+    }
+    if (!color && p.title) {
+      const match = p.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+      if (match) color = match[1].trim();
+      else if (p.title.includes('ZWILLING Nova')) color = 'Bạc';
+    }
+    if (!color) return '';
+
+    let c = color.trim();
+    // Filter non-color values like dimensions, features, etc.
+    if (/^(cao |dáng |H:|H :|Quánh|size |5 rãnh|Phiên bản|Mới)/i.test(c) || c === 'Dáng thấp') {
+      const t = (p.title || '');
+      if (t.includes('thép') || t.includes('Thép') || t.includes('Núm nồi gang')) return 'Bạc';
+      if (t.includes('FRESH & SAVE')) return 'Trắng Trong';
+      if (t.includes('Ebony') || t.includes('Chảo Rán')) return 'Đen';
+      return 'Bạc';
+    }
+
+    if (c === 'Trắng Trufle') c = 'Trắng Truffle';
+    if (c === 'Bề mặt bóng') c = 'Bạc';
+    if (c.toLowerCase() === 'kem') c = 'Kem';
+    if (c.toLowerCase() === 'hồng') c = 'Hồng';
+    if (c.toLowerCase() === 'bạc') c = 'Bạc';
+    if (c === 'bạc, kèm ống hút') c = 'Bạc';
+    if (c === 'kem, kèm ống hút') c = 'Kem';
+    if (c === 'hồng, kèm ống hút') c = 'Hồng';
+    if (c.toLowerCase() === 'xanh dark blue') c = 'Xanh Dark Blue';
+    if (c === 'Set màu Macaron') c = 'Macaron';
+    if (c === 'Nhiều Màu') c = 'Nhiều màu';
+    return c;
+  }
+
+  _getColorHex(colorName) {
+    if (!colorName) return '#cccccc';
+    const name = colorName.toLowerCase();
+    if (name.includes('nhiều màu')) return 'linear-gradient(135deg, #e53935, #fb8c00, #43a047, #1e88e5)';
+    if (name.includes('trong suốt')) return 'linear-gradient(135deg, #ffffff 40%, #e0e0e0 60%)';
+    if (name.includes('cherry blossom') || name.includes('anh đào')) return '#e8a8b8';
+    if (name.includes('đỏ cherry')) return '#b51a2b';
+    if (name.includes('grenadine')) return '#6b1d28';
+    if (name.includes('bordeaux')) return '#58111a';
+    if (name.includes('đỏ cam')) return '#d34125';
+    if (name.includes('đỏ')) return '#c8102e';
+    if (name.includes('basil')) return '#315438';
+    if (name.includes('sage')) return '#879b83';
+    if (name.includes('lime')) return '#84b82c';
+    if (name.includes('lục')) return '#2d7a3a';
+    if (name.includes('dark blue')) return '#1b3558';
+    if (name.includes('hoàng gia')) return '#1f487e';
+    if (name.includes('lamer') || name.includes('la mer')) return '#2b767a';
+    if (name.includes('xanh')) return '#1d5f8a';
+    if (name.includes('truffle') || name.includes('trufle')) return '#ece8db';
+    if (name.includes('trắng')) return '#f8f8f8';
+    if (name.includes('citron')) return '#f1b82d';
+    if (name.includes('gold')) return '#d4af37';
+    if (name.includes('vàng hồng')) return '#d49a89';
+    if (name.includes('vàng')) return '#f1b82d';
+    if (name.includes('chocolate')) return '#4a2c20';
+    if (name.includes('nâu')) return '#5a3d2e';
+    if (name.includes('granada') || name.includes('cinnamon') || name.includes('quế') || name.includes('cam')) return '#d65a27';
+    if (name.includes('macaron')) return '#eec0c8';
+    if (name.includes('sorbet')) return '#f28599';
+    if (name.includes('hồng')) return '#f098aa';
+    if (name.includes('kem')) return '#f3e5ab';
+    if (name.includes('đen')) return '#222222';
+    if (name.includes('bạc') || name.includes('inox') || name.includes('bề mặt bóng')) return '#c0c0c0';
+    if (name.includes('xám')) return '#808080';
+    return '#cccccc';
+  }
+
+  _getAvailableColors() {
+    const raw = this.data || this.products;
+    const list = Array.isArray(raw) ? [...raw] : [];
+    if (!list.length) return [];
+
+    let filtered = list;
+
+    if (this.selectedCategory) {
+      const allCats = Array.isArray(this.categories) ? this.categories : [];
+      const matchedCat = allCats.find(
+        (c) => c.ID === this.selectedCategory || c._id === this.selectedCategory || c.slug === this.selectedCategory
+      );
+      if (matchedCat) {
+        filtered = filtered.filter((p) => this._categoryMatchesProduct(matchedCat, p));
+      } else {
+        filtered = filtered.filter((p) => {
+          const cat = this.selectedCategory;
+          return (
+            p.category === cat ||
+            p.categorySlug === cat ||
+            p.brandCategory === cat ||
+            (p.category && p.category.includes(cat)) ||
+            (p.categoryPath && p.categoryPath.includes(cat))
+          );
+        });
+      }
+    }
+
+    if (this.selectedBrand) {
+      filtered = filtered.filter((p) => {
+        const brand = this.selectedBrand.toLowerCase();
+        const pBrand = (p.brand || '').toLowerCase();
+        return pBrand === brand || pBrand.includes(brand) || (p.brandPath && p.brandPath.toLowerCase().includes(brand));
+      });
+    }
+
+    if (this.selectedSeries) {
+      const allSeries = Array.isArray(this.series) ? this.series : [];
+      const matchedSeries = allSeries.find(
+        (s) => s.ID === this.selectedSeries || s._id === this.selectedSeries || s.slug === this.selectedSeries
+      );
+      if (matchedSeries) {
+        filtered = filtered.filter((p) => this._seriesMatchesProduct(matchedSeries, p));
+      } else {
+        filtered = filtered.filter((p) => {
+          const s = this.selectedSeries;
+          if (!p.series) return false;
+          if (typeof p.series === 'object') {
+            return p.series.ID === s || p.series._id === s || p.series.slug === s;
+          }
+          return p.series === s || p.series.includes(s);
+        });
+      }
+    }
+
+    if (this.selectedPriceRange) {
+      filtered = filtered.filter((p) => {
+        const price = this._getProductPrice(p);
+        switch (this.selectedPriceRange) {
+          case 'under-1m':
+            return price > 0 && price < 1000000;
+          case '1m-3m':
+            return price >= 1000000 && price <= 3000000;
+          case '3m-5m':
+            return price >= 3000000 && price <= 5000000;
+          case 'over-5m':
+            return price > 5000000;
+          default:
+            return true;
+        }
+      });
+    }
+
+    const colorMap = new Map();
+    for (const p of filtered) {
+      const c = this._getProductColor(p);
+      if (c) {
+        colorMap.set(c, (colorMap.get(c) || 0) + 1);
+      }
+    }
+
+    return Array.from(colorMap.entries())
+      .map(([color, count]) => ({ color, count }))
+      .sort((a, b) => b.count - a.count || a.color.localeCompare(b.color));
+  }
+
   _getFilteredProducts() {
     const raw = this.data || this.products;
     const list = Array.isArray(raw) ? [...raw] : [];
@@ -807,6 +979,13 @@ export class WxProductListing extends LitElement {
       });
     }
 
+    if (this.selectedColor) {
+      filtered = filtered.filter((p) => {
+        const c = this._getProductColor(p);
+        return c.toLowerCase() === this.selectedColor.toLowerCase();
+      });
+    }
+
     if (this.selectedSort === 'price-asc') {
       filtered.sort((a, b) => this._getProductPrice(a) - this._getProductPrice(b));
     } else if (this.selectedSort === 'price-desc') {
@@ -825,6 +1004,14 @@ export class WxProductListing extends LitElement {
   _openSidebar(tab = 'all') {
     this.activeSidebarTab = tab;
     this.sidebarOpen = true;
+    if (tab && tab !== 'all') {
+      setTimeout(() => {
+        const sectionEl = this.shadowRoot?.querySelector(`#filter-section-${tab}`);
+        if (sectionEl) {
+          sectionEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
+    }
   }
 
   _closeSidebar() {
@@ -836,6 +1023,7 @@ export class WxProductListing extends LitElement {
     this.selectedCategory = '';
     this.selectedBrand = '';
     this.selectedSeries = '';
+    this.selectedColor = '';
     this.selectedPriceRange = '';
     this.selectedSort = 'default';
     this.visibleCount = this.pageSize || 32;
@@ -869,6 +1057,15 @@ export class WxProductListing extends LitElement {
     this.requestUpdate();
   }
 
+  _clearColorFilter(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.selectedColor = '';
+    this.requestUpdate();
+  }
+
   _clearPriceFilter(e) {
     if (e) {
       e.preventDefault();
@@ -887,6 +1084,7 @@ export class WxProductListing extends LitElement {
       changedProps.has('selectedCategory') ||
       changedProps.has('selectedBrand') ||
       changedProps.has('selectedSeries') ||
+      changedProps.has('selectedColor') ||
       changedProps.has('selectedPriceRange') ||
       changedProps.has('selectedSort') ||
       changedProps.has('products') ||
@@ -939,7 +1137,8 @@ export class WxProductListing extends LitElement {
     const filteredList = this._getFilteredProducts();
     const availableCategories = this._getAvailableCategories();
     const availableSeries = this._getAvailableSeries();
-    const hasActiveFilters = this.selectedCategory || this.selectedBrand || this.selectedSeries || this.selectedPriceRange;
+    const availableColors = this._getAvailableColors();
+    const hasActiveFilters = this.selectedCategory || this.selectedBrand || this.selectedSeries || this.selectedColor || this.selectedPriceRange;
     const totalItems = filteredList.length;
     const displayedList = filteredList.slice(0, this.visibleCount);
     const progressPercent = totalItems > 0 ? Math.min(100, (displayedList.length / totalItems) * 100) : 0;
@@ -980,6 +1179,13 @@ export class WxProductListing extends LitElement {
               @click="${() => this._openSidebar('series')}"
             >
               <span>${t('filterSeries', this.lang)}</span>
+            </button>
+
+            <button
+              class="filter-trigger-btn ${this.selectedColor ? 'has-value' : ''}"
+              @click="${() => this._openSidebar('color')}"
+            >
+              <span>${t('filterColor', this.lang)}</span>
             </button>
 
             <button
@@ -1063,7 +1269,7 @@ export class WxProductListing extends LitElement {
           </div>
 
           <div class="sidebar-content">
-            <div class="filter-section">
+            <div class="filter-section" id="filter-section-category">
               <div class="filter-group-title">
                 <span>${t('categories', this.lang)}</span>
                 ${this.selectedCategory
@@ -1102,7 +1308,7 @@ export class WxProductListing extends LitElement {
               </div>
             </div>
 
-            <div class="filter-section">
+            <div class="filter-section" id="filter-section-brand">
               <div class="filter-group-title">
                 <span>${t('brands', this.lang)}</span>
                 ${this.selectedBrand
@@ -1139,7 +1345,7 @@ export class WxProductListing extends LitElement {
               </div>
             </div>
 
-            <div class="filter-section">
+            <div class="filter-section" id="filter-section-series">
               <div class="filter-group-title">
                 <span>${t('series', this.lang)}</span>
                 ${this.selectedSeries
@@ -1178,7 +1384,47 @@ export class WxProductListing extends LitElement {
               </div>
             </div>
 
-            <div class="filter-section">
+            <div class="filter-section" id="filter-section-color">
+              <div class="filter-group-title">
+                <span>${t('color', this.lang)}</span>
+                ${this.selectedColor
+                  ? html`<button type="button" class="clear-section-btn" @click="${this._clearColorFilter}">${t('clear', this.lang)}</button>`
+                  : ''}
+              </div>
+              <div class="filter-options-list">
+                <label class="filter-option-label">
+                  <input
+                    type="radio"
+                    name="color_filter"
+                    value=""
+                    .checked="${!this.selectedColor}"
+                    @change="${() => (this.selectedColor = '')}"
+                  />
+                  <span>${t('allColors', this.lang)}</span>
+                </label>
+                <div class="filter-options-scrollable">
+                  ${availableColors && availableColors.length > 0
+                    ? availableColors.map(
+                        (c) => html`
+                          <label class="filter-option-label">
+                            <input
+                              type="radio"
+                              name="color_filter"
+                              value="${c.color}"
+                              .checked="${this.selectedColor === c.color}"
+                              @change="${() => (this.selectedColor = c.color)}"
+                            />
+                            <span class="color-swatch-circle" style="background: ${this._getColorHex(c.color)};"></span>
+                            <span>${c.color} (${c.count})</span>
+                          </label>
+                        `
+                      )
+                    : html`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${t('noColors', this.lang)}</span>`}
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" id="filter-section-price">
               <div class="filter-group-title">
                 <span>${t('priceRange', this.lang)}</span>
                 ${this.selectedPriceRange

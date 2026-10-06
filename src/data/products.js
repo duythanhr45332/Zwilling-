@@ -19,7 +19,8 @@ export const PRODUCTS = [
     "labels": "Bán chạy",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002144_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002144_Gallery_001.jpg;/wix-csv/Dao_compressed/1002144_Gallery_002.jpg;/wix-csv/Dao_compressed/1002144_Gallery_003.jpg;/wix-csv/Dao_compressed/1002144_Gallery_004.jpg;/wix-csv/Dao_compressed/1002144_Gallery_005.jpg;/wix-csv/Dao_compressed/1002144_Gallery_006.jpg;/wix-csv/Dao_compressed/1002144_Gallery_007.jpg;/wix-csv/Dao_compressed/1002144_Gallery_008.jpg;/wix-csv/Dao_compressed/1002144_Gallery_009.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002144_Gallery_001.jpg;/wix-csv/Dao_compressed/1002144_Gallery_002.jpg;/wix-csv/Dao_compressed/1002144_Gallery_003.jpg;/wix-csv/Dao_compressed/1002144_Gallery_004.jpg;/wix-csv/Dao_compressed/1002144_Gallery_005.jpg;/wix-csv/Dao_compressed/1002144_Gallery_006.jpg;/wix-csv/Dao_compressed/1002144_Gallery_007.jpg;/wix-csv/Dao_compressed/1002144_Gallery_008.jpg;/wix-csv/Dao_compressed/1002144_Gallery_009.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002139",
@@ -40,7 +41,8 @@ export const PRODUCTS = [
     "labels": "Mới",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002139_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002139_Gallery_001.jpg;/wix-csv/Dao_compressed/1002139_Gallery_002.jpg;/wix-csv/Dao_compressed/1002139_Gallery_003.jpg;/wix-csv/Dao_compressed/1002139_Gallery_004.jpg;/wix-csv/Dao_compressed/1002139_Gallery_005.jpg;/wix-csv/Dao_compressed/1002139_Gallery_006.jpg;/wix-csv/Dao_compressed/1002139_Gallery_007.jpg;/wix-csv/Dao_compressed/1002139_Gallery_008.jpg;/wix-csv/Dao_compressed/1002139_Gallery_009.jpg;/wix-csv/Dao_compressed/1002139_Gallery_010.jpg;/wix-csv/Dao_compressed/1002139_Gallery_011.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002139_Gallery_001.jpg;/wix-csv/Dao_compressed/1002139_Gallery_002.jpg;/wix-csv/Dao_compressed/1002139_Gallery_003.jpg;/wix-csv/Dao_compressed/1002139_Gallery_004.jpg;/wix-csv/Dao_compressed/1002139_Gallery_005.jpg;/wix-csv/Dao_compressed/1002139_Gallery_006.jpg;/wix-csv/Dao_compressed/1002139_Gallery_007.jpg;/wix-csv/Dao_compressed/1002139_Gallery_008.jpg;/wix-csv/Dao_compressed/1002139_Gallery_009.jpg;/wix-csv/Dao_compressed/1002139_Gallery_010.jpg;/wix-csv/Dao_compressed/1002139_Gallery_011.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002131",
@@ -61,7 +63,8 @@ export const PRODUCTS = [
     "labels": "Mới mở bán",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002131_Main Image_001.jpg",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002127",
@@ -82,7 +85,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002127_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002127_Gallery_001.jpg;/wix-csv/Dao_compressed/1002127_Gallery_002.jpg;/wix-csv/Dao_compressed/1002127_Gallery_003.jpg;/wix-csv/Dao_compressed/1002127_Gallery_009.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002127_Gallery_001.jpg;/wix-csv/Dao_compressed/1002127_Gallery_002.jpg;/wix-csv/Dao_compressed/1002127_Gallery_003.jpg;/wix-csv/Dao_compressed/1002127_Gallery_009.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-38400-091",
@@ -103,7 +107,8 @@ export const PRODUCTS = [
     "labels": "Bán chạy",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/38400-091_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/38400-091_Gallery_001.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_002.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_003.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_004.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_005.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_006.jpg"
+    "gallery": "/wix-csv/Dao_compressed/38400-091_Gallery_001.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_002.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_003.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_004.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_005.jpg;/wix-csv/Dao_compressed/38400-091_Gallery_006.jpg",
+    "color": "Đen Mờ"
   },
   {
     "ID": "prod-38404-141",
@@ -124,7 +129,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/38404-141_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/38404-141_Gallery_001.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_002.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_003.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_004.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_005.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_006.jpg"
+    "gallery": "/wix-csv/Dao_compressed/38404-141_Gallery_001.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_002.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_003.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_004.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_005.jpg;/wix-csv/Dao_compressed/38404-141_Gallery_006.jpg",
+    "color": "Đen Mờ"
   },
   {
     "ID": "prod-38415-161",
@@ -145,7 +151,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/38415-161_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/38415-161_Gallery_001.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_002.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_003.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_004.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_005.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_006.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_007.jpg"
+    "gallery": "/wix-csv/Dao_compressed/38415-161_Gallery_001.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_002.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_003.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_004.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_005.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_006.jpg;/wix-csv/Dao_compressed/38415-161_Gallery_007.jpg",
+    "color": "Đen Mờ"
   },
   {
     "ID": "prod-1030464",
@@ -166,7 +173,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1030464_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1030464_Gallery_001.jpg;/wix-csv/Dao_compressed/1030464_Gallery_002.jpg;/wix-csv/Dao_compressed/1030464_Gallery_003.jpg;/wix-csv/Dao_compressed/1030464_Gallery_004.jpg;/wix-csv/Dao_compressed/1030464_Gallery_005.jpg;/wix-csv/Dao_compressed/1030464_Gallery_006.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1030464_Gallery_001.jpg;/wix-csv/Dao_compressed/1030464_Gallery_002.jpg;/wix-csv/Dao_compressed/1030464_Gallery_003.jpg;/wix-csv/Dao_compressed/1030464_Gallery_004.jpg;/wix-csv/Dao_compressed/1030464_Gallery_005.jpg;/wix-csv/Dao_compressed/1030464_Gallery_006.jpg",
+    "color": "Đen Mờ"
   },
   {
     "ID": "prod-38407-181",
@@ -187,7 +195,8 @@ export const PRODUCTS = [
     "labels": "Bán chạy",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/38407-181_Main Image_001.jpg",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen Mờ"
   },
   {
     "ID": "prod-38406-201",
@@ -208,7 +217,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/38406-201_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/38406-201_Gallery_001.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_002.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_003.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_004.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_005.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_006.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_008.jpg"
+    "gallery": "/wix-csv/Dao_compressed/38406-201_Gallery_001.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_002.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_003.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_004.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_005.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_006.jpg;/wix-csv/Dao_compressed/38406-201_Gallery_008.jpg",
+    "color": "Đen Mờ"
   },
   {
     "ID": "prod-1002774",
@@ -229,7 +239,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002774_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002774_Gallery_001.jpg;/wix-csv/Dao_compressed/1002774_Gallery_002.jpg;/wix-csv/Dao_compressed/1002774_Gallery_003.jpg;/wix-csv/Dao_compressed/1002774_Gallery_004.jpg;/wix-csv/Dao_compressed/1002774_Gallery_005.jpg;/wix-csv/Dao_compressed/1002774_Gallery_006.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002774_Gallery_001.jpg;/wix-csv/Dao_compressed/1002774_Gallery_002.jpg;/wix-csv/Dao_compressed/1002774_Gallery_003.jpg;/wix-csv/Dao_compressed/1002774_Gallery_004.jpg;/wix-csv/Dao_compressed/1002774_Gallery_005.jpg;/wix-csv/Dao_compressed/1002774_Gallery_006.jpg",
+    "color": "Đen Mờ"
   },
   {
     "ID": "prod-30571-141",
@@ -250,7 +261,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/30571-141_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/30571-141_Gallery_001.jpg;/wix-csv/Dao_compressed/30571-141_Gallery_002.jpg;/wix-csv/Dao_compressed/30571-141_Gallery_003.jpg;/wix-csv/Dao_compressed/30571-141_Gallery_004.jpg"
+    "gallery": "/wix-csv/Dao_compressed/30571-141_Gallery_001.jpg;/wix-csv/Dao_compressed/30571-141_Gallery_002.jpg;/wix-csv/Dao_compressed/30571-141_Gallery_003.jpg;/wix-csv/Dao_compressed/30571-141_Gallery_004.jpg",
+    "color": "Nâu"
   },
   {
     "ID": "prod-30577-181",
@@ -271,7 +283,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/30577-181_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/30577-181_Gallery_001.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_002.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_003.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_004.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_005.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_006.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_007.jpg"
+    "gallery": "/wix-csv/Dao_compressed/30577-181_Gallery_001.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_002.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_003.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_004.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_005.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_006.jpg;/wix-csv/Dao_compressed/30577-181_Gallery_007.jpg",
+    "color": "Nâu"
   },
   {
     "ID": "prod-30571-201",
@@ -292,7 +305,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/30571-201_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/30571-201_Gallery_001.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_002.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_003.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_004.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_005.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_006.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_007.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_008.jpg"
+    "gallery": "/wix-csv/Dao_compressed/30571-201_Gallery_001.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_002.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_003.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_004.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_005.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_006.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_007.jpg;/wix-csv/Dao_compressed/30571-201_Gallery_008.jpg",
+    "color": "Nâu"
   },
   {
     "ID": "prod-30570-231",
@@ -313,7 +327,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/30570-231_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/30570-231_Gallery_001.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_002.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_003.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_004.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_005.jpg"
+    "gallery": "/wix-csv/Dao_compressed/30570-231_Gallery_001.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_002.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_003.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_004.jpg;/wix-csv/Dao_compressed/30570-231_Gallery_005.jpg",
+    "color": "Nâu"
   },
   {
     "ID": "prod-1001612",
@@ -334,7 +349,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1001612_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1001612_Gallery_001.jpg;/wix-csv/Dao_compressed/1001612_Gallery_002.jpg;/wix-csv/Dao_compressed/1001612_Gallery_003.jpg;/wix-csv/Dao_compressed/1001612_Gallery_004.jpg;/wix-csv/Dao_compressed/1001612_Gallery_005.jpg;/wix-csv/Dao_compressed/1001612_Gallery_006.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1001612_Gallery_001.jpg;/wix-csv/Dao_compressed/1001612_Gallery_002.jpg;/wix-csv/Dao_compressed/1001612_Gallery_003.jpg;/wix-csv/Dao_compressed/1001612_Gallery_004.jpg;/wix-csv/Dao_compressed/1001612_Gallery_005.jpg;/wix-csv/Dao_compressed/1001612_Gallery_006.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1001529",
@@ -355,7 +371,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1001529_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1001529_Gallery_001.jpg;/wix-csv/Dao_compressed/1001529_Gallery_002.jpg;/wix-csv/Dao_compressed/1001529_Gallery_003.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1001529_Gallery_001.jpg;/wix-csv/Dao_compressed/1001529_Gallery_002.jpg;/wix-csv/Dao_compressed/1001529_Gallery_003.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1001635",
@@ -376,7 +393,8 @@ export const PRODUCTS = [
     "labels": "Bán chạy",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1001635_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1001635_Gallery_001.jpg;/wix-csv/Dao_compressed/1001635_Gallery_002.jpg;/wix-csv/Dao_compressed/1001635_Gallery_003.jpg;/wix-csv/Dao_compressed/1001635_Gallery_004.jpg;/wix-csv/Dao_compressed/1001635_Gallery_005.jpg;/wix-csv/Dao_compressed/1001635_Gallery_006.jpg;/wix-csv/Dao_compressed/1001635_Gallery_007.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1001635_Gallery_001.jpg;/wix-csv/Dao_compressed/1001635_Gallery_002.jpg;/wix-csv/Dao_compressed/1001635_Gallery_003.jpg;/wix-csv/Dao_compressed/1001635_Gallery_004.jpg;/wix-csv/Dao_compressed/1001635_Gallery_005.jpg;/wix-csv/Dao_compressed/1001635_Gallery_006.jpg;/wix-csv/Dao_compressed/1001635_Gallery_007.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1001567",
@@ -397,7 +415,8 @@ export const PRODUCTS = [
     "labels": "Bán chạy",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1001567_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1001567_Gallery_001.jpg;/wix-csv/Dao_compressed/1001567_Gallery_002.jpg;/wix-csv/Dao_compressed/1001567_Gallery_003.jpg;/wix-csv/Dao_compressed/1001567_Gallery_004.jpg;/wix-csv/Dao_compressed/1001567_Gallery_005.jpg;/wix-csv/Dao_compressed/1001567_Gallery_006.jpg;/wix-csv/Dao_compressed/1001567_Gallery_007.jpg;/wix-csv/Dao_compressed/1001567_Gallery_008.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1001567_Gallery_001.jpg;/wix-csv/Dao_compressed/1001567_Gallery_002.jpg;/wix-csv/Dao_compressed/1001567_Gallery_003.jpg;/wix-csv/Dao_compressed/1001567_Gallery_004.jpg;/wix-csv/Dao_compressed/1001567_Gallery_005.jpg;/wix-csv/Dao_compressed/1001567_Gallery_006.jpg;/wix-csv/Dao_compressed/1001567_Gallery_007.jpg;/wix-csv/Dao_compressed/1001567_Gallery_008.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002390",
@@ -418,7 +437,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002390_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002390_Gallery_001.jpg;/wix-csv/Dao_compressed/1002390_Gallery_002.jpg;/wix-csv/Dao_compressed/1002390_Gallery_003.jpg;/wix-csv/Dao_compressed/1002390_Gallery_004.jpg;/wix-csv/Dao_compressed/1002390_Gallery_005.jpg;/wix-csv/Dao_compressed/1002390_Gallery_006.jpg;/wix-csv/Dao_compressed/1002390_Gallery_007.jpg;/wix-csv/Dao_compressed/1002390_Gallery_008.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002390_Gallery_001.jpg;/wix-csv/Dao_compressed/1002390_Gallery_002.jpg;/wix-csv/Dao_compressed/1002390_Gallery_003.jpg;/wix-csv/Dao_compressed/1002390_Gallery_004.jpg;/wix-csv/Dao_compressed/1002390_Gallery_005.jpg;/wix-csv/Dao_compressed/1002390_Gallery_006.jpg;/wix-csv/Dao_compressed/1002390_Gallery_007.jpg;/wix-csv/Dao_compressed/1002390_Gallery_008.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002418",
@@ -439,7 +459,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002418_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002418_Gallery_001.jpg;/wix-csv/Dao_compressed/1002418_Gallery_002.jpg;/wix-csv/Dao_compressed/1002418_Gallery_003.jpg;/wix-csv/Dao_compressed/1002418_Gallery_004.jpg;/wix-csv/Dao_compressed/1002418_Gallery_005.jpg;/wix-csv/Dao_compressed/1002418_Gallery_006.jpg;/wix-csv/Dao_compressed/1002418_Gallery_007.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002418_Gallery_001.jpg;/wix-csv/Dao_compressed/1002418_Gallery_002.jpg;/wix-csv/Dao_compressed/1002418_Gallery_003.jpg;/wix-csv/Dao_compressed/1002418_Gallery_004.jpg;/wix-csv/Dao_compressed/1002418_Gallery_005.jpg;/wix-csv/Dao_compressed/1002418_Gallery_006.jpg;/wix-csv/Dao_compressed/1002418_Gallery_007.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002363",
@@ -460,7 +481,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002363_Main Image_001.jpg",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002402",
@@ -481,7 +503,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002402_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002402_Gallery_001.jpg;/wix-csv/Dao_compressed/1002402_Gallery_002.jpg;/wix-csv/Dao_compressed/1002402_Gallery_003.jpg;/wix-csv/Dao_compressed/1002402_Gallery_004.jpg;/wix-csv/Dao_compressed/1002402_Gallery_005.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002402_Gallery_001.jpg;/wix-csv/Dao_compressed/1002402_Gallery_002.jpg;/wix-csv/Dao_compressed/1002402_Gallery_003.jpg;/wix-csv/Dao_compressed/1002402_Gallery_004.jpg;/wix-csv/Dao_compressed/1002402_Gallery_005.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1002406",
@@ -502,7 +525,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002406_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002406_Gallery_001.jpg;/wix-csv/Dao_compressed/1002406_Gallery_002.jpg;/wix-csv/Dao_compressed/1002406_Gallery_003.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002406_Gallery_001.jpg;/wix-csv/Dao_compressed/1002406_Gallery_002.jpg;/wix-csv/Dao_compressed/1002406_Gallery_003.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1011703",
@@ -523,7 +547,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1011703_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1011703_Gallery_001.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1011703_Gallery_001.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1011706",
@@ -544,7 +569,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1011706_Main Image_001.jpg",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1011699",
@@ -565,7 +591,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1011699_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1011699_Gallery_001.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1011699_Gallery_001.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-30747-180-722",
@@ -586,7 +613,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/30747-180-722_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/30747-180-722_Gallery_001.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_002.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_003.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_004.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_005.jpg"
+    "gallery": "/wix-csv/Dao_compressed/30747-180-722_Gallery_001.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_002.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_003.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_004.jpg;/wix-csv/Dao_compressed/30747-180-722_Gallery_005.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-30790-170-722",
@@ -607,7 +635,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/30790-170-722_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/30790-170-722_Gallery_001.jpg;/wix-csv/Dao_compressed/30790-170-722_Gallery_002.jpg"
+    "gallery": "/wix-csv/Dao_compressed/30790-170-722_Gallery_001.jpg;/wix-csv/Dao_compressed/30790-170-722_Gallery_002.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-38448-001",
@@ -628,7 +657,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/38448-001_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/38448-001_Gallery_001.jpg;/wix-csv/Dao_compressed/38448-001_Gallery_002.jpg;/wix-csv/Dao_compressed/38448-001_Gallery_003.jpg;/wix-csv/Dao_compressed/38448-001_Gallery_004.jpg"
+    "gallery": "/wix-csv/Dao_compressed/38448-001_Gallery_001.jpg;/wix-csv/Dao_compressed/38448-001_Gallery_002.jpg;/wix-csv/Dao_compressed/38448-001_Gallery_003.jpg;/wix-csv/Dao_compressed/38448-001_Gallery_004.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-1029641",
@@ -649,7 +679,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1029641_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1029641_Gallery_001.jpg;/wix-csv/Dao_compressed/1029641_Gallery_002.jpg;/wix-csv/Dao_compressed/1029641_Gallery_003.jpg;/wix-csv/Dao_compressed/1029641_Gallery_004.jpg;/wix-csv/Dao_compressed/1029641_Gallery_005.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1029641_Gallery_001.jpg;/wix-csv/Dao_compressed/1029641_Gallery_002.jpg;/wix-csv/Dao_compressed/1029641_Gallery_003.jpg;/wix-csv/Dao_compressed/1029641_Gallery_004.jpg;/wix-csv/Dao_compressed/1029641_Gallery_005.jpg",
+    "color": "Xám Than Chì"
   },
   {
     "ID": "prod-1002301",
@@ -670,7 +701,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002301_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002301_Gallery_001.jpg;/wix-csv/Dao_compressed/1002301_Gallery_002.jpg;/wix-csv/Dao_compressed/1002301_Gallery_003.jpg;/wix-csv/Dao_compressed/1002301_Gallery_004.jpg;/wix-csv/Dao_compressed/1002301_Gallery_005.jpg;/wix-csv/Dao_compressed/1002301_Gallery_006.jpg;/wix-csv/Dao_compressed/1002301_Gallery_007.jpg;/wix-csv/Dao_compressed/1002301_Gallery_008.jpg;/wix-csv/Dao_compressed/1002301_Gallery_009.jpg;/wix-csv/Dao_compressed/1002301_Gallery_010.jpg;/wix-csv/Dao_compressed/1002301_Gallery_011.jpg;/wix-csv/Dao_compressed/1002301_Gallery_012.jpg;/wix-csv/Dao_compressed/1002301_Gallery_013.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002301_Gallery_001.jpg;/wix-csv/Dao_compressed/1002301_Gallery_002.jpg;/wix-csv/Dao_compressed/1002301_Gallery_003.jpg;/wix-csv/Dao_compressed/1002301_Gallery_004.jpg;/wix-csv/Dao_compressed/1002301_Gallery_005.jpg;/wix-csv/Dao_compressed/1002301_Gallery_006.jpg;/wix-csv/Dao_compressed/1002301_Gallery_007.jpg;/wix-csv/Dao_compressed/1002301_Gallery_008.jpg;/wix-csv/Dao_compressed/1002301_Gallery_009.jpg;/wix-csv/Dao_compressed/1002301_Gallery_010.jpg;/wix-csv/Dao_compressed/1002301_Gallery_011.jpg;/wix-csv/Dao_compressed/1002301_Gallery_012.jpg;/wix-csv/Dao_compressed/1002301_Gallery_013.jpg",
+    "color": "Nâu Gỗ"
   },
   {
     "ID": "prod-1002446",
@@ -691,7 +723,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/1002446_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/1002446_Gallery_001.jpg;/wix-csv/Dao_compressed/1002446_Gallery_002.jpg;/wix-csv/Dao_compressed/1002446_Gallery_003.jpg;/wix-csv/Dao_compressed/1002446_Gallery_004.jpg;/wix-csv/Dao_compressed/1002446_Gallery_005.jpg"
+    "gallery": "/wix-csv/Dao_compressed/1002446_Gallery_001.jpg;/wix-csv/Dao_compressed/1002446_Gallery_002.jpg;/wix-csv/Dao_compressed/1002446_Gallery_003.jpg;/wix-csv/Dao_compressed/1002446_Gallery_004.jpg;/wix-csv/Dao_compressed/1002446_Gallery_005.jpg",
+    "color": "Đen"
   },
   {
     "ID": "prod-54350-015-722",
@@ -712,7 +745,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/54350-015-722_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/54350-015-722_Gallery_001.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_002.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_003.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_004.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_005.jpg"
+    "gallery": "/wix-csv/Dao_compressed/54350-015-722_Gallery_001.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_002.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_003.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_004.jpg;/wix-csv/Dao_compressed/54350-015-722_Gallery_005.jpg",
+    "color": "Đỏ Cam"
   },
   {
     "ID": "prod-54370-015-722",
@@ -733,7 +767,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "/wix-csv/Dao_compressed/54370-015-722_Main Image_001.jpg",
-    "gallery": "/wix-csv/Dao_compressed/54370-015-722_Gallery_001.jpg;/wix-csv/Dao_compressed/54370-015-722_Gallery_002.jpg;/wix-csv/Dao_compressed/54370-015-722_Gallery_003.jpg"
+    "gallery": "/wix-csv/Dao_compressed/54370-015-722_Gallery_001.jpg;/wix-csv/Dao_compressed/54370-015-722_Gallery_002.jpg;/wix-csv/Dao_compressed/54370-015-722_Gallery_003.jpg",
+    "color": "Xanh lục"
   },
   {
     "ID": "prod-1033314",
@@ -754,7 +789,8 @@ export const PRODUCTS = [
     "labels": "Bán chạy",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1004193",
@@ -775,7 +811,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-1004195",
@@ -796,7 +833,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1003431",
@@ -817,7 +855,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1021912",
@@ -838,7 +877,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1004201",
@@ -859,7 +899,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-1033328",
@@ -880,7 +921,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1004203",
@@ -901,7 +943,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1030713",
@@ -922,7 +965,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Sage"
   },
   {
     "ID": "prod-1033330",
@@ -943,7 +987,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-40502-292",
@@ -964,7 +1009,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Bordeaux"
   },
   {
     "ID": "prod-40501-410",
@@ -985,7 +1031,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-40509-644",
@@ -1006,7 +1053,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-1004155",
@@ -1027,7 +1075,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1004284",
@@ -1048,7 +1097,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Dark Blue"
   },
   {
     "ID": "prod-1033360",
@@ -1069,7 +1119,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-40502-293",
@@ -1090,7 +1141,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Bordeaux"
   },
   {
     "ID": "prod-40501-411",
@@ -1111,7 +1163,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1021920",
@@ -1132,7 +1185,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1003971",
@@ -1153,7 +1207,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-40509-354",
@@ -1174,7 +1229,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-1004286",
@@ -1195,7 +1251,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Dark Blue"
   },
   {
     "ID": "prod-1029058",
@@ -1216,7 +1273,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1033364",
@@ -1237,7 +1295,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1033362",
@@ -1258,7 +1317,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Bordeaux"
   },
   {
     "ID": "prod-40501-412",
@@ -1279,7 +1339,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1021923",
@@ -1300,7 +1361,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-40508-654",
@@ -1321,7 +1383,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Lamer"
   },
   {
     "ID": "prod-40509-356",
@@ -1342,7 +1405,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-1003975",
@@ -1363,7 +1427,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1004297",
@@ -1384,7 +1449,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Dark Blue"
   },
   {
     "ID": "prod-1029060",
@@ -1405,7 +1471,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1033396",
@@ -1426,7 +1493,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1033394",
@@ -1447,7 +1515,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Bordeaux"
   },
   {
     "ID": "prod-40501-413",
@@ -1468,7 +1537,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1023654",
@@ -1489,7 +1559,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1003979",
@@ -1510,7 +1581,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1029024",
@@ -1531,7 +1603,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1003977",
@@ -1552,7 +1625,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-1004299",
@@ -1573,7 +1647,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Dark Blue"
   },
   {
     "ID": "prod-1003881",
@@ -1594,7 +1669,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Lamer"
   },
   {
     "ID": "prod-1023546",
@@ -1615,7 +1691,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Lamer"
   },
   {
     "ID": "prod-1004794",
@@ -1636,7 +1713,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1033422",
@@ -1657,7 +1735,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-40501-486",
@@ -1678,7 +1757,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1004768",
@@ -1699,7 +1779,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-40511-476",
@@ -1720,7 +1801,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Dark Blue"
   },
   {
     "ID": "prod-40506-548",
@@ -1741,7 +1823,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1024000",
@@ -1762,7 +1845,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Cam Cinnamon"
   },
   {
     "ID": "prod-1033380",
@@ -1783,7 +1867,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-40510-326",
@@ -1804,7 +1889,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Dark Blue"
   },
   {
     "ID": "prod-1003335",
@@ -1825,7 +1911,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Lamer"
   },
   {
     "ID": "prod-1004187",
@@ -1846,7 +1933,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1003294",
@@ -1867,7 +1955,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-1003489",
@@ -1888,7 +1977,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Dark Blue"
   },
   {
     "ID": "prod-1003332",
@@ -1909,7 +1999,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Lamer"
   },
   {
     "ID": "prod-1029064",
@@ -1930,7 +2021,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1004823",
@@ -1951,7 +2043,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1033376",
@@ -1972,7 +2065,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1004350",
@@ -1993,7 +2087,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Grenadine"
   },
   {
     "ID": "prod-1004354",
@@ -2014,7 +2109,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Basil"
   },
   {
     "ID": "prod-40501-110",
@@ -2035,7 +2131,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1004319",
@@ -2056,7 +2153,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1004415",
@@ -2077,7 +2175,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1004102",
@@ -2098,7 +2197,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1004108",
@@ -2119,7 +2219,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-40509-348",
@@ -2140,7 +2241,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-40510-657",
@@ -2161,7 +2263,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-40511-486",
@@ -2182,7 +2285,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1026397",
@@ -2203,7 +2307,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1004405",
@@ -2224,7 +2329,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1035151",
@@ -2245,7 +2351,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Gold"
   },
   {
     "ID": "prod-1006102",
@@ -2266,7 +2373,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006097",
@@ -2287,7 +2395,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006098",
@@ -2308,7 +2417,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006100",
@@ -2329,7 +2439,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006088",
@@ -2350,7 +2461,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006092",
@@ -2371,7 +2483,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006106",
@@ -2392,7 +2505,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006107",
@@ -2413,7 +2527,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1006109",
@@ -2434,7 +2549,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1016719",
@@ -2455,7 +2571,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1016731",
@@ -2476,7 +2593,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-40459-300-922",
@@ -2497,7 +2615,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1030762",
@@ -2518,7 +2637,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1030789",
@@ -2539,7 +2659,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1030790",
@@ -2560,7 +2681,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1030791",
@@ -2581,7 +2703,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1030792",
@@ -2602,7 +2725,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1012381",
@@ -2623,7 +2747,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1012539",
@@ -2644,7 +2769,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Hoàng Gia"
   },
   {
     "ID": "prod-1012540",
@@ -2665,7 +2791,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Hoàng Gia"
   },
   {
     "ID": "prod-1012542",
@@ -2686,7 +2813,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Hoàng Gia"
   },
   {
     "ID": "prod-1012547",
@@ -2707,7 +2835,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Nâu Chocolate"
   },
   {
     "ID": "prod-1012548",
@@ -2728,7 +2857,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Nâu Chocolate"
   },
   {
     "ID": "prod-1012549",
@@ -2749,7 +2879,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Nâu Chocolate"
   },
   {
     "ID": "prod-1012555",
@@ -2770,7 +2901,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Nâu Chocolate"
   },
   {
     "ID": "prod-1012552",
@@ -2791,7 +2923,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Nâu Chocolate"
   },
   {
     "ID": "prod-40508-026",
@@ -2812,7 +2945,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-40508-027",
@@ -2833,7 +2967,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-40508-803",
@@ -2854,7 +2989,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-40508-029",
@@ -2875,7 +3011,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-40508-030",
@@ -2896,7 +3033,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1014717",
@@ -2917,7 +3055,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1033909",
@@ -2938,7 +3077,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1022483",
@@ -2959,7 +3099,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1023872",
@@ -2980,7 +3121,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1023873",
@@ -3001,7 +3143,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1023895",
@@ -3022,7 +3165,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1023896",
@@ -3043,7 +3187,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1025077",
@@ -3064,7 +3209,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-1025074",
@@ -3085,7 +3231,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-40510-791",
@@ -3106,7 +3253,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1021365",
@@ -3127,7 +3275,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Macaron"
   },
   {
     "ID": "prod-1029960",
@@ -3148,7 +3297,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Macaron"
   },
   {
     "ID": "prod-1026679",
@@ -3169,7 +3319,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Macaron"
   },
   {
     "ID": "prod-1022542",
@@ -3190,7 +3341,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1003212",
@@ -3211,7 +3363,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1003213",
@@ -3232,7 +3385,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cam"
   },
   {
     "ID": "prod-1004820",
@@ -3253,7 +3407,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Cam Quế"
   },
   {
     "ID": "prod-1004997",
@@ -3274,7 +3429,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ"
   },
   {
     "ID": "prod-1033603",
@@ -3295,7 +3451,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Sorbet"
   },
   {
     "ID": "prod-1036358",
@@ -3316,7 +3473,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1036339",
@@ -3337,7 +3495,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1029085",
@@ -3358,7 +3517,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1029086",
@@ -3379,7 +3539,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1029087",
@@ -3400,7 +3561,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1029088",
@@ -3421,7 +3583,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Citron"
   },
   {
     "ID": "prod-1026258",
@@ -3442,7 +3605,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Macaron"
   },
   {
     "ID": "prod-1022061",
@@ -3463,7 +3627,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng"
   },
   {
     "ID": "prod-36802-003",
@@ -3484,7 +3649,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-36800-305",
@@ -3505,7 +3671,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1010342",
@@ -3526,7 +3693,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Mờ"
   },
   {
     "ID": "prod-1010344",
@@ -3547,7 +3715,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Mờ"
   },
   {
     "ID": "prod-1010343",
@@ -3568,7 +3737,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Mờ"
   },
   {
     "ID": "prod-1020162",
@@ -3589,7 +3759,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1010708",
@@ -3610,7 +3781,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1010707",
@@ -3631,7 +3803,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1025167",
@@ -3652,7 +3825,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng"
   },
   {
     "ID": "prod-1026196",
@@ -3673,7 +3847,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1030777",
@@ -3694,7 +3869,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1033876",
@@ -3715,7 +3891,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1034226",
@@ -3736,7 +3913,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Trong"
   },
   {
     "ID": "prod-1024118",
@@ -3757,7 +3935,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh La Mer và Trắng"
   },
   {
     "ID": "prod-1002645",
@@ -3778,7 +3957,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1019028",
@@ -3799,7 +3979,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1002521",
@@ -3820,7 +4001,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1002633",
@@ -3841,7 +4023,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1003589",
@@ -3862,7 +4045,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1003590",
@@ -3883,7 +4067,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1003592",
@@ -3904,7 +4089,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1003598",
@@ -3925,7 +4111,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1003588",
@@ -3946,7 +4133,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1003597",
@@ -3967,7 +4155,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1033762",
@@ -3988,7 +4177,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Cherry"
   },
   {
     "ID": "prod-1004712",
@@ -4009,7 +4199,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1029973",
@@ -4030,7 +4221,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trắng Truffle"
   },
   {
     "ID": "prod-1029974",
@@ -4051,7 +4243,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng Cherry Blossom"
   },
   {
     "ID": "prod-41471-000-062",
@@ -4072,7 +4265,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-42931-000-0",
@@ -4093,7 +4287,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1020999",
@@ -4114,7 +4309,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đỏ Granada"
   },
   {
     "ID": "prod-1029280",
@@ -4135,7 +4331,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Lime"
   },
   {
     "ID": "prod-1029979",
@@ -4156,7 +4353,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Cam"
   },
   {
     "ID": "prod-1035027",
@@ -4177,7 +4375,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1001798",
@@ -4198,7 +4397,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1020353",
@@ -4219,7 +4419,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Cam Granada"
   },
   {
     "ID": "prod-1020354",
@@ -4240,7 +4441,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh Lime"
   },
   {
     "ID": "prod-1029952",
@@ -4261,7 +4463,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Nâu"
   },
   {
     "ID": "prod-1032985",
@@ -4282,7 +4485,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Đen"
   },
   {
     "ID": "prod-1032823",
@@ -4303,7 +4507,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1021590",
@@ -4324,7 +4529,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc Nhám"
   },
   {
     "ID": "prod-1021591",
@@ -4345,7 +4551,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Hồng Nhám"
   },
   {
     "ID": "prod-1021592",
@@ -4366,7 +4573,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc Nhám"
   },
   {
     "ID": "prod-1021593",
@@ -4387,7 +4595,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Hồng Nhám"
   },
   {
     "ID": "prod-1021594",
@@ -4408,7 +4617,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc Nhám"
   },
   {
     "ID": "prod-1021595",
@@ -4429,7 +4639,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Hồng Nhám"
   },
   {
     "ID": "prod-07126-304",
@@ -4450,7 +4661,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc Nhám"
   },
   {
     "ID": "prod-07125-304",
@@ -4471,7 +4683,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Hồng Nhám"
   },
   {
     "ID": "prod-07126-324",
@@ -4492,7 +4705,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc Nhám"
   },
   {
     "ID": "prod-07125-324",
@@ -4513,7 +4727,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Hồng Nhám"
   },
   {
     "ID": "prod-1021443",
@@ -4534,7 +4749,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc Nhám"
   },
   {
     "ID": "prod-1021444",
@@ -4555,7 +4771,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Hồng Nhám"
   },
   {
     "ID": "prod-1022584",
@@ -4576,7 +4793,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1023981",
@@ -4597,7 +4815,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1023979",
@@ -4618,7 +4837,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1023980",
@@ -4639,7 +4859,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1024033",
@@ -4660,7 +4881,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1022175",
@@ -4681,7 +4903,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc Nhám"
   },
   {
     "ID": "prod-1022174",
@@ -4702,7 +4925,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Vàng Hồng Nhám"
   },
   {
     "ID": "prod-07141-104-9",
@@ -4723,7 +4947,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-07141-106-9",
@@ -4744,7 +4969,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-07141-400-9",
@@ -4765,7 +4991,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   },
   {
     "ID": "prod-1021193",
@@ -4786,7 +5013,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Nhiều màu"
   },
   {
     "ID": "prod-1021273",
@@ -4807,7 +5035,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng"
   },
   {
     "ID": "prod-39500-112",
@@ -4828,7 +5057,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Trong suốt"
   },
   {
     "ID": "prod-1028985",
@@ -4849,7 +5079,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Macaron"
   },
   {
     "ID": "prod-1034307",
@@ -4870,7 +5101,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Kem"
   },
   {
     "ID": "prod-1034308",
@@ -4891,7 +5123,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Xanh"
   },
   {
     "ID": "prod-1034343",
@@ -4912,7 +5145,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Hồng"
   },
   {
     "ID": "prod-1034342",
@@ -4933,7 +5167,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Kem"
   },
   {
     "ID": "prod-1035099",
@@ -4954,7 +5189,8 @@ export const PRODUCTS = [
     "labels": "",
     "status": "active",
     "mainImage": "",
-    "gallery": ""
+    "gallery": "",
+    "color": "Bạc"
   }
 ];
 export default PRODUCTS;

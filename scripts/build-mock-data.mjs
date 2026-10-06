@@ -88,7 +88,48 @@ if (fs.existsSync(daoDir)) {
   daoFiles = fs.readdirSync(daoDir);
 }
 
+const variantByProduct = new Map();
+variants.forEach(v => {
+  if (v.product) {
+    variantByProduct.set(v.product, v);
+  }
+});
+
+function normalizeColor(color, title = '') {
+  if (!color) {
+    const match = title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+    if (match) color = match[1].trim();
+    else if (title.includes('ZWILLING Nova')) color = 'Bạc';
+  }
+  if (!color) return '';
+
+  let c = color.trim();
+  // Filter non-color values like dimensions, features, etc.
+  if (/^(cao |dáng |H:|H :|Quánh|size |5 rãnh|Phiên bản|Mới)/i.test(c) || c === 'Dáng thấp') {
+    if (title.includes('thép') || title.includes('Thép') || title.includes('Núm nồi gang')) return 'Bạc';
+    if (title.includes('FRESH & SAVE')) return 'Trắng Trong';
+    if (title.includes('Ebony') || title.includes('Chảo Rán')) return 'Đen';
+    return 'Bạc';
+  }
+
+  if (c === 'Trắng Trufle') c = 'Trắng Truffle';
+  if (c === 'Bề mặt bóng') c = 'Bạc';
+  if (c.toLowerCase() === 'kem') c = 'Kem';
+  if (c.toLowerCase() === 'hồng') c = 'Hồng';
+  if (c.toLowerCase() === 'bạc') c = 'Bạc';
+  if (c === 'bạc, kèm ống hút') c = 'Bạc';
+  if (c === 'kem, kèm ống hút') c = 'Kem';
+  if (c === 'hồng, kèm ống hút') c = 'Hồng';
+  if (c.toLowerCase() === 'xanh dark blue') c = 'Xanh Dark Blue';
+  if (c === 'Set màu Macaron') c = 'Macaron';
+  if (c === 'Nhiều Màu') c = 'Nhiều màu';
+  return c;
+}
+
 products.forEach(p => {
+  const v = variantByProduct.get(p.ID);
+  p.color = normalizeColor(p.color || (v && v.color), p.title);
+
   const sku = (p.ID || '').replace(/^prod-/, '').trim();
   if (sku && daoFiles.length > 0) {
     if (!p.mainImage) {
