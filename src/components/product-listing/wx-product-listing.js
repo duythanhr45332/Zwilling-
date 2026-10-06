@@ -746,23 +746,12 @@ export class WxProductListing extends LitElement {
     });
   }
 
-  _getProductColor(p) {
-    if (!p) return '';
-    let color = p.color || '';
-    if (!color && p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
-      color = p.variants[0].color || '';
-    }
-    if (!color && p.title) {
-      const match = p.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
-      if (match) color = match[1].trim();
-      else if (p.title.includes('ZWILLING Nova')) color = 'Bạc';
-    }
+  _normalizeColor(color, p) {
     if (!color) return '';
-
     let c = color.trim();
     // Filter non-color values like dimensions, features, etc.
     if (/^(cao |dáng |H:|H :|Quánh|size |5 rãnh|Phiên bản|Mới)/i.test(c) || c === 'Dáng thấp') {
-      const t = (p.title || '');
+      const t = (p && p.title) || '';
       if (t.includes('thép') || t.includes('Thép') || t.includes('Núm nồi gang')) return 'Bạc';
       if (t.includes('FRESH & SAVE')) return 'Trắng Trong';
       if (t.includes('Ebony') || t.includes('Chảo Rán')) return 'Đen';
@@ -781,6 +770,50 @@ export class WxProductListing extends LitElement {
     if (c === 'Set màu Macaron') c = 'Macaron';
     if (c === 'Nhiều Màu') c = 'Nhiều màu';
     return c;
+  }
+
+  _getProductColor(p) {
+    if (!p) return '';
+    let color = p.color || '';
+    if (!color && p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
+      color = p.variants[0].color || '';
+    }
+    if (!color && p.title) {
+      const match = p.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+      if (match) color = match[1].trim();
+      else if (p.title.includes('ZWILLING Nova')) color = 'Bạc';
+    }
+    return this._normalizeColor(color, p);
+  }
+
+  _getProductColors(p) {
+    if (!p) return [];
+    const colors = new Set();
+    if (p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
+      for (const v of p.variants) {
+        let vc = v.color || '';
+        if (!vc && v.title) {
+          const match = v.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+          if (match) vc = match[1].trim();
+        }
+        const norm = this._normalizeColor(vc, p);
+        if (norm) colors.add(norm);
+      }
+    }
+    let baseColor = p.color || '';
+    if (!baseColor && p.title) {
+      const match = p.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+      if (match) baseColor = match[1].trim();
+      else if (p.title.includes('ZWILLING Nova')) baseColor = 'Bạc';
+    }
+    const normBase = this._normalizeColor(baseColor, p);
+    if (normBase) colors.add(normBase);
+
+    if (colors.size === 0) {
+      const single = this._getProductColor(p);
+      if (single) colors.add(single);
+    }
+    return Array.from(colors);
   }
 
   _getColorHex(colorName) {
@@ -896,8 +929,8 @@ export class WxProductListing extends LitElement {
 
     const colorMap = new Map();
     for (const p of filtered) {
-      const c = this._getProductColor(p);
-      if (c) {
+      const colors = this._getProductColors(p);
+      for (const c of colors) {
         colorMap.set(c, (colorMap.get(c) || 0) + 1);
       }
     }
@@ -980,9 +1013,10 @@ export class WxProductListing extends LitElement {
     }
 
     if (this.selectedColor) {
+      const target = this.selectedColor.toLowerCase();
       filtered = filtered.filter((p) => {
-        const c = this._getProductColor(p);
-        return c.toLowerCase() === this.selectedColor.toLowerCase();
+        const colors = this._getProductColors(p);
+        return colors.some((c) => c.toLowerCase() === target);
       });
     }
 

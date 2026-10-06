@@ -253,3 +253,45 @@ export const booleanConverter = {
     return value ? 'true' : null;
   }
 };
+
+/**
+ * Ánh xạ tên màu sang mã màu HEX / Gradient chuẩn thương hiệu
+ */
+export function getColorHex(colorName) {
+  if (!colorName) return '#cccccc';
+  const name = colorName.toLowerCase();
+  if (name.includes('nhiều màu')) return 'linear-gradient(135deg, #e53935, #fb8c00, #43a047, #1e88e5)';
+  if (name.includes('trong suốt')) return 'linear-gradient(135deg, #ffffff 40%, #e0e0e0 60%)';
+  if (name.includes('cherry blossom') || name.includes('anh đào')) return '#e8a8b8';
+  if (name.includes('đỏ cherry')) return '#b51a2b';
+  if (name.includes('grenadine')) return '#6b1d28';
+  if (name.includes('bordeaux')) return '#58111a';
+  if (name.includes('đỏ cam')) return '#d34125';
+  if (name.includes('đỏ')) return '#c8102e';
+  if (name.includes('basil')) return '#315438';
+  if (name.includes('sage')) return '#879b83';
+  if (name.includes('lime')) return '#84b82c';
+  if (name.includes('lục')) return '#2d7a3a';
+  if (name.includes('dark blue')) return '#1b3558';
+  if (name.includes('hoàng gia')) return '#1f487e';
+  if (name.includes('lamer') || name.includes('la mer')) return '#2b767a';
+  if (name.includes('xanh')) return '#1d5f8a';
+  if (name.includes('truffle') || name.includes('trufle')) return '#ece8db';
+  if (name.includes('trắng')) return '#f8f8f8';
+  if (name.includes('citron')) return '#f1b82d';
+  if (name.includes('gold')) return '#d4af37';
+  if (name.includes('vàng hồng')) return '#d49a89';
+  if (name.includes('vàng')) return '#f1b82d';
+  if (name.includes('chocolate')) return '#4a2c20';
+  if (name.includes('nâu')) return '#5a3d2e';
+  if (name.includes('granada') || name.includes('cinnamon') || name.includes('quế') || name.includes('cam')) return '#d65a27';
+  if (name.includes('macaron')) return '#eec0c8';
+  if (name.includes('sorbet')) return '#f28599';
+  if (name.includes('hồng')) return '#f098aa';
+  if (name.includes('kem')) return '#f3e5ab';
+  if (name.includes('đen')) return '#222222';
+  if (name.includes('bạc') || name.includes('inox') || name.includes('bề mặt bóng')) return '#c0c0c0';
+  if (name.includes('xám')) return '#808080';
+  return '#cccccc';
+}
+

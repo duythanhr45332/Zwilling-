@@ -335,8 +335,9 @@
 
     // 5. Gán dữ liệu cho Component Product Detail (Ảnh 5)
     const detailComp = document.getElementById('comp-product-detail');
-    const sampleProduct = PRODUCTS.find(p => p.ID === 'prod-1002144') || PRODUCTS[0];
-    const sampleVariant = VARIANTS.find(v => v.product === sampleProduct.ID) || VARIANTS[0];
+    // Ưu tiên sản phẩm có nhiều biến thể màu để demo tính năng Colour Swatches & Size Pill (như Nồi gang STAUB Mini 10cm)
+    const sampleProduct = PRODUCTS.find(p => p.ID === 'prod-1033314') || PRODUCTS.find(p => p.variants && p.variants.length > 1) || PRODUCTS[0];
+    const sampleVariant = (sampleProduct.variants && sampleProduct.variants[0]) || VARIANTS.find(v => v.product === sampleProduct.ID) || VARIANTS[0];
 
     const pdpData = {
       ...sampleProduct,
@@ -346,20 +347,25 @@
       series: sampleProduct.series,
       minPrice: sampleProduct.minPrice,
       maxPrice: sampleProduct.maxPrice,
+      sizeLabel: sampleProduct.sizeLabel || sampleVariant.sizeLabel || '10 cm',
+      variants: sampleProduct.variants || [sampleVariant],
       mainImage: sampleProduct.mainImage || sampleVariant.mainImage || '',
       gallery: sampleProduct.gallery || sampleVariant.gallery || '',
-      specs: sampleVariant.specs || sampleProduct.specs || JSON.stringify([
-        { section: 'Thông số kỹ thuật', name: 'Xuất xứ', value: 'Nhật Bản' },
-        { section: 'Thông số kỹ thuật', name: 'Chất liệu lưỡi dao', value: 'Thép FC61 với 48 lớp Damascus' },
-        { section: 'Thông số kỹ thuật', name: 'Phương pháp mài', value: 'Mài thủ công Honbazuke' },
-        { section: 'Thông số kỹ thuật', name: 'Độ cứng Rockwell', value: '61 HRC' },
-        { section: 'Thông số kỹ thuật', name: 'Chất liệu cán', value: 'Gỗ Pakka công thái học' }
-      ]),
+      specs: sampleVariant.specs || sampleProduct.specs || '',
       shopeeUrl: sampleVariant.shopeeUrl || 'https://shopee.vn',
       tiktokUrl: sampleVariant.tiktokUrl || 'https://tiktok.com',
       messUrl: 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0'
     };
     detailComp.product = pdpData;
+
+    // Khi click chọn bất kỳ sản phẩm nào từ danh sách sản phẩm, cập nhật trực tiếp lên Product Detail
+    listComp.addEventListener('product-select', (e) => {
+      const selected = e.detail?.product;
+      if (selected && detailComp) {
+        detailComp.product = selected;
+        document.getElementById('sec-product-detail')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
 
     // 5.1 Gán dữ liệu cho Component Related Products (4 sản phẩm cùng danh mục)
     const relatedComp = document.getElementById('comp-related-products');

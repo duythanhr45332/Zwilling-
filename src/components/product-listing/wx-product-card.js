@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { safeDefine } from '../../utils/element.js';
-import { formatCurrencyVND, calculateProductPricing, parseGallery, safeJsonParse, resolveImageUrl, jsonObjectConverter } from '../../utils/formatters.js';
+import { formatCurrencyVND, calculateProductPricing, parseGallery, safeJsonParse, resolveImageUrl, jsonObjectConverter, getColorHex } from '../../utils/formatters.js';
 import { dispatchCustomEvent } from '../../utils/events.js';
 import { t } from '../../utils/i18n.js';
 
@@ -249,7 +249,37 @@ export class WxProductCard extends LitElement {
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #444444;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
+    }
+
+    .card-color-swatches {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .card-color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      display: inline-block;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
+    }
+
+    .card-color-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .card-color-more {
+      font-size: 11px;
+      font-weight: 600;
+      color: #666666;
+      margin-left: 2px;
     }
 
     /* Price Row */
@@ -322,6 +352,23 @@ export class WxProductCard extends LitElement {
     dispatchCustomEvent(this, 'product-click', { product: this.product });
   }
 
+  _getCardColors() {
+    if (!this.product) return [];
+    const p = this.product;
+    const colors = [];
+    if (p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
+      for (const v of p.variants) {
+        const c = v.color || '';
+        if (c && !colors.some(existing => existing.toLowerCase() === c.toLowerCase())) {
+          colors.push(c);
+        }
+      }
+    } else if (p.color) {
+      colors.push(p.color);
+    }
+    return colors;
+  }
+
   render() {
     if (!this.product) return html``;
 
@@ -330,6 +377,9 @@ export class WxProductCard extends LitElement {
     const currentImg = images[this.activeImageIndex] || p.mainImage || (images.length ? images[0] : '');
     const { price, comparePrice, discountPercent } = calculateProductPricing(p);
     const brandName = p.brand ? p.brand.replace('brand-', '').toUpperCase() : '';
+    const cardColors = this._getCardColors();
+    const hasPriceRange = Boolean(p.variants && p.variants.length > 1 && p.minPrice && p.maxPrice && Number(p.minPrice) < Number(p.maxPrice));
+    const effectiveDiscount = hasPriceRange ? null : discountPercent;
 
     // Danh sách nhãn labels
     let labelList = [];
@@ -387,8 +437,8 @@ export class WxProductCard extends LitElement {
         <!-- Top Bar: % Giảm giá + Labels (Đã bỏ icon heart) -->
         <div class="top-bar">
           <div class="badges-group">
-            ${discountPercent
-              ? html`<span class="badge-pill badge-discount">-${discountPercent}%</span>`
+            ${effectiveDiscount
+              ? html`<span class="badge-pill badge-discount">-${effectiveDiscount}%</span>`
               : ''}
             ${labelList.map(
               (label) => html`<span class="badge-pill badge-label">${label}</span>`
@@ -458,12 +508,37 @@ export class WxProductCard extends LitElement {
 
           ${p.sizeLabel ? html`<div class="variant-sizes">${p.sizeLabel}</div>` : ''}
 
+          ${cardColors.length > 1
+            ? html`
+                <div class="card-color-swatches" title="${cardColors.join(', ')}">
+                  ${cardColors.slice(0, 5).map(
+                    (c) => html`
+                      <span
+                        class="card-color-dot"
+                        style="background: ${getColorHex(c)}"
+                        title="${c}"
+                      ></span>
+                    `
+                  )}
+                  ${cardColors.length > 5
+                    ? html`<span class="card-color-more">+${cardColors.length - 5}</span>`
+                    : ''}
+                </div>
+              `
+            : ''}
+
           <div class="footer-row">
             <div class="price-col">
-              ${comparePrice && comparePrice > price
+              ${!hasPriceRange && comparePrice && comparePrice > price
                 ? html`<span class="compare-price">${formatCurrencyVND(comparePrice)}</span>`
                 : ''}
-              <span class="current-price">${price ? formatCurrencyVND(price) : t('contactUs', this.lang)}</span>
+              <span class="current-price">
+                ${hasPriceRange
+                  ? `${formatCurrencyVND(p.minPrice)} – ${formatCurrencyVND(p.maxPrice)}`
+                  : price
+                  ? formatCurrencyVND(price)
+                  : t('contactUs', this.lang)}
+              </span>
             </div>
           </div>
         </div>
