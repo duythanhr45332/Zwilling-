@@ -1026,7 +1026,7 @@ export class WxProductDetail extends LitElement {
       return (url && typeof url === 'string' && url.trim() && url.trim() !== '#') ? url.trim() : '';
     }
     if (channel === 'mess') {
-      const defaultMessUrl = 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0';
+      const defaultMessUrl = 'https://www.facebook.com/zwillingvietnamofficial/';
       const url = this.messUrl || (active && (active.messUrl || active.messengerUrl)) || (p && (p.messUrl || p.messengerUrl)) || defaultMessUrl;
       return (url && typeof url === 'string' && url.trim() && url.trim() !== '#') ? url.trim() : defaultMessUrl;
     }

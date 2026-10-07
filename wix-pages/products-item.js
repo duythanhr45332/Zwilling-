@@ -173,8 +173,8 @@ $w.onReady(async function () {
       gallery: defaultVariant?.gallery || currentProduct.gallery,
       shopeeUrl: (defaultVariant && defaultVariant.shopeeUrl) || currentProduct.shopeeUrl || '',
       tiktokUrl: (defaultVariant && defaultVariant.tiktokUrl) || currentProduct.tiktokUrl || '',
-      messengerUrl: (defaultVariant && defaultVariant.messengerUrl) || currentProduct.messengerUrl || 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0',
-      messUrl: (defaultVariant && defaultVariant.messUrl) || currentProduct.messUrl || 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0'
+      messengerUrl: (defaultVariant && defaultVariant.messengerUrl) || currentProduct.messengerUrl || 'https://www.facebook.com/zwillingvietnamofficial/',
+      messUrl: (defaultVariant && defaultVariant.messUrl) || currentProduct.messUrl || 'https://www.facebook.com/zwillingvietnamofficial/'
     };
 
     // Gán dữ liệu vào Custom Element <wx-product-detail>

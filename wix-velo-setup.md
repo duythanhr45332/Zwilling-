@@ -1080,7 +1080,8 @@ $w.onReady(async function () {
       mainImage: defaultVariant?.mainImage || currentProduct.mainImage,
       gallery: defaultVariant?.gallery || currentProduct.gallery,
       shopeeUrl: defaultVariant?.shopeeUrl || currentProduct.shopeeUrl,
-      tiktokUrl: defaultVariant?.tiktokUrl || currentProduct.tiktokUrl
+      tiktokUrl: defaultVariant?.tiktokUrl || currentProduct.tiktokUrl,
+      messUrl: defaultVariant?.messUrl || currentProduct.messUrl || 'https://www.facebook.com/zwillingvietnamofficial/'
     };
 
     // Gán dữ liệu vào Custom Element <wx-product-detail>
