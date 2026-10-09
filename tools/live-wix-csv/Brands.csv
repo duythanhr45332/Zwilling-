@@ -1,4 +1,4 @@
-﻿"Title","ID","slug","Brands (Item)","description","logoImage","bannerImage","sortOrder","isActive","Brands (List)","Created Date","Updated Date","Owner"
-"MIYABI","brand-miyabi","miyabi","/brands/miyabi","Thương hiệu miyabi","wix:image://v1/de2f43_07284395f4434189827d14dfec277b2b~mv2.png/01_Logo_miyabi_4C.png#originWidth=746&originHeight=747",,0,true,"/brands/",2026-09-17T10:49:16Z,2026-09-29T07:52:50Z,"de2f4309-8c35-4baf-a694-2119b9082dcc"
-"STAUB","brand-staub","staub","/brands/staub",,"wix:image://v1/de2f43_e3fd0e8d780e46949ec80dbcea70ffae~mv2.png/4002_13426_Staub_Logo_4C.png#originWidth=1279&originHeight=793",,2,true,"/brands/",2026-09-17T10:49:16Z,2026-09-29T07:53:43Z,"de2f4309-8c35-4baf-a694-2119b9082dcc"
-"ZWILLING","brand-zwilling","zwilling","/brands/zwilling",,"wix:image://v1/de2f43_1bcf02ba9f7644fc91ce02182b4aa624~mv2.png/ZWILLING_no_trademark_CMYK_P-1.png#originWidth=394&originHeight=487",,1,true,"/brands/",2026-09-17T10:49:16Z,2026-09-29T07:53:20Z,"de2f4309-8c35-4baf-a694-2119b9082dcc"
+ID,title,slug,description,image,bannerImage,sortOrder,isActive
+brand-miyabi,MIYABI,miyabi,Thương hiệu miyabi,wix:image://v1/de2f43_07284395f4434189827d14dfec277b2b~mv2.png/01_Logo_miyabi_4C.png#originWidth=746&originHeight=747,,0,true
+brand-zwilling,ZWILLING,zwilling,,wix:image://v1/de2f43_1bcf02ba9f7644fc91ce02182b4aa624~mv2.png/ZWILLING_no_trademark_CMYK_P-1.png#originWidth=394&originHeight=487,,1,true
+brand-staub,STAUB,staub,,wix:image://v1/de2f43_e3fd0e8d780e46949ec80dbcea70ffae~mv2.png/4002_13426_Staub_Logo_4C.png#originWidth=1279&originHeight=793,,2,true

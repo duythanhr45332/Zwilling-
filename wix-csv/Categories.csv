@@ -1,90 +1,90 @@
 ID,title,slug,taxonomy,parent,path,depth,description,image,bannerImage,productCount,sortOrder,isActive
-cat-p-dao-bep,Dao Bếp,dao-bep,product,,/dao-bep/,0,,,,35,0,true
-cat-p-dao-bep--dao-santoku,Dao Santoku,dao-santoku,product,cat-p-dao-bep,/dao-bep/dao-santoku/,1,,,,8,1,true
-cat-b-dao-bo-dao,Dao & Bộ Dao,dao-bo-dao,brand,,/dao-bo-dao/,0,,,,35,2,true
-cat-b-dao-bo-dao--dao-santoku,Dao Santoku,dao-santoku,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-santoku/,1,,,,8,3,true
-cat-p-dao-bep--dao-dau-bep,Dao Đầu Bếp,dao-dau-bep,product,cat-p-dao-bep,/dao-bep/dao-dau-bep/,1,,,,7,4,true
+cat-p-dao-bep,Dao Bếp,dao-bep,product,,/dao-bep/,0,Dao bếp chuyên nghiệp,wix:image://v1/349c1f_9c45d3cdcc2b42c1909822da239f7245~mv2.png/DAO%20B%E1%BA%BEP.png#originWidth=2092&originHeight=752,,35,0,true
+cat-p-dao-bep--dao-santoku,Dao Santoku,dao-santoku,product,cat-p-dao-bep,/dao-bep/dao-santoku/,1,,wix:image://v1/349c1f_7832e11b2d89495fba11965e61d5cade~mv2.jpg/DAO%20SANTOKU.jpg#originWidth=3000&originHeight=3000,,8,1,true
+cat-b-dao-bo-dao,Dao & Bộ Dao,dao-bo-dao,brand,,/dao-bo-dao/,0,,wix:image://v1/349c1f_b70229a444dd4ee1a3e3bc3be151c0b7~mv2.jpg/B%E1%BB%98%20DAO.jpg#originWidth=3000&originHeight=3000,,35,2,true
+cat-b-dao-bo-dao--dao-santoku,Dao Santoku,dao-santoku,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-santoku/,1,,wix:image://v1/349c1f_7832e11b2d89495fba11965e61d5cade~mv2.jpg/DAO%20SANTOKU.jpg#originWidth=3000&originHeight=3000,,8,3,true
+cat-p-dao-bep--dao-dau-bep,Dao Đầu Bếp,dao-dau-bep,product,cat-p-dao-bep,/dao-bep/dao-dau-bep/,1,,wix:image://v1/349c1f_5d7f1244e29f49f7a344ece42ec547fc~mv2.jpg/DAO%20%C4%90%E1%BA%A6U%20B%E1%BA%BEP.jpg#originWidth=651&originHeight=651,,7,4,true
 cat-b-dao-bo-dao--dao-gyutoh,Dao Gyutoh,dao-gyutoh,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-gyutoh/,1,,,,1,5,true
-cat-p-dao-bep--dao-got,Dao Gọt,dao-got,product,cat-p-dao-bep,/dao-bep/dao-got/,1,,,,6,6,true
+cat-p-dao-bep--dao-got,Dao Gọt,dao-got,product,cat-p-dao-bep,/dao-bep/dao-got/,1,,wix:image://v1/349c1f_764f665f3e4e40b588bcf0f6e3087f6a~mv2.jpg/DAO%20G%E1%BB%8CT.jpg#originWidth=3000&originHeight=3000,,6,6,true
 cat-b-dao-bo-dao--dao-shotoh,Dao Shotoh,dao-shotoh,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-shotoh/,1,,,,2,7,true
 cat-b-dao-bo-dao--dao-got,Dao Gọt,dao-got,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-got/,1,,,,4,8,true
-cat-p-dao-bep--dao-loc-xuong,Dao Lóc Xương,dao-loc-xuong,product,cat-p-dao-bep,/dao-bep/dao-loc-xuong/,1,,,,1,9,true
+cat-p-dao-bep--dao-loc-xuong,Dao Lóc Xương,dao-loc-xuong,product,cat-p-dao-bep,/dao-bep/dao-loc-xuong/,1,,wix:image://v1/349c1f_4f9e41aeef6d4bd1afcbd500c867d49f~mv2.jpg/DAO%20L%C3%93C%20X%C6%AF%C6%A0NG.jpg#originWidth=3000&originHeight=3000,,1,9,true
 cat-b-dao-bo-dao--dao-loc-xuong,Dao Lóc Xương,dao-loc-xuong,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-loc-xuong/,1,,,,1,10,true
-cat-p-dao-bep--dao-chat,Dao Chặt,dao-chat,product,cat-p-dao-bep,/dao-bep/dao-chat/,1,,,,3,11,true
+cat-p-dao-bep--dao-chat,Dao Chặt,dao-chat,product,cat-p-dao-bep,/dao-bep/dao-chat/,1,,wix:image://v1/349c1f_b1b70f8d4af443df8ada60a3f32108b1~mv2.jpg/DAO%20CH%E1%BA%B6T.jpg#originWidth=3000&originHeight=3000,,3,11,true
 cat-b-dao-bo-dao--dao-chat,Dao Chặt,dao-chat,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-chat/,1,,,,3,12,true
-cat-p-dao-bep--dao-banh-mi,Dao Bánh Mì,dao-banh-mi,product,cat-p-dao-bep,/dao-bep/dao-banh-mi/,1,,,,2,13,true
+cat-p-dao-bep--dao-banh-mi,Dao Bánh Mì,dao-banh-mi,product,cat-p-dao-bep,/dao-bep/dao-banh-mi/,1,,wix:image://v1/349c1f_ab8897ddff5c4279931d1c75c82808d5~mv2.jpg/DAO%20B%C3%81NH%20M%C3%8C.jpg#originWidth=3000&originHeight=3000,,2,13,true
 cat-b-dao-bo-dao--dao-banh-mi,Dao Bánh Mì,dao-banh-mi,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-banh-mi/,1,,,,2,14,true
 cat-b-dao-bo-dao--dao-dau-bep,Dao Đầu Bếp,dao-dau-bep,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-dau-bep/,1,,,,6,15,true
-cat-p-dao-bep--dao-thai-lat,Dao Thái Lát,dao-thai-lat,product,cat-p-dao-bep,/dao-bep/dao-thai-lat/,1,,,,1,16,true
+cat-p-dao-bep--dao-thai-lat,Dao Thái Lát,dao-thai-lat,product,cat-p-dao-bep,/dao-bep/dao-thai-lat/,1,,wix:image://v1/349c1f_e2acad8dd01f4b1db1aae3ca753f8058~mv2.jpg/DAO%20TH%C3%81I%20L%C3%81T.jpg#originWidth=3000&originHeight=3000,,1,16,true
 cat-b-dao-bo-dao--dao-thai-lat,Dao Thái Lát,dao-thai-lat,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-thai-lat/,1,,,,1,17,true
-cat-p-dao-bep--dao-bam,Dao Băm,dao-bam,product,cat-p-dao-bep,/dao-bep/dao-bam/,1,,,,1,18,true
+cat-p-dao-bep--dao-bam,Dao Băm,dao-bam,product,cat-p-dao-bep,/dao-bep/dao-bam/,1,,wix:image://v1/349c1f_4a8da3209aff42c2b8eb36d13f6953d7~mv2.jpg/DAO%20B%C4%82M.jpg#originWidth=3000&originHeight=3000,,1,18,true
 cat-b-dao-bo-dao--dao-bam,Dao Băm,dao-bam,brand,cat-b-dao-bo-dao,/dao-bo-dao/dao-bam/,1,,,,1,19,true
-cat-p-dao-bep--bo-dao,Bộ Dao,bo-dao,product,cat-p-dao-bep,/dao-bep/bo-dao/,1,,,,6,20,true
+cat-p-dao-bep--bo-dao,Bộ Dao,bo-dao,product,cat-p-dao-bep,/dao-bep/bo-dao/,1,,wix:image://v1/349c1f_b70229a444dd4ee1a3e3bc3be151c0b7~mv2.jpg/B%E1%BB%98%20DAO.jpg#originWidth=3000&originHeight=3000,,6,20,true
 cat-b-dao-bo-dao--bo-dao,Bộ Dao,bo-dao,brand,cat-b-dao-bo-dao,/dao-bo-dao/bo-dao/,1,,,,6,21,true
-cat-p-noi-chao,Nồi & Chảo,noi-chao,product,,/noi-chao/,0,,,,98,22,true
-cat-p-noi-chao--noi-gang,Nồi Gang,noi-gang,product,cat-p-noi-chao,/noi-chao/noi-gang/,1,,,,61,23,true
+cat-p-noi-chao,Nồi & Chảo,noi-chao,product,,/noi-chao/,0,,wix:image://v1/349c1f_c80572ceb0324296bfa3121f82f89e73~mv2.png/N%E1%BB%92I%20CH%E1%BA%A2O.png#originWidth=1254&originHeight=1254,,98,22,true
+cat-p-noi-chao--noi-gang,Nồi Gang,noi-gang,product,cat-p-noi-chao,/noi-chao/noi-gang/,1,,wix:image://v1/349c1f_4dcff21444da4b818855dfded6502c64~mv2.png/n%E1%BB%93i%20gang.png#originWidth=1254&originHeight=1254,,61,23,true
 cat-b-noi-chao-gang,Nồi & Chảo Gang,noi-chao-gang,brand,,/noi-chao-gang/,0,,,,66,24,true
 cat-b-noi-chao-gang--noi-gang,Nồi Gang,noi-gang,brand,cat-b-noi-chao-gang,/noi-chao-gang/noi-gang/,1,,,,61,25,true
 cat-m-gang-duc,Gang đúc,gang-duc,material,,/gang-duc/,0,,,,66,26,true
-cat-p-noi-chao--chao,Chảo,chao,product,cat-p-noi-chao,/noi-chao/chao/,1,,,,20,27,true
+cat-p-noi-chao--chao,Chảo,chao,product,cat-p-noi-chao,/noi-chao/chao/,1,,wix:image://v1/349c1f_25584ab415e34f15845fee06c155f750~mv2.jpg/CH%E1%BA%A2O.jpg#originWidth=3000&originHeight=3000,,20,27,true
 cat-b-noi-chao-gang--chao-gang,Chảo Gang,chao-gang,brand,cat-b-noi-chao-gang,/noi-chao-gang/chao-gang/,1,,,,5,28,true
-cat-p-noi-chao--phu-kien,Phụ kiện,phu-kien,product,cat-p-noi-chao,/noi-chao/phu-kien/,1,,,,6,29,true
+cat-p-noi-chao--phu-kien,Phụ kiện,phu-kien,product,cat-p-noi-chao,/noi-chao/phu-kien/,1,,wix:image://v1/349c1f_17f6743334c149d4a9232e9616a6be2d~mv2.jpg/STAUB%20KNOB.jpg#originWidth=3000&originHeight=3000,,6,29,true
 cat-b-phu-kien,Phụ kiện,phu-kien,brand,,/phu-kien/,0,,,,6,30,true
 cat-b-phu-kien--nap-num-noi-gang,Nắp & Núm nồi gang,nap-num-noi-gang,brand,cat-b-phu-kien,/phu-kien/nap-num-noi-gang/,1,,,,6,31,true
-cat-p-noi-chao--quanh,Quánh,quanh,product,cat-p-noi-chao,/noi-chao/quanh/,1,,,,3,32,true
+cat-p-noi-chao--quanh,Quánh,quanh,product,cat-p-noi-chao,/noi-chao/quanh/,1,,wix:image://v1/349c1f_99a9e08c00864732b19faab19d554728~mv2.jpg/QU%C3%81NH.jpg#originWidth=3000&originHeight=3000,,3,32,true
 cat-b-noi-chao,Nồi & Chảo,noi-chao,brand,,/noi-chao/,0,,,,26,33,true
 cat-b-noi-chao--quanh,Quánh,quanh,brand,cat-b-noi-chao,/noi-chao/quanh/,1,,,,3,34,true
 cat-m-thep-khong-gi,Thép không gỉ,thep-khong-gi,material,,/thep-khong-gi/,0,,,,12,35,true
-cat-p-noi-chao--noi,Nồi,noi,product,cat-p-noi-chao,/noi-chao/noi/,1,,,,4,36,true
+cat-p-noi-chao--noi,Nồi,noi,product,cat-p-noi-chao,/noi-chao/noi/,1,,wix:image://v1/349c1f_1bfa4db7d19b457c8d0f41842d46d8f7~mv2.jpg/N%E1%BB%92I.jpg#originWidth=3000&originHeight=3000,,4,36,true
 cat-b-noi-chao--noi,Nồi,noi,brand,cat-b-noi-chao,/noi-chao/noi/,1,,,,5,37,true
-cat-p-noi-chao--set-noi-chao,Set Nồi & Chảo,set-noi-chao,product,cat-p-noi-chao,/noi-chao/set-noi-chao/,1,,,,4,38,true
+cat-p-noi-chao--set-noi-chao,Set Nồi & Chảo,set-noi-chao,product,cat-p-noi-chao,/noi-chao/set-noi-chao/,1,,wix:image://v1/349c1f_ed2028ed56d149218b32a646adccd539~mv2.jpg/SET%20N%E1%BB%92I%20&%20CH%E1%BA%A2O.jpg#originWidth=3000&originHeight=3000,,4,38,true
 cat-b-noi-chao--set-noi-chao,Set Nồi & Chảo,set-noi-chao,brand,cat-b-noi-chao,/noi-chao/set-noi-chao/,1,,,,4,39,true
 cat-b-noi-chao--chao,Chảo,chao,brand,cat-b-noi-chao,/noi-chao/chao/,1,,,,14,40,true
 cat-m-chong-dinh-ceramic,Chống dính Ceramic,chong-dinh-ceramic,material,,/chong-dinh-ceramic/,0,,,,14,41,true
-cat-p-dung-cu-ban-an,Dụng cụ bàn ăn,dung-cu-ban-an,product,,/dung-cu-ban-an/,0,,,,62,42,true
-cat-p-dung-cu-ban-an--to-dia,Tô & Dĩa,to-dia,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/to-dia/,1,,,,17,43,true
+cat-p-dung-cu-ban-an,Dụng cụ bàn ăn,dung-cu-ban-an,product,,/dung-cu-ban-an/,0,,https://www.zwilling.com/dw/image/v2/BCGV_PRD/on/demandware.static/-/Sites-zwilling-us-Library/en_US/dw02d0e11a/Page-Designer-Category-Pages/root/Main_Page_Brand_Landingpage_Carousel_330x330px5-1.jpg?sw=330,,62,42,true
+cat-p-dung-cu-ban-an--to-dia,Tô & Dĩa,to-dia,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/to-dia/,1,,wix:image://v1/349c1f_007952f9908944cb8f523167e7f7ec65~mv2.jpg/T%C3%94%20&%20D%C4%A8A.jpg#originWidth=651&originHeight=651,,17,43,true
 cat-p-dung-cu-ban-an--to-dia--dia,Dĩa,dia,product,cat-p-dung-cu-ban-an--to-dia,/dung-cu-ban-an/to-dia/dia/,2,,,,13,44,true
 cat-b-gom-su-thu-cong,Gốm sứ thủ công,gom-su-thu-cong,brand,,/gom-su-thu-cong/,0,,,,31,45,true
 cat-b-gom-su-thu-cong--dia,Dĩa,dia,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/dia/,1,,,,11,46,true
 cat-b-gom-su-thu-cong--bo-gom-su,Bộ Gốm sứ,bo-gom-su,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/bo-gom-su/,1,,,,2,47,true
 cat-p-dung-cu-ban-an--to-dia--to-chen,Tô & Chén,to-chen,product,cat-p-dung-cu-ban-an--to-dia,/dung-cu-ban-an/to-dia/to-chen/,2,,,,4,48,true
 cat-b-gom-su-thu-cong--to-chen,Tô & Chén,to-chen,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/to-chen/,1,,,,4,49,true
-cat-p-dung-cu-ban-an--set-dung-gia-vi,Set đựng Gia vị,set-dung-gia-vi,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/set-dung-gia-vi/,1,,,,2,50,true
+cat-p-dung-cu-ban-an--set-dung-gia-vi,Set đựng Gia vị,set-dung-gia-vi,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/set-dung-gia-vi/,1,,wix:image://v1/349c1f_c57ca8c5479940008b849d5227818eb9~mv2.png/SET%20%C4%90%E1%BB%B0NG%20GIA%20V%E1%BB%8A.png#originWidth=1717&originHeight=968,,2,50,true
 cat-b-gom-su-thu-cong--set-dung-gia-vi,Set đựng Gia vị,set-dung-gia-vi,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/set-dung-gia-vi/,1,,,,2,51,true
-cat-p-dung-cu-ban-an--san-pham-dac-biet,ÂU SỨ,san-pham-dac-biet,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/san-pham-dac-biet/,1,,,,5,52,true
+cat-p-dung-cu-ban-an--san-pham-dac-biet,ÂU SỨ,san-pham-dac-biet,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/san-pham-dac-biet/,1,,"wix:image://v1/349c1f_c36052a237094c148404ec39e27a3fd0~mv2.png/%C3%82U%20S%E1%BB%A8%20(%C4%91ang%20%C4%91%E1%BB%83%20l%C3%A0%20s%E1%BA%A3n%20ph%E1%BA%A9m%20%C4%91%E1%BA%B7c%20bi%E1%BB%87t,%20th%C3%AC%20%C4%91%E1%BB%95i%20th%C3%A0nh%20%C3%A2u%20s%E1%BB%A9).png#originWidth=1312&originHeight=1199",,5,52,true
 cat-b-gom-su-thu-cong--san-pham-dac-biet,ÂU SỨ,san-pham-dac-biet,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/san-pham-dac-biet/,1,,,,5,53,true
-cat-p-dung-cu-ban-an--khay-nuong,Khay nướng,khay-nuong,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/khay-nuong/,1,,,,2,54,true
+cat-p-dung-cu-ban-an--khay-nuong,Khay nướng,khay-nuong,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/khay-nuong/,1,,wix:image://v1/349c1f_321ee2786ebc48aa8f502b3bf73835c9~mv2.png/KHAY%20N%C6%AF%E1%BB%9ANG.png#originWidth=3375&originHeight=3375,,2,54,true
 cat-b-gom-su-thu-cong--khay-nuong,Khay nướng,khay-nuong,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/khay-nuong/,1,,,,2,55,true
-cat-p-dung-cu-ban-an--ly-coc,Ly & Cốc,ly-coc,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/ly-coc/,1,,,,10,56,true
+cat-p-dung-cu-ban-an--ly-coc,Ly & Cốc,ly-coc,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/ly-coc/,1,,wix:image://v1/349c1f_eaf53a40e4234734988f6034721d08d8~mv2.jpg/Gedeckter_Tisch_Subcategory_Images_330x330px5.jpg_sw=330.jpg#originWidth=330&originHeight=330,,10,56,true
 cat-p-dung-cu-ban-an--ly-coc--coc,Cốc,coc,product,cat-p-dung-cu-ban-an--ly-coc,/dung-cu-ban-an/ly-coc/coc/,2,,,,4,57,true
 cat-b-gom-su-thu-cong--coc,Cốc,coc,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/coc/,1,,,,4,58,true
-cat-p-dung-cu-ban-an--dao-dung-cu-an,Dụng cụ ăn,dao-dung-cu-an,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/dao-dung-cu-an/,1,,,,26,59,true
+cat-p-dung-cu-ban-an--dao-dung-cu-an,Dụng cụ ăn,dao-dung-cu-an,product,cat-p-dung-cu-ban-an,/dung-cu-ban-an/dao-dung-cu-an/,1,,wix:image://v1/349c1f_7ec0586645ca4cfcb87bf16b5d6b1952~mv2.jpg/D%E1%BB%A4NG%20C%E1%BB%A4%20%C4%82N%20(%C4%91ang%20%C4%91%E1%BB%83%20l%C3%A0%20Dao%20&%20D%E1%BB%A5ng%20c%E1%BB%A5%20%C4%83n%20th%C3%AC%20%C4%91%E1%BB%95i%20t%C3%AAn%20l%E1%BA%A1i%20th%C3%A0nh%20D%E1%BB%A5ng%20c%E1%BB%A5%20%C4%83n).jpg#originWidth=651&originHeight=651,,26,59,true
 cat-b-gom-su-thu-cong--dao-dung-cu-an,Dụng cụ ăn,dao-dung-cu-an,brand,cat-b-gom-su-thu-cong,/gom-su-thu-cong/dao-dung-cu-an/,1,,,,1,61,true
-cat-p-bo-bao-quan-fresh-save,Bộ bảo quản Fresh & Save,bo-bao-quan-fresh-save,product,,/bo-bao-quan-fresh-save/,0,,,,15,62,true
-cat-p-bo-bao-quan-fresh-save--may-hut-chan-khong,Máy hút chân không,may-hut-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/may-hut-chan-khong/,1,,,,1,63,true
+cat-p-bo-bao-quan-fresh-save,Bộ bảo quản Fresh & Save,bo-bao-quan-fresh-save,product,,/bo-bao-quan-fresh-save/,0,,wix:image://v1/349c1f_f55a6dcfa6934f97b97d86ec9c5ae457~mv2.jpg/Main_Page_Brand_Landingpage_Carousel_330x330px3-1.jpg_sw=330.jpg#originWidth=330&originHeight=330,,15,62,true
+cat-p-bo-bao-quan-fresh-save--may-hut-chan-khong,Máy hút chân không,may-hut-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/may-hut-chan-khong/,1,,wix:image://v1/349c1f_c276e7c17d224454abf3d36144cd257e~mv2.jpg/Vacuum_Subcategory_Images_330x330px3.jpg_sw=330.jpg#originWidth=330&originHeight=330,,1,63,true
 cat-b-luu-tru-thuc-pham,Lưu trữ thực phẩm,luu-tru-thuc-pham,brand,,/luu-tru-thuc-pham/,0,,,,15,64,true
 cat-b-luu-tru-thuc-pham--bo-bao-quan-fresh-save,Bộ bảo quản Fresh & Save,bo-bao-quan-fresh-save,brand,cat-b-luu-tru-thuc-pham,/luu-tru-thuc-pham/bo-bao-quan-fresh-save/,1,,,,15,65,true
-cat-p-bo-bao-quan-fresh-save--phu-kien-bao-quan-chan-khong,Phụ kiện bảo quản chân không,phu-kien-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/phu-kien-bao-quan-chan-khong/,1,,,,2,66,true
-cat-p-bo-bao-quan-fresh-save--tui-bao-quan-chan-khong,Túi bảo quản chân không,tui-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/tui-bao-quan-chan-khong/,1,,,,1,67,true
-cat-p-bo-bao-quan-fresh-save--hop-bao-quan-chan-khong,Hộp bảo quản chân không,hop-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/hop-bao-quan-chan-khong/,1,,,,6,68,true
-cat-p-bo-bao-quan-fresh-save--hop-bao-quan-chan-khong-cube,Hộp bảo quản chân không CUBE,hop-bao-quan-chan-khong-cube,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/hop-bao-quan-chan-khong-cube/,1,,,,1,69,true
-cat-p-bo-bao-quan-fresh-save--bo-bao-quan-chan-khong,Bộ bảo quản chân không,bo-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/bo-bao-quan-chan-khong/,1,,,,3,70,true
-cat-p-bo-bao-quan-fresh-save--to-bao-quan-chan-khong,Tô bảo quản chân không,to-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/to-bao-quan-chan-khong/,1,,,,1,71,true
-cat-p-dung-cu-nha-bep,Dụng cụ nhà bếp,dung-cu-nha-bep,product,,/dung-cu-nha-bep/,0,,,,26,72,true
-cat-p-dung-cu-nha-bep--dung-cu-nau-an,Dụng cụ nấu ăn,dung-cu-nau-an,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/dung-cu-nau-an/,1,,,,10,73,true
+cat-p-bo-bao-quan-fresh-save--phu-kien-bao-quan-chan-khong,Phụ kiện bảo quản chân không,phu-kien-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/phu-kien-bao-quan-chan-khong/,1,,wix:image://v1/349c1f_e3c4048066e244488f8ed3c453b73ed2~mv2.jpg/Vacuum_Subcategory_Images_330x330px8.jpg_sw=330.jpg#originWidth=330&originHeight=330,,2,66,true
+cat-p-bo-bao-quan-fresh-save--tui-bao-quan-chan-khong,Túi bảo quản chân không,tui-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/tui-bao-quan-chan-khong/,1,,wix:image://v1/349c1f_7247082610c94e4fb388eea963aedead~mv2.jpg/Vacuum_Subcategory_Images_330x330px6.jpg_sw=330.jpg#originWidth=330&originHeight=330,,1,67,true
+cat-p-bo-bao-quan-fresh-save--hop-bao-quan-chan-khong,Hộp bảo quản chân không,hop-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/hop-bao-quan-chan-khong/,1,,wix:image://v1/349c1f_644c43edba334b4ea25f338b59a5e2d9~mv2.jpg/cube23-Thumbnail_Carousel_330x330px.jpg_sw=330.jpg#originWidth=330&originHeight=330,,6,68,true
+cat-p-bo-bao-quan-fresh-save--hop-bao-quan-chan-khong-cube,Hộp bảo quản chân không CUBE,hop-bao-quan-chan-khong-cube,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/hop-bao-quan-chan-khong-cube/,1,,wix:image://v1/349c1f_8c4153ff34984944a826e899ebf1f6a6~mv2.jpg/Vacuum_Subcategory_Images_330x330px4.jpg_sw=330.jpg#originWidth=330&originHeight=330,,1,69,true
+cat-p-bo-bao-quan-fresh-save--bo-bao-quan-chan-khong,Bộ bảo quản chân không,bo-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/bo-bao-quan-chan-khong/,1,,wix:image://v1/349c1f_4d864eaf07454031b14220e6252d2082~mv2.jpg/Vacuum_Subcategory_Images_330x330px.jpg_sw=330.jpg#originWidth=330&originHeight=330,,3,70,true
+cat-p-bo-bao-quan-fresh-save--to-bao-quan-chan-khong,Tô bảo quản chân không,to-bao-quan-chan-khong,product,cat-p-bo-bao-quan-fresh-save,/bo-bao-quan-fresh-save/to-bao-quan-chan-khong/,1,,wix:image://v1/349c1f_be1c26237f4349f1ad6a9f994d8d41df~mv2.jpg/fresh-and-save-bowls-ss-330x330.jpg_sw=330.jpg#originWidth=330&originHeight=330,,1,71,true
+cat-p-dung-cu-nha-bep,Dụng cụ nhà bếp,dung-cu-nha-bep,product,,/dung-cu-nha-bep/,0,,wix:image://v1/349c1f_202bd4e50879408797f540a3e78c656b~mv2.jpg/Main_Page_Brand_Landingpage_Carousel_330x330px6-1.jpg_sw=330.jpg#originWidth=330&originHeight=330,,26,72,true
+cat-p-dung-cu-nha-bep--dung-cu-nau-an,Dụng cụ nấu ăn,dung-cu-nau-an,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/dung-cu-nau-an/,1,,wix:image://v1/349c1f_9d3b88e7193a47cabac26d9e454ccc66~mv2.png/tools_turner.png#originWidth=180&originHeight=180,,10,73,true
 cat-b-dung-cu-nha-bep,Dụng cụ nhà bếp,dung-cu-nha-bep,brand,,/dung-cu-nha-bep/,0,,,,26,74,true
 cat-b-dung-cu-nha-bep--dung-cu-nau-an,Dụng cụ nấu ăn,dung-cu-nau-an,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/dung-cu-nau-an/,1,,,,10,75,true
-cat-p-dung-cu-nha-bep--mieng-nhac-noi,Miếng nhấc nồi,mieng-nhac-noi,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/mieng-nhac-noi/,1,,,,1,76,true
+cat-p-dung-cu-nha-bep--mieng-nhac-noi,Miếng nhấc nồi,mieng-nhac-noi,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/mieng-nhac-noi/,1,,wix:image://v1/349c1f_fb9ada7fcf52421698a7fe8dd97214d9~mv2.png/MI%E1%BA%BENG%20NH%E1%BA%A4C%20N%E1%BB%92I.png#originWidth=1370&originHeight=1148,,1,76,true
 cat-b-dung-cu-nha-bep--phu-kien,Phụ kiện,phu-kien,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/phu-kien/,1,,,,6,77,true
-cat-p-dung-cu-nha-bep--gia-de-dung-cu-bep,Giá để dụng cụ bếp,gia-de-dung-cu-bep,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/gia-de-dung-cu-bep/,1,,,,2,78,true
-cat-p-dung-cu-nha-bep--de-lot-noi,Đế lót nồi,de-lot-noi,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/de-lot-noi/,1,,,,2,79,true
-cat-p-dung-cu-nha-bep--keo-bep,Kéo bếp,keo-bep,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/keo-bep/,1,,,,5,80,true
+cat-p-dung-cu-nha-bep--gia-de-dung-cu-bep,Giá để dụng cụ bếp,gia-de-dung-cu-bep,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/gia-de-dung-cu-bep/,1,,wix:image://v1/349c1f_a075eb81cbd6474a86caa2578fd19220~mv2.jpg/GI%C3%81%20%C4%90%E1%BB%82%20D%E1%BB%A4NG%20C%E1%BB%A4%20B%E1%BA%BEP.jpg#originWidth=3000&originHeight=3000,,2,78,true
+cat-p-dung-cu-nha-bep--de-lot-noi,Đế lót nồi,de-lot-noi,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/de-lot-noi/,1,,wix:image://v1/349c1f_ee45cfdb2d6145c4a03a55ce130e3481~mv2.png/%C4%90%E1%BA%BE%20L%C3%93T%20N%E1%BB%92I.png#originWidth=1254&originHeight=1254,,2,79,true
+cat-p-dung-cu-nha-bep--keo-bep,Kéo bếp,keo-bep,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/keo-bep/,1,,wix:image://v1/349c1f_d52e1fd683834d1c8d833d9d5b2cac2d~mv2.jpg/K%C3%89O%20B%E1%BA%BEP.jpg#originWidth=3000&originHeight=3000,,5,80,true
 cat-b-dung-cu-nha-bep--keo-bep,Kéo bếp,keo-bep,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/keo-bep/,1,,,,5,81,true
-cat-p-dung-cu-nha-bep--dung-cu-mai-dao,Dụng cụ mài dao,dung-cu-mai-dao,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/dung-cu-mai-dao/,1,,,,2,82,true
-cat-p-dung-cu-nha-bep--thot,Thớt,thot,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/thot/,1,,,,3,83,true
+cat-p-dung-cu-nha-bep--dung-cu-mai-dao,Dụng cụ mài dao,dung-cu-mai-dao,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/dung-cu-mai-dao/,1,,wix:image://v1/349c1f_8d628939e1304ce080ac3cc4ae178533~mv2.png/D%E1%BB%A4NG%20C%E1%BB%A4%20M%C3%80I%20DAO.png#originWidth=1536&originHeight=1024,,2,82,true
+cat-p-dung-cu-nha-bep--thot,Thớt,thot,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/thot/,1,,wix:image://v1/349c1f_c59e05565f0747819aee385c59007399~mv2.jpg/TH%E1%BB%9AT.jpg#originWidth=3375&originHeight=3375,,3,83,true
 cat-b-dung-cu-nha-bep--thot,Thớt,thot,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/thot/,1,,,,3,84,true
 cat-b-dung-cu-nha-bep--gia-de-dung-cu-bep,Giá để dụng cụ bếp,gia-de-dung-cu-bep,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/gia-de-dung-cu-bep/,1,,,,1,85,true
-cat-p-dung-cu-nha-bep--xung,Xửng,xung,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/xung/,1,,,,1,86,true
+cat-p-dung-cu-nha-bep--xung,Xửng,xung,product,cat-p-dung-cu-nha-bep,/dung-cu-nha-bep/xung/,1,,wix:image://v1/349c1f_ed88f3d6138c4eedaaf19b9c0b631d7d~mv2.jpg/X%E1%BB%ACNG.jpg#originWidth=240&originHeight=240,,1,86,true
 cat-b-dung-cu-nha-bep--xung,Xửng,xung,brand,cat-b-dung-cu-nha-bep,/dung-cu-nha-bep/xung/,1,,,,1,87,true
 cat-b-dao-dung-cu-an,Dụng cụ ăn,dao-dung-cu-an,brand,,/dao-dung-cu-an/,0,,,,26,88,true
 cat-b-binh-giu-nhiet,Bình giữ nhiệt,binh-giu-nhiet,brand,,/binh-giu-nhiet/,0,,,,3,89,true

@@ -1,6 +1,46 @@
 {
   "blocks": [
     {
+      "ID": "block-bo-dung-gia-vi-storage-1",
+      "title": "BỘ ĐỰNG GIA VỊ / STORAGE · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "BỘ ĐỰNG GIA VỊ / STORAGE"
+    },
+    {
+      "ID": "block-dinnerware-1",
+      "title": "DINNERWARE · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "DINNERWARE"
+    },
+    {
+      "ID": "block-dung-cu-nau-an-staub-silicone-1",
+      "title": "DỤNG CỤ NẤU ĂN STAUB SILICONE · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "DỤNG CỤ NẤU ĂN STAUB SILICONE"
+    },
+    {
+      "ID": "block-khay-nuong-su-staub-1",
+      "title": "KHAY NƯỚNG SỨ STAUB · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "D. CERAMICS",
+      "sourceTitle": "KHAY NƯỚNG SỨ STAUB"
+    },
+    {
+      "ID": "block-thot-ebony-1",
+      "title": "THỚT EBONY · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "THỚT EBONY"
+    },
+    {
       "ID": "block-au-su-staub-bi-ngo-1",
       "title": "ÂU SỨ STAUB BÍ NGÔ · story 1",
       "component": "story",
@@ -25,14 +65,6 @@
       "sourceTitle": "ÂU SỨ STAUB ỚT CHUÔNG"
     },
     {
-      "ID": "block-bo-dung-gia-vi-storage-1",
-      "title": "BỘ ĐỰNG GIA VỊ / STORAGE · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "D. CERAMICS",
-      "sourceTitle": "BỘ ĐỰNG GIA VỊ / STORAGE"
-    },
-    {
       "ID": "block-bo-hop-cube-hut-chan-khong-1",
       "title": "BỘ HỘP CUBE HÚT CHÂN KHÔNG · story 1",
       "component": "story",
@@ -41,12 +73,28 @@
       "sourceTitle": "BỘ HỘP CUBE HÚT CHÂN KHÔNG"
     },
     {
-      "ID": "block-bo-nap-hut-chan-khong-1",
-      "title": "BỘ NẮP HÚT CHÂN KHÔNG · story 1",
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-2",
+      "title": "HỘP THỦY TINH HÚT CHÂN KHÔNG · highlights 2",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_7240edf199e64508893e379ef6a8ddbf~mv2.jpg/bothuytinh.jpg#originWidth=684&originHeight=444",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "HỘP THỦY TINH HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-hop-thuy-tinh-hut-chan-khong-1",
+      "title": "HỘP THỦY TINH HÚT CHÂN KHÔNG · story 1",
       "component": "story",
       "image": "",
       "sourceSheet": "E. FS",
-      "sourceTitle": "BỘ NẮP HÚT CHÂN KHÔNG"
+      "sourceTitle": "HỘP THỦY TINH HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-hop-nhua-hut-chan-khong-1",
+      "title": "HỘP NHỰA HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "HỘP NHỰA HÚT CHÂN KHÔNG"
     },
     {
       "ID": "block-bo-san-pham-hut-chan-khong-27-40-mon-1",
@@ -57,12 +105,20 @@
       "sourceTitle": "BỘ SẢN PHẨM HÚT CHÂN KHÔNG 27 / 40 MÓN"
     },
     {
-      "ID": "block-bo-to-hut-chan-khong-1",
-      "title": "BỘ TÔ HÚT CHÂN KHÔNG · story 1",
+      "ID": "block-tui-hut-chan-khong-2",
+      "title": "TÚI HÚT CHÂN KHÔNG · highlights 2",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_ca9a2133ba7a4412aed9b4cd1b4bbcfc~mv2.jpg/NH%E1%BB%B0A-%20KH%C3%94NG-%20CH%E1%BB%A8A-%20BPA-,%20B%E1%BB%80N-%20B%E1%BB%88.jpg#originWidth=651&originHeight=651",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "TÚI HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-tui-hut-chan-khong-1",
+      "title": "TÚI HÚT CHÂN KHÔNG · story 1",
       "component": "story",
       "image": "",
       "sourceSheet": "E. FS",
-      "sourceTitle": "BỘ TÔ HÚT CHÂN KHÔNG"
+      "sourceTitle": "TÚI HÚT CHÂN KHÔNG"
     },
     {
       "ID": "block-bo-to-hut-chan-khong-2",
@@ -73,18 +129,82 @@
       "sourceTitle": "BỘ TÔ HÚT CHÂN KHÔNG"
     },
     {
-      "ID": "block-chao-gang-co-mieng-rot-1",
-      "title": "CHẢO GANG CÓ MIỆNG RÓT · story 1",
+      "ID": "block-bo-to-hut-chan-khong-1",
+      "title": "BỘ TÔ HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "BỘ TÔ HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-bo-nap-hut-chan-khong-1",
+      "title": "BỘ NẮP HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "BỘ NẮP HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-3",
+      "title": "MÁY HÚT CHÂN KHÔNG · highlights 3",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_1a981fa1a9cf4992ad183ce87934587c~mv2.webp/mayhut.webp#originWidth=600&originHeight=600",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "MÁY HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-may-hut-chan-khong-1",
+      "title": "MÁY HÚT CHÂN KHÔNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "E. FS",
+      "sourceTitle": "MÁY HÚT CHÂN KHÔNG"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-3",
+      "title": "MIYABI KAIZEN II 5000FCD · highlights 3",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_873cde7847d14e0f9c7acd6e0e76f4fa~mv2.webp/MIYABI-5000-FC-D_hotspot.webp#originWidth=1003&originHeight=645",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "MIYABI KAIZEN II 5000FCD"
+    },
+    {
+      "ID": "block-miyabi-kaizen-ii-5000fcd-1",
+      "title": "MIYABI KAIZEN II 5000FCD · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "MIYABI KAIZEN II 5000FCD"
+    },
+    {
+      "ID": "block-staub-pumpkin-2",
+      "title": "STAUB PUMPKIN · highlights 2",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_aee53d9e9da94e0eac54ea510e09c0d8~mv2.jpg/M%E1%BB%98T-%20THI%E1%BA%BET-%20K%E1%BA%BE,%20-MU%C3%94N%20-V%C3%80N%20-M%C3%93N-%20NGON.jpg#originWidth=3392&originHeight=2534",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "STAUB PUMPKIN"
+    },
+    {
+      "ID": "block-staub-pumpkin-1",
+      "title": "STAUB PUMPKIN · story 1",
       "component": "story",
       "image": "",
       "sourceSheet": "B. NỒI GANG",
-      "sourceTitle": "CHẢO GANG CÓ MIỆNG RÓT"
+      "sourceTitle": "STAUB PUMPKIN"
     },
     {
       "ID": "block-chao-gang-co-mieng-rot-2",
       "title": "CHẢO GANG CÓ MIỆNG RÓT · highlights 2",
       "component": "highlights",
       "image": "wix:image://v1/de2f43_ea965d55926a48b4a0ed50ec8543ebe9~mv2.png/K%E1%BA%BET-%20H%E1%BB%A2P-%20%C6%AFU-%20%C4%90I%E1%BB%82M-%20C%E1%BB%A6A-%20CH%E1%BA%A2O-%20X%C3%80O-%20V%C3%80-%20CH%E1%BA%A2O-%20R%C3%81N.tif#originWidth=4094&originHeight=1676",
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "CHẢO GANG CÓ MIỆNG RÓT"
+    },
+    {
+      "ID": "block-chao-gang-co-mieng-rot-1",
+      "title": "CHẢO GANG CÓ MIỆNG RÓT · story 1",
+      "component": "story",
+      "image": "",
       "sourceSheet": "B. NỒI GANG",
       "sourceTitle": "CHẢO GANG CÓ MIỆNG RÓT"
     },
@@ -97,180 +217,12 @@
       "sourceTitle": "Chảo gang STAUB American Grill"
     },
     {
-      "ID": "block-dinnerware-1",
-      "title": "DINNERWARE · story 1",
+      "ID": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1",
+      "title": "STAUB Oven dish cast iron 15 x 11 cm (Black) · story 1",
       "component": "story",
       "image": "",
-      "sourceSheet": "D. CERAMICS",
-      "sourceTitle": "DINNERWARE"
-    },
-    {
-      "ID": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1",
-      "title": "ĐŨA ZWILLING NOW (SET 6 MÀU, SET HỒNG & SET MACARON) · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
-      "sourceTitle": "ĐŨA ZWILLING NOW (SET 6 MÀU, SET HỒNG & SET MACARON)"
-    },
-    {
-      "ID": "block-dung-cu-nau-an-staub-silicone-1",
-      "title": "DỤNG CỤ NẤU ĂN STAUB SILICONE · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
-      "sourceTitle": "DỤNG CỤ NẤU ĂN STAUB SILICONE"
-    },
-    {
-      "ID": "block-dung-cu-nau-an-thep-zwilling-prof-1",
-      "title": "DỤNG CỤ NẤU ĂN THÉP ZWILLING PROF · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
-      "sourceTitle": "DỤNG CỤ NẤU ĂN THÉP ZWILLING PROF"
-    },
-    {
-      "ID": "block-hop-nhua-hut-chan-khong-1",
-      "title": "HỘP NHỰA HÚT CHÂN KHÔNG · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "E. FS",
-      "sourceTitle": "HỘP NHỰA HÚT CHÂN KHÔNG"
-    },
-    {
-      "ID": "block-hop-thuy-tinh-hut-chan-khong-1",
-      "title": "HỘP THỦY TINH HÚT CHÂN KHÔNG · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "E. FS",
-      "sourceTitle": "HỘP THỦY TINH HÚT CHÂN KHÔNG"
-    },
-    {
-      "ID": "block-hop-thuy-tinh-hut-chan-khong-2",
-      "title": "HỘP THỦY TINH HÚT CHÂN KHÔNG · highlights 2",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_7240edf199e64508893e379ef6a8ddbf~mv2.jpg/bothuytinh.jpg#originWidth=684&originHeight=444",
-      "sourceSheet": "E. FS",
-      "sourceTitle": "HỘP THỦY TINH HÚT CHÂN KHÔNG"
-    },
-    {
-      "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1",
-      "title": "KÉO ZWILLING TWIN SELECT - KÉO CẮT GIA CẦM · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
-      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO CẮT GIA CẦM"
-    },
-    {
-      "ID": "block-keo-zwilling-twin-select-keo-da-nang-1",
-      "title": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
-      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG"
-    },
-    {
-      "ID": "block-keo-zwilling-twin-select-keo-da-nang-3",
-      "title": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG · highlights 3",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_87574deafed44512be4d2b5bc36a6e24~mv2.jpg/TH%C3%89P-%20KH%C3%94NG%20-G%E1%BB%88-%20C%C3%94NG-%20TH%E1%BB%A8C-%20%C4%90%E1%BA%B6C-%20BI%E1%BB%86T.jpg#originWidth=2281&originHeight=801",
-      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
-      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG"
-    },
-    {
-      "ID": "block-khay-nuong-su-staub-1",
-      "title": "KHAY NƯỚNG SỨ STAUB · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "D. CERAMICS",
-      "sourceTitle": "KHAY NƯỚNG SỨ STAUB"
-    },
-    {
-      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1",
-      "title": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút) · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "H. BÌNH NƯỚC",
-      "sourceTitle": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút)"
-    },
-    {
-      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2",
-      "title": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút) · highlights 2",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_dac0be0229564280be6c384fcea49e37~mv2.jpg/C%C3%81CH-%20NHI%E1%BB%86T-%20HAI-%20L%E1%BB%9AP.jpg#originWidth=646&originHeight=533",
-      "sourceSheet": "H. BÌNH NƯỚC",
-      "sourceTitle": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút)"
-    },
-    {
-      "ID": "block-ly-zwilling-sorrento-1",
-      "title": "LY ZWILLING SORRENTO · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
-      "sourceTitle": "LY ZWILLING SORRENTO"
-    },
-    {
-      "ID": "block-madura-1",
-      "title": "MADURA · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "C. NỒI CHẢO ZWILLING",
-      "sourceTitle": "MADURA"
-    },
-    {
-      "ID": "block-madura-3",
-      "title": "MADURA · highlights 3",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_ff0617c2e8934564a5b85eed8e4e0bdb~mv2.webp/hotspot-zwilling-madura-plus.webp#originWidth=800&originHeight=400",
-      "sourceSheet": "C. NỒI CHẢO ZWILLING",
-      "sourceTitle": "MADURA"
-    },
-    {
-      "ID": "block-may-hut-chan-khong-1",
-      "title": "MÁY HÚT CHÂN KHÔNG · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "E. FS",
-      "sourceTitle": "MÁY HÚT CHÂN KHÔNG"
-    },
-    {
-      "ID": "block-may-hut-chan-khong-3",
-      "title": "MÁY HÚT CHÂN KHÔNG · highlights 3",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_1a981fa1a9cf4992ad183ce87934587c~mv2.webp/mayhut.webp#originWidth=600&originHeight=600",
-      "sourceSheet": "E. FS",
-      "sourceTitle": "MÁY HÚT CHÂN KHÔNG"
-    },
-    {
-      "ID": "block-milano-1",
-      "title": "MILANO · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "C. NỒI CHẢO ZWILLING",
-      "sourceTitle": "MILANO"
-    },
-    {
-      "ID": "block-milano-3",
-      "title": "MILANO · highlights 3",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_646aceb60b0649fd96f82eadf6b19f73~mv2.jpg/N%E1%BA%AEP-%20K%C3%8DNH-%20CAO-%20C%E1%BA%A4P.jpg#originWidth=3031&originHeight=1875",
-      "sourceSheet": "C. NỒI CHẢO ZWILLING",
-      "sourceTitle": "MILANO"
-    },
-    {
-      "ID": "block-miyabi-kaizen-ii-5000fcd-1",
-      "title": "MIYABI KAIZEN II 5000FCD · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "A. Các dòng dao",
-      "sourceTitle": "MIYABI KAIZEN II 5000FCD"
-    },
-    {
-      "ID": "block-miyabi-kaizen-ii-5000fcd-3",
-      "title": "MIYABI KAIZEN II 5000FCD · highlights 3",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_873cde7847d14e0f9c7acd6e0e76f4fa~mv2.webp/MIYABI-5000-FC-D_hotspot.webp#originWidth=1003&originHeight=645",
-      "sourceSheet": "A. Các dòng dao",
-      "sourceTitle": "MIYABI KAIZEN II 5000FCD"
+      "sourceSheet": "B. NỒI GANG",
+      "sourceTitle": "STAUB Oven dish cast iron 15 x 11 cm (Black)"
     },
     {
       "ID": "block-num-noi-gang-staub-1",
@@ -281,14 +233,6 @@
       "sourceTitle": "NÚM NỒI GANG STAUB"
     },
     {
-      "ID": "block-staub-dang-tron-1",
-      "title": "STAUB DÁNG TRÒN · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "B. NỒI GANG",
-      "sourceTitle": "STAUB DÁNG TRÒN"
-    },
-    {
       "ID": "block-staub-dang-tron-2",
       "title": "STAUB DÁNG TRÒN · highlights 2",
       "component": "highlights",
@@ -297,68 +241,28 @@
       "sourceTitle": "STAUB DÁNG TRÒN"
     },
     {
-      "ID": "block-staub-oven-dish-cast-iron-15-x-11-cm-black-1",
-      "title": "STAUB Oven dish cast iron 15 x 11 cm (Black) · story 1",
+      "ID": "block-staub-dang-tron-1",
+      "title": "STAUB DÁNG TRÒN · story 1",
       "component": "story",
       "image": "",
       "sourceSheet": "B. NỒI GANG",
-      "sourceTitle": "STAUB Oven dish cast iron 15 x 11 cm (Black)"
+      "sourceTitle": "STAUB DÁNG TRÒN"
     },
     {
-      "ID": "block-staub-pumpkin-1",
-      "title": "STAUB PUMPKIN · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "B. NỒI GANG",
-      "sourceTitle": "STAUB PUMPKIN"
-    },
-    {
-      "ID": "block-staub-pumpkin-2",
-      "title": "STAUB PUMPKIN · highlights 2",
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-2",
+      "title": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút) · highlights 2",
       "component": "highlights",
-      "image": "wix:image://v1/de2f43_aee53d9e9da94e0eac54ea510e09c0d8~mv2.jpg/M%E1%BB%98T-%20THI%E1%BA%BET-%20K%E1%BA%BE,%20-MU%C3%94N%20-V%C3%80N%20-M%C3%93N-%20NGON.jpg#originWidth=3392&originHeight=2534",
-      "sourceSheet": "B. NỒI GANG",
-      "sourceTitle": "STAUB PUMPKIN"
+      "image": "wix:image://v1/de2f43_dac0be0229564280be6c384fcea49e37~mv2.jpg/C%C3%81CH-%20NHI%E1%BB%86T-%20HAI-%20L%E1%BB%9AP.jpg#originWidth=646&originHeight=533",
+      "sourceSheet": "H. BÌNH NƯỚC",
+      "sourceTitle": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút)"
     },
     {
-      "ID": "block-thot-ebony-1",
-      "title": "THỚT EBONY · story 1",
+      "ID": "block-ly-giu-nhiet-zwilling-thermoplus-900ml-kem-ong-hut-1",
+      "title": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút) · story 1",
       "component": "story",
       "image": "",
-      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
-      "sourceTitle": "THỚT EBONY"
-    },
-    {
-      "ID": "block-thot-zwilling-now-1",
-      "title": "THỚT ZWILLING NOW · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
-      "sourceTitle": "THỚT ZWILLING NOW"
-    },
-    {
-      "ID": "block-tui-hut-chan-khong-1",
-      "title": "TÚI HÚT CHÂN KHÔNG · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "E. FS",
-      "sourceTitle": "TÚI HÚT CHÂN KHÔNG"
-    },
-    {
-      "ID": "block-tui-hut-chan-khong-2",
-      "title": "TÚI HÚT CHÂN KHÔNG · highlights 2",
-      "component": "highlights",
-      "image": "wix:image://v1/de2f43_ca9a2133ba7a4412aed9b4cd1b4bbcfc~mv2.jpg/NH%E1%BB%B0A-%20KH%C3%94NG-%20CH%E1%BB%A8A-%20BPA-,%20B%E1%BB%80N-%20B%E1%BB%88.jpg#originWidth=651&originHeight=651",
-      "sourceSheet": "E. FS",
-      "sourceTitle": "TÚI HÚT CHÂN KHÔNG"
-    },
-    {
-      "ID": "block-zwilling-fourstar-1",
-      "title": "ZWILLING FOURSTAR · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "A. Các dòng dao",
-      "sourceTitle": "ZWILLING FOURSTAR"
+      "sourceSheet": "H. BÌNH NƯỚC",
+      "sourceTitle": "Ly giữ nhiệt ZWILLING Thermoplus 900ml (kèm ống hút)"
     },
     {
       "ID": "block-zwilling-fourstar-2",
@@ -369,12 +273,12 @@
       "sourceTitle": "ZWILLING FOURSTAR"
     },
     {
-      "ID": "block-zwilling-gourmet-1",
-      "title": "ZWILLING GOURMET · story 1",
+      "ID": "block-zwilling-fourstar-1",
+      "title": "ZWILLING FOURSTAR · story 1",
       "component": "story",
       "image": "",
       "sourceSheet": "A. Các dòng dao",
-      "sourceTitle": "ZWILLING GOURMET"
+      "sourceTitle": "ZWILLING FOURSTAR"
     },
     {
       "ID": "block-zwilling-gourmet-3",
@@ -383,6 +287,46 @@
       "image": "wix:image://v1/de2f43_8fb63710d17b43de9b17e84c0a6e82fc~mv2.webp/gourrmet.webp#originWidth=685&originHeight=420",
       "sourceSheet": "A. Các dòng dao",
       "sourceTitle": "ZWILLING GOURMET"
+    },
+    {
+      "ID": "block-zwilling-gourmet-1",
+      "title": "ZWILLING GOURMET · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING GOURMET"
+    },
+    {
+      "ID": "block-madura-3",
+      "title": "MADURA · highlights 3",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_ff0617c2e8934564a5b85eed8e4e0bdb~mv2.webp/hotspot-zwilling-madura-plus.webp#originWidth=800&originHeight=400",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MADURA"
+    },
+    {
+      "ID": "block-madura-1",
+      "title": "MADURA · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MADURA"
+    },
+    {
+      "ID": "block-milano-3",
+      "title": "MILANO · highlights 3",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_646aceb60b0649fd96f82eadf6b19f73~mv2.jpg/N%E1%BA%AEP-%20K%C3%8DNH-%20CAO-%20C%E1%BA%A4P.jpg#originWidth=3031&originHeight=1875",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MILANO"
+    },
+    {
+      "ID": "block-milano-1",
+      "title": "MILANO · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "C. NỒI CHẢO ZWILLING",
+      "sourceTitle": "MILANO"
     },
     {
       "ID": "block-zwilling-minimale-mau-bac-nham-silver-vang-hong-nham-rose-go-1",
@@ -409,6 +353,14 @@
       "sourceTitle": "ZWILLING NOVA"
     },
     {
+      "ID": "block-thot-zwilling-now-1",
+      "title": "THỚT ZWILLING NOW · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "THỚT ZWILLING NOW"
+    },
+    {
       "ID": "block-zwilling-now-s-block-dao-keo-1",
       "title": "ZWILLING NOW S (BLOCK DAO / KÉO) · story 1",
       "component": "story",
@@ -417,18 +369,26 @@
       "sourceTitle": "ZWILLING NOW S (BLOCK DAO / KÉO)"
     },
     {
-      "ID": "block-zwilling-pro-1",
-      "title": "ZWILLING PRO · story 1",
+      "ID": "block-dua-zwilling-now-set-6-mau-set-hong-set-macaron-1",
+      "title": "ĐŨA ZWILLING NOW (SET 6 MÀU, SET HỒNG & SET MACARON) · story 1",
       "component": "story",
-      "image": "wix:image://v1/de2f43_034f03d7afe9495281f3c7eb98e39e74~mv2.jpg/ZWILLIN-%20PRO-%20T%C3%81I-%C4%90%E1%BB%8ANH-NGH%C4%A8A%20-K%E1%BB%B8-%20NGH%E1%BB%86-%20CH%E1%BA%BE-%20T%C3%81C-%20DAO.jpg#originWidth=5574&originHeight=4181",
-      "sourceSheet": "A. Các dòng dao",
-      "sourceTitle": "ZWILLING PRO"
+      "image": "",
+      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
+      "sourceTitle": "ĐŨA ZWILLING NOW (SET 6 MÀU, SET HỒNG & SET MACARON)"
     },
     {
       "ID": "block-zwilling-pro-2",
       "title": "ZWILLING PRO · highlights 2",
       "component": "highlights",
       "image": "wix:image://v1/de2f43_053d2ba02a894e0daf53bddec48fc684~mv2.jpg/CH%E1%BA%A4T-%20TH%C3%89P-%20V%C6%AF%E1%BB%A2T-%20TR%E1%BB%98I.jpg#originWidth=6000&originHeight=3375",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING PRO"
+    },
+    {
+      "ID": "block-zwilling-pro-1",
+      "title": "ZWILLING PRO · story 1",
+      "component": "story",
+      "image": "wix:image://v1/de2f43_034f03d7afe9495281f3c7eb98e39e74~mv2.jpg/ZWILLIN-%20PRO-%20T%C3%81I-%C4%90%E1%BB%8ANH-NGH%C4%A8A%20-K%E1%BB%B8-%20NGH%E1%BB%86-%20CH%E1%BA%BE-%20T%C3%81C-%20DAO.jpg#originWidth=5574&originHeight=4181",
       "sourceSheet": "A. Các dòng dao",
       "sourceTitle": "ZWILLING PRO"
     },
@@ -441,20 +401,28 @@
       "sourceTitle": "ZWILLING PRO II"
     },
     {
+      "ID": "block-dung-cu-nau-an-thep-zwilling-prof-1",
+      "title": "DỤNG CỤ NẤU ĂN THÉP ZWILLING PROF · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "DỤNG CỤ NẤU ĂN THÉP ZWILLING PROF"
+    },
+    {
+      "ID": "block-ly-zwilling-sorrento-1",
+      "title": "LY ZWILLING SORRENTO · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "G. DỤNG CỤ BÀN ĂN",
+      "sourceTitle": "LY ZWILLING SORRENTO"
+    },
+    {
       "ID": "block-zwilling-spirit-1",
       "title": "ZWILLING SPIRIT · story 1",
       "component": "story",
       "image": "",
       "sourceSheet": "C. NỒI CHẢO ZWILLING",
       "sourceTitle": "ZWILLING SPIRIT"
-    },
-    {
-      "ID": "block-zwilling-tanrei-1",
-      "title": "ZWILLING TANREI · story 1",
-      "component": "story",
-      "image": "",
-      "sourceSheet": "A. Các dòng dao",
-      "sourceTitle": "ZWILLING TANREI"
     },
     {
       "ID": "block-zwilling-tanrei-3",
@@ -465,12 +433,44 @@
       "sourceTitle": "ZWILLING TANREI"
     },
     {
+      "ID": "block-zwilling-tanrei-1",
+      "title": "ZWILLING TANREI · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "A. Các dòng dao",
+      "sourceTitle": "ZWILLING TANREI"
+    },
+    {
       "ID": "block-zwilling-twin-pollux-1",
       "title": "ZWILLING TWIN POLLUX · story 1",
       "component": "story",
       "image": "",
       "sourceSheet": "A. Các dòng dao",
       "sourceTitle": "ZWILLING TWIN POLLUX"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-cat-gia-cam-1",
+      "title": "KÉO ZWILLING TWIN SELECT - KÉO CẮT GIA CẦM · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO CẮT GIA CẦM"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-3",
+      "title": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG · highlights 3",
+      "component": "highlights",
+      "image": "wix:image://v1/de2f43_87574deafed44512be4d2b5bc36a6e24~mv2.jpg/TH%C3%89P-%20KH%C3%94NG%20-G%E1%BB%88-%20C%C3%94NG-%20TH%E1%BB%A8C-%20%C4%90%E1%BA%B6C-%20BI%E1%BB%86T.jpg#originWidth=2281&originHeight=801",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG"
+    },
+    {
+      "ID": "block-keo-zwilling-twin-select-keo-da-nang-1",
+      "title": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG · story 1",
+      "component": "story",
+      "image": "",
+      "sourceSheet": "F. DỤNG CỤ ĐỒ BẾP",
+      "sourceTitle": "KÉO ZWILLING TWIN SELECT - KÉO ĐA NĂNG"
     }
   ],
   "items": [
@@ -2775,14 +2775,14 @@
       "coordY": ""
     },
     {
-      "ID": "block-zwilling-tanrei-3-item-1",
-      "title": "CÁN DAO BA ĐINH TÁN",
+      "ID": "block-zwilling-tanrei-3-item-7",
+      "title": "ĐỘ SẮC TỐI ƯU",
       "block": "block-zwilling-tanrei-3",
-      "position": 3,
-      "body": "Thiết kế cán ba đinh tán thanh lịch mang phong cách truyền thống, được chế tác từ vật liệu Micarta cao cấp.",
+      "position": 1,
+      "body": "Lưỡi cắt Razor Edge được hoàn thiện với độ chính xác cao, mang lại khả năng cắt đặc biệt sắc bén và tinh gọn.",
       "image": "",
-      "coordX": "81.1",
-      "coordY": "42.8"
+      "coordX": "48.5",
+      "coordY": "55.9"
     },
     {
       "ID": "block-zwilling-tanrei-3-item-2",
@@ -2793,6 +2793,16 @@
       "image": "",
       "coordX": "25.8",
       "coordY": "41.8"
+    },
+    {
+      "ID": "block-zwilling-tanrei-3-item-1",
+      "title": "CÁN DAO BA ĐINH TÁN",
+      "block": "block-zwilling-tanrei-3",
+      "position": 3,
+      "body": "Thiết kế cán ba đinh tán thanh lịch mang phong cách truyền thống, được chế tác từ vật liệu Micarta cao cấp.",
+      "image": "",
+      "coordX": "81.1",
+      "coordY": "42.8"
     },
     {
       "ID": "block-zwilling-tanrei-3-item-3",
@@ -2833,16 +2843,6 @@
       "image": "",
       "coordX": "11.1",
       "coordY": "53.2"
-    },
-    {
-      "ID": "block-zwilling-tanrei-3-item-7",
-      "title": "ĐỘ SẮC TỐI ƯU",
-      "block": "block-zwilling-tanrei-3",
-      "position": 1,
-      "body": "Lưỡi cắt Razor Edge được hoàn thiện với độ chính xác cao, mang lại khả năng cắt đặc biệt sắc bén và tinh gọn.",
-      "image": "",
-      "coordX": "48.5",
-      "coordY": "55.9"
     },
     {
       "ID": "block-zwilling-twin-pollux-1-item-1",
