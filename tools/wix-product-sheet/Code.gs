@@ -3,21 +3,25 @@
 // Uses only the current spreadsheet. CSV ZIP downloads in a dialog, not to Drive.
 const INPUT_SHEET = 'Nhap san pham';
 const SPEC_SHEET = 'Thong so';
+const BLOCK_SHEET = 'Nhap FeatureBlocks';
+const ITEM_SHEET = 'Nhap FeatureItems';
+const BLOCK_HEADERS = ['ID block *', 'Tên block *', 'Loại block *', 'Dòng sản phẩm', 'Tiêu đề', 'Nội dung', 'Nhãn nút', 'Ảnh chính', 'Tên nguồn', 'Ghi chú'];
+const ITEM_HEADERS = ['ID item *', 'ID block *', 'Thứ tự *', 'Tiêu đề *', 'Nội dung', 'Ảnh', 'Tọa độ X (%)', 'Tọa độ Y (%)'];
 const HEADERS = ['Mã nhóm sản phẩm *', 'Tên sản phẩm *', 'SKU *', 'Tên biến thể',
   'Thương hiệu *', 'Dòng sản phẩm', 'Danh mục sản phẩm *', 'Danh mục thương hiệu',
   'Danh mục chất liệu', 'Giá bán *', 'Giá gốc', 'Tồn kho *', 'Mô tả ngắn',
   'Mô tả chi tiết', 'Màu sắc', 'Kích thước', 'Ảnh chính', 'Ảnh phụ',
-  'Nhãn', 'Link Shopee', 'Link TikTok', 'Link nguồn', 'Slug'];
+  'Nhãn', 'Link Shopee', 'Link TikTok', 'Link nguồn', 'Slug', 'Story block (ID)', 'Highlights block (ID)'];
 const SPEC_HEADERS = ['SKU *', 'Nhóm thông số *', 'Tên thông số *', 'Giá trị *'];
 const SOURCE_NAMES = ['Brands', 'Categories', 'Series', 'Products', 'ProductVariants',
-  'FeatureBlocks', 'FeatureItems', 'FeatureItemsWix', 'FeatureItemsKhachhang', 'Stores'];
+  'FeatureBlocks', 'FeatureItems', 'Stores'];
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('Wix CSV')
     .addItem('Kiểm tra sản phẩm mới', 'checkNewProducts')
     .addItem('Tải ZIP CSV sản phẩm mới', 'downloadNewProducts')
     .addSeparator()
-    .addItem('Tải 10 CSV nguồn (quản trị)', 'downloadSourceCsv')
+    .addItem('Tải 8 CSV nguồn (quản trị)', 'downloadSourceCsv')
     .addToUi();
 }
 
@@ -53,8 +57,70 @@ function rows_(headers, objects) {
   return [headers, ...objects.map(r => headers.map(h => r[h] == null ? '' : r[h]))];
 }
 
+// Validate new feature content separately; never overwrite existing source IDs.
+function buildNewFeatures_(blockInput, itemInput, source) {
+  const oldBlocks = objects_(source.FeatureBlocks || [['ID', 'component']]);
+  const blockMap = new Map(oldBlocks.map(b => [b.ID, b]));
+  const oldItems = objects_(source.FeatureItems || [['ID']]);
+  const itemIds = new Set(oldItems.map(i => i.ID));
+  const seriesIds = new Set(objects_(source.Series).map(s => s.ID));
+  const blocks = [], items = [], positions = new Set();
+  const idOf = value => { const v = value.trim(); const m = v.match(/\[([^\]]+)\]$/); return m ? m[1] : v; };
+  function fail(sheet, row, msg) { throw new Error(sheet + ' dòng ' + row + ': ' + msg); }
+  function validId(id) { return /^[a-z0-9][a-z0-9_-]*$/.test(id); }
+  function checkImage(value, sheet, row) {
+    if (value && !/^wix:image:\/\/v1\/[^\s]+$/.test(value)) fail(sheet, row, 'Ảnh phải là URI wix:image://v1/... hoặc để trống.');
+  }
+  for (const row of objects_(blockInput, BLOCK_HEADERS)) {
+    const [ID, Title, component, seriesText, heading, body, ctaLabel, image, sourceTitle, internalNote] = BLOCK_HEADERS.map(h => row[h].trim());
+    if (!validId(ID) || blockMap.has(ID)) fail(BLOCK_SHEET, row._row, 'ID block không hợp lệ hoặc đã tồn tại: ' + ID);
+    if (!Title || !['story', 'highlights'].includes(component)) fail(BLOCK_SHEET, row._row, 'Điền tên và loại story/highlights.');
+    const series = idOf(seriesText);
+    if (series && !seriesIds.has(series)) fail(BLOCK_SHEET, row._row, 'Dòng sản phẩm không có trong Series.');
+    checkImage(image, BLOCK_SHEET, row._row);
+    const block = {ID, Title, component, series, heading, body, ctaLabel, image, sourceTitle, internalNote, sourceSheet: ''};
+    blockMap.set(ID, block); blocks.push(block);
+  }
+  const counts = new Map();
+  for (const old of oldItems) {
+    const block = old.block || '';
+    counts.set(block, (counts.get(block) || 0) + 1);
+    positions.add(block + ':' + Number(old.position));
+  }
+  for (const row of objects_(itemInput, ITEM_HEADERS)) {
+    const [ID, blockText, positionText, Title, body, image, x, y] = ITEM_HEADERS.map(h => row[h].trim());
+    const block = idOf(blockText), parent = blockMap.get(block);
+    if (!validId(ID) || itemIds.has(ID)) fail(ITEM_SHEET, row._row, 'ID item không hợp lệ hoặc đã tồn tại: ' + ID);
+    if (!parent) fail(ITEM_SHEET, row._row, 'ID block không tồn tại trong FeatureBlocks hoặc Nhap FeatureBlocks.');
+    const position = Number(positionText);
+    if (!/^\d+$/.test(positionText) || !Number.isSafeInteger(position) || position < 1 || !Title)
+      fail(ITEM_SHEET, row._row, 'Điền tiêu đề và thứ tự nguyên dương.');
+    if (positions.has(block + ':' + position)) fail(ITEM_SHEET, row._row, 'Trùng thứ tự trong cùng block.');
+    if ((counts.get(block) || 0) >= 20) fail(ITEM_SHEET, row._row, 'Trang hiện hỗ trợ tối đa 20 item/block.');
+    checkImage(image, ITEM_SHEET, row._row);
+    if ((x === '') !== (y === '')) fail(ITEM_SHEET, row._row, 'Tọa độ X và Y phải cùng có giá trị hoặc cùng để trống.');
+    for (const v of [x, y]) if (v !== '' && (!/^\d+(\.\d+)?$/.test(v) || Number(v) > 100))
+      fail(ITEM_SHEET, row._row, 'Tọa độ phải từ 0 đến 100.');
+    if (parent.component === 'story' && x !== '') fail(ITEM_SHEET, row._row, 'Tọa độ chỉ dùng cho highlights.');
+    items.push({ID, Title, block, position, body, image, coordX: x === '' ? '' : Number(x), coordY: y === '' ? '' : Number(y)});
+    itemIds.add(ID); positions.add(block + ':' + position); counts.set(block, (counts.get(block) || 0) + 1);
+  }
+  const files = {};
+  for (const [name, data] of [['FeatureBlocks', blocks], ['FeatureItems', items]]) {
+    if (!data.length) continue;
+    const headers = source[name][0].filter(h => !['Created Date', 'Updated Date', 'Owner'].includes(h));
+    for (const h of headers) if (!(h in data[0])) throw new Error('Cột nguồn chưa được hỗ trợ: ' + name + '.' + h);
+    files[name + '.csv'] = csv_(rows_(headers, data));
+  }
+  return {blocks, items, blockMap, files};
+}
+
 // Pure transformation: also exercised by test-export.mjs without Google access.
-function buildNewProducts(input, specs, source) {
+function buildNewProducts(input, specs, source, blockInput = [BLOCK_HEADERS], itemInput = [ITEM_HEADERS]) {
+  // Older downloaded workbooks remain usable when they have the original 23 columns.
+  if (JSON.stringify(input[0]) === JSON.stringify(HEADERS.slice(0, 23)))
+    input = [HEADERS, ...input.slice(1).map(r => [...r.slice(0, 23), '', ''])];
+  const features = buildNewFeatures_(blockInput, itemInput, source);
   const entries = objects_(input, HEADERS), specRows = objects_(specs, SPEC_HEADERS);
   if (!entries.length) throw new Error('Chưa có sản phẩm mới trong tab ' + INPUT_SHEET + '.');
   const lookup = name => new Map(objects_(source[name]).map(r => [r.ID, r]));
@@ -102,7 +168,7 @@ function buildNewProducts(input, specs, source) {
     try {
       const [group, title, sku, variantTitle, brandText, seriesText, catText, brandCatText,
         materialText, priceText, compareText, stockText, shortDescription, description, color,
-        sizeLabel, mainText, galleryText, labelText, shopeeText, tiktokText, sourceText, slugText]
+        sizeLabel, mainText, galleryText, labelText, shopeeText, tiktokText, sourceText, slugText, storyText, highlightsText]
         = HEADERS.map(h => r[h].trim());
       const row = r._row;
       if (!/^[A-Za-z0-9][A-Za-z0-9_-]*$/.test(group)) fail(row, 'Mã nhóm: chỉ chữ không dấu, số, - hoặc _.');
@@ -118,6 +184,10 @@ function buildNewProducts(input, specs, source) {
       const category = ref(catText, categories, 'danh mục sản phẩm', row, true, 'product');
       const brandCategory = ref(brandCatText, categories, 'danh mục thương hiệu', row, false, 'brand');
       const materialCategory = ref(materialText, categories, 'danh mục chất liệu', row, false, 'material');
+      const storyBlock = ref(storyText, features.blockMap, 'Story block', row, false);
+      const highlightsBlock = ref(highlightsText, features.blockMap, 'Highlights block', row, false);
+      if (storyBlock && features.blockMap.get(storyBlock).component !== 'story') fail(row, 'Story block phải có component=story.');
+      if (highlightsBlock && features.blockMap.get(highlightsBlock).component !== 'highlights') fail(row, 'Highlights block phải có component=highlights.');
       const price = number(priceText, 'giá bán', row, true, true);
       const compareAtPrice = number(compareText, 'giá gốc', row, false, true);
       const stock = number(stockText, 'tồn kho', row, true, true);
@@ -134,8 +204,8 @@ function buildNewProducts(input, specs, source) {
         brandCategory, materialCategory, categoryPath, brandCategoryPath,
         brandCategoryRootSlug: brandCategoryPath.split('/').filter(Boolean)[0] || '',
         displayCategory: '', minPrice: price, maxPrice: price, soldCount: 0,
-        status: 'active', mainImage, gallery, labels};
-      const signature = JSON.stringify([title, slug, brand, seriesId, category, brandCategory, materialCategory, labels]);
+        status: 'active', mainImage, gallery, labels, color, storyBlock, highlightsBlock};
+      const signature = JSON.stringify([title, slug, brand, seriesId, category, brandCategory, materialCategory, labels, storyBlock, highlightsBlock]);
       const prior = groups.get(productId);
       if (prior && prior.signature !== signature) fail(row, 'Các SKU cùng mã nhóm phải có cùng tên, slug, thương hiệu, dòng, danh mục và nhãn.');
       if (!prior && (oldSlugs.has(slug) || seenSlug.has(slug))) fail(row, 'Slug trùng sản phẩm khác: ' + slug);
@@ -162,23 +232,26 @@ function buildNewProducts(input, specs, source) {
   const productHeaders = source.Products[0].filter(h => !['Created Date', 'Updated Date', 'Owner', 'Products (Item)'].includes(h));
   const variantHeaders = source.ProductVariants[0].filter(h => !['Created Date', 'Updated Date', 'Owner'].includes(h));
   const products = [...groups.values()].map(g => g.product);
+  for (const h of ['storyBlock', 'highlightsBlock'])
+    if (products.some(p => p[h]) && !productHeaders.includes(h)) productHeaders.push(h);
   for (const [headers, sample] of [[productHeaders, products[0]], [variantHeaders, variants[0]]])
     for (const header of headers) if (!(header in sample)) throw new Error('Cột nguồn chưa được hỗ trợ: ' + header);
-  return {products, variants, files: {
+  return {products, variants, featureBlocks: features.blocks, featureItems: features.items, files: {
+    ...features.files,
     'Products.csv': csv_(rows_(productHeaders, products)),
     'ProductVariants.csv': csv_(rows_(variantHeaders, variants))
   }};
 }
 
 function buildCurrent_() {
-  return buildNewProducts(readSheet_(INPUT_SHEET), readSheet_(SPEC_SHEET), sourceData_());
+  return buildNewProducts(readSheet_(INPUT_SHEET), readSheet_(SPEC_SHEET), sourceData_(), readSheet_(BLOCK_SHEET), readSheet_(ITEM_SHEET));
 }
 
 function checkNewProducts() {
   try {
     const result = buildCurrent_();
     SpreadsheetApp.getUi().alert('Hợp lệ: ' + result.products.length + ' sản phẩm, ' + result.variants.length +
-      ' SKU. Chưa import vào Wix. ID được kiểm tra với dữ liệu nguồn trong file này.');
+      ' SKU, ' + result.featureBlocks.length + ' block mới, ' + result.featureItems.length + ' item mới. Chưa import vào Wix. ID được kiểm tra với dữ liệu nguồn trong file này.');
   } catch (e) { SpreadsheetApp.getUi().alert(String(e.message)); }
 }
 
@@ -187,8 +260,8 @@ function showZip_(files, name) {
   const zip = Utilities.zip(blobs, name);
   const base64 = Utilities.base64Encode(zip.getBytes());
   const instructions = name === 'wix-source-csv.zip'
-    ? 'Dữ liệu nguồn: Brands → Categories → Series → Products → ProductVariants; FeatureBlocks trước bản FeatureItems đã chọn; Stores độc lập. Không import cả ba bản FeatureItems.'
-    : 'Import Products trước, ProductVariants sau. Kiểm tra ánh xạ ID, reference, gallery và specs bằng 1–2 sản phẩm trước.';
+    ? 'Dữ liệu nguồn: Brands → Categories → Series → Products → ProductVariants; FeatureBlocks trước FeatureItems; Stores độc lập.'
+    : 'Nếu có nội dung mới: FeatureBlocks → FeatureItems → Products → ProductVariants. Products.storyBlock và Products.highlightsBlock phải là Reference đến FeatureBlocks. Kiểm tra bằng 1–2 sản phẩm trước.';
   const html = '<!doctype html><meta charset="utf-8"><style>body{font:15px Arial;padding:20px;line-height:1.6}</style>' +
     '<p>CSV đã sẵn sàng. Tải ZIP, giải nén rồi import từng file vào đúng collection Wix CMS.</p>' +
     '<a download="' + name + '" href="data:application/zip;base64,' + base64 + '">Tải ' + name + '</a>' +
@@ -206,7 +279,7 @@ function downloadNewProducts() {
 function downloadSourceCsv() {
   const ui = SpreadsheetApp.getUi();
   if (ui.alert('Xuất dữ liệu nguồn',
-    'Có 3 bản FeatureItems riêng biệt. Không import cả ba vào cùng collection. Thao tác này không bao gồm tab Nhap san pham.',
+    'Xuất 8 tab nguồn hiện tại. Không bao gồm các tab nhập mới.',
     ui.ButtonSet.OK_CANCEL) !== ui.Button.OK) return;
   try { showZip_(Object.fromEntries(SOURCE_NAMES.map(n => [n + '.csv', csv_(readSheet_(n))])), 'wix-source-csv.zip'); }
   catch (e) { ui.alert(String(e.message)); }

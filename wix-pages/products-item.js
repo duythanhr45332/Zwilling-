@@ -11,6 +11,34 @@
 import wixData from 'wix-data';
 import wixLocation from 'wix-location';
 
+// Products.storyBlock / highlightsBlock: single Reference fields to FeatureBlocks.
+// An explicit but invalid reference hides that section; never substitute unrelated content.
+async function resolveExplicitFeatureBlocks(product, dataApi = wixData) {
+  const result = {};
+  for (const [field, component] of [['storyBlock', 'story'], ['highlightsBlock', 'highlights']]) {
+    const value = product[field];
+    const specified = value !== null && value !== undefined && value !== '';
+    const id = typeof value === 'string' ? value.trim()
+      : (value && !Array.isArray(value) ? value._id || value.ID || '' : '');
+    result[field] = {specified, block: null};
+    if (!specified) continue;
+    if (!id) {
+      console.warn('[Wix Velo PDP] Reference không hợp lệ:', field);
+      continue;
+    }
+    try {
+      let res = await dataApi.query('FeatureBlocks').eq('_id', id).find();
+      if (!res.items.length) res = await dataApi.query('FeatureBlocks').eq('ID', id).find();
+      const block = res.items[0];
+      if (block && block.component === component) result[field].block = block;
+      else console.warn('[Wix Velo PDP] Block không tồn tại hoặc sai loại:', field, id);
+    } catch (error) {
+      console.warn('[Wix Velo PDP] Không tải được block đã chọn:', field, id, error);
+    }
+  }
+  return result;
+}
+
 $w.onReady(async function () {
   console.log('[Wix Velo] Đang nạp trang chi tiết sản phẩm (PDP)...');
 
@@ -50,6 +78,34 @@ $w.onReady(async function () {
     }
   }
 
+  // Soft-hide products consistently with the listing pages. This is UI visibility,
+  // not a CMS permission or an HTTP 404; unpublished items require Wix CMS controls.
+  function leaveUnavailableProduct() {
+    const ids = [
+      '#productBreadcrumb', '#categoryBreadcrumb', '#breadcrumb',
+      '#productDetail', '#compProductDetail', '#productDetailComp',
+      '#storySection', '#hotspotSection', '#featureBlocks', '#productFeatureBlocks', '#wxFeatureBlocks',
+      '#wxStorySection', '#featureStory', '#wxFeatureStory', '#storyBlock', '#story',
+      '#customElementStory', '#customElement1', '#customElement',
+      '#wxHotspotSection', '#featureHotspot', '#wxFeatureHighlights', '#hotspotBlock',
+      '#hotspot', '#highlights', '#highlightsSection', '#wxHotspot',
+      '#customElementHotspot', '#customElement2', '#customElement3',
+      '#sectionHotspot', '#hotspotSectionContainer', '#sectionHighlights',
+      '#highlightsSectionContainer', '#boxHotspot', '#hotspotBox', '#hotspotSectionWrap',
+      '#sectionCustomElement2', '#sectionCustomElement3', '#sectionStory',
+      '#storySectionContainer', '#boxStory', '#storyBox', '#sectionCustomElement1',
+      '#relatedProducts', '#wxRelatedProducts', '#compRelatedProducts', '#related',
+      '#sectionRelatedProducts', '#relatedSection', '#relatedContainer'
+    ];
+    for (const id of ids) {
+      try {
+        const el = $w(id);
+        if (el && typeof el.collapse === 'function') el.collapse();
+      } catch (e) { }
+    }
+    wixLocation.to('/products');
+  }
+
   try {
     let currentProduct = null;
 
@@ -66,13 +122,15 @@ $w.onReady(async function () {
       const pathSegments = wixLocation.path || [];
       const slugFromUrl = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1] : '';
       if (slugFromUrl) {
-        const pRes = await wixData.query('Products').eq('slug', slugFromUrl).find();
+        const pRes = await wixData.query('Products')
+          .eq('slug', slugFromUrl).eq('status', 'active').limit(1).find();
         if (pRes.items.length > 0) currentProduct = pRes.items[0];
       }
     }
 
-    if (!currentProduct) {
-      console.warn('[Wix Velo] Không tìm thấy thông tin sản phẩm hiện tại.');
+    if (!currentProduct || currentProduct.status !== 'active') {
+      console.warn('[Wix Velo] Sản phẩm không tồn tại hoặc không được hiển thị.');
+      leaveUnavailableProduct();
       return;
     }
 
@@ -209,6 +267,8 @@ $w.onReady(async function () {
         // TRUY VẤN FEATURE BLOCKS ĐỘNG (CMS-DRIVEN & RELATIONAL QUERY)
         // =========================================================================
         let blocks = [];
+        const explicit = await resolveExplicitFeatureBlocks(currentProduct);
+        const needsLegacyLookup = !explicit.storyBlock.specified || !explicit.highlightsBlock.specified;
 
         // 1. Phân giải thông tin Series của sản phẩm (hỗ trợ cả Object Reference, String ID, Array)
         let sVal = currentProduct.series;
@@ -247,7 +307,7 @@ $w.onReady(async function () {
 
         // 2. Cách 1: Truy vấn trực tiếp theo trường liên kết CMS (nếu Products có featureBlocks)
         let directBlocks = currentProduct.featureBlocks;
-        if (directBlocks) {
+        if (needsLegacyLookup && directBlocks) {
           const directIds = Array.isArray(directBlocks)
             ? directBlocks.map(b => (typeof b === 'object' ? b._id || b.ID : b)).filter(Boolean)
             : (typeof directBlocks === 'string' ? directBlocks.split(',').map(s => s.trim()).filter(Boolean) : []);
@@ -264,7 +324,7 @@ $w.onReady(async function () {
         }
 
         // 3. Cách 2: Truy vấn trực tiếp theo trường `series` trong FeatureBlocks (Chuẩn CMS)
-        if (blocks.length === 0 && seriesId) {
+        if (needsLegacyLookup && blocks.length === 0 && seriesId) {
           try {
             const bBySeries = await wixData.query('FeatureBlocks')
               .eq('series', seriesId)
@@ -277,7 +337,7 @@ $w.onReady(async function () {
         }
 
         // 4. Cách 3: Nạp danh sách FeatureBlocks có sẵn trong CMS để chọn lọc
-        if (blocks.length === 0) {
+        if (needsLegacyLookup && blocks.length === 0) {
           try {
             const allBlocksRes = await wixData.query('FeatureBlocks')
               .limit(100)
@@ -391,13 +451,15 @@ $w.onReady(async function () {
         }
 
         // 6. Nếu có blocks, chọn lọc đúng storyBlock và hotspotBlock trước, sau đó chỉ truy vấn FeatureItems của đúng 2 block đó
-        if (blocks.length > 0) {
+        if (blocks.length > 0 || explicit.storyBlock.block || explicit.highlightsBlock.block) {
           const rawStoryBlocks = blocks.filter((b) => (b.component || 'story') === 'story');
           const rawHotspotBlocks = blocks.filter((b) => b.component === 'highlights');
 
           // Chọn đúng 1 Story block và 1 Hotspot block tương ứng nhất cho sản phẩm
-          const storyBlock = selectBestBlock(rawStoryBlocks, currentProduct, seriesTitle);
-          const hotspotBlock = selectBestBlock(rawHotspotBlocks, currentProduct, seriesTitle);
+          const storyBlock = explicit.storyBlock.specified
+            ? explicit.storyBlock.block : selectBestBlock(rawStoryBlocks, currentProduct, seriesTitle);
+          const hotspotBlock = explicit.highlightsBlock.specified
+            ? explicit.highlightsBlock.block : selectBestBlock(rawHotspotBlocks, currentProduct, seriesTitle);
 
           console.log('[Wix Velo PDP] Block chọn lọc:', {
             story: storyBlock ? (storyBlock._id || storyBlock.ID) : 'NONE',
@@ -545,6 +607,7 @@ $w.onReady(async function () {
         let relatedItems = [];
         if (catId) {
           const relRes = await wixData.query('Products')
+            .eq('status', 'active')
             .eq('category', catId)
             .ne('_id', currentProdId)
             .limit(4)
@@ -557,6 +620,7 @@ $w.onReady(async function () {
           const remainingCount = 4 - relatedItems.length;
           const excludeIds = [currentProdId, ...relatedItems.map(p => p._id || p.ID)].filter(Boolean);
           const brandRes = await wixData.query('Products')
+            .eq('status', 'active')
             .eq('brand', currentProduct.brand)
             .not(wixData.query('Products').hasSome('_id', excludeIds))
             .limit(remainingCount)

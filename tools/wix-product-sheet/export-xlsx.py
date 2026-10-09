@@ -35,15 +35,17 @@ def read(name):
     return [r[:width] for r in rows]
 
 names = ['Brands', 'Categories', 'Series', 'Products', 'ProductVariants', 'FeatureBlocks',
-         'FeatureItems', 'FeatureItemsWix', 'FeatureItemsKhachhang', 'Stores']
+         'FeatureItems', 'Stores']
 payload = {'input': read('Nhap san pham'), 'specs': read('Thong so'),
-           'source': {name: read(name) for name in names}}
+           'source': {name: read(name) for name in names},
+           'blocks': read('Nhap FeatureBlocks') if 'Nhap FeatureBlocks' in book.sheetnames else None,
+           'items': read('Nhap FeatureItems') if 'Nhap FeatureItems' in book.sheetnames else None}
 runner = """
 const fs = require('fs'), vm = require('vm');
 const sandbox = vm.createContext({});
 vm.runInContext(fs.readFileSync(process.argv[1], 'utf8') + '\\nthis.build = buildNewProducts;', sandbox);
 const p = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
-try { process.stdout.write(JSON.stringify(sandbox.build(p.input, p.specs, p.source))); }
+try { process.stdout.write(JSON.stringify(sandbox.build(p.input, p.specs, p.source, p.blocks || undefined, p.items || undefined))); }
 catch (e) { process.stderr.write(e.message + '\\n'); process.exit(1); }
 """
 with tempfile.TemporaryDirectory(prefix='wix-export-') as tmp:
