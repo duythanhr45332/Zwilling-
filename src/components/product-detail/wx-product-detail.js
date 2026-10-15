@@ -10,7 +10,9 @@ export class WxProductDetail extends LitElement {
     product: { type: Object, converter: jsonObjectConverter },
     data: { type: Object, converter: jsonObjectConverter },
     selectedImageIndex: { type: Number },
-    selectedVariantIndex: { type: Number },
+    selectedVariantIndex: { type: Number, attribute: 'selected-variant-index' },
+    initialColor: { type: String, attribute: 'initial-color' },
+    initialVariant: { type: String, attribute: 'initial-variant' },
     openSections: { type: Object },
     lang: { type: String },
     loading: { type: Boolean, converter: booleanConverter },
@@ -830,6 +832,8 @@ export class WxProductDetail extends LitElement {
     this.data = null;
     this.selectedImageIndex = 0;
     this.selectedVariantIndex = 0;
+    this.initialColor = '';
+    this.initialVariant = '';
     this.lang = 'vi';
     this.loading = false;
     this.shopeeUrl = '';
@@ -846,6 +850,65 @@ export class WxProductDetail extends LitElement {
     this.isZoomed = false;
     this.zoomX = 50;
     this.zoomY = 50;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.initialColor && typeof window !== 'undefined' && window.location) {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const qColor = params.get('color') || params.get('variant');
+        if (qColor) {
+          this.initialColor = decodeURIComponent(qColor);
+        }
+      } catch (e) {}
+    }
+    this._applyInitialVariant();
+  }
+
+  willUpdate(changedProps) {
+    if (
+      changedProps.has('product') ||
+      changedProps.has('data') ||
+      changedProps.has('initialColor') ||
+      changedProps.has('initialVariant')
+    ) {
+      this._applyInitialVariant();
+    }
+  }
+
+  _applyInitialVariant() {
+    const p = this.data || this.product;
+    if (!p) return;
+    const variants = this._getVariants();
+    if (!variants || !variants.length) return;
+
+    const targetColor = (this.initialColor || p.initialColor || p.selectedColor || '').trim().toLowerCase();
+    const targetVariant = (this.initialVariant || p.initialVariant || '').trim().toLowerCase();
+
+    if (targetColor || targetVariant) {
+      const foundIdx = variants.findIndex(v => {
+        const vc = (v.color || '').trim().toLowerCase();
+        const vt = (v.title || '').trim().toLowerCase();
+        const vs = (v.sku || v.ID || '').trim().toLowerCase();
+        if (targetColor && (vc === targetColor || vt.includes(targetColor) || targetColor.includes(vc))) {
+          return true;
+        }
+        if (targetVariant && (vs === targetVariant || vt.includes(targetVariant))) {
+          return true;
+        }
+        return false;
+      });
+
+      if (foundIdx >= 0) {
+        this.selectedVariantIndex = foundIdx;
+        return;
+      }
+    }
+
+    if (typeof p.selectedVariantIndex === 'number' && p.selectedVariantIndex >= 0 && p.selectedVariantIndex < variants.length) {
+      this.selectedVariantIndex = p.selectedVariantIndex;
+    }
   }
 
   _onMouseMove(e) {
@@ -896,7 +959,8 @@ export class WxProductDetail extends LitElement {
     this.selectedImageIndex = 0;
     const active = this._getActiveVariant();
     if (active) {
-      dispatchCustomEvent(this, 'variant-change', { variant: active });
+      this.initialColor = active.color || '';
+      dispatchCustomEvent(this, 'variant-change', { variant: active, index: idx });
     }
     this.requestUpdate();
   }

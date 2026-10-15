@@ -219,12 +219,16 @@ $w.onReady(async function () {
     }
   });
 
-  // Click sản phẩm -> /product/{slug}
+  // Click sản phẩm -> /product/{slug}?color=...
   safeOn('#homeProductCarousel', 'product-select', (e) => {
     const slug = e.detail?.product?.slug || e.detail?.product?.ID || e.detail?.product?._id;
+    const color = e.detail?.selectedColor;
     if (slug) {
-      console.log('[Home] Chuyển đến sản phẩm:', `/product/${slug}`);
-      wixLocation.to(`/product/${slug}`);
+      if (color) {
+        wixLocation.to(`/product/${slug}?color=${encodeURIComponent(color)}`);
+      } else {
+        wixLocation.to(`/product/${slug}`);
+      }
     }
   });
 });

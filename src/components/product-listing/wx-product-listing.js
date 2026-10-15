@@ -23,7 +23,8 @@ export class WxProductListing extends LitElement {
     visibleCount: { type: Number },
     pageSize: { type: Number },
     lang: { type: String },
-    loading: { type: Boolean, converter: booleanConverter }
+    loading: { type: Boolean, converter: booleanConverter },
+    expandVariants: { type: Boolean, attribute: 'expand-variants' }
   };
 
   static styles = css`
@@ -633,6 +634,56 @@ export class WxProductListing extends LitElement {
     this.pageSize = 32;
     this.lang = 'vi';
     this.loading = false;
+    this.expandVariants = true;
+  }
+
+  _getExpandedProducts(list) {
+    if (!this.expandVariants || !Array.isArray(list)) return list || [];
+
+    const expanded = [];
+    for (const p of list) {
+      const vars = Array.isArray(p.variants) ? p.variants : [];
+      if (vars.length > 1) {
+        vars.forEach((v, idx) => {
+          const colorName = (v.color || '').trim();
+          const variantPrice = Number(v.price) > 0 ? Number(v.price) : Number(p.minPrice || p.price || 0);
+          const variantComparePrice = v.compareAtPrice || p.compareAtPrice || null;
+          const variantImg = v.mainImage || p.mainImage || '';
+
+          let cardTitle = p.title;
+          if (v.title && v.title !== p.title) {
+            cardTitle = v.title;
+          } else if (colorName && !p.title.includes(colorName)) {
+            cardTitle = `${p.title} - ${colorName}`;
+          }
+
+          expanded.push({
+            ...p,
+            id: `${p.ID || p._id || 'prod'}_var_${v.sku || v.ID || idx}`,
+            _cardKey: `${p.ID || p._id || 'prod'}_${idx}`,
+            masterId: p.ID || p._id,
+            title: cardTitle,
+            baseTitle: p.title,
+            color: colorName || p.color || '',
+            selectedColor: colorName || p.color || '',
+            selectedVariantIndex: idx,
+            mainImage: variantImg,
+            gallery: v.gallery || p.gallery,
+            price: variantPrice,
+            minPrice: variantPrice,
+            maxPrice: variantPrice,
+            compareAtPrice: variantComparePrice,
+            sku: v.sku || p.sku,
+            parentProduct: p,
+            variants: vars,
+            isVariantCard: true
+          });
+        });
+      } else {
+        expanded.push(p);
+      }
+    }
+    return expanded;
   }
 
   _categoryMatchesProduct(c, p) {
@@ -788,6 +839,10 @@ export class WxProductListing extends LitElement {
 
   _getProductColors(p) {
     if (!p) return [];
+    if (p.isVariantCard && p.color) {
+      const norm = this._normalizeColor(p.color, p);
+      return [norm || p.color];
+    }
     const colors = new Set();
     if (p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
       for (const v of p.variants) {
@@ -859,7 +914,7 @@ export class WxProductListing extends LitElement {
     const list = Array.isArray(raw) ? [...raw] : [];
     if (!list.length) return [];
 
-    let filtered = list;
+    let filtered = this._getExpandedProducts(list);
 
     if (this.selectedCategory) {
       const allCats = Array.isArray(this.categories) ? this.categories : [];
@@ -943,8 +998,9 @@ export class WxProductListing extends LitElement {
   _getFilteredProducts() {
     const raw = this.data || this.products;
     const list = Array.isArray(raw) ? [...raw] : [];
+    const baseList = this._getExpandedProducts(list);
 
-    let filtered = list;
+    let filtered = baseList;
 
     if (this.selectedCategory) {
       const allCats = Array.isArray(this.categories) ? this.categories : [];
@@ -1129,7 +1185,23 @@ export class WxProductListing extends LitElement {
   }
 
   _onProductCardClick(e) {
-    dispatchCustomEvent(this, 'product-select', { product: e.detail.product });
+    const cardProduct = e.detail?.product;
+    if (!cardProduct) return;
+    const masterProduct = cardProduct.parentProduct || cardProduct;
+    const selectedVariantIndex = typeof cardProduct.selectedVariantIndex === 'number'
+      ? cardProduct.selectedVariantIndex
+      : 0;
+    const selectedColor = cardProduct.selectedColor || cardProduct.color || '';
+
+    dispatchCustomEvent(this, 'product-select', {
+      product: masterProduct,
+      variantIndex: selectedVariantIndex,
+      selectedVariantIndex,
+      selectedColor,
+      color: selectedColor,
+      slug: masterProduct.slug,
+      expandedProduct: cardProduct
+    });
   }
 
   render() {

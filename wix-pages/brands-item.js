@@ -117,35 +117,49 @@ $w.onReady(async function () {
     const allSeries = seriesRes.items;
     let allBrandProducts = prodsRes.items;
 
-    // Tự động bổ sung giá (minPrice/price) và ảnh từ ProductVariants nếu Products bị thiếu
-    const needEnrich = allBrandProducts.filter(p => (!p.minPrice && !p.price && !p.min_price) || !p.mainImage);
-    if (needEnrich.length > 0) {
+    // Nạp đầy đủ ProductVariants để hiển thị từng biến thể màu (Option 2) và bổ sung giá/ảnh
+    if (allBrandProducts.length > 0) {
       try {
-        const ids = needEnrich.map(p => p.ID || p._id).filter(Boolean);
+        const ids = [
+          ...allBrandProducts.map(p => p._id),
+          ...allBrandProducts.map(p => p.ID)
+        ].filter(Boolean);
+
         const varRes = await wixData.query('ProductVariants')
           .hasSome('product', ids)
+          .ascending('sortOrder')
           .limit(1000)
           .find();
 
+        console.log(`[Wix Velo] Tìm thấy ${varRes.items.length} biến thể ProductVariants cho ${allBrandProducts.length} sản phẩm thương hiệu.`);
+
         const varMap = {};
         varRes.items.forEach(v => {
-          const prodRef = typeof v.product === 'object' ? (v.product._id || v.product.ID) : v.product;
-          if (prodRef && (!varMap[prodRef] || v.isDefault)) {
-            varMap[prodRef] = v;
+          const pRef = v.product;
+          const refKeys = [];
+          if (typeof pRef === 'object' && pRef !== null) {
+            if (pRef._id) refKeys.push(pRef._id);
+            if (pRef.ID) refKeys.push(pRef.ID);
+          } else if (typeof pRef === 'string') {
+            refKeys.push(pRef);
           }
+          refKeys.forEach(k => {
+            if (!varMap[k]) varMap[k] = [];
+            varMap[k].push(v);
+          });
         });
 
         allBrandProducts = allBrandProducts.map(p => {
-          const pid = p.ID || p._id;
-          const v = varMap[pid];
-          if (!v) return p;
+          const pVars = (p._id && varMap[p._id]) || (p.ID && varMap[p.ID]) || [];
+          const defaultVar = pVars[0];
           return {
             ...p,
-            minPrice: p.minPrice || p.price || v.price,
-            price: p.price || p.minPrice || v.price,
-            compareAtPrice: p.compareAtPrice || v.compareAtPrice,
-            mainImage: p.mainImage || v.mainImage,
-            gallery: p.gallery || v.gallery
+            minPrice: p.minPrice || p.price || defaultVar?.price,
+            price: p.price || p.minPrice || defaultVar?.price,
+            compareAtPrice: p.compareAtPrice || defaultVar?.compareAtPrice,
+            mainImage: p.mainImage || defaultVar?.mainImage,
+            gallery: p.gallery || defaultVar?.gallery,
+            variants: pVars.length > 0 ? pVars : (p.variants || [])
           };
         });
       } catch (errVar) {
@@ -409,11 +423,16 @@ $w.onReady(async function () {
       });
     }
 
-    // 7. Sự kiện khi click vào sản phẩm -> chuyển sang trang PDP (/product/{slug})
+    // 7. Sự kiện khi click vào sản phẩm -> chuyển sang trang PDP (/product/{slug}?color=...)
     safeOn(productListingEl, 'product-select', (e) => {
       const slug = e.detail?.product?.slug || e.detail?.product?.ID;
+      const color = e.detail?.selectedColor;
       if (slug) {
-        wixLocation.to(`/product/${slug}`);
+        if (color) {
+          wixLocation.to(`/product/${slug}?color=${encodeURIComponent(color)}`);
+        } else {
+          wixLocation.to(`/product/${slug}`);
+        }
       }
     });
 

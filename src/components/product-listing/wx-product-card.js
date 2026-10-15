@@ -282,6 +282,30 @@ export class WxProductCard extends LitElement {
       margin-left: 2px;
     }
 
+    .card-single-color {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #555555;
+      font-weight: 500;
+    }
+
+    .card-single-color .card-color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+    }
+
+    .card-single-color .card-color-name {
+      line-height: 1;
+    }
+
     /* Price Row */
     .footer-row {
       margin-top: auto;
@@ -378,7 +402,7 @@ export class WxProductCard extends LitElement {
     const { price, comparePrice, discountPercent } = calculateProductPricing(p);
     const brandName = p.brand ? p.brand.replace('brand-', '').toUpperCase() : '';
     const cardColors = this._getCardColors();
-    const hasPriceRange = Boolean(p.variants && p.variants.length > 1 && p.minPrice && p.maxPrice && Number(p.minPrice) < Number(p.maxPrice));
+    const hasPriceRange = Boolean(!p.isVariantCard && p.variants && p.variants.length > 1 && p.minPrice && p.maxPrice && Number(p.minPrice) < Number(p.maxPrice));
     const effectiveDiscount = hasPriceRange ? null : discountPercent;
 
     // Danh sách nhãn labels
@@ -508,7 +532,14 @@ export class WxProductCard extends LitElement {
 
           ${p.sizeLabel ? html`<div class="variant-sizes">${p.sizeLabel}</div>` : ''}
 
-          ${cardColors.length > 1
+          ${p.isVariantCard && p.color
+            ? html`
+                <div class="card-single-color">
+                  <span class="card-color-dot" style="background: ${getColorHex(p.color)}"></span>
+                  <span class="card-color-name">${p.color}</span>
+                </div>
+              `
+            : cardColors.length > 1
             ? html`
                 <div class="card-color-swatches" title="${cardColors.join(', ')}">
                   ${cardColors.slice(0, 5).map(
@@ -523,6 +554,13 @@ export class WxProductCard extends LitElement {
                   ${cardColors.length > 5
                     ? html`<span class="card-color-more">+${cardColors.length - 5}</span>`
                     : ''}
+                </div>
+              `
+            : p.color
+            ? html`
+                <div class="card-single-color">
+                  <span class="card-color-dot" style="background: ${getColorHex(p.color)}"></span>
+                  <span class="card-color-name">${p.color}</span>
                 </div>
               `
             : ''}

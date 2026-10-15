@@ -210,7 +210,21 @@ $w.onReady(async function () {
       console.warn('[Wix Velo] Không thể truy vấn ProductVariants:', err);
     }
 
-    const defaultVariant = variants[0] || null;
+    // Đọc màu hoặc biến thể được chọn từ URL (ví dụ: /product/slug?color=Đỏ%20Cherry hoặc ?variant=sku)
+    const colorQuery = (wixLocation.query && (wixLocation.query.color || wixLocation.query.variant)) || '';
+    let selectedIdx = 0;
+    if (colorQuery && variants.length > 0) {
+      const q = decodeURIComponent(colorQuery).trim().toLowerCase();
+      const foundIdx = variants.findIndex(v => {
+        const vc = (v.color || '').trim().toLowerCase();
+        const vt = (v.title || '').trim().toLowerCase();
+        const vs = (v.sku || v.ID || '').trim().toLowerCase();
+        return vc === q || vt.includes(q) || q.includes(vc) || vs === q;
+      });
+      if (foundIdx >= 0) selectedIdx = foundIdx;
+    }
+
+    const defaultVariant = variants[selectedIdx] || variants[0] || null;
 
     // 5. Gộp dữ liệu đầy đủ từ Products và toàn bộ danh sách variants (Colour Swatches & Size)
     const fullProduct = {
@@ -223,6 +237,8 @@ $w.onReady(async function () {
       maxPrice: currentProduct.maxPrice,
       sizeLabel: currentProduct.sizeLabel || defaultVariant?.sizeLabel,
       variants: variants, // Rất quan trọng: mảng toàn bộ biến thể màu để PDP hiển thị swatches & size
+      selectedVariantIndex: selectedIdx,
+      initialColor: colorQuery,
       labels: currentProduct.labels,
       specs: defaultVariant?.specs || currentProduct.specs,
       description: defaultVariant?.description || currentProduct.description,
@@ -236,6 +252,10 @@ $w.onReady(async function () {
     };
 
     // Gán dữ liệu vào Custom Element <wx-product-detail>
+    if (colorQuery) {
+      safeSet(detailEl, 'initial-color', colorQuery);
+    }
+    safeSet(detailEl, 'selected-variant-index', selectedIdx);
     safeSet(detailEl, 'product', fullProduct);
 
     // 6. Nạp các khối tính năng FeatureBlocks & FeatureItems theo Series của sản phẩm
@@ -640,8 +660,13 @@ $w.onReady(async function () {
         // Lắng nghe sự kiện click sản phẩm để điều hướng sang trang PDP mới
         safeOn(relatedEl, 'product-select', (e) => {
           const targetProduct = e.detail?.product;
+          const color = e.detail?.selectedColor;
           if (targetProduct && targetProduct.slug) {
-            wixLocation.to(`/product/${targetProduct.slug}`);
+            if (color) {
+              wixLocation.to(`/product/${targetProduct.slug}?color=${encodeURIComponent(color)}`);
+            } else {
+              wixLocation.to(`/product/${targetProduct.slug}`);
+            }
           }
         });
       } catch (relErr) {

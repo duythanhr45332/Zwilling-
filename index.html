@@ -361,8 +361,14 @@
     // Khi click chọn bất kỳ sản phẩm nào từ danh sách sản phẩm, cập nhật trực tiếp lên Product Detail
     listComp.addEventListener('product-select', (e) => {
       const selected = e.detail?.product;
+      const color = e.detail?.selectedColor;
+      const varIdx = e.detail?.selectedVariantIndex;
       if (selected && detailComp) {
+        if (color) detailComp.initialColor = color;
         detailComp.product = selected;
+        if (typeof varIdx === 'number') {
+          detailComp.selectedVariantIndex = varIdx;
+        }
         document.getElementById('sec-product-detail')?.scrollIntoView({ behavior: 'smooth' });
       }
     });
@@ -523,9 +529,18 @@
 
     // Lắng nghe tương tác nếu cần
     document.addEventListener('product-select', (e) => {
-      console.log('Chọn xem sản phẩm:', e.detail.product);
-      detailComp.product = e.detail.product;
-      document.getElementById('sec-product-detail').scrollIntoView({ behavior: 'smooth' });
+      console.log('Chọn xem sản phẩm:', e.detail);
+      const selected = e.detail?.product;
+      const color = e.detail?.selectedColor;
+      const varIdx = e.detail?.selectedVariantIndex;
+      if (selected && detailComp) {
+        if (color) detailComp.initialColor = color;
+        detailComp.product = selected;
+        if (typeof varIdx === 'number') {
+          detailComp.selectedVariantIndex = varIdx;
+        }
+        document.getElementById('sec-product-detail')?.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   </script>
 </body>
