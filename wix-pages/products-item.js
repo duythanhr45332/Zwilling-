@@ -11,6 +11,34 @@
 import wixData from 'wix-data';
 import wixLocation from 'wix-location';
 
+// Products.storyBlock / highlightsBlock: single Reference fields to FeatureBlocks.
+// An explicit but invalid reference hides that section; never substitute unrelated content.
+async function resolveExplicitFeatureBlocks(product, dataApi = wixData) {
+  const result = {};
+  for (const [field, component] of [['storyBlock', 'story'], ['highlightsBlock', 'highlights']]) {
+    const value = product[field];
+    const specified = value !== null && value !== undefined && value !== '';
+    const id = typeof value === 'string' ? value.trim()
+      : (value && !Array.isArray(value) ? value._id || value.ID || '' : '');
+    result[field] = {specified, block: null};
+    if (!specified) continue;
+    if (!id) {
+      console.warn('[Wix Velo PDP] Reference không hợp lệ:', field);
+      continue;
+    }
+    try {
+      let res = await dataApi.query('FeatureBlocks').eq('_id', id).find();
+      if (!res.items.length) res = await dataApi.query('FeatureBlocks').eq('ID', id).find();
+      const block = res.items[0];
+      if (block && block.component === component) result[field].block = block;
+      else console.warn('[Wix Velo PDP] Block không tồn tại hoặc sai loại:', field, id);
+    } catch (error) {
+      console.warn('[Wix Velo PDP] Không tải được block đã chọn:', field, id, error);
+    }
+  }
+  return result;
+}
+
 $w.onReady(async function () {
   console.log('[Wix Velo] Đang nạp trang chi tiết sản phẩm (PDP)...');
 
@@ -50,6 +78,34 @@ $w.onReady(async function () {
     }
   }
 
+  // Soft-hide products consistently with the listing pages. This is UI visibility,
+  // not a CMS permission or an HTTP 404; unpublished items require Wix CMS controls.
+  function leaveUnavailableProduct() {
+    const ids = [
+      '#productBreadcrumb', '#categoryBreadcrumb', '#breadcrumb',
+      '#productDetail', '#compProductDetail', '#productDetailComp',
+      '#storySection', '#hotspotSection', '#featureBlocks', '#productFeatureBlocks', '#wxFeatureBlocks',
+      '#wxStorySection', '#featureStory', '#wxFeatureStory', '#storyBlock', '#story',
+      '#customElementStory', '#customElement1', '#customElement',
+      '#wxHotspotSection', '#featureHotspot', '#wxFeatureHighlights', '#hotspotBlock',
+      '#hotspot', '#highlights', '#highlightsSection', '#wxHotspot',
+      '#customElementHotspot', '#customElement2', '#customElement3',
+      '#sectionHotspot', '#hotspotSectionContainer', '#sectionHighlights',
+      '#highlightsSectionContainer', '#boxHotspot', '#hotspotBox', '#hotspotSectionWrap',
+      '#sectionCustomElement2', '#sectionCustomElement3', '#sectionStory',
+      '#storySectionContainer', '#boxStory', '#storyBox', '#sectionCustomElement1',
+      '#relatedProducts', '#wxRelatedProducts', '#compRelatedProducts', '#related',
+      '#sectionRelatedProducts', '#relatedSection', '#relatedContainer'
+    ];
+    for (const id of ids) {
+      try {
+        const el = $w(id);
+        if (el && typeof el.collapse === 'function') el.collapse();
+      } catch (e) { }
+    }
+    wixLocation.to('/products');
+  }
+
   try {
     let currentProduct = null;
 
@@ -66,13 +122,15 @@ $w.onReady(async function () {
       const pathSegments = wixLocation.path || [];
       const slugFromUrl = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1] : '';
       if (slugFromUrl) {
-        const pRes = await wixData.query('Products').eq('slug', slugFromUrl).find();
+        const pRes = await wixData.query('Products')
+          .eq('slug', slugFromUrl).eq('status', 'active').limit(1).find();
         if (pRes.items.length > 0) currentProduct = pRes.items[0];
       }
     }
 
-    if (!currentProduct) {
-      console.warn('[Wix Velo] Không tìm thấy thông tin sản phẩm hiện tại.');
+    if (!currentProduct || currentProduct.status !== 'active') {
+      console.warn('[Wix Velo] Sản phẩm không tồn tại hoặc không được hiển thị.');
+      leaveUnavailableProduct();
       return;
     }
 
@@ -140,42 +198,64 @@ $w.onReady(async function () {
       }
     });
 
-    // 4. Truy vấn biến thể (ProductVariants) để lấy thông số kỹ thuật (specs), mô tả chi tiết, ảnh gallery
-    let variant = null;
+    // 4. Truy vấn toàn bộ các biến thể màu (ProductVariants) của sản phẩm này
+    let variants = [];
     try {
       const variantRes = await wixData.query('ProductVariants')
         .hasSome('product', [currentProduct._id, currentProduct.ID].filter(Boolean))
+        .ascending('sortOrder')
         .find();
-      if (variantRes.items.length > 0) {
-        variant = variantRes.items[0];
-      }
+      variants = variantRes.items;
     } catch (err) {
       console.warn('[Wix Velo] Không thể truy vấn ProductVariants:', err);
     }
 
-    // 5. Gộp dữ liệu đầy đủ từ Products và ProductVariants
+    // Đọc màu hoặc biến thể được chọn từ URL (ví dụ: /product/slug?color=Đỏ%20Cherry hoặc ?variant=sku)
+    const colorQuery = (wixLocation.query && (wixLocation.query.color || wixLocation.query.variant)) || '';
+    let selectedIdx = 0;
+    if (colorQuery && variants.length > 0) {
+      const q = decodeURIComponent(colorQuery).trim().toLowerCase();
+      const foundIdx = variants.findIndex(v => {
+        const vc = (v.color || '').trim().toLowerCase();
+        const vt = (v.title || '').trim().toLowerCase();
+        const vs = (v.sku || v.ID || '').trim().toLowerCase();
+        return vc === q || vt.includes(q) || q.includes(vc) || vs === q;
+      });
+      if (foundIdx >= 0) selectedIdx = foundIdx;
+    }
+
+    const defaultVariant = variants[selectedIdx] || variants[0] || null;
+
+    // 5. Gộp dữ liệu đầy đủ từ Products và toàn bộ danh sách variants (Colour Swatches & Size)
     const fullProduct = {
       ...currentProduct,
-      ...(variant || {}),
-      title: currentProduct.title || (variant && variant.title),
+      ...(defaultVariant || {}),
+      title: currentProduct.title,
       brand: currentProduct.brand,
       series: currentProduct.series,
-      minPrice: currentProduct.minPrice || (variant && variant.price),
+      minPrice: currentProduct.minPrice,
       maxPrice: currentProduct.maxPrice,
-      compareAtPrice: currentProduct.compareAtPrice || (variant && variant.compareAtPrice),
+      sizeLabel: currentProduct.sizeLabel || defaultVariant?.sizeLabel,
+      variants: variants, // Rất quan trọng: mảng toàn bộ biến thể màu để PDP hiển thị swatches & size
+      selectedVariantIndex: selectedIdx,
+      initialColor: colorQuery,
       labels: currentProduct.labels,
-      specs: (variant && variant.specs) ? variant.specs : currentProduct.specs,
-      description: (variant && variant.description) ? variant.description : currentProduct.description,
-      shortDescription: (variant && variant.shortDescription) ? variant.shortDescription : currentProduct.shortDescription,
-      mainImage: (variant && variant.mainImage) ? variant.mainImage : currentProduct.mainImage,
-      gallery: (variant && variant.gallery) ? variant.gallery : currentProduct.gallery,
-      shopeeUrl: (variant && variant.shopeeUrl) || currentProduct.shopeeUrl || '',
-      tiktokUrl: (variant && variant.tiktokUrl) || currentProduct.tiktokUrl || '',
-      messengerUrl: (variant && variant.messengerUrl) || currentProduct.messengerUrl || 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0',
-      messUrl: (variant && variant.messUrl) || currentProduct.messUrl || 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0'
+      specs: defaultVariant?.specs || currentProduct.specs,
+      description: defaultVariant?.description || currentProduct.description,
+      shortDescription: defaultVariant?.shortDescription || currentProduct.shortDescription,
+      mainImage: defaultVariant?.mainImage || currentProduct.mainImage,
+      gallery: defaultVariant?.gallery || currentProduct.gallery,
+      shopeeUrl: (defaultVariant && defaultVariant.shopeeUrl) || currentProduct.shopeeUrl || '',
+      tiktokUrl: (defaultVariant && defaultVariant.tiktokUrl) || currentProduct.tiktokUrl || '',
+      messengerUrl: (defaultVariant && defaultVariant.messengerUrl) || currentProduct.messengerUrl || 'https://www.facebook.com/zwillingvietnamofficial/',
+      messUrl: (defaultVariant && defaultVariant.messUrl) || currentProduct.messUrl || 'https://www.facebook.com/zwillingvietnamofficial/'
     };
 
     // Gán dữ liệu vào Custom Element <wx-product-detail>
+    if (colorQuery) {
+      safeSet(detailEl, 'initial-color', colorQuery);
+    }
+    safeSet(detailEl, 'selected-variant-index', selectedIdx);
     safeSet(detailEl, 'product', fullProduct);
 
     // 6. Nạp các khối tính năng FeatureBlocks & FeatureItems theo Series của sản phẩm
@@ -207,6 +287,8 @@ $w.onReady(async function () {
         // TRUY VẤN FEATURE BLOCKS ĐỘNG (CMS-DRIVEN & RELATIONAL QUERY)
         // =========================================================================
         let blocks = [];
+        const explicit = await resolveExplicitFeatureBlocks(currentProduct);
+        const needsLegacyLookup = !explicit.storyBlock.specified || !explicit.highlightsBlock.specified;
 
         // 1. Phân giải thông tin Series của sản phẩm (hỗ trợ cả Object Reference, String ID, Array)
         let sVal = currentProduct.series;
@@ -245,7 +327,7 @@ $w.onReady(async function () {
 
         // 2. Cách 1: Truy vấn trực tiếp theo trường liên kết CMS (nếu Products có featureBlocks)
         let directBlocks = currentProduct.featureBlocks;
-        if (directBlocks) {
+        if (needsLegacyLookup && directBlocks) {
           const directIds = Array.isArray(directBlocks)
             ? directBlocks.map(b => (typeof b === 'object' ? b._id || b.ID : b)).filter(Boolean)
             : (typeof directBlocks === 'string' ? directBlocks.split(',').map(s => s.trim()).filter(Boolean) : []);
@@ -262,7 +344,7 @@ $w.onReady(async function () {
         }
 
         // 3. Cách 2: Truy vấn trực tiếp theo trường `series` trong FeatureBlocks (Chuẩn CMS)
-        if (blocks.length === 0 && seriesId) {
+        if (needsLegacyLookup && blocks.length === 0 && seriesId) {
           try {
             const bBySeries = await wixData.query('FeatureBlocks')
               .eq('series', seriesId)
@@ -275,7 +357,7 @@ $w.onReady(async function () {
         }
 
         // 4. Cách 3: Nạp danh sách FeatureBlocks có sẵn trong CMS để chọn lọc
-        if (blocks.length === 0) {
+        if (needsLegacyLookup && blocks.length === 0) {
           try {
             const allBlocksRes = await wixData.query('FeatureBlocks')
               .limit(100)
@@ -301,6 +383,10 @@ $w.onReady(async function () {
           const pTitleClean = pTitle.replace(/zwilling|staub|miyabi|ballarini/gi, '').replace(/\s+/g, ' ').trim();
           const pSlugClean = pSlug.replace(/-(zwilling|staub|miyabi|ballarini)-/gi, '-').replace(/^-(zwilling|staub|miyabi|ballarini)-/, '');
 
+          // Chuẩn hóa đồng nghĩa Set <-> Bộ
+          const pTitleSynonym = pTitleClean.replace(/\bset\b/gi, 'bộ');
+          const pSlugSynonym = pSlugClean.replace(/set-/g, 'bo-');
+
           let bestBlock = null;
           let maxScore = 0;
 
@@ -308,18 +394,50 @@ $w.onReady(async function () {
             let score = 0;
             const bId = (b.ID || b._id || '').toLowerCase().replace('block-', '');
             const bSt = (b.sourceTitle || '').toLowerCase();
+            const bStClean = bSt.replace(/\s*\/\s*storage/gi, '').replace(/\s*\(.*?\)/g, '').trim();
+            const bIdClean = bId.replace(/-\d+$/, '').replace(/-storage$/, '');
 
             // Loại trừ nếu block có đặc thù riêng không khớp sản phẩm
             if (bSt.includes('miệng rót') && !pTitle.includes('miệng rót') && !pSlug.includes('mieng-rot')) continue;
             if (bSt.includes('american grill') && !pTitle.includes('american grill') && !pSlug.includes('american-grill')) continue;
 
-            // Khớp chính xác cụm từ hoặc slug
-            if (bSt && (pTitle.includes(bSt) || pSlug.includes(bSt) || pTitleClean.includes(bSt) || pSlugClean.includes(bSt))) score += 20;
-            if (bId && (pSlug.includes(bId) || pTitle.includes(bId) || pSlugClean.includes(bId) || pTitleClean.includes(bId))) score += 20;
+            // Phân biệt nồi gang vs âu sứ khi có từ khóa trùng như bí ngô, cà chua
+            if (bSt.includes('âu sứ') && (pTitle.includes('nồi gang') || pSlug.includes('noi-gang'))) continue;
+            if ((bSt.includes('staub pumpkin') || bSt.includes('dáng bí ngô')) && (pTitle.includes('âu sứ') || pSlug.includes('au-su'))) continue;
 
-            // Khớp ID không tính số đuôi (-1, -2, -3)
-            const bIdClean = bId.replace(/-\d+$/, '');
-            if (bIdClean && (pSlug.includes(bIdClean) || pTitle.includes(bIdClean.replace(/-/g, ' ')) || pSlugClean.includes(bIdClean))) score += 25;
+            // Khớp chính xác cụm từ hoặc slug (bao gồm cả dạng đồng nghĩa bộ/set và bStClean)
+            if (bSt && (pTitle.includes(bSt) || pSlug.includes(bSt) || pTitleClean.includes(bSt) || pSlugClean.includes(bSt))) score += 20;
+            if (bStClean && bStClean !== bSt && (pTitle.includes(bStClean) || pSlug.includes(bStClean) || pTitleSynonym.includes(bStClean) || pSlugSynonym.includes(bStClean.replace(/\s+/g, '-')))) score += 20;
+
+            if (bId && (pSlug.includes(bId) || pTitle.includes(bId) || pSlugClean.includes(bId) || pTitleClean.includes(bId))) score += 20;
+            if (bIdClean && (pSlug.includes(bIdClean) || pTitle.includes(bIdClean.replace(/-/g, ' ')) || pSlugClean.includes(bIdClean) || pSlugSynonym.includes(bIdClean) || pTitleSynonym.includes(bIdClean.replace(/-/g, ' ')))) score += 25;
+
+            // Đặc thù: Bộ/Set đựng gia vị
+            if ((bIdClean.includes('dung-gia-vi') || bSt.includes('đựng gia vị')) && (pSlug.includes('dung-gia-vi') || pTitle.includes('đựng gia vị'))) {
+              score += 35;
+            }
+
+            // Đặc thù: Âu sứ Bí Ngô / Cà Chua / Ớt Chuông
+            if (bSt.includes('âu sứ') && bSt.includes('bí ngô') && (pSlug.includes('bi-ngo') || pTitle.includes('bí ngô')) && (pSlug.includes('au-su') || pTitle.includes('âu sứ'))) score += 35;
+            if (bSt.includes('âu sứ') && bSt.includes('cà chua') && (pSlug.includes('ca-chua') || pTitle.includes('cà chua')) && (pSlug.includes('au-su') || pTitle.includes('âu sứ'))) score += 35;
+            if (bSt.includes('ớt chuông') && (pSlug.includes('ot-chuong') || pTitle.includes('ớt chuông'))) score += 35;
+
+            // Đặc thù: Khay nướng sứ
+            if (bSt.includes('khay nướng sứ') && (pSlug.includes('khay-nuong') || pTitle.includes('khay nướng'))) score += 35;
+
+            // Đặc thù: Dụng cụ nấu ăn silicone
+            if (bSt.includes('silicone') && bSt.includes('dụng cụ nấu') && (pSlug.includes('silicone') || pTitle.includes('silicone')) && (pSlug.includes('xeng') || pSlug.includes('va-') || pSlug.includes('co-phet') || pTitle.includes('xẻng') || pTitle.includes('vá') || pTitle.includes('cọ phết'))) score += 35;
+
+            // Đặc thù: Thớt Ebony
+            if (bSt.includes('thớt ebony') && (pSlug.includes('thot') || pTitle.includes('thớt')) && (pSlug.includes('ebony') || pTitle.includes('ebony'))) score += 35;
+
+            // Đặc thù: Dinnerware sứ (Dĩa sứ, Tô sứ, Chén sứ, Cốc sứ)
+            if ((bSt.includes('dinnerware') || bIdClean.includes('dinnerware')) && (pSlug.includes('dia-su') || pSlug.includes('to-su') || pSlug.includes('chen-su') || pSlug.includes('chen-dia') || pSlug.includes('coc-') || pTitle.includes('dĩa sứ') || pTitle.includes('tô sứ') || pTitle.includes('chén sứ') || pTitle.includes('chén dĩa') || pTitle.includes('cốc'))) score += 35;
+
+            // Đặc thù: Fresh & Save Túi, Nắp, Bộ 27/40 món
+            if (bSt.includes('túi hút chân không') && (pSlug.includes('tui-bao-quan') || pTitle.includes('túi bảo quản') || pSlug.includes('tui-hut-chan-khong') || pTitle.includes('túi hút chân không'))) score += 35;
+            if (bSt.includes('nắp hút chân không') && (pSlug.includes('nap-hut-chan-khong') || pTitle.includes('nắp hút chân không'))) score += 35;
+            if (bSt.includes('hút chân không 27 / 40') && (pSlug.includes('27-mon') || pSlug.includes('40-mon') || pTitle.includes('27 món') || pTitle.includes('40 món'))) score += 35;
 
             // Xử lý dòng STAUB DÁNG TRÒN (Round Cocotte / Mini 10cm, 18-26cm)
             if (bSt.includes('dáng tròn') && (pTitle.includes('nồi gang') || pTitle.includes('mini') || pSlug.includes('mini') || pSlug.includes('dang-tron') || pTitle.includes('tròn') || pSlug.includes('tron'))) {
@@ -353,13 +471,15 @@ $w.onReady(async function () {
         }
 
         // 6. Nếu có blocks, chọn lọc đúng storyBlock và hotspotBlock trước, sau đó chỉ truy vấn FeatureItems của đúng 2 block đó
-        if (blocks.length > 0) {
+        if (blocks.length > 0 || explicit.storyBlock.block || explicit.highlightsBlock.block) {
           const rawStoryBlocks = blocks.filter((b) => (b.component || 'story') === 'story');
           const rawHotspotBlocks = blocks.filter((b) => b.component === 'highlights');
 
           // Chọn đúng 1 Story block và 1 Hotspot block tương ứng nhất cho sản phẩm
-          const storyBlock = selectBestBlock(rawStoryBlocks, currentProduct, seriesTitle);
-          const hotspotBlock = selectBestBlock(rawHotspotBlocks, currentProduct, seriesTitle);
+          const storyBlock = explicit.storyBlock.specified
+            ? explicit.storyBlock.block : selectBestBlock(rawStoryBlocks, currentProduct, seriesTitle);
+          const hotspotBlock = explicit.highlightsBlock.specified
+            ? explicit.highlightsBlock.block : selectBestBlock(rawHotspotBlocks, currentProduct, seriesTitle);
 
           console.log('[Wix Velo PDP] Block chọn lọc:', {
             story: storyBlock ? (storyBlock._id || storyBlock.ID) : 'NONE',
@@ -507,6 +627,7 @@ $w.onReady(async function () {
         let relatedItems = [];
         if (catId) {
           const relRes = await wixData.query('Products')
+            .eq('status', 'active')
             .eq('category', catId)
             .ne('_id', currentProdId)
             .limit(4)
@@ -519,6 +640,7 @@ $w.onReady(async function () {
           const remainingCount = 4 - relatedItems.length;
           const excludeIds = [currentProdId, ...relatedItems.map(p => p._id || p.ID)].filter(Boolean);
           const brandRes = await wixData.query('Products')
+            .eq('status', 'active')
             .eq('brand', currentProduct.brand)
             .not(wixData.query('Products').hasSome('_id', excludeIds))
             .limit(remainingCount)
@@ -538,8 +660,13 @@ $w.onReady(async function () {
         // Lắng nghe sự kiện click sản phẩm để điều hướng sang trang PDP mới
         safeOn(relatedEl, 'product-select', (e) => {
           const targetProduct = e.detail?.product;
+          const color = e.detail?.selectedColor;
           if (targetProduct && targetProduct.slug) {
-            wixLocation.to(`/product/${targetProduct.slug}`);
+            if (color) {
+              wixLocation.to(`/product/${targetProduct.slug}?color=${encodeURIComponent(color)}`);
+            } else {
+              wixLocation.to(`/product/${targetProduct.slug}`);
+            }
           }
         });
       } catch (relErr) {

@@ -146,17 +146,74 @@ $w.onReady(async function () {
         .find()
     ]);
 
-    console.log(`[Wix Velo] Tìm thấy ${prodsRes.items.length} sản phẩm của Series "${currentSeries.title}".`);
+    let products = prodsRes.items;
+
+    // Nạp đầy đủ ProductVariants để hiển thị từng biến thể màu (Option 2) và bổ sung giá/ảnh
+    if (products.length > 0) {
+      try {
+        const ids = [
+          ...products.map(p => p._id),
+          ...products.map(p => p.ID)
+        ].filter(Boolean);
+
+        const varRes = await wixData.query('ProductVariants')
+          .hasSome('product', ids)
+          .ascending('sortOrder')
+          .limit(1000)
+          .find();
+
+        console.log(`[Wix Velo] Tìm thấy ${varRes.items.length} biến thể ProductVariants cho ${products.length} sản phẩm của Series "${currentSeries.title}".`);
+
+        const varMap = {};
+        varRes.items.forEach(v => {
+          const pRef = v.product;
+          const refKeys = [];
+          if (typeof pRef === 'object' && pRef !== null) {
+            if (pRef._id) refKeys.push(pRef._id);
+            if (pRef.ID) refKeys.push(pRef.ID);
+          } else if (typeof pRef === 'string') {
+            refKeys.push(pRef);
+          }
+          refKeys.forEach(k => {
+            if (!varMap[k]) varMap[k] = [];
+            varMap[k].push(v);
+          });
+        });
+
+        products = products.map(p => {
+          const pVars = (p._id && varMap[p._id]) || (p.ID && varMap[p.ID]) || [];
+          const defaultVar = pVars[0];
+          return {
+            ...p,
+            minPrice: p.minPrice || p.price || defaultVar?.price,
+            price: p.price || p.minPrice || defaultVar?.price,
+            compareAtPrice: p.compareAtPrice || defaultVar?.compareAtPrice,
+            mainImage: p.mainImage || defaultVar?.mainImage,
+            gallery: p.gallery || defaultVar?.gallery,
+            variants: pVars.length > 0 ? pVars : (p.variants || [])
+          };
+        });
+      } catch (errVar) {
+        console.warn('[Wix Velo] Không thể fallback ProductVariants:', errVar);
+      }
+    }
+
+    console.log(`[Wix Velo] Tìm thấy ${products.length} sản phẩm của Series "${currentSeries.title}".`);
 
     // Nạp dữ liệu vào Lưới sản phẩm & Bộ lọc Drawer
     safeSet(productListingEl, 'categories', catsRes.items);
-    safeSet(productListingEl, 'products', prodsRes.items);
+    safeSet(productListingEl, 'products', products);
 
-    // Bấm sản phẩm -> Chuyển sang chi tiết PDP (/product/{slug})
+    // Bấm sản phẩm -> Chuyển sang chi tiết PDP (/product/{slug}?color=...)
     safeOn(productListingEl, 'product-select', (e) => {
       const slug = e.detail?.product?.slug || e.detail?.product?.ID;
+      const color = e.detail?.selectedColor;
       if (slug) {
-        wixLocation.to(`/product/${slug}`);
+        if (color) {
+          wixLocation.to(`/product/${slug}?color=${encodeURIComponent(color)}`);
+        } else {
+          wixLocation.to(`/product/${slug}`);
+        }
       }
     });
 

@@ -1,0 +1,251 @@
+{
+  "Nhap san pham": [
+    [
+      "Mã nhóm sản phẩm *",
+      "Tên sản phẩm *",
+      "SKU *",
+      "Tên biến thể",
+      "Thương hiệu *",
+      "Dòng sản phẩm",
+      "Danh mục sản phẩm *",
+      "Danh mục thương hiệu",
+      "Danh mục chất liệu",
+      "Giá bán *",
+      "Giá gốc",
+      "Tồn kho *",
+      "Mô tả ngắn",
+      "Mô tả chi tiết",
+      "Màu sắc",
+      "Kích thước",
+      "Ảnh chính",
+      "Ảnh phụ",
+      "Nhãn",
+      "Link Shopee",
+      "Link TikTok",
+      "Link nguồn",
+      "Slug",
+      "Story block (ID)",
+      "Highlights block (ID)"
+    ],
+    [
+      "demo-dao-20cm",
+      "DEMO — Dao đầu bếp ZWILLING 20 cm",
+      "DEMO-DAO-001",
+      "Dao 20 cm — Đen",
+      "ZWILLING [brand-zwilling]",
+      "ZWILLING Gourmet [series-zwilling-zwilling-gourmet]",
+      "Dao Đầu Bếp · /dao-bep/dao-dau-bep/ [cat-p-dao-bep--dao-dau-bep]",
+      "Dao Đầu Bếp · /dao-bo-dao/dao-dau-bep/ [cat-b-dao-bo-dao--dao-dau-bep]",
+      "Thép không gỉ · /thep-khong-gi/ [cat-m-thep-khong-gi]",
+      "1200000",
+      "1500000",
+      "10",
+      "DEMO: dao đầu bếp 20 cm, cán màu đen.",
+      "Dữ liệu giả định để minh họa cách nhập.\nVí dụ mô tả: dao đầu bếp dùng để sơ chế thực phẩm.\nGiá và thông số không phải thông tin sản phẩm đã xác nhận.",
+      "Đen",
+      "20 cm",
+      "",
+      "",
+      "DEMO",
+      "",
+      "",
+      "",
+      "demo-dao-zwilling-20cm",
+      "block-zwilling-gourmet-1",
+      "block-zwilling-gourmet-3"
+    ],
+    [
+      "demo-noi-gang-24cm",
+      "DEMO — Nồi gang STAUB 24 cm",
+      "DEMO-NOI-001",
+      "Nồi 24 cm — Đỏ",
+      "STAUB [brand-staub]",
+      "STAUB Round Cocotte [series-staub-staub-round-cocotte]",
+      "Nồi Gang · /noi-chao/noi-gang/ [cat-p-noi-chao--noi-gang]",
+      "Nồi Gang · /noi-chao-gang/noi-gang/ [cat-b-noi-chao-gang--noi-gang]",
+      "Gang đúc · /gang-duc/ [cat-m-gang-duc]",
+      "2800000",
+      "3200000",
+      "5",
+      "DEMO: nồi gang tròn 24 cm, màu đỏ.",
+      "Dữ liệu giả định để minh họa cách nhập.\nVí dụ mô tả: nồi gang tròn dùng cho món hầm.\nGiá và thông số không phải thông tin sản phẩm đã xác nhận.",
+      "Đỏ",
+      "24 cm",
+      "",
+      "",
+      "DEMO",
+      "",
+      "",
+      "",
+      "demo-noi-gang-staub-24cm",
+      "block-demo-noi-gang-story",
+      "block-demo-noi-gang-highlights"
+    ]
+  ],
+  "Thong so": [
+    [
+      "SKU *",
+      "Nhóm thông số *",
+      "Tên thông số *",
+      "Giá trị *"
+    ],
+    [
+      "DEMO-DAO-001",
+      "Thông số kỹ thuật",
+      "Chất liệu",
+      "Thép không gỉ"
+    ],
+    [
+      "DEMO-DAO-001",
+      "Thông số kỹ thuật",
+      "Màu sắc",
+      "Đen"
+    ],
+    [
+      "DEMO-DAO-001",
+      "Kích thước",
+      "Chiều dài lưỡi dao",
+      "20 cm"
+    ],
+    [
+      "DEMO-DAO-001",
+      "Thông số kỹ thuật",
+      "Số món",
+      "1"
+    ],
+    [
+      "DEMO-NOI-001",
+      "Thông số kỹ thuật",
+      "Chất liệu",
+      "Gang đúc"
+    ],
+    [
+      "DEMO-NOI-001",
+      "Thông số kỹ thuật",
+      "Màu sắc",
+      "Đỏ"
+    ],
+    [
+      "DEMO-NOI-001",
+      "Kích thước",
+      "Đường kính",
+      "24 cm"
+    ],
+    [
+      "DEMO-NOI-001",
+      "Thông số kỹ thuật",
+      "Hình dáng",
+      "Tròn"
+    ]
+  ],
+  "Nhap FeatureBlocks": [
+    [
+      "ID block *",
+      "Tên block *",
+      "Loại block *",
+      "Dòng sản phẩm",
+      "Tiêu đề",
+      "Nội dung",
+      "Nhãn nút",
+      "Ảnh chính",
+      "Tên nguồn",
+      "Ghi chú"
+    ],
+    [
+      "block-demo-noi-gang-story",
+      "DEMO — Story nồi gang",
+      "story",
+      "STAUB Round Cocotte [series-staub-staub-round-cocotte]",
+      "DEMO — Giới thiệu nồi gang",
+      "Nội dung dự phòng nếu item giới thiệu để trống.",
+      "",
+      "wix:image://v1/de2f43_e82c390367e841f7914cecbe95fbb04f~mv2.jpg/N%E1%BB%92I-%20GANG-%20STAUB-%20LA-%20COCOTTE.jpg#originWidth=3750&originHeight=1875",
+      "DEMO",
+      "Ảnh tái sử dụng từ snapshot STAUB; nội dung giả định, chỉ thử trên site test."
+    ],
+    [
+      "block-demo-noi-gang-highlights",
+      "DEMO — Highlights nồi gang",
+      "highlights",
+      "STAUB Round Cocotte [series-staub-staub-round-cocotte]",
+      "DEMO — Chi tiết nồi gang",
+      "",
+      "",
+      "wix:image://v1/de2f43_7202ccf88b9043fc9e3ebc3889419998~mv2.jpg/N%E1%BA%AEP-%20N%E1%BB%92I-%20C%C3%94NG-%20NGH%E1%BB%86-%20AROMA-%20RAIN.jpg#originWidth=2362&originHeight=1670",
+      "DEMO",
+      "Tọa độ minh họa; cần căn chỉnh theo ảnh thật trước khi dùng."
+    ]
+  ],
+  "Nhap FeatureItems": [
+    [
+      "ID item *",
+      "ID block *",
+      "Thứ tự *",
+      "Tiêu đề *",
+      "Nội dung",
+      "Ảnh",
+      "Tọa độ X (%)",
+      "Tọa độ Y (%)"
+    ],
+    [
+      "item-demo-noi-story-1",
+      "block-demo-noi-gang-story",
+      "1",
+      "DEMO — Giới thiệu nồi gang",
+      "Đây là banner giới thiệu, dùng item thứ tự 1.\nVí dụ: “Bữa cơm gia đình”, nội dung chỉ để thử.",
+      "wix:image://v1/de2f43_e82c390367e841f7914cecbe95fbb04f~mv2.jpg/N%E1%BB%92I-%20GANG-%20STAUB-%20LA-%20COCOTTE.jpg#originWidth=3750&originHeight=1875",
+      "",
+      ""
+    ],
+    [
+      "item-demo-noi-story-2",
+      "block-demo-noi-gang-story",
+      "2",
+      "DEMO — Thân nồi",
+      "Nội dung minh họa, cần thay bằng thông tin đã duyệt.",
+      "wix:image://v1/de2f43_aab24d0a2ce745009cf4d3ddff23070d~mv2.jpg/N%E1%BA%A4U-%20CH%E1%BA%ACM,-%20GANG-%20TR%C3%81NG-%20MEN-%20GI%E1%BB%AE-%20NHI%E1%BB%86T-%20V%C6%AF%E1%BB%A2T-%20TR%E1%BB%98I.jpg#originWidth=1875&originHeight=1875",
+      "",
+      ""
+    ],
+    [
+      "item-demo-noi-story-3",
+      "block-demo-noi-gang-story",
+      "3",
+      "DEMO — Thiết kế nắp",
+      "Nội dung minh họa, cần thay bằng thông tin đã duyệt.",
+      "wix:image://v1/de2f43_6851ffb8e1d94c65a8f594a10b3ccf66~mv2.jpg/THI%E1%BA%BET-%20K%E1%BA%BE-%20TH%C3%94NG-%20MINH,-%20TR%E1%BB%8CN-%20V%E1%BB%8A-%20T%E1%BB%B0-%20NHI%C3%8AN.jpg#originWidth=1875&originHeight=1875",
+      "",
+      ""
+    ],
+    [
+      "item-demo-noi-story-4",
+      "block-demo-noi-gang-story",
+      "4",
+      "DEMO — Cách chăm sóc",
+      "Nội dung minh họa, cần thay bằng thông tin đã duyệt.",
+      "wix:image://v1/de2f43_7179e94b043a47788f9588c903d629f9~mv2.jpg/N%E1%BA%A4U-%20N%C6%AF%E1%BB%9ANG-%20LINH-%20HO%E1%BA%A0T,-%20D%E1%BB%84-%20D%C3%80NG-%20CH%C4%82M-%20S%C3%93C.jpg#originWidth=1875&originHeight=1875",
+      "",
+      ""
+    ],
+    [
+      "item-demo-noi-highlight-1",
+      "block-demo-noi-gang-highlights",
+      "1",
+      "DEMO — Chi tiết thứ nhất",
+      "Nội dung điểm nổi bật minh họa; tọa độ cần kiểm tra lại theo ảnh.",
+      "",
+      "35",
+      "40"
+    ],
+    [
+      "item-demo-noi-highlight-2",
+      "block-demo-noi-gang-highlights",
+      "2",
+      "DEMO — Chi tiết thứ hai",
+      "Nội dung điểm nổi bật minh họa; tọa độ cần kiểm tra lại theo ảnh.",
+      "",
+      "65",
+      "60"
+    ]
+  ]
+}

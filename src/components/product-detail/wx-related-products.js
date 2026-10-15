@@ -65,7 +65,7 @@ export class WxRelatedProducts extends LitElement {
       width: 100%;
       position: relative;
       background-color: #EFECEA;
-      padding: 44px 32px 48px;
+      padding: 0;
       border-radius: 4px;
       box-sizing: border-box;
     }
@@ -237,7 +237,7 @@ export class WxRelatedProducts extends LitElement {
       }
 
       .related-container {
-        padding: 28px 16px 32px;
+        padding: 0;
       }
 
       .related-title {

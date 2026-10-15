@@ -10,6 +10,9 @@ export class WxProductDetail extends LitElement {
     product: { type: Object, converter: jsonObjectConverter },
     data: { type: Object, converter: jsonObjectConverter },
     selectedImageIndex: { type: Number },
+    selectedVariantIndex: { type: Number, attribute: 'selected-variant-index' },
+    initialColor: { type: String, attribute: 'initial-color' },
+    initialVariant: { type: String, attribute: 'initial-variant' },
     openSections: { type: Object },
     lang: { type: String },
     loading: { type: Boolean, converter: booleanConverter },
@@ -28,6 +31,8 @@ export class WxProductDetail extends LitElement {
     :host {
       display: block;
       font-family: wfont_abc117_da7ed18ea46143cfbe0543c9975115a1, wf_da7ed18ea46143cfbe0543c99, orig_sfu_futura, 'SFU Futura', 'SFUFutura', Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
       margin: 0;
       padding: 0;
       background: #ffffff;
@@ -295,12 +300,14 @@ export class WxProductDetail extends LitElement {
       margin-bottom: 8px;
     }
 
+    .brand-row,
     .brand-name {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #444444;
+      color: #555555;
+      margin-bottom: 8px;
     }
 
     .brand-logo-sq {
@@ -317,11 +324,20 @@ export class WxProductDetail extends LitElement {
     }
 
     .product-title {
-      font-size: 24px;
+      font-size: 28px;
       font-weight: 800;
-      line-height: 1.3;
-      margin: 0 0 14px 0;
+      line-height: 1.25;
+      margin: 0 0 12px 0;
       color: #111111;
+      letter-spacing: -0.01em;
+    }
+
+    .series-name {
+      font-size: 14px;
+      color: #666666;
+      margin: 0 0 16px 0;
+      font-weight: 500;
+      letter-spacing: 0.01em;
     }
 
     /* Price Row */
@@ -329,19 +345,20 @@ export class WxProductDetail extends LitElement {
       display: flex;
       align-items: baseline;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .compare-price {
-      font-size: 16px;
+      font-size: 18px;
       color: #888888;
       text-decoration: line-through;
     }
 
     .sale-price {
-      font-size: 26px;
+      font-size: 30px;
       font-weight: 800;
       color: #111111;
+      letter-spacing: -0.02em;
     }
 
     .discount-box {
@@ -349,7 +366,7 @@ export class WxProductDetail extends LitElement {
       color: #d40026;
       font-size: 12px;
       font-weight: 700;
-      padding: 2px 6px;
+      padding: 2px 8px;
       border-radius: 2px;
     }
 
@@ -655,6 +672,158 @@ export class WxProductDetail extends LitElement {
       color: #333333;
       border-bottom: 1px solid #ffffff;
     }
+
+    /* Variant Selectors: Colour & Size (Matching official Staub / Zwilling PDP) */
+    .variant-selectors-container {
+      margin: 18px 0 22px 0;
+      padding-top: 18px;
+      border-top: 1px solid #ebebeb;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .variant-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .variant-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 15px;
+    }
+
+    .variant-header-row .variant-label {
+      font-weight: 700;
+      color: #111111;
+      letter-spacing: -0.01em;
+    }
+
+    .variant-header-row .variant-value {
+      font-weight: 500;
+      color: #333333;
+      text-transform: capitalize;
+    }
+
+    .color-swatches-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 14px;
+      align-items: flex-start;
+    }
+
+    .color-swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 66px;
+      user-select: none;
+      transition: transform 0.15s ease;
+    }
+
+    .color-swatch-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .swatch-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1.5px solid #dcdcdc;
+      background: #ffffff;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .color-swatch-item:hover .swatch-circle {
+      border-color: #888888;
+    }
+
+    .color-swatch-item.selected .swatch-circle {
+      border: 2.5px solid #000000;
+      box-shadow: 0 0 0 1px #000000;
+    }
+
+    .swatch-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    .swatch-fallback-dot {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .swatch-price {
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #222222;
+      text-align: center;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .color-swatch-item.selected .swatch-price {
+      font-weight: 800;
+      color: #000000;
+    }
+
+    .swatch-price.not-available {
+      color: #888888;
+      font-size: 11px;
+    }
+
+    .size-pills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .size-pill {
+      min-width: 76px;
+      height: 42px;
+      padding: 0 18px;
+      border-radius: 4px;
+      border: 1.5px solid #d0d0d0;
+      background: #efecea;
+      color: #222222;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .size-pill:hover {
+      border-color: #888888;
+      background: #ffffff;
+    }
+
+    .size-pill.active {
+      border: 2px solid #000000;
+      background: #ffffff;
+      color: #000000;
+      font-weight: 700;
+    }
   `;
 
   constructor() {
@@ -662,6 +831,9 @@ export class WxProductDetail extends LitElement {
     this.product = null;
     this.data = null;
     this.selectedImageIndex = 0;
+    this.selectedVariantIndex = 0;
+    this.initialColor = '';
+    this.initialVariant = '';
     this.lang = 'vi';
     this.loading = false;
     this.shopeeUrl = '';
@@ -680,6 +852,65 @@ export class WxProductDetail extends LitElement {
     this.zoomY = 50;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.initialColor && typeof window !== 'undefined' && window.location) {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const qColor = params.get('color') || params.get('variant');
+        if (qColor) {
+          this.initialColor = decodeURIComponent(qColor);
+        }
+      } catch (e) {}
+    }
+    this._applyInitialVariant();
+  }
+
+  willUpdate(changedProps) {
+    if (
+      changedProps.has('product') ||
+      changedProps.has('data') ||
+      changedProps.has('initialColor') ||
+      changedProps.has('initialVariant')
+    ) {
+      this._applyInitialVariant();
+    }
+  }
+
+  _applyInitialVariant() {
+    const p = this.data || this.product;
+    if (!p) return;
+    const variants = this._getVariants();
+    if (!variants || !variants.length) return;
+
+    const targetColor = (this.initialColor || p.initialColor || p.selectedColor || '').trim().toLowerCase();
+    const targetVariant = (this.initialVariant || p.initialVariant || '').trim().toLowerCase();
+
+    if (targetColor || targetVariant) {
+      const foundIdx = variants.findIndex(v => {
+        const vc = (v.color || '').trim().toLowerCase();
+        const vt = (v.title || '').trim().toLowerCase();
+        const vs = (v.sku || v.ID || '').trim().toLowerCase();
+        if (targetColor && (vc === targetColor || vt.includes(targetColor) || targetColor.includes(vc))) {
+          return true;
+        }
+        if (targetVariant && (vs === targetVariant || vt.includes(targetVariant))) {
+          return true;
+        }
+        return false;
+      });
+
+      if (foundIdx >= 0) {
+        this.selectedVariantIndex = foundIdx;
+        return;
+      }
+    }
+
+    if (typeof p.selectedVariantIndex === 'number' && p.selectedVariantIndex >= 0 && p.selectedVariantIndex < variants.length) {
+      this.selectedVariantIndex = p.selectedVariantIndex;
+    }
+  }
+
   _onMouseMove(e) {
     const rect = e.currentTarget.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
@@ -696,15 +927,94 @@ export class WxProductDetail extends LitElement {
     this.zoomY = 50;
   }
 
+  _getVariants() {
+    const p = this.data || this.product;
+    if (!p) return [];
+    if (Array.isArray(p.variants) && p.variants.length > 0) {
+      return p.variants;
+    }
+    return [{
+      ID: p.ID,
+      title: p.title,
+      color: p.color || '',
+      sizeLabel: p.sizeLabel || p.size || '',
+      price: p.minPrice || p.price || 0,
+      compareAtPrice: p.maxPrice || p.compareAtPrice || '',
+      mainImage: p.mainImage || '',
+      gallery: p.gallery || '',
+      shopeeUrl: p.shopeeUrl || this.shopeeUrl || '',
+      tiktokUrl: p.tiktokUrl || this.tiktokUrl || ''
+    }];
+  }
+
+  _getActiveVariant() {
+    const variants = this._getVariants();
+    if (!variants.length) return null;
+    const idx = Math.max(0, Math.min(this.selectedVariantIndex, variants.length - 1));
+    return variants[idx] || variants[0];
+  }
+
+  _selectVariant(idx) {
+    this.selectedVariantIndex = idx;
+    this.selectedImageIndex = 0;
+    const active = this._getActiveVariant();
+    if (active) {
+      this.initialColor = active.color || '';
+      dispatchCustomEvent(this, 'variant-change', { variant: active, index: idx });
+    }
+    this.requestUpdate();
+  }
+
+  _getColorHex(colorName) {
+    if (!colorName) return '#cccccc';
+    const name = colorName.toLowerCase();
+    if (name.includes('nhiều màu')) return 'linear-gradient(135deg, #e53935, #fb8c00, #43a047, #1e88e5)';
+    if (name.includes('trong suốt')) return 'linear-gradient(135deg, #ffffff 40%, #e0e0e0 60%)';
+    if (name.includes('cherry blossom') || name.includes('anh đào')) return '#e8a8b8';
+    if (name.includes('đỏ cherry')) return '#b51a2b';
+    if (name.includes('grenadine')) return '#6b1d28';
+    if (name.includes('bordeaux')) return '#58111a';
+    if (name.includes('đỏ cam')) return '#d34125';
+    if (name.includes('đỏ')) return '#c8102e';
+    if (name.includes('basil')) return '#315438';
+    if (name.includes('sage')) return '#879b83';
+    if (name.includes('lime')) return '#84b82c';
+    if (name.includes('lục')) return '#2d7a3a';
+    if (name.includes('dark blue')) return '#1b3558';
+    if (name.includes('hoàng gia')) return '#1f487e';
+    if (name.includes('lamer') || name.includes('la mer')) return '#2b767a';
+    if (name.includes('xanh')) return '#1d5f8a';
+    if (name.includes('truffle') || name.includes('trufle')) return '#ece8db';
+    if (name.includes('trắng')) return '#f8f8f8';
+    if (name.includes('citron')) return '#f1b82d';
+    if (name.includes('gold')) return '#d4af37';
+    if (name.includes('vàng hồng')) return '#d49a89';
+    if (name.includes('vàng')) return '#f1b82d';
+    if (name.includes('chocolate')) return '#4a2c20';
+    if (name.includes('nâu')) return '#5a3d2e';
+    if (name.includes('granada') || name.includes('cinnamon') || name.includes('quế') || name.includes('cam')) return '#d65a27';
+    if (name.includes('macaron')) return '#eec0c8';
+    if (name.includes('sorbet')) return '#f28599';
+    if (name.includes('hồng')) return '#f098aa';
+    if (name.includes('kem')) return '#f3e5ab';
+    if (name.includes('đen')) return '#222222';
+    if (name.includes('bạc') || name.includes('inox') || name.includes('bề mặt bóng')) return '#c0c0c0';
+    if (name.includes('xám')) return '#808080';
+    return '#cccccc';
+  }
+
   _getImages() {
     const list = [];
     const p = this.data || this.product;
     if (!p) return list;
-    if (p.mainImage) {
-      const resolved = resolveImageUrl(p.mainImage);
+    const active = this._getActiveVariant();
+
+    const mainImg = (active && active.mainImage) || p.mainImage;
+    if (mainImg) {
+      const resolved = resolveImageUrl(mainImg);
       if (resolved) list.push(resolved);
     }
-    const rawGallery = p.gallery || p.media || p.images || p.mediaGallery;
+    const rawGallery = (active && active.gallery) || p.gallery || p.media || p.images || p.mediaGallery;
     if (rawGallery) {
       const g = parseGallery(rawGallery);
       g.forEach((url) => {
@@ -770,17 +1080,18 @@ export class WxProductDetail extends LitElement {
   }
 
   _getSocialUrl(channel, p) {
+    const active = this._getActiveVariant() || p;
     if (channel === 'shopee') {
-      const url = this.shopeeUrl || (p && p.shopeeUrl);
+      const url = this.shopeeUrl || (active && active.shopeeUrl) || (p && p.shopeeUrl);
       return (url && typeof url === 'string' && url.trim() && url.trim() !== '#') ? url.trim() : '';
     }
     if (channel === 'tiktok') {
-      const url = this.tiktokUrl || (p && p.tiktokUrl);
+      const url = this.tiktokUrl || (active && active.tiktokUrl) || (p && p.tiktokUrl);
       return (url && typeof url === 'string' && url.trim() && url.trim() !== '#') ? url.trim() : '';
     }
     if (channel === 'mess') {
-      const defaultMessUrl = 'https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F103476402846237%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0';
-      const url = this.messUrl || (p && (p.messUrl || p.messengerUrl)) || defaultMessUrl;
+      const defaultMessUrl = 'https://www.facebook.com/zwillingvietnamofficial/';
+      const url = this.messUrl || (active && (active.messUrl || active.messengerUrl)) || (p && (p.messUrl || p.messengerUrl)) || defaultMessUrl;
       return (url && typeof url === 'string' && url.trim() && url.trim() !== '#') ? url.trim() : defaultMessUrl;
     }
     return '';
@@ -947,11 +1258,14 @@ export class WxProductDetail extends LitElement {
     if (!rawProduct) return html``;
 
     const p = rawProduct;
+    const variants = this._getVariants();
+    const activeVariant = this._getActiveVariant() || p;
     const images = this._getImages();
     const currentImg = images[this.selectedImageIndex] || images[0];
     const brandName = p.brand ? p.brand.replace('brand-', '').toUpperCase() : '';
     const seriesName = p.series ? p.series.replace('series-', '').replace(/--.+/, '').toUpperCase() : '';
-    const { price, comparePrice, discountPercent } = calculateProductPricing(p);
+    const { price, comparePrice, discountPercent } = calculateProductPricing(activeVariant || p);
+    const sizeLabel = (activeVariant && activeVariant.sizeLabel) || p.sizeLabel || p.size || '';
 
     const specsData = safeJsonParse(p.specs, []);
 
@@ -1052,6 +1366,64 @@ export class WxProductDetail extends LitElement {
                 </div>
               `
         : ''}
+
+          <!-- Variant Selectors: Colour & Size (y hệt ảnh mẫu của Staub / Zwilling) -->
+          ${variants && variants.length > 0 && (variants.length > 1 || (activeVariant && activeVariant.color) || sizeLabel)
+            ? html`
+              <div class="variant-selectors-container">
+                <!-- 1. Colour Section -->
+                ${activeVariant && (activeVariant.color || variants.some(v => v.color))
+                  ? html`
+                    <div class="variant-group colour-group">
+                      <div class="variant-header-row">
+                        <span class="variant-label">${this.lang === 'vi' ? 'Màu sắc' : 'Colour'}:</span>
+                        <span class="variant-value">${activeVariant.color || ''}</span>
+                      </div>
+                      <div class="color-swatches-list">
+                        ${variants.map((v, idx) => {
+                          const isSelected = idx === this.selectedVariantIndex;
+                          const swatchImg = v.mainImage ? resolveImageUrl(v.mainImage) : '';
+                          const swatchColorHex = this._getColorHex(v.color);
+                          const formattedPrice = v.price ? formatCurrencyVND(v.price) : '';
+                          return html`
+                            <div
+                              class="color-swatch-item ${isSelected ? 'selected' : ''}"
+                              @click="${() => this._selectVariant(idx)}"
+                              title="${v.color}"
+                            >
+                              <div class="swatch-circle">
+                                ${swatchImg
+                                  ? html`<img class="swatch-img" src="${swatchImg}" alt="${v.color}" />`
+                                  : html`<div class="swatch-fallback-dot" style="background: ${swatchColorHex};"></div>`}
+                              </div>
+                              ${formattedPrice
+                                ? html`<div class="swatch-price">${formattedPrice}</div>`
+                                : html`<div class="swatch-price not-available">${this.lang === 'vi' ? 'HẾT HÀNG' : 'NOT AVAILABLE'}</div>`}
+                            </div>
+                          `;
+                        })}
+                      </div>
+                    </div>
+                  `
+                  : ''}
+
+                <!-- 2. Size Section (cm) -->
+                ${sizeLabel
+                  ? html`
+                    <div class="variant-group size-group">
+                      <div class="variant-header-row">
+                        <span class="variant-label">${this.lang === 'vi' ? 'Kích thước' : 'Size'}:</span>
+                        <span class="variant-value">${sizeLabel}</span>
+                      </div>
+                      <div class="size-pills-list">
+                        <button type="button" class="size-pill active">${sizeLabel}</button>
+                      </div>
+                    </div>
+                  `
+                  : ''}
+              </div>
+            `
+            : ''}
 
           <!-- Highlights Bullet list nếu có shortDescription & 3 Buttons: Facebook, TikTok, Mess -->
           ${p.shortDescription

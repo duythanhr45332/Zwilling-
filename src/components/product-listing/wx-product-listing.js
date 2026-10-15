@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { safeDefine } from '../../utils/element.js';
 import { dispatchCustomEvent } from '../../utils/events.js';
-import { formatCurrencyVND, jsonArrayConverter, booleanConverter } from '../../utils/formatters.js';
+import { formatCurrencyVND, jsonArrayConverter, booleanConverter, getProductEffectivePrice } from '../../utils/formatters.js';
 import { t } from '../../utils/i18n.js';
 import './wx-product-card.js';
 
@@ -11,8 +11,11 @@ export class WxProductListing extends LitElement {
     data: { type: Array, converter: jsonArrayConverter },
     brands: { type: Array, converter: jsonArrayConverter },
     categories: { type: Array, converter: jsonArrayConverter },
+    series: { type: Array, converter: jsonArrayConverter },
     selectedCategory: { type: String },
     selectedBrand: { type: String },
+    selectedSeries: { type: String },
+    selectedColor: { type: String },
     selectedPriceRange: { type: String },
     selectedSort: { type: String },
     sidebarOpen: { type: Boolean },
@@ -20,7 +23,8 @@ export class WxProductListing extends LitElement {
     visibleCount: { type: Number },
     pageSize: { type: Number },
     lang: { type: String },
-    loading: { type: Boolean, converter: booleanConverter }
+    loading: { type: Boolean, converter: booleanConverter },
+    expandVariants: { type: Boolean, attribute: 'expand-variants' }
   };
 
   static styles = css`
@@ -252,17 +256,55 @@ export class WxProductListing extends LitElement {
 
     @media (max-width: 768px) {
       .filter-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
       }
-      .filter-trigger-btn {
-        height: 38px;
-        padding: 8px 14px;
-        font-size: 12px;
+      .results-text {
+        font-size: 13px;
+        margin-right: auto;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .sort-select-wrap {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
       }
       .sort-select {
         height: 38px;
-        padding: 8px 30px 8px 12px;
+        padding: 8px 26px 8px 10px;
         font-size: 12px;
+      }
+      .sort-arrow {
+        right: 8px;
+      }
+      .filter-buttons-group {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        margin-left: 0;
+        gap: 8px;
+      }
+      /* On mobile, ONLY display results count, sort dropdown, and all filters button */
+      .filter-buttons-group .filter-trigger-btn:not(.all-filters-btn),
+      .filter-buttons-group .reset-link {
+        display: none !important;
+      }
+      .filter-trigger-btn {
+        height: 38px;
+        padding: 8px 12px;
+        font-size: 12px;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      .all-filters-btn {
+        margin-left: 0;
       }
     }
 
@@ -425,6 +467,15 @@ export class WxProductListing extends LitElement {
       background: #9ca3af;
     }
 
+    .color-swatch-circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+      display: inline-block;
+    }
+
     .filter-option-label {
       display: flex;
       align-items: center;
@@ -570,8 +621,11 @@ export class WxProductListing extends LitElement {
     this.data = null;
     this.brands = [];
     this.categories = [];
+    this.series = [];
     this.selectedCategory = '';
     this.selectedBrand = '';
+    this.selectedSeries = '';
+    this.selectedColor = '';
     this.selectedPriceRange = '';
     this.selectedSort = 'default';
     this.sidebarOpen = false;
@@ -580,6 +634,56 @@ export class WxProductListing extends LitElement {
     this.pageSize = 32;
     this.lang = 'vi';
     this.loading = false;
+    this.expandVariants = true;
+  }
+
+  _getExpandedProducts(list) {
+    if (!this.expandVariants || !Array.isArray(list)) return list || [];
+
+    const expanded = [];
+    for (const p of list) {
+      const vars = Array.isArray(p.variants) ? p.variants : [];
+      if (vars.length > 1) {
+        vars.forEach((v, idx) => {
+          const colorName = (v.color || '').trim();
+          const variantPrice = Number(v.price) > 0 ? Number(v.price) : Number(p.minPrice || p.price || 0);
+          const variantComparePrice = v.compareAtPrice || p.compareAtPrice || null;
+          const variantImg = v.mainImage || p.mainImage || '';
+
+          let cardTitle = p.title;
+          if (v.title && v.title !== p.title) {
+            cardTitle = v.title;
+          } else if (colorName && !p.title.includes(colorName)) {
+            cardTitle = `${p.title} - ${colorName}`;
+          }
+
+          expanded.push({
+            ...p,
+            id: `${p.ID || p._id || 'prod'}_var_${v.sku || v.ID || idx}`,
+            _cardKey: `${p.ID || p._id || 'prod'}_${idx}`,
+            masterId: p.ID || p._id,
+            title: cardTitle,
+            baseTitle: p.title,
+            color: colorName || p.color || '',
+            selectedColor: colorName || p.color || '',
+            selectedVariantIndex: idx,
+            mainImage: variantImg,
+            gallery: v.gallery || p.gallery,
+            price: variantPrice,
+            minPrice: variantPrice,
+            maxPrice: variantPrice,
+            compareAtPrice: variantComparePrice,
+            sku: v.sku || p.sku,
+            parentProduct: p,
+            variants: vars,
+            isVariantCard: true
+          });
+        });
+      } else {
+        expanded.push(p);
+      }
+    }
+    return expanded;
   }
 
   _categoryMatchesProduct(c, p) {
@@ -600,6 +704,33 @@ export class WxProductListing extends LitElement {
     return false;
   }
 
+  _seriesMatchesProduct(s, p) {
+    if (!s || !p) return false;
+    const sid = s.ID || s._id;
+    const sslug = s.slug;
+    const stitle = s.title;
+
+    const pSeries = p.series;
+    if (!pSeries) return false;
+
+    if (typeof pSeries === 'object') {
+      const pid = pSeries.ID || pSeries._id;
+      const pslug = pSeries.slug;
+      if (sid && (pid === sid || pslug === sid)) return true;
+      if (sslug && (pid === sslug || pslug === sslug)) return true;
+      if (stitle && pSeries.title === stitle) return true;
+      return false;
+    }
+
+    if (typeof pSeries === 'string') {
+      if (sid && (pSeries === sid || pSeries.includes(sid))) return true;
+      if (sslug && (pSeries === sslug || pSeries.includes(sslug))) return true;
+      if (stitle && pSeries.toLowerCase().includes(stitle.toLowerCase())) return true;
+    }
+
+    return false;
+  }
+
   _getAvailableCategories() {
     const raw = this.data || this.products;
     const products = Array.isArray(raw) ? raw : [];
@@ -614,11 +745,176 @@ export class WxProductListing extends LitElement {
     });
   }
 
-  _getFilteredProducts() {
+  _getAvailableSeries() {
+    const raw = this.data || this.products;
+    const products = Array.isArray(raw) ? raw : [];
+    let allSeries = Array.isArray(this.series) ? [...this.series] : [];
+
+    // Nếu không truyền mảng series từ ngoài, tự động trích xuất các series từ products
+    if (!allSeries.length && products.length) {
+      const seriesMap = new Map();
+      for (const p of products) {
+        if (p.series) {
+          let id = '';
+          let title = '';
+          let brand = p.brand || '';
+          if (typeof p.series === 'object') {
+            id = p.series.ID || p.series._id || p.series.slug || '';
+            title = p.series.title || id;
+            brand = p.series.brand || brand;
+          } else if (typeof p.series === 'string') {
+            id = p.series;
+            title = id
+              .replace(/^series-/, '')
+              .replace(/^brand-/, '')
+              .replace(/^[a-z]+-/, '')
+              .replace(/-/g, ' ')
+              .toUpperCase();
+          }
+          if (id && !seriesMap.has(id)) {
+            seriesMap.set(id, { ID: id, title, brand });
+          }
+        }
+      }
+      allSeries = Array.from(seriesMap.values());
+    }
+
+    if (!allSeries.length || !products.length) return [];
+
+    // Nếu người dùng đang chọn Thương hiệu (selectedBrand), lọc chỉ các series thuộc thương hiệu đó
+    if (this.selectedBrand) {
+      const brandLower = this.selectedBrand.toLowerCase().replace(/^brand-/, '');
+      allSeries = allSeries.filter((s) => {
+        const b = (s.brand || '').toLowerCase().replace(/^brand-/, '');
+        const sid = (s.ID || s.slug || '').toLowerCase();
+        return b === brandLower || b.includes(brandLower) || brandLower.includes(b) || sid.includes(brandLower);
+      });
+    }
+
+    // Chỉ giữ lại những series có ít nhất 1 sản phẩm trong danh sách sản phẩm hiện có
+    return allSeries.filter((s) => {
+      return products.some((p) => this._seriesMatchesProduct(s, p));
+    });
+  }
+
+  _normalizeColor(color, p) {
+    if (!color) return '';
+    let c = color.trim();
+    // Filter non-color values like dimensions, features, etc.
+    if (/^(cao |dáng |H:|H :|Quánh|size |5 rãnh|Phiên bản|Mới)/i.test(c) || c === 'Dáng thấp') {
+      const t = (p && p.title) || '';
+      if (t.includes('thép') || t.includes('Thép') || t.includes('Núm nồi gang')) return 'Bạc';
+      if (t.includes('FRESH & SAVE')) return 'Trắng Trong';
+      if (t.includes('Ebony') || t.includes('Chảo Rán')) return 'Đen';
+      return 'Bạc';
+    }
+
+    if (c === 'Trắng Trufle') c = 'Trắng Truffle';
+    if (c === 'Bề mặt bóng') c = 'Bạc';
+    if (c.toLowerCase() === 'kem') c = 'Kem';
+    if (c.toLowerCase() === 'hồng') c = 'Hồng';
+    if (c.toLowerCase() === 'bạc') c = 'Bạc';
+    if (c === 'bạc, kèm ống hút') c = 'Bạc';
+    if (c === 'kem, kèm ống hút') c = 'Kem';
+    if (c === 'hồng, kèm ống hút') c = 'Hồng';
+    if (c.toLowerCase() === 'xanh dark blue') c = 'Xanh Dark Blue';
+    if (c === 'Set màu Macaron') c = 'Macaron';
+    if (c === 'Nhiều Màu') c = 'Nhiều màu';
+    return c;
+  }
+
+  _getProductColor(p) {
+    if (!p) return '';
+    let color = p.color || '';
+    if (!color && p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
+      color = p.variants[0].color || '';
+    }
+    if (!color && p.title) {
+      const match = p.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+      if (match) color = match[1].trim();
+      else if (p.title.includes('ZWILLING Nova')) color = 'Bạc';
+    }
+    return this._normalizeColor(color, p);
+  }
+
+  _getProductColors(p) {
+    if (!p) return [];
+    if (p.isVariantCard && p.color) {
+      const norm = this._normalizeColor(p.color, p);
+      return [norm || p.color];
+    }
+    const colors = new Set();
+    if (p.variants && Array.isArray(p.variants) && p.variants.length > 0) {
+      for (const v of p.variants) {
+        let vc = v.color || '';
+        if (!vc && v.title) {
+          const match = v.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+          if (match) vc = match[1].trim();
+        }
+        const norm = this._normalizeColor(vc, p);
+        if (norm) colors.add(norm);
+      }
+    }
+    let baseColor = p.color || '';
+    if (!baseColor && p.title) {
+      const match = p.title.match(/\((?:Màu\s+)?([^)]+)\)/i);
+      if (match) baseColor = match[1].trim();
+      else if (p.title.includes('ZWILLING Nova')) baseColor = 'Bạc';
+    }
+    const normBase = this._normalizeColor(baseColor, p);
+    if (normBase) colors.add(normBase);
+
+    if (colors.size === 0) {
+      const single = this._getProductColor(p);
+      if (single) colors.add(single);
+    }
+    return Array.from(colors);
+  }
+
+  _getColorHex(colorName) {
+    if (!colorName) return '#cccccc';
+    const name = colorName.toLowerCase();
+    if (name.includes('nhiều màu')) return 'linear-gradient(135deg, #e53935, #fb8c00, #43a047, #1e88e5)';
+    if (name.includes('trong suốt')) return 'linear-gradient(135deg, #ffffff 40%, #e0e0e0 60%)';
+    if (name.includes('cherry blossom') || name.includes('anh đào')) return '#e8a8b8';
+    if (name.includes('đỏ cherry')) return '#b51a2b';
+    if (name.includes('grenadine')) return '#6b1d28';
+    if (name.includes('bordeaux')) return '#58111a';
+    if (name.includes('đỏ cam')) return '#d34125';
+    if (name.includes('đỏ')) return '#c8102e';
+    if (name.includes('basil')) return '#315438';
+    if (name.includes('sage')) return '#879b83';
+    if (name.includes('lime')) return '#84b82c';
+    if (name.includes('lục')) return '#2d7a3a';
+    if (name.includes('dark blue')) return '#1b3558';
+    if (name.includes('hoàng gia')) return '#1f487e';
+    if (name.includes('lamer') || name.includes('la mer')) return '#2b767a';
+    if (name.includes('xanh')) return '#1d5f8a';
+    if (name.includes('truffle') || name.includes('trufle')) return '#ece8db';
+    if (name.includes('trắng')) return '#f8f8f8';
+    if (name.includes('citron')) return '#f1b82d';
+    if (name.includes('gold')) return '#d4af37';
+    if (name.includes('vàng hồng')) return '#d49a89';
+    if (name.includes('vàng')) return '#f1b82d';
+    if (name.includes('chocolate')) return '#4a2c20';
+    if (name.includes('nâu')) return '#5a3d2e';
+    if (name.includes('granada') || name.includes('cinnamon') || name.includes('quế') || name.includes('cam')) return '#d65a27';
+    if (name.includes('macaron')) return '#eec0c8';
+    if (name.includes('sorbet')) return '#f28599';
+    if (name.includes('hồng')) return '#f098aa';
+    if (name.includes('kem')) return '#f3e5ab';
+    if (name.includes('đen')) return '#222222';
+    if (name.includes('bạc') || name.includes('inox') || name.includes('bề mặt bóng')) return '#c0c0c0';
+    if (name.includes('xám')) return '#808080';
+    return '#cccccc';
+  }
+
+  _getAvailableColors() {
     const raw = this.data || this.products;
     const list = Array.isArray(raw) ? [...raw] : [];
+    if (!list.length) return [];
 
-    let filtered = list;
+    let filtered = this._getExpandedProducts(list);
 
     if (this.selectedCategory) {
       const allCats = Array.isArray(this.categories) ? this.categories : [];
@@ -649,12 +945,31 @@ export class WxProductListing extends LitElement {
       });
     }
 
+    if (this.selectedSeries) {
+      const allSeries = Array.isArray(this.series) ? this.series : [];
+      const matchedSeries = allSeries.find(
+        (s) => s.ID === this.selectedSeries || s._id === this.selectedSeries || s.slug === this.selectedSeries
+      );
+      if (matchedSeries) {
+        filtered = filtered.filter((p) => this._seriesMatchesProduct(matchedSeries, p));
+      } else {
+        filtered = filtered.filter((p) => {
+          const s = this.selectedSeries;
+          if (!p.series) return false;
+          if (typeof p.series === 'object') {
+            return p.series.ID === s || p.series._id === s || p.series.slug === s;
+          }
+          return p.series === s || p.series.includes(s);
+        });
+      }
+    }
+
     if (this.selectedPriceRange) {
       filtered = filtered.filter((p) => {
-        const price = Number(p.minPrice || p.price || 0);
+        const price = this._getProductPrice(p);
         switch (this.selectedPriceRange) {
           case 'under-1m':
-            return price < 1000000;
+            return price > 0 && price < 1000000;
           case '1m-3m':
             return price >= 1000000 && price <= 3000000;
           case '3m-5m':
@@ -667,10 +982,104 @@ export class WxProductListing extends LitElement {
       });
     }
 
+    const colorMap = new Map();
+    for (const p of filtered) {
+      const colors = this._getProductColors(p);
+      for (const c of colors) {
+        colorMap.set(c, (colorMap.get(c) || 0) + 1);
+      }
+    }
+
+    return Array.from(colorMap.entries())
+      .map(([color, count]) => ({ color, count }))
+      .sort((a, b) => b.count - a.count || a.color.localeCompare(b.color));
+  }
+
+  _getFilteredProducts() {
+    const raw = this.data || this.products;
+    const list = Array.isArray(raw) ? [...raw] : [];
+    const baseList = this._getExpandedProducts(list);
+
+    let filtered = baseList;
+
+    if (this.selectedCategory) {
+      const allCats = Array.isArray(this.categories) ? this.categories : [];
+      const matchedCat = allCats.find(
+        (c) => c.ID === this.selectedCategory || c._id === this.selectedCategory || c.slug === this.selectedCategory
+      );
+      if (matchedCat) {
+        filtered = filtered.filter((p) => this._categoryMatchesProduct(matchedCat, p));
+      } else {
+        filtered = filtered.filter((p) => {
+          const cat = this.selectedCategory;
+          return (
+            p.category === cat ||
+            p.categorySlug === cat ||
+            p.brandCategory === cat ||
+            (p.category && p.category.includes(cat)) ||
+            (p.categoryPath && p.categoryPath.includes(cat))
+          );
+        });
+      }
+    }
+
+    if (this.selectedBrand) {
+      filtered = filtered.filter((p) => {
+        const brand = this.selectedBrand.toLowerCase();
+        const pBrand = (p.brand || '').toLowerCase();
+        return pBrand === brand || pBrand.includes(brand) || (p.brandPath && p.brandPath.toLowerCase().includes(brand));
+      });
+    }
+
+    if (this.selectedSeries) {
+      const allSeries = Array.isArray(this.series) ? this.series : [];
+      const matchedSeries = allSeries.find(
+        (s) => s.ID === this.selectedSeries || s._id === this.selectedSeries || s.slug === this.selectedSeries
+      );
+      if (matchedSeries) {
+        filtered = filtered.filter((p) => this._seriesMatchesProduct(matchedSeries, p));
+      } else {
+        filtered = filtered.filter((p) => {
+          const s = this.selectedSeries;
+          if (!p.series) return false;
+          if (typeof p.series === 'object') {
+            return p.series.ID === s || p.series._id === s || p.series.slug === s;
+          }
+          return p.series === s || p.series.includes(s);
+        });
+      }
+    }
+
+    if (this.selectedPriceRange) {
+      filtered = filtered.filter((p) => {
+        const price = this._getProductPrice(p);
+        switch (this.selectedPriceRange) {
+          case 'under-1m':
+            return price > 0 && price < 1000000;
+          case '1m-3m':
+            return price >= 1000000 && price <= 3000000;
+          case '3m-5m':
+            return price >= 3000000 && price <= 5000000;
+          case 'over-5m':
+            return price > 5000000;
+          default:
+            return true;
+        }
+      });
+    }
+
+    if (this.selectedColor) {
+      const target = this.selectedColor.toLowerCase();
+      filtered = filtered.filter((p) => {
+        const colors = this._getProductColors(p);
+        return colors.some((c) => c.toLowerCase() === target);
+      });
+    }
+
     if (this.selectedSort === 'price-asc') {
-      filtered.sort((a, b) => (Number(a.minPrice || a.price || 0)) - (Number(b.minPrice || b.price || 0)));
+      filtered.sort((a, b) => this._getProductPrice(a) - this._getProductPrice(b));
     } else if (this.selectedSort === 'price-desc') {
-      filtered.sort((a, b) => (Number(b.minPrice || b.price || 0)) - (Number(a.minPrice || a.price || 0)));
+      filtered.sort((a, b) => this._getProductPrice(b) - this._getProductPrice(a));
     } else if (this.selectedSort === 'title-asc') {
       filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
     }
@@ -678,9 +1087,21 @@ export class WxProductListing extends LitElement {
     return filtered;
   }
 
+  _getProductPrice(p) {
+    return getProductEffectivePrice(p);
+  }
+
   _openSidebar(tab = 'all') {
     this.activeSidebarTab = tab;
     this.sidebarOpen = true;
+    if (tab && tab !== 'all') {
+      setTimeout(() => {
+        const sectionEl = this.shadowRoot?.querySelector(`#filter-section-${tab}`);
+        if (sectionEl) {
+          sectionEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
+    }
   }
 
   _closeSidebar() {
@@ -691,6 +1112,8 @@ export class WxProductListing extends LitElement {
     if (e) e.preventDefault();
     this.selectedCategory = '';
     this.selectedBrand = '';
+    this.selectedSeries = '';
+    this.selectedColor = '';
     this.selectedPriceRange = '';
     this.selectedSort = 'default';
     this.visibleCount = this.pageSize || 32;
@@ -715,6 +1138,24 @@ export class WxProductListing extends LitElement {
     this.requestUpdate();
   }
 
+  _clearSeriesFilter(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.selectedSeries = '';
+    this.requestUpdate();
+  }
+
+  _clearColorFilter(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.selectedColor = '';
+    this.requestUpdate();
+  }
+
   _clearPriceFilter(e) {
     if (e) {
       e.preventDefault();
@@ -732,6 +1173,8 @@ export class WxProductListing extends LitElement {
     if (
       changedProps.has('selectedCategory') ||
       changedProps.has('selectedBrand') ||
+      changedProps.has('selectedSeries') ||
+      changedProps.has('selectedColor') ||
       changedProps.has('selectedPriceRange') ||
       changedProps.has('selectedSort') ||
       changedProps.has('products') ||
@@ -742,7 +1185,23 @@ export class WxProductListing extends LitElement {
   }
 
   _onProductCardClick(e) {
-    dispatchCustomEvent(this, 'product-select', { product: e.detail.product });
+    const cardProduct = e.detail?.product;
+    if (!cardProduct) return;
+    const masterProduct = cardProduct.parentProduct || cardProduct;
+    const selectedVariantIndex = typeof cardProduct.selectedVariantIndex === 'number'
+      ? cardProduct.selectedVariantIndex
+      : 0;
+    const selectedColor = cardProduct.selectedColor || cardProduct.color || '';
+
+    dispatchCustomEvent(this, 'product-select', {
+      product: masterProduct,
+      variantIndex: selectedVariantIndex,
+      selectedVariantIndex,
+      selectedColor,
+      color: selectedColor,
+      slug: masterProduct.slug,
+      expandedProduct: cardProduct
+    });
   }
 
   render() {
@@ -783,7 +1242,9 @@ export class WxProductListing extends LitElement {
 
     const filteredList = this._getFilteredProducts();
     const availableCategories = this._getAvailableCategories();
-    const hasActiveFilters = this.selectedCategory || this.selectedBrand || this.selectedPriceRange;
+    const availableSeries = this._getAvailableSeries();
+    const availableColors = this._getAvailableColors();
+    const hasActiveFilters = this.selectedCategory || this.selectedBrand || this.selectedSeries || this.selectedColor || this.selectedPriceRange;
     const totalItems = filteredList.length;
     const displayedList = filteredList.slice(0, this.visibleCount);
     const progressPercent = totalItems > 0 ? Math.min(100, (displayedList.length / totalItems) * 100) : 0;
@@ -820,6 +1281,20 @@ export class WxProductListing extends LitElement {
             </button>
 
             <button
+              class="filter-trigger-btn ${this.selectedSeries ? 'has-value' : ''}"
+              @click="${() => this._openSidebar('series')}"
+            >
+              <span>${t('filterSeries', this.lang)}</span>
+            </button>
+
+            <button
+              class="filter-trigger-btn ${this.selectedColor ? 'has-value' : ''}"
+              @click="${() => this._openSidebar('color')}"
+            >
+              <span>${t('filterColor', this.lang)}</span>
+            </button>
+
+            <button
               class="filter-trigger-btn ${this.selectedPriceRange ? 'has-value' : ''}"
               @click="${() => this._openSidebar('price')}"
             >
@@ -838,10 +1313,11 @@ export class WxProductListing extends LitElement {
               : ''}
 
             <button
-              class="filter-trigger-btn all-filters-btn"
+              class="filter-trigger-btn all-filters-btn ${hasActiveFilters ? 'has-value' : ''}"
               @click="${() => this._openSidebar('all')}"
             >
               <span>${this.lang === 'vi' ? 'Tất cả bộ lọc' : 'All Filters'}</span>
+              ${hasActiveFilters ? html`<span class="active-dot"></span>` : ''}
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm12 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 8.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm5 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm3 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM1 13.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm10 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
               </svg>
@@ -899,7 +1375,7 @@ export class WxProductListing extends LitElement {
           </div>
 
           <div class="sidebar-content">
-            <div class="filter-section">
+            <div class="filter-section" id="filter-section-category">
               <div class="filter-group-title">
                 <span>${t('categories', this.lang)}</span>
                 ${this.selectedCategory
@@ -938,7 +1414,7 @@ export class WxProductListing extends LitElement {
               </div>
             </div>
 
-            <div class="filter-section">
+            <div class="filter-section" id="filter-section-brand">
               <div class="filter-group-title">
                 <span>${t('brands', this.lang)}</span>
                 ${this.selectedBrand
@@ -975,7 +1451,86 @@ export class WxProductListing extends LitElement {
               </div>
             </div>
 
-            <div class="filter-section">
+            <div class="filter-section" id="filter-section-series">
+              <div class="filter-group-title">
+                <span>${t('series', this.lang)}</span>
+                ${this.selectedSeries
+                  ? html`<button type="button" class="clear-section-btn" @click="${this._clearSeriesFilter}">${t('clear', this.lang)}</button>`
+                  : ''}
+              </div>
+              <div class="filter-options-list">
+                <label class="filter-option-label">
+                  <input
+                    type="radio"
+                    name="series_filter"
+                    value=""
+                    .checked="${!this.selectedSeries}"
+                    @change="${() => (this.selectedSeries = '')}"
+                  />
+                  <span>${t('allSeries', this.lang)}</span>
+                </label>
+                <div class="filter-options-scrollable">
+                  ${availableSeries && availableSeries.length > 0
+                    ? availableSeries.map(
+                        (s) => html`
+                          <label class="filter-option-label">
+                            <input
+                              type="radio"
+                              name="series_filter"
+                              value="${s.ID || s.slug || s._id}"
+                              .checked="${this.selectedSeries === (s.ID || s.slug || s._id)}"
+                              @change="${() => (this.selectedSeries = s.ID || s.slug || s._id)}"
+                            />
+                            <span>${s.title}</span>
+                          </label>
+                        `
+                      )
+                    : html`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${t('noSeries', this.lang)}</span>`}
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" id="filter-section-color">
+              <div class="filter-group-title">
+                <span>${t('color', this.lang)}</span>
+                ${this.selectedColor
+                  ? html`<button type="button" class="clear-section-btn" @click="${this._clearColorFilter}">${t('clear', this.lang)}</button>`
+                  : ''}
+              </div>
+              <div class="filter-options-list">
+                <label class="filter-option-label">
+                  <input
+                    type="radio"
+                    name="color_filter"
+                    value=""
+                    .checked="${!this.selectedColor}"
+                    @change="${() => (this.selectedColor = '')}"
+                  />
+                  <span>${t('allColors', this.lang)}</span>
+                </label>
+                <div class="filter-options-scrollable">
+                  ${availableColors && availableColors.length > 0
+                    ? availableColors.map(
+                        (c) => html`
+                          <label class="filter-option-label">
+                            <input
+                              type="radio"
+                              name="color_filter"
+                              value="${c.color}"
+                              .checked="${this.selectedColor === c.color}"
+                              @change="${() => (this.selectedColor = c.color)}"
+                            />
+                            <span class="color-swatch-circle" style="background: ${this._getColorHex(c.color)};"></span>
+                            <span>${c.color} (${c.count})</span>
+                          </label>
+                        `
+                      )
+                    : html`<span style="font-size: 12px; color: #888888; padding: 4px 0;">${t('noColors', this.lang)}</span>`}
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" id="filter-section-price">
               <div class="filter-group-title">
                 <span>${t('priceRange', this.lang)}</span>
                 ${this.selectedPriceRange

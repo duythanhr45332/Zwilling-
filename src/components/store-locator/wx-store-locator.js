@@ -434,6 +434,8 @@ export class WxStoreLocator extends LitElement {
     this.activeTab = 'list';
     this.lang = 'vi';
     this._boundOnMessage = null;
+    this._lastStoresKey = '';
+    this._cachedSrcDoc = '';
   }
 
   connectedCallback() {
@@ -451,12 +453,19 @@ export class WxStoreLocator extends LitElement {
 
   _onWindowMessage(e) {
     if (e.data && e.data.type === 'STORE_MARKER_CLICK') {
-      const clickedId = e.data.id;
+      const clickedId = String(e.data.id || '');
       if (clickedId) {
         this.selectedStoreId = clickedId;
         const card = this.shadowRoot.querySelector(`[data-store-id="${clickedId}"]`);
         if (card) {
           card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    } else if (e.data && e.data.type === 'MAP_READY') {
+      if (this.selectedStoreId) {
+        const iframe = this.shadowRoot.getElementById('storeMapFrame');
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ type: 'FLY_TO_STORE', id: this.selectedStoreId }, '*');
         }
       }
     }
@@ -472,20 +481,71 @@ export class WxStoreLocator extends LitElement {
     }
   }
 
+  _getStoreId(s, index = 0) {
+    if (!s || typeof s !== 'object') return `store-${index}`;
+    return String(s._id || s.id || s.ID || s.storeId || s.title || `store-${index}`);
+  }
+
   _getEffectiveStores() {
+    let rawList = [];
     if (Array.isArray(this.stores) && this.stores.length > 0) {
-      return this.stores;
+      rawList = this.stores;
+    } else if (this.data && Array.isArray(this.data.stores) && this.data.stores.length > 0) {
+      rawList = this.data.stores;
+    } else {
+      rawList = DEFAULT_STORES;
     }
-    if (this.data && Array.isArray(this.data.stores) && this.data.stores.length > 0) {
-      return this.data.stores;
-    }
-    return DEFAULT_STORES;
+
+    return rawList.map((s, index) => {
+      const id = this._getStoreId(s, index);
+      const lat = Number(s.latitude || s.lat || s.Latitude) || 0;
+      const lng = Number(s.longitude || s.lng || s.Longitude) || 0;
+      const title = s.title || s.name || 'ZWILLING Store';
+      const address = s.address || s.diaChi || '';
+
+      return {
+        ...s,
+        id,
+        _id: id,
+        ID: id,
+        title,
+        address,
+        city: s.city || s.thanhPho || '',
+        hotline: s.hotline || s.phone || s.soDienThoai || '',
+        openHours: s.openHours || s.gioMoCua || '09:30 - 22:00',
+        latitude: lat,
+        longitude: lng,
+        googleMapsUrl: s.googleMapsUrl || s.mapUrl || (lat && lng ? `https://www.google.com/maps?q=${lat},${lng}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(title + ' ' + address)}`),
+        image: s.image || s.hinhAnh || s.thumbnail || ''
+      };
+    });
+  }
+
+  _isCityMatch(storeCity, selectedCity) {
+    if (!selectedCity || selectedCity === 'all') return true;
+    if (!storeCity) return false;
+    const sc = storeCity.trim().toLowerCase();
+    const sel = selectedCity.trim().toLowerCase();
+
+    if (sc.includes(sel) || sel.includes(sc)) return true;
+
+    const hcmAliases = ['tp.hcm', 'hcm', 'tp. hcm', 'hồ chí minh', 'ho chi minh', 'tp. hồ chí minh', 'tp hồ chí minh'];
+    const isStoreHcm = hcmAliases.some(a => sc.includes(a));
+    const isSelHcm = hcmAliases.some(a => sel.includes(a));
+    if (isStoreHcm && isSelHcm) return true;
+
+    const hnAliases = ['hà nội', 'ha noi', 'hn'];
+    const isStoreHn = hnAliases.some(a => sc.includes(a));
+    const isSelHn = hnAliases.some(a => sel.includes(a));
+    if (isStoreHn && isSelHn) return true;
+
+    return false;
   }
 
   _initStoreSelection() {
     const list = this._getFilteredStores();
-    if (list.length > 0 && (!this.selectedStoreId || !list.some(s => (s.id || s.ID) === this.selectedStoreId))) {
-      this.selectedStoreId = list[0].id || list[0].ID;
+    if (list.length > 0 && (!this.selectedStoreId || !list.some(s => s.id === this.selectedStoreId))) {
+      this.selectedStoreId = list[0].id;
     }
   }
 
@@ -496,7 +556,7 @@ export class WxStoreLocator extends LitElement {
 
     return all.filter((s) => {
       // 1. Lọc theo thành phố
-      if (city !== 'all' && s.city && !s.city.toLowerCase().includes(city.toLowerCase())) {
+      if (!this._isCityMatch(s.city, city)) {
         return false;
       }
 
@@ -513,6 +573,38 @@ export class WxStoreLocator extends LitElement {
     });
   }
 
+  _getCitiesList() {
+    const stores = this._getEffectiveStores();
+    const cityMap = new Map();
+
+    stores.forEach(s => {
+      const raw = (s.city || '').trim();
+      if (!raw) return;
+      let label = raw;
+      let filterValue = raw;
+
+      const lower = raw.toLowerCase();
+      if (lower.includes('hồ chí minh') || lower.includes('hcm')) {
+        label = 'TP.HCM';
+        filterValue = 'TP.HCM';
+      } else if (lower.includes('hà nội') || lower.includes('hn')) {
+        label = 'Hà Nội';
+        filterValue = 'Hà Nội';
+      }
+
+      const existing = cityMap.get(filterValue) || { label, filterValue, count: 0 };
+      existing.count += 1;
+      cityMap.set(filterValue, existing);
+    });
+
+    return Array.from(cityMap.values());
+  }
+
+  _isCityActive(val) {
+    if (this.selectedCity === 'all') return false;
+    return this._isCityMatch(val, this.selectedCity);
+  }
+
   _onSearchInput(e) {
     this.searchQuery = e.target.value;
   }
@@ -522,7 +614,7 @@ export class WxStoreLocator extends LitElement {
     this._initStoreSelection();
 
     const filtered = this._getFilteredStores();
-    const ids = filtered.map(s => s.id || s.ID);
+    const ids = filtered.map(s => s.id);
     const iframe = this.shadowRoot.getElementById('storeMapFrame');
     if (iframe && iframe.contentWindow) {
       iframe.contentWindow.postMessage({ type: 'FIT_BOUNDS', ids }, '*');
@@ -530,7 +622,7 @@ export class WxStoreLocator extends LitElement {
   }
 
   _selectStore(store) {
-    const id = store.id || store.ID;
+    const id = this._getStoreId(store);
     this.selectedStoreId = id;
     this.activeTab = 'map'; // Khi click store trên mobile, chuyển qua xem map
 
@@ -540,9 +632,15 @@ export class WxStoreLocator extends LitElement {
     }
   }
 
-  _getMapIframeSrcDoc(stores, selectedId) {
+  _getMapIframeSrcDoc(stores) {
+    const storesKey = stores.map(s => `${s.id}:${s.latitude}:${s.longitude}`).join('|');
+    if (this._lastStoresKey === storesKey && this._cachedSrcDoc) {
+      return this._cachedSrcDoc;
+    }
+    this._lastStoresKey = storesKey;
+
     const storesData = JSON.stringify(stores.map(s => ({
-      id: s.id || s.ID,
+      id: String(s.id),
       title: s.title || '',
       address: s.address || '',
       hotline: s.hotline || '',
@@ -552,7 +650,7 @@ export class WxStoreLocator extends LitElement {
       googleMapsUrl: s.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((s.title || '') + ' ' + (s.address || ''))}`
     })));
 
-    return `<!DOCTYPE html>
+    this._cachedSrcDoc = `<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
@@ -627,7 +725,6 @@ export class WxStoreLocator extends LitElement {
   <div id="map"></div>
   <script>
     const stores = ${storesData};
-    let currentSelectedId = "${selectedId || ''}";
 
     const map = L.map('map', {
       center: [16.0471, 107.8443],
@@ -636,7 +733,7 @@ export class WxStoreLocator extends LitElement {
       scrollWheelZoom: true
     });
 
-    // Google Maps Tile Layer - Hoàn toàn không cần API key, không watermark, tải cực nhanh tại Việt Nam
+    // Google Maps Tile Layer
     L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
@@ -661,40 +758,44 @@ export class WxStoreLocator extends LitElement {
         const m = L.marker([s.latitude, s.longitude], { icon: redPin }).addTo(map);
 
         const popupHtml = '<div class="popup-box">' +
-          '<div class="popup-title">' + s.title + '</div>' +
-          '<div class="popup-address">' + s.address + '</div>' +
-          '<div class="popup-hotline">Hotline: ' + s.hotline + '</div>' +
+          '<div class="popup-title">' + (s.title || '') + '</div>' +
+          '<div class="popup-address">' + (s.address || '') + '</div>' +
+          '<div class="popup-hotline">Hotline: ' + (s.hotline || '') + '</div>' +
           '<a class="popup-btn" href="' + s.googleMapsUrl + '" target="_blank">Chỉ đường ↗</a>' +
           '</div>';
 
         m.bindPopup(popupHtml);
 
         m.on('click', () => {
-          currentSelectedId = s.id;
           window.parent.postMessage({ type: 'STORE_MARKER_CLICK', id: s.id }, '*');
         });
 
-        markers[s.id] = m;
+        markers[String(s.id)] = m;
       }
     });
 
     // Khởi tạo vị trí ban đầu
-    if (currentSelectedId && markers[currentSelectedId]) {
-      const s = stores.find(x => x.id === currentSelectedId);
-      if (s) {
-        map.setView([s.latitude, s.longitude], 15);
-        markers[currentSelectedId].openPopup();
+    if (bounds.length === 1) {
+      map.setView(bounds[0], 15);
+      if (stores[0] && markers[String(stores[0].id)]) {
+        markers[String(stores[0].id)].openPopup();
       }
-    } else if (bounds.length > 0) {
+    } else if (bounds.length > 1) {
       map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
     }
+
+    // Báo cho parent component là map đã sẵn sàng
+    try {
+      window.parent.postMessage({ type: 'MAP_READY' }, '*');
+    } catch (e) {}
 
     // Nhận thông điệp từ ngoài component
     window.addEventListener('message', (e) => {
       if (!e.data) return;
       if (e.data.type === 'FLY_TO_STORE') {
-        const id = e.data.id;
-        const s = stores.find(x => x.id === id);
+        const id = String(e.data.id || '');
+        if (!id) return;
+        const s = stores.find(x => String(x.id) === id);
         if (s && s.latitude && s.longitude) {
           map.flyTo([s.latitude, s.longitude], 15, { duration: 1.0 });
           if (markers[id]) {
@@ -702,11 +803,18 @@ export class WxStoreLocator extends LitElement {
           }
         }
       } else if (e.data.type === 'FIT_BOUNDS') {
-        const activeIds = e.data.ids || [];
+        const activeIds = (e.data.ids || []).map(x => String(x));
         const activeBounds = stores
-          .filter(x => activeIds.includes(x.id))
+          .filter(x => activeIds.includes(String(x.id)))
+          .filter(x => x.latitude && x.longitude)
           .map(x => [x.latitude, x.longitude]);
-        if (activeBounds.length > 0) {
+        if (activeBounds.length === 1) {
+          map.flyTo(activeBounds[0], 15, { duration: 1.0 });
+          const single = stores.find(x => activeIds.includes(String(x.id)));
+          if (single && markers[String(single.id)]) {
+            markers[String(single.id)].openPopup();
+          }
+        } else if (activeBounds.length > 1) {
           map.fitBounds(activeBounds, { padding: [50, 50], maxZoom: 14 });
         }
       }
@@ -714,10 +822,13 @@ export class WxStoreLocator extends LitElement {
   </script>
 </body>
 </html>`;
+
+    return this._cachedSrcDoc;
   }
 
   render() {
     const filteredStores = this._getFilteredStores();
+    const citiesList = this._getCitiesList();
 
     return html`
       <!-- Mobile Toggle Tabs (Danh sách / Bản đồ) -->
@@ -759,18 +870,14 @@ export class WxStoreLocator extends LitElement {
               >
                 Tất cả (${this._getEffectiveStores().length})
               </button>
-              <button
-                class="city-pill ${this.selectedCity === 'TP. Hồ Chí Minh' ? 'active' : ''}"
-                @click="${() => this._onSelectCity('TP. Hồ Chí Minh')}"
-              >
-                TP.HCM (2)
-              </button>
-              <button
-                class="city-pill ${this.selectedCity === 'Hà Nội' ? 'active' : ''}"
-                @click="${() => this._onSelectCity('Hà Nội')}"
-              >
-                Hà Nội (1)
-              </button>
+              ${citiesList.map(c => html`
+                <button
+                  class="city-pill ${this._isCityActive(c.filterValue) ? 'active' : ''}"
+                  @click="${() => this._onSelectCity(c.filterValue)}"
+                >
+                  ${c.label} (${c.count})
+                </button>
+              `)}
             </div>
 
             <label class="open-filter">
@@ -787,7 +894,7 @@ export class WxStoreLocator extends LitElement {
             ${filteredStores.length === 0
               ? html`<li class="empty-state">Không tìm thấy cửa hàng phù hợp.</li>`
               : filteredStores.map((store) => {
-                  const id = store.id || store.ID;
+                  const id = store.id;
                   const isActive = id === this.selectedStoreId;
 
                   return html`
@@ -844,7 +951,7 @@ export class WxStoreLocator extends LitElement {
             id="storeMapFrame"
             class="map-iframe"
             title="ZWILLING Store Locations Map"
-            .srcdoc="${this._getMapIframeSrcDoc(filteredStores, this.selectedStoreId)}"
+            .srcdoc="${this._getMapIframeSrcDoc(filteredStores)}"
           ></iframe>
         </main>
       </div>

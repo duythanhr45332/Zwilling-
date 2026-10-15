@@ -246,7 +246,23 @@ export class WxProductCarousel extends LitElement {
   }
 
   _onProductClick(e) {
-    dispatchCustomEvent(this, 'product-select', { product: e.detail.product });
+    const cardProduct = e.detail?.product;
+    if (!cardProduct) return;
+    const masterProduct = cardProduct.parentProduct || cardProduct;
+    const selectedVariantIndex = typeof cardProduct.selectedVariantIndex === 'number'
+      ? cardProduct.selectedVariantIndex
+      : 0;
+    const selectedColor = cardProduct.selectedColor || cardProduct.color || '';
+
+    dispatchCustomEvent(this, 'product-select', {
+      product: masterProduct,
+      variantIndex: selectedVariantIndex,
+      selectedVariantIndex,
+      selectedColor,
+      color: selectedColor,
+      slug: masterProduct.slug,
+      expandedProduct: cardProduct
+    });
   }
 
   render() {

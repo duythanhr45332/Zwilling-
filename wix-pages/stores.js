@@ -103,7 +103,18 @@ $w.onReady(async function () {
 
       if (res.items && res.items.length > 0) {
         console.log(`[Wix Velo] Đã nạp ${res.items.length} cửa hàng từ CMS Stores.`);
-        safeSet(locatorEl, 'stores', res.items);
+        // Chuẩn hóa dữ liệu cửa hàng từ Wix CMS để đảm bảo đầy đủ id, latitude, longitude
+        const normalizedStores = res.items.map((s, index) => {
+          const storeId = s._id || s.id || s.ID || `store-${index}`;
+          return {
+            ...s,
+            id: storeId,
+            ID: storeId,
+            latitude: Number(s.latitude || s.lat || s.Latitude) || 0,
+            longitude: Number(s.longitude || s.lng || s.Longitude) || 0
+          };
+        });
+        safeSet(locatorEl, 'stores', normalizedStores);
       } else {
         console.log('[Wix Velo] CMS Stores chưa có dữ liệu, component dùng 3 showroom ZWILLING mặc định.');
       }
