@@ -10,6 +10,7 @@
 
 import wixData from 'wix-data';
 import wixLocation from 'wix-location';
+import wixWindowFrontend from 'wix-window-frontend';
 
 // Products.storyBlock / highlightsBlock: single Reference fields to FeatureBlocks.
 // An explicit but invalid reference hides that section; never substitute unrelated content.
@@ -20,7 +21,7 @@ async function resolveExplicitFeatureBlocks(product, dataApi = wixData) {
     const specified = value !== null && value !== undefined && value !== '';
     const id = typeof value === 'string' ? value.trim()
       : (value && !Array.isArray(value) ? value._id || value.ID || '' : '');
-    result[field] = {specified, block: null};
+    result[field] = { specified, block: null };
     if (!specified) continue;
     if (!id) {
       console.warn('[Wix Velo PDP] Reference không hợp lệ:', field);
@@ -257,6 +258,61 @@ $w.onReady(async function () {
     }
     safeSet(detailEl, 'selected-variant-index', selectedIdx);
     safeSet(detailEl, 'product', fullProduct);
+
+    // Lắng nghe sự kiện click mua hàng (Shopee, TikTok, Messenger) để theo dõi trên GA4 & Wix Analytics
+    let lastTrackTime = 0;
+    let lastTrackChannel = '';
+
+    function handleOutboundClick(channel, prod, targetUrl) {
+      const now = Date.now();
+      const ch = (channel || '').toLowerCase(); // 'shopee', 'tiktok', 'mess'
+      if (ch === lastTrackChannel && now - lastTrackTime < 500) {
+        return; // Chống gửi trùng lặp nếu cả social-click và channel-click cùng phát
+      }
+      lastTrackTime = now;
+      lastTrackChannel = ch;
+
+      const p = prod || fullProduct || {};
+      const sku = p.sku || p.ID || '';
+      const title = p.title || '';
+      const price = Number(p.price) || 0;
+
+      const actionName = ch === 'shopee' ? 'Click SHOPEE'
+        : (ch === 'tiktok' ? 'Click TIKTOK'
+          : (ch === 'mess' ? 'Click MESSENGER' : `Click ${ch.toUpperCase()}`));
+
+      // Chuẩn chính thức của Wix Velo: "CustomEvent" với thuộc tính event: "shopee"/"tiktok"/"mess"
+      // để GA4 nhận đúng tên sự kiện riêng từng dòng!
+      try {
+        wixWindowFrontend.trackEvent('CustomEvent', {
+          event: ch,
+          eventCategory: 'Outbound Store Click',
+          eventAction: actionName,
+          eventLabel: `${title} (${sku})`,
+          value: price
+        });
+      } catch (trackErr) {
+        console.warn('[Analytics] Lỗi trackEvent:', trackErr);
+      }
+
+      console.log(`[Analytics] Đã ghi nhận ${actionName} cho sản phẩm:`, title, `(${sku})`, targetUrl);
+    }
+
+    safeOn(detailEl, 'social-click', (e) => {
+      handleOutboundClick(e.detail?.channel, e.detail?.product, e.detail?.url);
+    });
+
+    safeOn(detailEl, 'shopee-click', (e) => {
+      handleOutboundClick('shopee', e.detail?.product, e.detail?.url);
+    });
+
+    safeOn(detailEl, 'tiktok-click', (e) => {
+      handleOutboundClick('tiktok', e.detail?.product, e.detail?.url);
+    });
+
+    safeOn(detailEl, 'mess-click', (e) => {
+      handleOutboundClick('mess', e.detail?.product, e.detail?.url);
+    });
 
     // 6. Nạp các khối tính năng FeatureBlocks & FeatureItems theo Series của sản phẩm
     const storyEl = findElement([
