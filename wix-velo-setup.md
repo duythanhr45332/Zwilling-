@@ -1136,3 +1136,21 @@ Trang tĩnh hiển thị thông tin thương hiệu kèm thanh Breadcrumb `TRANG
 ### 8.2. Dán mã Velo cho trang About
 Mở bảng code của trang và dán toàn bộ nội dung từ file [`wix-pages/about.js`](file:///Users/nguyenvantuan/Documents/Free/WixftZW/wix-pages/about.js).
 
+
+---
+
+## 9. CẤU HÌNH TRANG TĨNH: CƠ HỘI NGHỀ NGHIỆP / CAREERS (`/careers` hoặc `/co-hoi-nghe-nghiep`)
+
+Trang tĩnh hiển thị thông tin tuyển dụng kèm thanh Breadcrumb `TRANG CHỦ › CƠ HỘI NGHỀ NGHIỆP`.
+
+### 9.1. Thêm Custom Element Breadcrumb vào trang Cơ hội nghề nghiệp
+1. Mở trang **Cơ hội nghề nghiệp** trên Wix Studio.
+2. Chọn **Add Elements (+) -> Embed & Social -> Custom Element** (hoặc copy từ trang Giới thiệu sang).
+3. Thiết lập thuộc tính:
+   - **Tag Name**: `wx-breadcrumb`
+   - **Source**: Server URL trỏ tới `my-wix-ui-lib.bundle.js`
+   - **Element ID**: `#aboutBreadcrumb` (hoặc `#careerBreadcrumb`, `#breadcrumb` đều tự động nhận)
+   - **Width**: `100%`, **Height**: `20px`.
+
+### 9.2. Dán mã Velo cho trang Cơ hội nghề nghiệp
+Mở bảng code của trang **Cơ hội nghề nghiệp** và dán toàn bộ nội dung từ file [`wix-pages/careers.js`](wix-pages/careers.js).

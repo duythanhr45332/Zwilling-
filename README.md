@@ -54,4 +54,5 @@ File bundle hoàn thiện được lưu tại: `dist/my-wix-ui-lib.bundle.js` (~
 - [`wix-velo-setup.md`](./wix-velo-setup.md): Hướng dẫn thiết lập Wix Studio tổng thể.
 - [`website-flows.md`](./website-flows.md): Đặc tả luồng điều hướng website theo ngôn ngữ Việt - Anh.
 - [`wix-csv/HUONG-DAN-IMPORT.md`](./wix-csv/HUONG-DAN-IMPORT.md): Hướng dẫn import CMS Collections vào Wix.
+- [`DOCS-HUONG-DAN-QUAN-TRI-WIX.md`](./DOCS-HUONG-DAN-QUAN-TRI-WIX.md): Tài liệu hướng dẫn cho người mới (chỉnh sửa nội dung trên các trang Wix, tạo bài Blog, và các bước SEO cơ bản).
 
